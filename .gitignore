@@ -2,6 +2,7 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
+/Pilots Of Never Gaea/[Ll]ibrary/
 /[Ll]ibrary/
 /[Tt]emp/
 /Pilots Of Never Gaea/[Tt]emp/
