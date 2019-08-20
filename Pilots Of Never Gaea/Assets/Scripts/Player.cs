@@ -7,11 +7,13 @@ public class Player : MonoBehaviour
 {
     public float speed, rightBound, leftBound;
     public bool power, top;
-    public SpriteRenderer sprite;
+    private SpriteRenderer sprite;
+    public Laser laser;
     private bool left, right, action;
 
     void Start()
     {
+        sprite = transform.GetComponent<SpriteRenderer>();
         power = false;
         left = false;
         right = false;
@@ -32,9 +34,14 @@ public class Player : MonoBehaviour
             {
                 left = true;
             }
+
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 action = true;
+            }
+            else
+            {
+                action = false;
             }
         }
         else
@@ -48,9 +55,14 @@ public class Player : MonoBehaviour
             {
                 left = true;
             }
+
             if (Input.GetKeyDown(KeyCode.W))
             {
                 action = true;
+            }
+            else
+            {
+                action = false;
             }
         }
 
@@ -100,5 +112,16 @@ public class Player : MonoBehaviour
     {
         sprite.color = Color.white;
         power = false;
+        if (top)
+        {
+            Laser laserInstance = Instantiate(laser,
+                new Vector3(transform.position.x, -0.88f),
+                new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z + 180.0f, transform.rotation.w));
+            laserInstance.top = true;
+        }
+        else
+        {
+            Instantiate(laser, new Vector3(transform.position.x, 0.88f), transform.rotation);
+        }
     }
 }

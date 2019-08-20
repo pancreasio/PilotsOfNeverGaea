@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    public Rigidbody2D rig;
+    private Rigidbody2D rig;
     private float bounceTime = 0.1f, bounceClock;
     public float initialSpeed, horizontalBounds, verticalBounds;
     void Start()
     {
+        rig = transform.GetComponent<Rigidbody2D>();
         ReStart();
     }
 
