@@ -6,17 +6,24 @@ public class Ball : MonoBehaviour
 {
     public Rigidbody2D rig;
     private float bounceTime = 0.1f, bounceClock;
-    public float initialSpeed, bound;
+    public float initialSpeed, horizontalBounds, verticalBounds;
     void Start()
     {
+        ReStart();
+    }
+
+    void ReStart()
+    {
         bounceClock = 0;
-        rig.AddForce((-transform.up + transform.right) * initialSpeed, ForceMode2D.Impulse);
+        transform.position = new Vector2(0.0f, 0.0f);
+        rig.velocity = new Vector2(0.0f, 0.0f);
+        rig.AddForce((Vector2.down + Vector2.left) * initialSpeed, ForceMode2D.Impulse);
     }
 
     void Update()
     {
         bounceClock += Time.deltaTime;
-        if (transform.position.x >= bound || transform.position.x <= -bound)
+        if (transform.position.x >= horizontalBounds || transform.position.x <= -horizontalBounds)
         {
             if (bounceClock > bounceTime)
             {
@@ -24,6 +31,10 @@ public class Ball : MonoBehaviour
                 rig.velocity = new Vector2(-rig.velocity.x, rig.velocity.y);
                 bounceClock = 0;
             }
+        }
+        if (transform.position.y >= verticalBounds || transform.position.y <= -verticalBounds)
+        {
+            ReStart();
         }
     }
 }

@@ -631,3 +631,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rig: {fileID: 1685287465}
   initialSpeed: 3
+  bound: 2.52
