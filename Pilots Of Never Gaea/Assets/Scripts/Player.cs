@@ -103,7 +103,14 @@ public class Player : MonoBehaviour
     {
         if (!power)
         {
-            sprite.color = Color.red;
+            if (top)
+            {
+                sprite.color = Color.blue;
+            }
+            else
+            {
+                sprite.color = Color.red;
+            }
             power = true;
         }
     }

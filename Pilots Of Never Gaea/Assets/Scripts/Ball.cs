@@ -28,13 +28,26 @@ public class Ball : MonoBehaviour
         {
             if (bounceClock > bounceTime)
             {
-                rig.velocity = new Vector2(-rig.velocity.x, rig.velocity.y);
+                Bounce();
                 bounceClock = 0;
             }
         }
         if (transform.position.y >= verticalBounds || transform.position.y <= -verticalBounds)
         {
             ReStart();
+        }
+    }
+
+    private void Bounce()
+    {
+        rig.velocity = new Vector2(-rig.velocity.x, rig.velocity.y);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.tag == "Laser")
+        {
+            Bounce();
         }
     }
 }
