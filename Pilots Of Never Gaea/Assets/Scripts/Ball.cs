@@ -6,14 +6,14 @@ public class Ball : MonoBehaviour
 {
     private Rigidbody2D rig;
     private float bounceTime = 0.1f, bounceClock;
-    public float initialSpeed, horizontalBounds, verticalBounds;
-    void Start()
+    public float initialSpeed, horizontalBounds, verticalBounds, bounceMultiplier;
+    private void Start()
     {
         rig = transform.GetComponent<Rigidbody2D>();
         ReStart();
     }
 
-    void ReStart()
+    private void ReStart()
     {
         bounceClock = 0;
         transform.position = new Vector2(0.0f, 0.0f);
@@ -21,14 +21,14 @@ public class Ball : MonoBehaviour
         rig.AddForce((Vector2.down + Vector2.left) * initialSpeed, ForceMode2D.Impulse);
     }
 
-    void Update()
+    private void Update()
     {
         bounceClock += Time.deltaTime;
         if (transform.position.x >= horizontalBounds || transform.position.x <= -horizontalBounds)
         {
             if (bounceClock > bounceTime)
             {
-                Bounce();
+                HorizontalBounce();
                 bounceClock = 0;
             }
         }
@@ -38,16 +38,26 @@ public class Ball : MonoBehaviour
         }
     }
 
-    private void Bounce()
+    private void HorizontalBounce()
     {
         rig.velocity = new Vector2(-rig.velocity.x, rig.velocity.y);
+    }
+
+    private void VerticalBounce()
+    {
+        rig.velocity = new Vector2(rig.velocity.x, -rig.velocity.y);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "Laser")
         {
-            Bounce();
+            HorizontalBounce();
+        }
+        if (collision.transform.tag == "Straight Palette")
+        {
+            VerticalBounce();
+            rig.velocity = new Vector2(rig.velocity.x * bounceMultiplier, rig.velocity.y * bounceMultiplier);
         }
     }
 }

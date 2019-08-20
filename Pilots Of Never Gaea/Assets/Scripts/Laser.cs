@@ -9,7 +9,7 @@ public class Laser : MonoBehaviour
     private float activeClock;
     private SpriteRenderer sprite;
     private BoxCollider2D collider;
-    void Start()
+    private void Start()
     {
         sprite = transform.GetComponent<SpriteRenderer>();
         collider = transform.GetComponent<BoxCollider2D>();
@@ -24,7 +24,7 @@ public class Laser : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         activeClock += Time.deltaTime;
         if (activeClock >= activeTime)

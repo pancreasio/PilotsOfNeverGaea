@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 755355925}
   m_Layer: 0
   m_Name: player1
-  m_TagString: Untagged
+  m_TagString: Straight Palette
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -303,7 +303,6 @@ MonoBehaviour:
   leftBound: -1.96
   power: 0
   top: 0
-  sprite: {fileID: 755355922}
   laser: {fileID: 2544153375021142846, guid: 0676a02d83099514b9a81976f40eda7b, type: 3}
 --- !u!50 &755355925
 Rigidbody2D:
@@ -336,7 +335,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -363,11 +362,11 @@ GameObject:
   - component: {fileID: 1090130158}
   - component: {fileID: 1090130157}
   - component: {fileID: 1090130156}
-  - component: {fileID: 1090130160}
   - component: {fileID: 1090130159}
+  - component: {fileID: 1090130160}
   m_Layer: 0
   m_Name: player2
-  m_TagString: Untagged
+  m_TagString: Straight Palette
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -389,7 +388,6 @@ MonoBehaviour:
   leftBound: -1.96
   power: 0
   top: 1
-  sprite: {fileID: 1090130157}
   laser: {fileID: 2544153375021142846, guid: 0676a02d83099514b9a81976f40eda7b, type: 3}
 --- !u!212 &1090130157
 SpriteRenderer:
@@ -464,7 +462,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -510,10 +508,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1685287464}
+  - component: {fileID: 1685287467}
   - component: {fileID: 1685287463}
   - component: {fileID: 1685287466}
   - component: {fileID: 1685287465}
-  - component: {fileID: 1685287467}
   m_Layer: 0
   m_Name: ball
   m_TagString: Ball
@@ -633,7 +631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0f24f564338c5f4fac1ba95a15a6a7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rig: {fileID: 1685287465}
   initialSpeed: 3
   horizontalBounds: 2.54
   verticalBounds: 5.2
+  bounceMultiplier: 1.1

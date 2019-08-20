@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public Laser laser;
     private bool left, right, action;
 
-    void Start()
+    private void Start()
     {
         sprite = transform.GetComponent<SpriteRenderer>();
         power = false;
@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
         action = false;
     }
 
-    void Update()
+    private void Update()
     {
         //input
         if (top)
@@ -91,7 +91,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "Ball")
         {
