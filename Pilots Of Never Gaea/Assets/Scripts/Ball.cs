@@ -27,7 +27,6 @@ public class Ball : MonoBehaviour
         {
             if (bounceClock > bounceTime)
             {
-                Debug.Log(rig.velocity);
                 rig.velocity = new Vector2(-rig.velocity.x, rig.velocity.y);
                 bounceClock = 0;
             }

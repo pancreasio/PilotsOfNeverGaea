@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     public float speed, rightBound, leftBound;
     public bool power, top;
+    public SpriteRenderer sprite;
     private bool left, right, action;
 
     void Start()
@@ -31,7 +32,7 @@ public class Player : MonoBehaviour
             {
                 left = true;
             }
-            if (Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 action = true;
             }
@@ -47,7 +48,7 @@ public class Player : MonoBehaviour
             {
                 left = true;
             }
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.W))
             {
                 action = true;
             }
@@ -70,7 +71,7 @@ public class Player : MonoBehaviour
             }
             left = false;
         }
-        if (Input.GetKeyDown(KeyCode.W) && power)
+        if (action && power)
         {
             Fire();
             power = false;
@@ -78,16 +79,26 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.tag == "Ball")
         {
+            Charge();
+        }
+    }
+
+    private void Charge()
+    {
+        if (!power)
+        {
+            sprite.color = Color.red;
             power = true;
         }
     }
 
     private void Fire()
     {
-
+        sprite.color = Color.white;
+        power = false;
     }
 }

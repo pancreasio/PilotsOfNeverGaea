@@ -303,6 +303,7 @@ MonoBehaviour:
   leftBound: -1.96
   power: 0
   top: 0
+  sprite: {fileID: 755355922}
 --- !u!50 &755355925
 Rigidbody2D:
   serializedVersion: 4
@@ -387,6 +388,7 @@ MonoBehaviour:
   leftBound: -1.96
   power: 0
   top: 1
+  sprite: {fileID: 1090130157}
 --- !u!212 &1090130157
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -512,7 +514,7 @@ GameObject:
   - component: {fileID: 1685287467}
   m_Layer: 0
   m_Name: ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -631,4 +633,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rig: {fileID: 1685287465}
   initialSpeed: 3
-  bound: 2.52
+  horizontalBounds: 2.54
+  verticalBounds: 5.2
