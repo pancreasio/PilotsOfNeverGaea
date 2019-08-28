@@ -23,15 +23,6 @@ public class Ball : MonoBehaviour
 
     private void Update()
     {
-        bounceClock += Time.deltaTime;
-        if (transform.position.x >= horizontalBounds || transform.position.x <= -horizontalBounds)
-        {
-            if (bounceClock > bounceTime)
-            {
-                HorizontalBounce();
-                bounceClock = 0;
-            }
-        }
         if (transform.position.y >= verticalBounds || transform.position.y <= -verticalBounds)
         {
             ReStart();
