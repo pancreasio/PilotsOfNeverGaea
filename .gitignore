@@ -2,15 +2,20 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-/Pilots Of Never Gaea/[Ll]ibrary/
 /[Ll]ibrary/
+/Pilots Of Never Gaea/[Ll]ibrary/
 /[Tt]emp/
 /Pilots Of Never Gaea/[Tt]emp/
 /[Oo]bj/
+/Pilots Of Never Gaea/[Oo]bj/
 /[Bb]uild/
+/Pilots Of Never Gaea/[Bb]uild/
 /[Bb]uilds/
+/Pilots Of Never Gaea/[Bb]uilds/
 /[Ll]ogs/
+/Pilots Of Never Gaea/[Ll]ogs/
 /[Mm]emoryCaptures/
+/Pilots Of Never Gaea/[Mm]emoryCaptures/
 
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
