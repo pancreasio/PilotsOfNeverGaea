@@ -74,25 +74,32 @@ public class Palette : MonoBehaviour
         //movement
         if (right)
         {
-            moveDelta = speed * Time.deltaTime;
-            CheckBorder(true);
-            transform.Translate(moveDelta, 0.0f, 0.0f);
-            Debug.DrawRay(transform.position, transform.up * 3);
+            Move(true);
             right = false;
         }
         if (left)
         {
-            moveDelta = speed * Time.deltaTime;
-            CheckBorder(false);
-            transform.Translate(-moveDelta, 0.0f, 0.0f);
-            Debug.DrawRay(transform.position, transform.up * 3);
+            Move(false);
             left = false;
         }
-        if (action && power)
+        if (action)
         {
             Fire();
-            power = false;
             action = false;
+        }
+    }
+
+    private void Move(bool right)
+    {
+        moveDelta = speed * Time.deltaTime;
+        CheckBorder(right);
+        if (right)
+        {
+            transform.Translate(moveDelta, 0.0f, 0.0f);
+        }
+        else
+        {
+            transform.Translate(-moveDelta, 0.0f, 0.0f);
         }
     }
 
@@ -144,18 +151,21 @@ public class Palette : MonoBehaviour
 
     private void Fire()
     {
-        sprite.color = Color.white;
-        power = false;
-        if (top)
+        if (power)
         {
-            Laser laserInstance = Instantiate(laser,
-                new Vector3(transform.position.x, -0.88f),
-                new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z + 180.0f, transform.rotation.w));
-            laserInstance.top = true;
-        }
-        else
-        {
-            Instantiate(laser, new Vector3(transform.position.x, 0.88f), transform.rotation);
+            sprite.color = Color.white;
+            power = false;
+            if (top)
+            {
+                Laser laserInstance = Instantiate(laser,
+                    new Vector3(transform.position.x, -0.88f),
+                    new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z + 180.0f, transform.rotation.w));
+                laserInstance.top = true;
+            }
+            else
+            {
+                Instantiate(laser, new Vector3(transform.position.x, 0.88f), transform.rotation);
+            }
         }
     }
 }
