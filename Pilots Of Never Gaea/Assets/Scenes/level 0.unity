@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 159881397}
   - component: {fileID: 159881396}
   - component: {fileID: 159881395}
+  - component: {fileID: 159881398}
   m_Layer: 5
   m_Name: rightButton
   m_TagString: Untagged
@@ -242,6 +243,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159881393}
   m_CullTransparentMesh: 0
+--- !u!114 &159881398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159881393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab98b66288df7b4fa182075f2f12bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Vertical
+  axisValue: -1
+  responseSpeed: 10000
+  returnToCentreSpeed: 10000
 --- !u!1 &355782572
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,6 +271,7 @@ GameObject:
   - component: {fileID: 355782576}
   - component: {fileID: 355782575}
   - component: {fileID: 355782574}
+  - component: {fileID: 355782577}
   m_Layer: 5
   m_Name: fireButton
   m_TagString: Untagged
@@ -364,6 +382,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355782572}
   m_CullTransparentMesh: 0
+--- !u!114 &355782577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355782572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab98b66288df7b4fa182075f2f12bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Fire1
+  axisValue: 1
+  responseSpeed: 10000
+  returnToCentreSpeed: 10000
 --- !u!1 &385738662
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,6 +758,7 @@ GameObject:
   - component: {fileID: 772568774}
   - component: {fileID: 772568773}
   - component: {fileID: 772568772}
+  - component: {fileID: 772568775}
   m_Layer: 5
   m_Name: fireButton
   m_TagString: Untagged
@@ -834,6 +869,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 772568770}
   m_CullTransparentMesh: 0
+--- !u!114 &772568775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772568770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab98b66288df7b4fa182075f2f12bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Fire2
+  axisValue: 1
+  responseSpeed: 10000
+  returnToCentreSpeed: 10000
 --- !u!1 &832282025
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,6 +1014,7 @@ GameObject:
   - component: {fileID: 1028626923}
   - component: {fileID: 1028626922}
   - component: {fileID: 1028626921}
+  - component: {fileID: 1028626924}
   m_Layer: 5
   m_Name: leftButton
   m_TagString: Untagged
@@ -1073,6 +1125,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1028626919}
   m_CullTransparentMesh: 0
+--- !u!114 &1028626924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028626919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab98b66288df7b4fa182075f2f12bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Horizontal
+  axisValue: -1
+  responseSpeed: 10000
+  returnToCentreSpeed: 10000
 --- !u!1 &1036394128
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,6 +1153,7 @@ GameObject:
   - component: {fileID: 1036394132}
   - component: {fileID: 1036394131}
   - component: {fileID: 1036394130}
+  - component: {fileID: 1036394133}
   m_Layer: 5
   m_Name: rightButton
   m_TagString: Untagged
@@ -1195,6 +1264,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036394128}
   m_CullTransparentMesh: 0
+--- !u!114 &1036394133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036394128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab98b66288df7b4fa182075f2f12bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Horizontal
+  axisValue: 1
+  responseSpeed: 10000
+  returnToCentreSpeed: 10000
 --- !u!1 &1118077790
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,6 +1404,11 @@ PrefabInstance:
       propertyPath: tito.m_Bits
       value: 512
       objectReference: {fileID: 0}
+    - target: {fileID: 1851360514041425681, guid: 3d8dcdc5f6c8e0c4d8b9ddcb06bc7c79,
+        type: 3}
+      propertyPath: mobile
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1851360514041425686, guid: 3d8dcdc5f6c8e0c4d8b9ddcb06bc7c79,
         type: 3}
       propertyPath: m_RootOrder
@@ -1353,6 +1443,7 @@ GameObject:
   - component: {fileID: 1254895388}
   - component: {fileID: 1254895387}
   - component: {fileID: 1254895386}
+  - component: {fileID: 1254895389}
   m_Layer: 5
   m_Name: leftButton
   m_TagString: Untagged
@@ -1463,6 +1554,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1254895384}
   m_CullTransparentMesh: 0
+--- !u!114 &1254895389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254895384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab98b66288df7b4fa182075f2f12bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Vertical
+  axisValue: 1
+  responseSpeed: 10000
+  returnToCentreSpeed: 10000
 --- !u!1001 &1315040917
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1483,6 +1590,11 @@ PrefabInstance:
     - target: {fileID: 1851360514041425681, guid: 3d8dcdc5f6c8e0c4d8b9ddcb06bc7c79,
         type: 3}
       propertyPath: top
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851360514041425681, guid: 3d8dcdc5f6c8e0c4d8b9ddcb06bc7c79,
+        type: 3}
+      propertyPath: mobile
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1851360514041425686, guid: 3d8dcdc5f6c8e0c4d8b9ddcb06bc7c79,

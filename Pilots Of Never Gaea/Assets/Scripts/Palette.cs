@@ -2,13 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Palette : MonoBehaviour
 {
     public LayerMask raycastMask;
 
     public float speed, rightBound, leftBound;
-    public bool power, top;
+    public bool power, top, mobile;
     public Laser laser;
     private SpriteRenderer sprite;
     private Rigidbody2D rigi;
@@ -28,49 +29,97 @@ public class Palette : MonoBehaviour
     private void Update()
     {
         //input
-        if (top)
+        if (mobile)
         {
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (top)
             {
-                right = true;
-            }
+                if (CrossPlatformInputManager.GetAxisRaw("Vertical")>0)
+                {
+                    right = true;
+                }
 
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                left = true;
-            }
+                if (CrossPlatformInputManager.GetAxisRaw("Vertical")<0)
+                {
+                    left = true;
+                }
 
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                action = true;
+                if (CrossPlatformInputManager.GetAxisRaw("Fire2")>0)
+                {
+                    action = true;
+                }
+                else
+                {
+                    action = false;
+                }
             }
             else
             {
-                action = false;
+                if (CrossPlatformInputManager.GetAxisRaw("Horizontal") > 0)
+                {
+                    right = true;
+                }
+
+                if (CrossPlatformInputManager.GetAxisRaw("Horizontal") < 0)
+                {
+                    left = true;
+                }
+
+                if (CrossPlatformInputManager.GetAxisRaw("Fire1") > 0)
+                {
+                    action = true;
+                }
+                else
+                {
+                    action = false;
+                }
             }
         }
+
         else
         {
-            if (Input.GetKey(KeyCode.D))
+            if (top)
             {
-                right = true;
-            }
+                if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    right = true;
+                }
 
-            if (Input.GetKey(KeyCode.A))
-            {
-                left = true;
-            }
+                if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    left = true;
+                }
 
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                action = true;
+                if (Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    action = true;
+                }
+                else
+                {
+                    action = false;
+                }
             }
             else
             {
-                action = false;
+                if (Input.GetKey(KeyCode.D))
+                {
+                    right = true;
+                }
+
+                if (Input.GetKey(KeyCode.A))
+                {
+                    left = true;
+                }
+
+                if (Input.GetKeyDown(KeyCode.W))
+                {
+                    action = true;
+                }
+                else
+                {
+                    action = false;
+                }
             }
         }
-
         //movement
         if (right)
         {
