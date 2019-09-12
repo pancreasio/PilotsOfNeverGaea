@@ -23,7 +23,7 @@ public class Ball : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.y >= verticalBounds || transform.position.y <= -verticalBounds)
+        if (transform.position.y >= horizontalBounds || transform.position.y <= -horizontalBounds)
         {
             ReStart();
         }
@@ -43,12 +43,12 @@ public class Ball : MonoBehaviour
     {
         if (collision.transform.tag == "Laser")
         {
-            HorizontalBounce();
+            VerticalBounce();
         }
         if (collision.transform.tag == "Straight Palette")
         {
-            VerticalBounce();
-            rig.velocity = new Vector2(rig.velocity.x * bounceMultiplier, rig.velocity.y * bounceMultiplier);
+            //VerticalBounce();
+            //rig.velocity = new Vector2(rig.velocity.x * bounceMultiplier, rig.velocity.y * bounceMultiplier);
         }
     }
 }

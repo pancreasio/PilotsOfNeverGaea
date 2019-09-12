@@ -9,11 +9,11 @@ public class Palette : MonoBehaviour
     public LayerMask raycastMask;
 
     public float speed, rightBound, leftBound;
-    public bool power, top, mobile;
+    public bool power, left, mobile;
     public Laser laser;
     private SpriteRenderer sprite;
     private Rigidbody2D rigi;
-    private bool left, right, action;
+    private bool up, down, action;
     private float moveDelta;
 
     private void Start()
@@ -21,115 +21,68 @@ public class Palette : MonoBehaviour
         sprite = transform.GetComponent<SpriteRenderer>();
         rigi = transform.GetComponent<Rigidbody2D>();
         power = false;
-        left = false;
-        right = false;
+        up = false;
+        down = false;
         action = false;
     }
 
     private void Update()
     {
         //input
-        if (mobile)
+
+        if (!left)
         {
-            if (top)
+            if (Input.GetKey(KeyCode.UpArrow))
             {
-                if (CrossPlatformInputManager.GetAxisRaw("Vertical")>0)
-                {
-                    right = true;
-                }
+                up = true;
+            }
 
-                if (CrossPlatformInputManager.GetAxisRaw("Vertical")<0)
-                {
-                    left = true;
-                }
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                down= true;
+            }
 
-                if (CrossPlatformInputManager.GetAxisRaw("Fire2")>0)
-                {
-                    action = true;
-                }
-                else
-                {
-                    action = false;
-                }
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                action = true;
             }
             else
             {
-                if (CrossPlatformInputManager.GetAxisRaw("Horizontal") > 0)
-                {
-                    right = true;
-                }
-
-                if (CrossPlatformInputManager.GetAxisRaw("Horizontal") < 0)
-                {
-                    left = true;
-                }
-
-                if (CrossPlatformInputManager.GetAxisRaw("Fire1") > 0)
-                {
-                    action = true;
-                }
-                else
-                {
-                    action = false;
-                }
+                action = false;
             }
         }
-
         else
         {
-            if (top)
+            if (Input.GetKey(KeyCode.W))
             {
-                if (Input.GetKey(KeyCode.RightArrow))
-                {
-                    right = true;
-                }
+                up = true;
+            }
 
-                if (Input.GetKey(KeyCode.LeftArrow))
-                {
-                    left = true;
-                }
+            if (Input.GetKey(KeyCode.S))
+            {
+                down = true;
+            }
 
-                if (Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    action = true;
-                }
-                else
-                {
-                    action = false;
-                }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                action = true;
             }
             else
             {
-                if (Input.GetKey(KeyCode.D))
-                {
-                    right = true;
-                }
-
-                if (Input.GetKey(KeyCode.A))
-                {
-                    left = true;
-                }
-
-                if (Input.GetKeyDown(KeyCode.W))
-                {
-                    action = true;
-                }
-                else
-                {
-                    action = false;
-                }
+                action = false;
             }
         }
+
         //movement
-        if (right)
+        if (up)
         {
             Move(true);
-            right = false;
+            up = false;
         }
-        if (left)
+        if (down)
         {
             Move(false);
-            left = false;
+            down = false;
         }
         if (action)
         {
@@ -138,17 +91,17 @@ public class Palette : MonoBehaviour
         }
     }
 
-    private void Move(bool right)
+    private void Move(bool upMovement)
     {
         moveDelta = speed * Time.deltaTime;
-        CheckBorder(right);
-        if (right)
+        CheckBorder(upMovement);
+        if (upMovement)
         {
-            transform.Translate(moveDelta, 0.0f, 0.0f);
+            transform.Translate(-moveDelta, 0.0f, 0.0f);
         }
         else
         {
-            transform.Translate(-moveDelta, 0.0f, 0.0f);
+            transform.Translate(moveDelta, 0.0f, 0.0f);
         }
     }
 
@@ -164,7 +117,7 @@ public class Palette : MonoBehaviour
     {
         if (!power)
         {
-            if (top)
+            if (left)
             {
                 sprite.color = Color.blue;
             }
@@ -176,15 +129,16 @@ public class Palette : MonoBehaviour
         }
     }
 
-    private void CheckBorder(bool right)
+    private void CheckBorder(bool upCheck)
     {
         float moveDistance = moveDelta + sprite.bounds.extents.x;
 
-        if (right)
+        if (upCheck)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, moveDistance, raycastMask);
             if (hit)
             {
+                Debug.DrawRay(transform.position, transform.right);
                 moveDelta = hit.distance - sprite.bounds.extents.x;
             }
         }
@@ -193,6 +147,7 @@ public class Palette : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.right, moveDistance, raycastMask);
             if (hit)
             {
+                Debug.DrawRay(transform.position, -transform.right);
                 moveDelta = hit.distance - sprite.bounds.extents.x;
             }
         }
@@ -204,7 +159,7 @@ public class Palette : MonoBehaviour
         {
             sprite.color = Color.white;
             power = false;
-            if (top)
+            if (left)
             {
                 Laser laserInstance = Instantiate(laser,
                     new Vector3(transform.position.x, -0.88f),

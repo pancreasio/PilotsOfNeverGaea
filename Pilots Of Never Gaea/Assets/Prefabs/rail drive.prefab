@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851360514041425684}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.72, z: 0}
+  m_LocalPosition: {x: -8.17, y: 0, z: 0}
   m_LocalScale: {x: 3.4184, y: 3.4184, z: 3.4184}
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,7 +102,8 @@ MonoBehaviour:
   rightBound: 1.96
   leftBound: -1.96
   power: 0
-  top: 0
+  left: 0
+  mobile: 0
   laser: {fileID: 2544153375021142846, guid: 0676a02d83099514b9a81976f40eda7b, type: 3}
 --- !u!50 &1851360514041425680
 Rigidbody2D:
