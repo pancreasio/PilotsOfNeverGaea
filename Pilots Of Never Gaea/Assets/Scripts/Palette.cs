@@ -116,14 +116,6 @@ public class Palette : MonoBehaviour
     {
         if (!power)
         {
-            if (left)
-            {
-                sprite.color = Color.blue;
-            }
-            else
-            {
-                sprite.color = Color.red;
-            }
             power = true;
         }
     }
@@ -137,7 +129,6 @@ public class Palette : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, moveDistance, raycastMask);
             if (hit)
             {
-                Debug.DrawRay(transform.position, transform.right);
                 moveDelta = hit.distance - sprite.bounds.extents.y;
             }
         }
@@ -146,7 +137,6 @@ public class Palette : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, moveDistance, raycastMask);
             if (hit)
             {
-                Debug.DrawRay(transform.position, -transform.right);
                 moveDelta = hit.distance - sprite.bounds.extents.y;
             }
         }
@@ -156,18 +146,17 @@ public class Palette : MonoBehaviour
     {
         if (power)
         {
-            sprite.color = Color.white;
             power = false;
             if (left)
             {
                 Laser laserInstance = Instantiate(laser,
-                    new Vector3(transform.position.x, -0.88f),
+                    new Vector3(0.0f + 0.63f, transform.position.y),
                     new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z + 180.0f, transform.rotation.w));
                 laserInstance.top = true;
             }
             else
             {
-                Instantiate(laser, new Vector3(transform.position.x, 0.88f), transform.rotation);
+                Instantiate(laser, new Vector3(0.0f - 0.63f, transform.position.y), transform.rotation);
             }
         }
     }
