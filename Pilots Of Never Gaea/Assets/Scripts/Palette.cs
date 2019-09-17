@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
 
 public class Palette : MonoBehaviour
 {
@@ -97,11 +96,11 @@ public class Palette : MonoBehaviour
         CheckBorder(upMovement);
         if (upMovement)
         {
-            transform.Translate(-moveDelta, 0.0f, 0.0f);
+            transform.Translate(0.0f, moveDelta, 0.0f);
         }
         else
         {
-            transform.Translate(moveDelta, 0.0f, 0.0f);
+            transform.Translate(0.0f, -moveDelta, 0.0f);
         }
     }
 
@@ -131,24 +130,24 @@ public class Palette : MonoBehaviour
 
     private void CheckBorder(bool upCheck)
     {
-        float moveDistance = moveDelta + sprite.bounds.extents.x;
+        float moveDistance = moveDelta + sprite.bounds.extents.y;
 
         if (upCheck)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, moveDistance, raycastMask);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, moveDistance, raycastMask);
             if (hit)
             {
                 Debug.DrawRay(transform.position, transform.right);
-                moveDelta = hit.distance - sprite.bounds.extents.x;
+                moveDelta = hit.distance - sprite.bounds.extents.y;
             }
         }
         else
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.right, moveDistance, raycastMask);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, moveDistance, raycastMask);
             if (hit)
             {
                 Debug.DrawRay(transform.position, -transform.right);
-                moveDelta = hit.distance - sprite.bounds.extents.x;
+                moveDelta = hit.distance - sprite.bounds.extents.y;
             }
         }
     }
