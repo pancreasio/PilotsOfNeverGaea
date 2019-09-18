@@ -7,22 +7,27 @@ public class Palette : MonoBehaviour
 {
     public LayerMask raycastMask;
 
-    public float speed, rightBound, leftBound;
+    public float speed, rightBound, leftBound, shotDelay;
     public bool power, left, mobile;
     public Laser laser;
+    public GameObject pointer;
     private SpriteRenderer sprite;
+    private Animator animator;
     private Rigidbody2D rigi;
     private bool up, down, action;
-    private float moveDelta;
+    private float moveDelta, shotClock;
 
     private void Start()
     {
         sprite = transform.GetComponent<SpriteRenderer>();
         rigi = transform.GetComponent<Rigidbody2D>();
+        animator = transform.GetComponent<Animator>();
         power = false;
         up = false;
         down = false;
         action = false;
+        shotClock = 0;
+        pointer.SetActive(false);
     }
 
     private void Update()
@@ -38,7 +43,7 @@ public class Palette : MonoBehaviour
 
             if (Input.GetKey(KeyCode.DownArrow))
             {
-                down= true;
+                down = true;
             }
 
             if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -85,8 +90,22 @@ public class Palette : MonoBehaviour
         }
         if (action)
         {
-            Fire();
+            if (power)
+            {
+                animator.SetBool("SHOT", true);
+                shotClock = 0;
+                power = false;
+            }
             action = false;
+        }
+        if (animator.GetBool("SHOT"))
+        {
+            pointer.SetActive(true);
+            shotClock += Time.deltaTime;
+            if (shotClock >= shotDelay)
+            {
+                Fire();
+            }
         }
     }
 
@@ -144,20 +163,17 @@ public class Palette : MonoBehaviour
 
     private void Fire()
     {
-        if (power)
+        if (left)
         {
-            power = false;
-            if (left)
-            {
-                Laser laserInstance = Instantiate(laser,
-                    new Vector3(0.0f + 0.63f, transform.position.y),
-                    new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z + 180.0f, transform.rotation.w));
-                laserInstance.top = true;
-            }
-            else
-            {
-                Instantiate(laser, new Vector3(0.0f - 0.63f, transform.position.y), transform.rotation);
-            }
+            Laser laserInstance = Instantiate(laser,
+                new Vector3(0.0f + 0.63f, transform.position.y),
+                new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z + 180.0f, transform.rotation.w));
         }
+        else
+        {
+            Instantiate(laser, new Vector3(0.0f - 0.63f, transform.position.y), transform.rotation);
+        }
+        animator.SetBool("SHOT", false);
+        pointer.SetActive(false);
     }
 }

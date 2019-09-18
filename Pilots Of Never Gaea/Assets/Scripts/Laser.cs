@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
-    public bool top;
     public float activeTime;
     private float activeClock;
     private SpriteRenderer sprite;
@@ -14,14 +13,6 @@ public class Laser : MonoBehaviour
         sprite = transform.GetComponent<SpriteRenderer>();
         collider = transform.GetComponent<BoxCollider2D>();
         activeClock = 0;
-        if (top)
-        {
-            sprite.color = Color.blue;
-        }
-        else
-        {
-            sprite.color = Color.red;
-        }
     }
 
     private void Update()
