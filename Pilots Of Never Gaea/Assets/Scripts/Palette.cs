@@ -103,8 +103,11 @@ public class Palette : MonoBehaviour
         }
         if (animator.GetBool("SHOT"))
         {
-            pointer.SetActive(true);
             shotClock += Time.deltaTime;
+            if (shotClock >= 0.217f)
+            {
+                pointer.SetActive(true);
+            }
             if (shotClock >= shotDelay)
             {
                 Fire();

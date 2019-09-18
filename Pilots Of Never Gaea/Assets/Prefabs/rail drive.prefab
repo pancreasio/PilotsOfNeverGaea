@@ -183,7 +183,7 @@ MonoBehaviour:
   speed: 6
   rightBound: 1.96
   leftBound: -1.96
-  shotDelay: 0.3
+  shotDelay: 0.6
   power: 0
   left: 0
   mobile: 0
@@ -209,7 +209,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 6
+  m_Constraints: 5
 --- !u!60 &6073459140862151449
 PolygonCollider2D:
   m_ObjectHideFlags: 0
