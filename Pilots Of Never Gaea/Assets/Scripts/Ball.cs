@@ -5,7 +5,6 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     private Rigidbody2D rig;
-    private float bounceTime = 0.1f, bounceClock;
     public float initialSpeed, horizontalBounds, verticalBounds, bounceMultiplier;
     private void Start()
     {
@@ -15,7 +14,6 @@ public class Ball : MonoBehaviour
 
     private void ReStart()
     {
-        bounceClock = 0;
         transform.position = new Vector2(0.0f, 0.0f);
         rig.velocity = new Vector2(0.0f, 0.0f);
         rig.AddForce((Vector2.down + Vector2.left) * initialSpeed, ForceMode2D.Impulse);
@@ -23,7 +21,7 @@ public class Ball : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.y >= horizontalBounds || transform.position.y <= -horizontalBounds)
+        if (transform.position.x >= horizontalBounds || transform.position.x <= -horizontalBounds)
         {
             ReStart();
         }
@@ -44,11 +42,6 @@ public class Ball : MonoBehaviour
         if (collision.transform.tag == "Laser")
         {
             VerticalBounce();
-        }
-        if (collision.transform.tag == "Straight Palette")
-        {
-            //VerticalBounce();
-            //rig.velocity = new Vector2(rig.velocity.x * bounceMultiplier, rig.velocity.y * bounceMultiplier);
         }
     }
 }
