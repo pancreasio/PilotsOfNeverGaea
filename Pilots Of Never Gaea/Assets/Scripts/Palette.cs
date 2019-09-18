@@ -98,7 +98,8 @@ public class Palette : MonoBehaviour
                 shotClock = 0;
                 power = false;
                 action = false;
-            }            
+                animator.SetBool("CHARGED", false);
+            }
         }
         if (animator.GetBool("SHOT"))
         {
