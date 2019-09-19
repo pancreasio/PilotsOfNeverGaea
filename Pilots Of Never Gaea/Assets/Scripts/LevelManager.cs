@@ -34,11 +34,11 @@ public class LevelManager : MonoBehaviour
         p2ScoreText.text = p2Score.ToString();
         if (p1Score >= 3)
         {
-
+            SceneManager.LoadScene(0);
         }
         if (p2Score >= 3)
         {
-
+            SceneManager.LoadScene(0);
         }
     }
 
