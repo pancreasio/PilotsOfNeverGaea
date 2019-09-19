@@ -8,6 +8,7 @@ public class Ball : MonoBehaviour
     public delegate void OnScoreAction(bool player1);
     public static OnScoreAction onScore;
     public float initialSpeed, horizontalBounds, verticalBounds, bounceMultiplier;
+
     private void Start()
     {
         rig = transform.GetComponent<Rigidbody2D>();

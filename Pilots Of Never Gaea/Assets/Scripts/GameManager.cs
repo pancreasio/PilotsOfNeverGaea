@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    void Start()
+    private void Start()
     {
-        
+
     }
 
-    void Update()
+    private void Update()
     {
-        
+
     }
 }
