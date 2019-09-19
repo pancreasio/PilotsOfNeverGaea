@@ -5,6 +5,8 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     private Rigidbody2D rig;
+    public delegate void OnScoreAction(bool player1);
+    public static OnScoreAction onScore;
     public float initialSpeed, horizontalBounds, verticalBounds, bounceMultiplier;
     private void Start()
     {
@@ -21,8 +23,20 @@ public class Ball : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.x >= horizontalBounds || transform.position.x <= -horizontalBounds)
+        if (transform.position.x >= horizontalBounds)
         {
+            if (onScore != null)
+            {
+                onScore(true);
+            }
+            ReStart();
+        }
+        if (transform.position.x <= -horizontalBounds)
+        {
+            if (onScore != null)
+            {
+                onScore(false);
+            }
             ReStart();
         }
     }

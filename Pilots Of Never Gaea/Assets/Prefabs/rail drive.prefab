@@ -180,7 +180,7 @@ MonoBehaviour:
   raycastMask:
     serializedVersion: 2
     m_Bits: 512
-  speed: 6
+  speed: 9
   rightBound: 1.96
   leftBound: -1.96
   shotDelay: 0.6
