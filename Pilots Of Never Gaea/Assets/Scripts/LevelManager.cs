@@ -1,19 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
     private int p1Score, p2Score;
-    public TextMeshProUGUI p1ScoreText, p2ScoreText;
+    public TextMeshProUGUI p1ScoreText, p2ScoreText, p1WinText, p2WinText;
+    public Button retryButton;
 
     private void Start()
     {
         p1Score = 0;
         p2Score = 0;
         Ball.onScore = PlayerScored;
+        Time.timeScale = 1;
     }
 
     private void PlayerScored(bool player1)
@@ -34,11 +37,15 @@ public class LevelManager : MonoBehaviour
         p2ScoreText.text = p2Score.ToString();
         if (p1Score >= 3)
         {
-            SceneManager.LoadScene(0);
+            retryButton.gameObject.SetActive(true);
+            p1WinText.gameObject.SetActive(true);
+            Time.timeScale = 0;
         }
         if (p2Score >= 3)
         {
-            SceneManager.LoadScene(0);
+            retryButton.gameObject.SetActive(true);
+            p2WinText.gameObject.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 
