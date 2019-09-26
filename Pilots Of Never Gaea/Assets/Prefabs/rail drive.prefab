@@ -90,9 +90,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1851360514041425686}
   - component: {fileID: 1851360514041425687}
-  - component: {fileID: 1851360514041425681}
   - component: {fileID: 1851360514041425680}
   - component: {fileID: 6073459140862151449}
+  - component: {fileID: 4520851622129368629}
   - component: {fileID: 5875183913415288126}
   m_Layer: 8
   m_Name: rail drive
@@ -165,30 +165,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1851360514041425681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1851360514041425684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 732a990c7a454e14a8852191be0a7e10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  raycastMask:
-    serializedVersion: 2
-    m_Bits: 512
-  speed: 9
-  rightBound: 1.96
-  leftBound: -1.96
-  shotDelay: 0.6
-  power: 0
-  left: 0
-  mobile: 0
-  laser: {fileID: 2544153375021142846, guid: 0676a02d83099514b9a81976f40eda7b, type: 3}
-  pointer: {fileID: 1733421318979740199}
 --- !u!50 &1851360514041425680
 Rigidbody2D:
   serializedVersion: 4
@@ -243,6 +219,33 @@ PolygonCollider2D:
       - {x: -0.15993126, y: 0.2598099}
       - {x: -0.08999059, y: 0.2999772}
       - {x: -0.050040837, y: 0.2999772}
+--- !u!114 &4520851622129368629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851360514041425684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 446458250763e804192535e529689a4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 512
+  speed: 9
+  rightBound: 1.96
+  leftBound: -1.96
+  power: 0
+  left: 0
+  mobile: 0
+  laser: {fileID: 2544153375021142846, guid: 0676a02d83099514b9a81976f40eda7b, type: 3}
+  up: 0
+  down: 0
+  action: 0
+  pointer: {fileID: 1733421318979740199}
+  shotDelay: 0.6
 --- !u!95 &5875183913415288126
 Animator:
   serializedVersion: 3

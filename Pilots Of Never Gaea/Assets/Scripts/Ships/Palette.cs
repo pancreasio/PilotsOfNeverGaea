@@ -7,30 +7,25 @@ public class Palette : MonoBehaviour
 {
     public LayerMask raycastMask;
 
-    public float speed, rightBound, leftBound, shotDelay;
+    public float speed, rightBound, leftBound;
     public bool power, left, mobile;
     public Laser laser;
-    public GameObject pointer;
     private SpriteRenderer sprite;
-    private Animator animator;
     private Rigidbody2D rigi;
-    private bool up, down, action;
-    private float moveDelta, shotClock;
+    public bool up, down, action;
+    private float moveDelta;
 
-    private void Start()
+    public virtual void Start()
     {
         sprite = transform.GetComponent<SpriteRenderer>();
-        rigi = transform.GetComponent<Rigidbody2D>();
-        animator = transform.GetComponent<Animator>();
+        rigi = transform.GetComponent<Rigidbody2D>();        
         power = false;
         up = false;
         down = false;
         action = false;
-        shotClock = 0;
-        pointer.SetActive(false);
     }
 
-    private void Update()
+    public virtual void Update()
     {
         //input
 
@@ -88,31 +83,6 @@ public class Palette : MonoBehaviour
             Move(false);
             down = false;
         }
-
-        if (power)
-        {
-            animator.SetBool("CHARGED", true);
-            if (action)
-            {
-                animator.SetBool("SHOT", true);
-                shotClock = 0;
-                power = false;
-                action = false;
-                animator.SetBool("CHARGED", false);
-            }
-        }
-        if (animator.GetBool("SHOT"))
-        {
-            shotClock += Time.deltaTime;
-            if (shotClock >= 0.217f)
-            {
-                pointer.SetActive(true);
-            }
-            if (shotClock >= shotDelay)
-            {
-                Fire();
-            }
-        }
     }
 
     private void Move(bool upMovement)
@@ -137,7 +107,7 @@ public class Palette : MonoBehaviour
         }
     }
 
-    private void Charge()
+    public virtual void Charge()
     {
         if (!power)
         {
@@ -167,19 +137,5 @@ public class Palette : MonoBehaviour
         }
     }
 
-    private void Fire()
-    {
-        if (left)
-        {
-            Laser laserInstance = Instantiate(laser,
-                new Vector3(0.0f + 0.63f, transform.position.y),
-                new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z + 180.0f, transform.rotation.w));
-        }
-        else
-        {
-            Instantiate(laser, new Vector3(0.0f - 0.63f, transform.position.y), transform.rotation);
-        }
-        animator.SetBool("SHOT", false);
-        pointer.SetActive(false);
-    }
+    
 }
