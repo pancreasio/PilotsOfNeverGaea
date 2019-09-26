@@ -237,13 +237,10 @@ MonoBehaviour:
   speed: 9
   rightBound: 1.96
   leftBound: -1.96
-  power: 0
   left: 0
-  mobile: 0
   laser: {fileID: 2544153375021142846, guid: 0676a02d83099514b9a81976f40eda7b, type: 3}
-  up: 0
-  down: 0
-  action: 0
+  chargesRequired: 2
+  maxCharges: 2
   pointer: {fileID: 1733421318979740199}
   shotDelay: 0.6
 --- !u!95 &5875183913415288126

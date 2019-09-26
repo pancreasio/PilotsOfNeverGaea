@@ -29,6 +29,7 @@ public class Raildrive : Palette
                 animator.SetBool("SHOT", true);
                 shotClock = 0;
                 power = false;
+                charges -= chargesRequired;
                 action = false;
                 animator.SetBool("CHARGED", false);
             }

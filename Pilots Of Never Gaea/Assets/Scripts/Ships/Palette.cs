@@ -8,11 +8,15 @@ public class Palette : MonoBehaviour
     public LayerMask raycastMask;
 
     public float speed, rightBound, leftBound;
-    public bool power, left, mobile;
+    public bool  left;
     public Laser laser;
     private SpriteRenderer sprite;
     private Rigidbody2D rigi;
-    public bool up, down, action;
+    public int chargesRequired , maxCharges;
+    [HideInInspector]
+    protected int charges;
+    [HideInInspector]
+    protected bool up, down, action, power;
     private float moveDelta;
 
     public virtual void Start()
@@ -23,6 +27,7 @@ public class Palette : MonoBehaviour
         up = false;
         down = false;
         action = false;
+        charges = 0;
     }
 
     public virtual void Update()
@@ -107,11 +112,18 @@ public class Palette : MonoBehaviour
         }
     }
 
-    public virtual void Charge()
+    private void Charge()
     {
         if (!power)
         {
-            power = true;
+            if (charges < maxCharges)
+            {
+            charges++;
+                if (charges >= chargesRequired)
+                {
+                    power = true;
+                }
+            }
         }
     }
 
