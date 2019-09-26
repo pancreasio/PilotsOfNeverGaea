@@ -7,9 +7,8 @@ public class Palette : MonoBehaviour
 {
     public LayerMask raycastMask;
 
-    public float speed, rightBound, leftBound;
+    public float speed;
     public bool  left;
-    public Laser laser;
     private SpriteRenderer sprite;
     private Rigidbody2D rigi;
     public int chargesRequired , maxCharges;

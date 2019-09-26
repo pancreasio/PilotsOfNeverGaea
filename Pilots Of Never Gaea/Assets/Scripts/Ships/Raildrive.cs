@@ -6,6 +6,7 @@ public class Raildrive : Palette
 {
     private Animator animator;
     public GameObject pointer;
+    public Laser laser;
     public float shotDelay;
     private float shotClock;
 
