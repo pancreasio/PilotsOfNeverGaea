@@ -113,6 +113,9 @@ public class Ball : MonoBehaviour
         if (collision.transform.tag == "Palette" && stuck)
         {
             stuck = false;
+            charged = false;
+            rig.velocity = new Vector2(0.0f, 0.0f);
+            rig.AddForce((Vector2.down + Vector2.left) * initialSpeed, ForceMode2D.Impulse);
         }
     }
 }
