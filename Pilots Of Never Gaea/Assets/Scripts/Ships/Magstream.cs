@@ -5,6 +5,7 @@ using UnityEngine;
 public class Magstream : Palette
 {
     private Animator animator;
+    public IonWave ionWave;
 
     public override void Start()
     {
@@ -20,10 +21,15 @@ public class Magstream : Palette
         {
             if (action)
             {
+                Instantiate(ionWave);
                 power = false;
                 charges -= chargesRequired;
                 action = false;
             }
+        }
+        if (action)
+        {
+            Instantiate(ionWave,new Vector2(0.0f,0.0f), Quaternion.identity);
         }
     }
 }

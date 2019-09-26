@@ -6,8 +6,9 @@ TagManager:
   tags:
   - Ball
   - Laser
-  - Straight Palette
   - Wall
+  - Ion Wave
+  - Palette
   layers:
   - Default
   - TransparentFX

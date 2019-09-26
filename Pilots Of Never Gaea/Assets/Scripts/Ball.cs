@@ -8,8 +8,8 @@ public class Ball : MonoBehaviour
     public delegate void OnScoreAction(bool player1);
     public static OnScoreAction onScore;
     public float initialSpeed, horizontalBounds, verticalBounds, bounceMultiplier, stunTime;
-    private float stunClock;
-    private bool stunned;
+    private float stunClock, stuckYPosition, stuckSpeed;
+    private bool stunned, charged, stuck;
     private Vector2 stunnedPosition;
 
     private void Start()
@@ -18,6 +18,8 @@ public class Ball : MonoBehaviour
         ReStart();
         stunned = false;
         stunClock = 0;
+        charged = false;
+        stuck = false;
     }
 
     private void ReStart()
@@ -56,6 +58,11 @@ public class Ball : MonoBehaviour
             }
         }
 
+        if (stuck)
+        {
+            rig.velocity = new Vector2(stuckSpeed,0.0f);
+            transform.position = new Vector2(transform.position.x, stuckYPosition);
+        }
     }
 
     private void HorizontalBounce()
@@ -75,12 +82,37 @@ public class Ball : MonoBehaviour
         stunClock = 0;
     }
 
+    private void Stick()
+    {
+        stuck = true;
+        stuckYPosition = transform.position.y;
+        stuckSpeed = rig.velocity.magnitude * rig.velocity.x / Mathf.Abs(rig.velocity.x);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "Laser")
         {
             HitStun();
             VerticalBounce();
+        }
+
+        if (collision.transform.tag == "Ion Wave")
+        {
+            HitStun();
+            charged = true;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Wall" && charged)
+        {
+            Stick();
+        }
+        if (collision.transform.tag == "Palette" && stuck)
+        {
+            stuck = false;
         }
     }
 }
