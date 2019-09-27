@@ -50,7 +50,7 @@ public class Ball : MonoBehaviour
 
         if (stunned)
         {
-            stunClock+=Time.deltaTime;
+            stunClock += Time.deltaTime;
             transform.position = stunnedPosition;
             if (stunClock >= stunTime)
             {
@@ -60,7 +60,7 @@ public class Ball : MonoBehaviour
 
         if (stuck)
         {
-            rig.velocity = new Vector2(stuckSpeed,0.0f);
+            rig.velocity = new Vector2(stuckSpeed, 0.0f);
             transform.position = new Vector2(transform.position.x, stuckYPosition);
         }
     }
@@ -89,6 +89,35 @@ public class Ball : MonoBehaviour
         stuckSpeed = rig.velocity.magnitude * rig.velocity.x / Mathf.Abs(rig.velocity.x);
     }
 
+    private void Unstick()
+    {
+        stuck = false;
+        charged = false;
+        rig.velocity = new Vector2(0.0f, 0.0f);
+        if (transform.position.x > 0)
+        {
+            if (transform.position.y > 0)
+            {
+                rig.AddForce((Vector2.down + Vector2.left) * initialSpeed, ForceMode2D.Impulse);
+            }
+            else
+            {
+                rig.AddForce((Vector2.up + Vector2.left) * initialSpeed, ForceMode2D.Impulse);
+            }
+        }
+        else
+        {
+            if (transform.position.y > 0)
+            {
+                rig.AddForce((Vector2.down + Vector2.right) * initialSpeed, ForceMode2D.Impulse);
+            }
+            else
+            {
+                rig.AddForce((Vector2.up + Vector2.right) * initialSpeed, ForceMode2D.Impulse);
+            }
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "Laser")
@@ -112,10 +141,7 @@ public class Ball : MonoBehaviour
         }
         if (collision.transform.tag == "Palette" && stuck)
         {
-            stuck = false;
-            charged = false;
-            rig.velocity = new Vector2(0.0f, 0.0f);
-            rig.AddForce((Vector2.down + Vector2.left) * initialSpeed, ForceMode2D.Impulse);
+            Unstick();
         }
     }
 }

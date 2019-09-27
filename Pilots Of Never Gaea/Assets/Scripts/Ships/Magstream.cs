@@ -21,15 +21,11 @@ public class Magstream : Palette
         {
             if (action)
             {
-                Instantiate(ionWave);
+                Instantiate(ionWave, new Vector2(0.0f, 0.0f), Quaternion.identity);
                 power = false;
                 charges -= chargesRequired;
                 action = false;
             }
-        }
-        if (action)
-        {
-            Instantiate(ionWave,new Vector2(0.0f,0.0f), Quaternion.identity);
         }
     }
 }
