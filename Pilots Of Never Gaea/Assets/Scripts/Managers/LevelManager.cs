@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
     private int p1Score, p2Score;
     public TextMeshProUGUI p1ScoreText, p2ScoreText, p1WinText, p2WinText;
-    public Button retryButton;
+    public Button retryButton, menuButton;
+    public static GameManager.ButtonAction RetryAction, ExitAction;
 
     private void Start()
     {
@@ -38,12 +38,14 @@ public class LevelManager : MonoBehaviour
         if (p1Score >= 3)
         {
             retryButton.gameObject.SetActive(true);
+            menuButton.gameObject.SetActive(true);
             p1WinText.gameObject.SetActive(true);
             Time.timeScale = 0;
         }
         if (p2Score >= 3)
         {
             retryButton.gameObject.SetActive(true);
+            menuButton.gameObject.SetActive(true);
             p2WinText.gameObject.SetActive(true);
             Time.timeScale = 0;
         }
@@ -56,6 +58,13 @@ public class LevelManager : MonoBehaviour
 
     public void Retry()
     {
-        SceneManager.LoadScene(0);
+        if (RetryAction != null)
+            RetryAction();
+    }
+
+    public void Menu()
+    {
+        if (ExitAction != null)
+            ExitAction();
     }
 }
