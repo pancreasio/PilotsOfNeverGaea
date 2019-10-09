@@ -122,6 +122,7 @@ MonoBehaviour:
   left: 1
   chargesRequired: 3
   maxCharges: 3
+  ionWave: {fileID: 0}
 --- !u!50 &6150576434017584294
 Rigidbody2D:
   serializedVersion: 4
