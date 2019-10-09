@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public delegate void ButtonAction();
     private GameObject gameManagerInstance;
     private int currentScene;
+
     private void Awake()
     {
         if (gameManagerInstance == null)

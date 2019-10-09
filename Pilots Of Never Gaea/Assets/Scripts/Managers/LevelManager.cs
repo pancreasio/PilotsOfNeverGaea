@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
 {
     private int p1Score, p2Score;
     public TextMeshProUGUI p1ScoreText, p2ScoreText, p1WinText, p2WinText;
-    public Button retryButton, menuButton;
+    public GameObject gameOverUI;
     public static GameManager.ButtonAction RetryAction, ExitAction;
 
     private void Start()
@@ -37,16 +37,14 @@ public class LevelManager : MonoBehaviour
         p2ScoreText.text = p2Score.ToString();
         if (p1Score >= 3)
         {
-            retryButton.gameObject.SetActive(true);
-            menuButton.gameObject.SetActive(true);
-            p1WinText.gameObject.SetActive(true);
+            gameOverUI.SetActive(true);
+            p2WinText.gameObject.SetActive(false);
             Time.timeScale = 0;
         }
         if (p2Score >= 3)
         {
-            retryButton.gameObject.SetActive(true);
-            menuButton.gameObject.SetActive(true);
-            p2WinText.gameObject.SetActive(true);
+            gameOverUI.SetActive(true);
+            p1WinText.gameObject.SetActive(false);
             Time.timeScale = 0;
         }
     }
