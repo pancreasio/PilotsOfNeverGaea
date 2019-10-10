@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public delegate void ButtonAction();
+    public delegate void StartDuelFunction(CharacterSelectionManager.Character p1Character, CharacterSelectionManager.Character p2Character);
     public delegate void SceneChange(int value);
     private GameObject gameManagerInstance;
     private int currentScene;
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour
         MenuManager.ExitAction = ExitApplication;
         LevelManager.RetryAction = ReloadScene;
         LevelManager.ExitAction = LoadScene;
-        CharacterSelectionManager.SelectAction = NextScene;
+        //CharacterSelectionManager.SelectAction = NextScene;
     }
 
     private void ReloadScene()
