@@ -15,39 +15,15 @@ public class Ball : MonoBehaviour
     private void Start()
     {
         rig = transform.GetComponent<Rigidbody2D>();
-        ReStart();
         stunned = false;
         stunClock = 0;
         charged = false;
         stuck = false;
-    }
-
-    private void ReStart()
-    {
-        transform.position = new Vector2(0.0f, 0.0f);
-        rig.velocity = new Vector2(0.0f, 0.0f);
         rig.AddForce((Vector2.down + Vector2.left) * initialSpeed, ForceMode2D.Impulse);
     }
 
     private void Update()
     {
-        if (transform.position.x >= horizontalBounds)
-        {
-            if (onScore != null)
-            {
-                onScore(true);
-            }
-            ReStart();
-        }
-        if (transform.position.x <= -horizontalBounds)
-        {
-            if (onScore != null)
-            {
-                onScore(false);
-            }
-            ReStart();
-        }
-
         if (stunned)
         {
             stunClock += Time.deltaTime;
@@ -130,6 +106,24 @@ public class Ball : MonoBehaviour
         {
             HitStun();
             charged = true;
+        }
+
+        if (collision.transform.tag == "Platform")
+        {
+            if (transform.position.x >= 0)
+            {
+                if (onScore != null)
+                {
+                    onScore(true);
+                }
+            }
+            if (transform.position.x <= 0)
+            {
+                if (onScore != null)
+                {
+                    onScore(false);
+                }
+            }
         }
     }
 

@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public delegate void ButtonAction();
+    public delegate void SceneChange(int value);
     private GameObject gameManagerInstance;
     private int currentScene;
 
@@ -23,7 +24,8 @@ public class GameManager : MonoBehaviour
         MenuManager.StartAction = NextScene;
         MenuManager.ExitAction = ExitApplication;
         LevelManager.RetryAction = ReloadScene;
-        LevelManager.ExitAction = PreviousScene;
+        LevelManager.ExitAction = LoadScene;
+        CharacterSelectionManager.SelectAction = NextScene;
     }
 
     private void ReloadScene()
@@ -44,5 +46,11 @@ public class GameManager : MonoBehaviour
     private void ExitApplication()
     {
         Application.Quit();
+    }
+
+    private void LoadScene(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
+        currentScene = sceneIndex;
     }
 }

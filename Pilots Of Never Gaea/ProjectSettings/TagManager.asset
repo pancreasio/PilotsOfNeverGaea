@@ -9,6 +9,8 @@ TagManager:
   - Wall
   - Ion Wave
   - Palette
+  - Straight Palette
+  - Platform
   layers:
   - Default
   - TransparentFX

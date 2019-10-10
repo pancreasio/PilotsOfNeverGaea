@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class LevelManager : MonoBehaviour
 {
     private int p1Score, p2Score;
     public TextMeshProUGUI p1ScoreText, p2ScoreText, p1WinText, p2WinText;
-    public GameObject gameOverUI, leftPlatform, rightPlatform;
-    public static GameManager.ButtonAction RetryAction, ExitAction;
+    public GameObject gameOverUI, leftPlatform, rightPlatform, ballPrefab;
+    private GameObject ballReference;
+    public static GameManager.ButtonAction RetryAction;
+    public static GameManager.SceneChange ExitAction;
     public float platformDelay, platformSpeed, platformLimit;
-    private float platformClock;
+    private float platformClock, platformInitialX;
     private bool platformsClosing, platformsArrived;
 
     private void Start()
@@ -23,6 +26,8 @@ public class LevelManager : MonoBehaviour
         platformsArrived = false;
         Ball.onScore = PlayerScored;
         Time.timeScale = 1;
+        platformInitialX = rightPlatform.transform.position.x;
+        ballReference = Instantiate(ballPrefab, Vector2.zero, Quaternion.identity);
     }
 
     private void PlayerScored(bool player1)
@@ -35,6 +40,18 @@ public class LevelManager : MonoBehaviour
         {
             p2Score++;
         }
+        RoundEnd();
+    }
+
+    private void RoundEnd()
+    {
+        Destroy(ballReference.gameObject);
+        rightPlatform.transform.position = new Vector2(platformInitialX, 0.0f);
+        leftPlatform.transform.position = new Vector2(-platformInitialX, 0.0f);
+        ballReference = Instantiate(ballPrefab, Vector2.zero, Quaternion.identity);
+        platformClock = 0;
+        platformsClosing = false;
+        platformsArrived = false;
     }
 
     private void Update()
@@ -86,6 +103,6 @@ public class LevelManager : MonoBehaviour
     public void Menu()
     {
         if (ExitAction != null)
-            ExitAction();
+            ExitAction(0);
     }
 }
