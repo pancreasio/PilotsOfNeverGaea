@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 9115530969050752724}
   m_Layer: 8
   m_Name: mag stream
-  m_TagString: Straight Palette
+  m_TagString: Palette
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,7 +122,7 @@ MonoBehaviour:
   left: 1
   chargesRequired: 3
   maxCharges: 3
-  ionWave: {fileID: 0}
+  ionWave: {fileID: 5084560864771458693, guid: 4c7c126c2c4261a47bccb7ea38c87a24, type: 3}
 --- !u!50 &6150576434017584294
 Rigidbody2D:
   serializedVersion: 4

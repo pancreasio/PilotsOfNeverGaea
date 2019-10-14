@@ -9,10 +9,11 @@ public class LevelManager : MonoBehaviour
 {
     private int p1Score, p2Score;
     public TextMeshProUGUI p1ScoreText, p2ScoreText, p1WinText, p2WinText;
-    public GameObject gameOverUI, leftPlatform, rightPlatform, ballPrefab;
+    public GameObject gameOverUI, leftPlatform, rightPlatform, ballPrefab, magPrefab, railPrefab, p1Position, p2Position;
     private GameObject ballReference;
     public static GameManager.ButtonAction RetryAction;
     public static GameManager.SceneChange ExitAction;
+    public static CharacterSelectionManager.Character p1Selected, p2Selected;
     public float platformDelay, platformSpeed, platformLimit;
     private float platformClock, platformInitialX;
     private bool platformsClosing, platformsArrived;
@@ -28,6 +29,55 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 1;
         platformInitialX = rightPlatform.transform.position.x;
         ballReference = Instantiate(ballPrefab, Vector2.zero, Quaternion.identity);
+        InitializeCharacters();
+    }
+
+    private void InitializeCharacters()
+    {
+        GameObject p1Instance = null, p2Instance = null;
+
+        switch (p1Selected)
+        {
+            case CharacterSelectionManager.Character.nullCharacter:
+                break;
+            case CharacterSelectionManager.Character.raildrive:
+                p1Instance = Instantiate(railPrefab, p1Position.transform);
+                break;
+            case CharacterSelectionManager.Character.magstream:
+                p1Instance = Instantiate(magPrefab, p1Position.transform);
+
+                break;
+            default:
+                break;
+        }
+
+        if (p1Instance != null)
+        {
+            p1Instance.GetComponent<Palette>().left = true;
+            p1Instance.transform.position = p1Position.transform.position;
+        }
+
+        switch (p2Selected)
+        {
+            case CharacterSelectionManager.Character.nullCharacter:
+                break;
+            case CharacterSelectionManager.Character.raildrive:
+                p2Instance = Instantiate(railPrefab, p2Position.transform);
+                break;
+            case CharacterSelectionManager.Character.magstream:
+                p2Instance = Instantiate(magPrefab, p2Position.transform);
+                
+                break;
+            default:
+                break;
+        }
+
+        if (p2Instance!=null)
+        {
+            p2Instance.GetComponent<Palette>().left = false;
+            p2Instance.transform.position = p2Position.transform.position;
+            p2Instance.transform.localScale = new Vector2(-p2Instance.transform.localScale.x, p2Instance.transform.localScale.y);
+        }
     }
 
     private void PlayerScored(bool player1)

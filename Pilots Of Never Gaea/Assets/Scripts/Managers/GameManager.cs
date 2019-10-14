@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         MenuManager.ExitAction = ExitApplication;
         LevelManager.RetryAction = ReloadScene;
         LevelManager.ExitAction = LoadScene;
-        //CharacterSelectionManager.SelectAction = NextScene;
+        CharacterSelectionManager.SelectAction = LoadGame;
     }
 
     private void ReloadScene()
@@ -53,5 +53,13 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneIndex);
         currentScene = sceneIndex;
+    }
+
+    private void LoadGame(CharacterSelectionManager.Character p1Character, CharacterSelectionManager.Character p2Character)
+    {
+        LevelManager.p1Selected = p1Character;
+        LevelManager.p2Selected = p2Character;
+        SceneManager.LoadScene(2);
+        currentScene = 2;
     }
 }
