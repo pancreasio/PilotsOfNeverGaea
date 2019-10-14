@@ -6,11 +6,11 @@ public class IonWave : MonoBehaviour
 {
     public float activeTime;
     private float activeClock;
-    private BoxCollider2D collider;
+    private BoxCollider2D boxCollider;
 
     private void Start()
     {
-        collider = transform.GetComponent<BoxCollider2D>();
+        boxCollider = transform.GetComponent<BoxCollider2D>();
         activeClock = 0;
     }
 
@@ -27,7 +27,7 @@ public class IonWave : MonoBehaviour
     {
         if (collision.transform.tag == "Ball")
         {
-            collider.enabled = false;
+            boxCollider.enabled = false;
         }
     }
 }

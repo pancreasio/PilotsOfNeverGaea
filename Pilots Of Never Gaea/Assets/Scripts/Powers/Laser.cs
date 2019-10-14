@@ -6,12 +6,10 @@ public class Laser : MonoBehaviour
 {
     public float activeTime;
     private float activeClock;
-    private SpriteRenderer sprite;
-    private BoxCollider2D collider;
+    private BoxCollider2D boxCollider;
     private void Start()
     {
-        sprite = transform.GetComponent<SpriteRenderer>();
-        collider = transform.GetComponent<BoxCollider2D>();
+        boxCollider = transform.GetComponent<BoxCollider2D>();
         activeClock = 0;
     }
 
@@ -28,7 +26,7 @@ public class Laser : MonoBehaviour
     {
         if (collision.transform.tag == "Ball")
         {
-            collider.enabled = false;
+            boxCollider.enabled = false;
         }
     }
 }
