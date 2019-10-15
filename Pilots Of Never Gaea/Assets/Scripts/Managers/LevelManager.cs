@@ -28,7 +28,7 @@ public class LevelManager : MonoBehaviour
         Ball.onScore = PlayerScored;
         Time.timeScale = 1;
         platformInitialX = rightPlatform.transform.position.x;
-        //ballReference = Instantiate(ballPrefab, Vector2.zero, Quaternion.identity);
+        ballReference = Instantiate(ballPrefab, Vector2.zero, Quaternion.identity);
         InitializeCharacters();
     }
 
