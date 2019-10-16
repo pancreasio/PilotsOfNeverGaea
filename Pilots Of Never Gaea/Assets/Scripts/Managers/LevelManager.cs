@@ -9,9 +9,11 @@ public class LevelManager : MonoBehaviour
 {
     private int p1Score, p2Score;
     public TextMeshProUGUI p1ScoreText, p2ScoreText, p1WinText, p2WinText;
-    public GameObject gameOverUI, leftPlatform, rightPlatform, ballPrefab, magPrefab, railPrefab, kunstPrefab, p1Position, p2Position;
+    public GameObject gameOverUI, leftPlatform, rightPlatform, p1Light, p2Light,
+        ballPrefab, magPrefab, railPrefab, kunstPrefab, 
+        p1Position, p2Position;
     private GameObject ballReference;
-    public static GameManager.ButtonAction RetryAction;
+    public static GameManager.ButtonAction RetryAction, BackToSelectAction;
     public static GameManager.SceneChange ExitAction;
     public static CharacterSelectionManager.Character p1Selected, p2Selected;
     public float platformDelay, platformSpeed, platformLimit;
@@ -57,6 +59,7 @@ public class LevelManager : MonoBehaviour
         {
             p1Instance.GetComponent<Palette>().left = true;
             p1Instance.transform.position = p1Position.transform.position;
+            p1Light.transform.parent = p1Instance.transform;
         }
 
         switch (p2Selected)
@@ -81,6 +84,7 @@ public class LevelManager : MonoBehaviour
             p2Instance.GetComponent<Palette>().left = false;
             p2Instance.transform.position = p2Position.transform.position;
             p2Instance.transform.localScale = new Vector2(-p2Instance.transform.localScale.x, p2Instance.transform.localScale.y);
+            p2Light.transform.parent = p2Instance.transform;
         }
     }
 
@@ -152,6 +156,16 @@ public class LevelManager : MonoBehaviour
     {
         if (RetryAction != null)
             RetryAction();
+    }
+
+    public void BackToSelection()
+    {
+        if (BackToSelectAction != null)
+        {
+            p1Selected = CharacterSelectionManager.Character.nullCharacter;
+            p2Selected = CharacterSelectionManager.Character.nullCharacter;
+            BackToSelectAction();
+        }
     }
 
     public void Menu()

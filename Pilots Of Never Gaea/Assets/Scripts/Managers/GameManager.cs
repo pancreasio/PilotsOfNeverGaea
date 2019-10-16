@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
         MenuManager.StartAction = NextScene;
         MenuManager.ExitAction = ExitApplication;
         LevelManager.RetryAction = ReloadScene;
+        LevelManager.BackToSelectAction = PreviousScene;
         LevelManager.ExitAction = LoadScene;
         CharacterSelectionManager.SelectAction = LoadGame;
     }
