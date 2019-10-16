@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2685915054209108931}
   m_Layer: 0
   m_Name: kunst
-  m_TagString: Untagged
+  m_TagString: Palette
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
