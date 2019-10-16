@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour
 {
     private int p1Score, p2Score;
     public TextMeshProUGUI p1ScoreText, p2ScoreText, p1WinText, p2WinText;
-    public GameObject gameOverUI, leftPlatform, rightPlatform, ballPrefab, magPrefab, railPrefab, p1Position, p2Position;
+    public GameObject gameOverUI, leftPlatform, rightPlatform, ballPrefab, magPrefab, railPrefab, kunstPrefab, p1Position, p2Position;
     private GameObject ballReference;
     public static GameManager.ButtonAction RetryAction;
     public static GameManager.SceneChange ExitAction;
@@ -44,8 +44,10 @@ public class LevelManager : MonoBehaviour
                 p1Instance = Instantiate(railPrefab, p1Position.transform);
                 break;
             case CharacterSelectionManager.Character.magstream:
-                p1Instance = Instantiate(magPrefab, p1Position.transform);
-
+                p1Instance = Instantiate(magPrefab, p1Position.transform);             
+                break;
+            case CharacterSelectionManager.Character.kunst:
+                p1Instance = Instantiate(kunstPrefab, p1Position.transform);
                 break;
             default:
                 break;
@@ -66,7 +68,9 @@ public class LevelManager : MonoBehaviour
                 break;
             case CharacterSelectionManager.Character.magstream:
                 p2Instance = Instantiate(magPrefab, p2Position.transform);
-                
+                break;
+            case CharacterSelectionManager.Character.kunst:
+                p2Instance = Instantiate(kunstPrefab, p2Position.transform);
                 break;
             default:
                 break;

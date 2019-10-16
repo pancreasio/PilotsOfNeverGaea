@@ -49,7 +49,7 @@ MonoBehaviour:
   raycastMask:
     serializedVersion: 2
     m_Bits: 512
-  speed: 11
+  speed: 13
   left: 1
   chargesRequired: 0
   maxCharges: 0
