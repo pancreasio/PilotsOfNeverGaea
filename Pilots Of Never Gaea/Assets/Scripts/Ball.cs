@@ -7,6 +7,7 @@ public class Ball : MonoBehaviour
     private Rigidbody2D rig;
     public delegate void OnScoreAction(bool player1);
     public static OnScoreAction onScore;
+    public static LevelManager.LevelAction ElectrifyAction, UnstickAction;
     public float initialSpeed, horizontalBounds, verticalBounds, bounceMultiplier, stunTime;
     private float stunClock, stuckYPosition, stuckSpeed;
     private bool stunned, charged, stuck;
@@ -69,6 +70,8 @@ public class Ball : MonoBehaviour
     {
         stuck = false;
         charged = false;
+        if (UnstickAction != null)
+            UnstickAction();
         rig.velocity = new Vector2(0.0f, 0.0f);
         if (transform.position.x > 0)
         {
@@ -105,6 +108,8 @@ public class Ball : MonoBehaviour
         if (collision.transform.tag == "Ion Wave")
         {
             HitStun();
+            if (ElectrifyAction != null)
+                ElectrifyAction();
             charged = true;
         }
 

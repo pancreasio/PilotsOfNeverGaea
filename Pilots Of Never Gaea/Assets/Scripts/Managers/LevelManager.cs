@@ -12,16 +12,23 @@ public class LevelManager : MonoBehaviour
     public GameObject gameOverUI, leftPlatform, rightPlatform, p1Light, p2Light,
         ballPrefab, magPrefab, railPrefab, kunstPrefab, 
         p1Position, p2Position;
-    private GameObject ballReference;
+    private GameObject ballReference, topSparks, bottomSparks;
     public static GameManager.ButtonAction RetryAction, BackToSelectAction;
     public static GameManager.SceneChange ExitAction;
     public static CharacterSelectionManager.Character p1Selected, p2Selected;
+    public delegate void LevelAction();
     public float platformDelay, platformSpeed, platformLimit;
     private float platformClock, platformInitialX;
     private bool platformsClosing, platformsArrived;
 
     private void Start()
     {
+        Ball.ElectrifyAction = ActivateSparks;
+        Ball.UnstickAction = DeactivateSparks;
+        topSparks = GameObject.Find("top sparks");
+        bottomSparks = GameObject.Find("bottom sparks");
+        topSparks.SetActive(false);
+        bottomSparks.SetActive(false);
         p1Score = 0;
         p2Score = 0;
         platformClock = 0;
@@ -101,9 +108,22 @@ public class LevelManager : MonoBehaviour
         RoundEnd();
     }
 
+    private void ActivateSparks()
+    {
+        topSparks.SetActive(true);
+        bottomSparks.SetActive(true);
+    }
+
+    private void DeactivateSparks()
+    {
+        topSparks.SetActive(false);
+        bottomSparks.SetActive(false);
+    }
+
     private void RoundEnd()
     {
         Destroy(ballReference.gameObject);
+        DeactivateSparks();
         rightPlatform.transform.position = new Vector2(platformInitialX, 0.0f);
         leftPlatform.transform.position = new Vector2(-platformInitialX, 0.0f);
         ballReference = Instantiate(ballPrefab, Vector2.zero, Quaternion.identity);
