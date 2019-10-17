@@ -16,7 +16,7 @@ public class Palette : MonoBehaviour
     [HideInInspector]
     protected bool up, down, action, power;
     private float moveDelta;
-    public bool[] upgrades;
+    protected bool[] upgrades;
 
     public virtual void Start()
     {
@@ -90,6 +90,17 @@ public class Palette : MonoBehaviour
         }
     }
 
+    public virtual void UpdateUpgrades()
+    {
+
+    }
+
+    public virtual void ResetPalette()
+    {
+        charges = 0;
+        power = false;
+    }
+
     private void Move(bool upMovement)
     {
         moveDelta = speed * Time.deltaTime;
@@ -146,9 +157,8 @@ public class Palette : MonoBehaviour
         }
     }
 
-    private void ActivateUpgrade(int upgrade)
+    public void ActivateUpgrade(int upgrade)
     {
         upgrades[upgrade] = true;
-    }
-    
+    }    
 }

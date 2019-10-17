@@ -7,30 +7,37 @@ using System;
 
 public class LevelManager : MonoBehaviour
 {
-    private int p1Score, p2Score;
+    private int p1Score, p2Score, p1Rounds, p2Rounds;
+    public int roundsToWin;
     public TextMeshProUGUI p1ScoreText, p2ScoreText, p1WinText, p2WinText;
-    public GameObject gameOverUI, leftPlatform, rightPlatform, p1Light, p2Light,
-        ballPrefab, magPrefab, railPrefab, kunstPrefab, 
+    public GameObject gameOverUI, roundEndUI, leftPlatform, rightPlatform, p1Light, p2Light,
+        ballPrefab, magPrefab, railPrefab, kunstPrefab,
         p1Position, p2Position;
-    private GameObject ballReference, topSparks, bottomSparks;
+    private GameObject ballReference, topSparks, bottomSparks, p1Instance = null, p2Instance = null;
     public static GameManager.ButtonAction RetryAction, BackToSelectAction;
     public static GameManager.SceneChange ExitAction;
     public static CharacterSelectionManager.Character p1Selected, p2Selected;
     public delegate void LevelAction();
     public float platformDelay, platformSpeed, platformLimit;
-    private float platformClock, platformInitialX;
-    private bool platformsClosing, platformsArrived;
+    private float platformClock, platformInitialX, playerInitialX;
+    private bool platformsClosing, platformsArrived, p1CanUpgrade, p2CanUpgrade, roundEnd;
 
     private void Start()
     {
         Ball.ElectrifyAction = ActivateSparks;
         Ball.UnstickAction = DeactivateSparks;
+        playerInitialX = p2Position.transform.position.x;      
         topSparks = GameObject.Find("top sparks");
         bottomSparks = GameObject.Find("bottom sparks");
         topSparks.SetActive(false);
         bottomSparks.SetActive(false);
         p1Score = 0;
         p2Score = 0;
+        p1Rounds = 0;
+        p2Rounds = 0;
+        roundEnd = false;
+        p1CanUpgrade = false;
+        p2CanUpgrade = false;
         platformClock = 0;
         platformsClosing = false;
         platformsArrived = false;
@@ -43,8 +50,6 @@ public class LevelManager : MonoBehaviour
 
     private void InitializeCharacters()
     {
-        GameObject p1Instance = null, p2Instance = null;
-
         switch (p1Selected)
         {
             case CharacterSelectionManager.Character.nullCharacter:
@@ -53,7 +58,7 @@ public class LevelManager : MonoBehaviour
                 p1Instance = Instantiate(railPrefab, p1Position.transform);
                 break;
             case CharacterSelectionManager.Character.magstream:
-                p1Instance = Instantiate(magPrefab, p1Position.transform);             
+                p1Instance = Instantiate(magPrefab, p1Position.transform);
                 break;
             case CharacterSelectionManager.Character.kunst:
                 p1Instance = Instantiate(kunstPrefab, p1Position.transform);
@@ -86,7 +91,7 @@ public class LevelManager : MonoBehaviour
                 break;
         }
 
-        if (p2Instance!=null)
+        if (p2Instance != null)
         {
             p2Instance.GetComponent<Palette>().left = false;
             p2Instance.transform.position = p2Position.transform.position;
@@ -105,7 +110,7 @@ public class LevelManager : MonoBehaviour
         {
             p2Score++;
         }
-        RoundEnd();
+        ResetRound();
     }
 
     private void ActivateSparks()
@@ -120,7 +125,7 @@ public class LevelManager : MonoBehaviour
         bottomSparks.SetActive(false);
     }
 
-    private void RoundEnd()
+    private void ResetRound()
     {
         Destroy(ballReference.gameObject);
         DeactivateSparks();
@@ -130,10 +135,26 @@ public class LevelManager : MonoBehaviour
         platformClock = 0;
         platformsClosing = false;
         platformsArrived = false;
+        p1Instance.transform.position = new Vector2(-playerInitialX, 0.0f);
+        p2Instance.transform.position = new Vector2(playerInitialX, 0.0f);
+        p1Instance.GetComponent<Palette>().ResetPalette();
+        p2Instance.GetComponent<Palette>().ResetPalette();
+        p1Instance.GetComponent<Palette>().UpdateUpgrades();
+        p2Instance.GetComponent<Palette>().UpdateUpgrades();
     }
 
     private void Update()
     {
+        if (roundEnd)
+        {
+            if (!p1CanUpgrade && !p2CanUpgrade)
+            {
+                roundEnd = false;
+                roundEndUI.SetActive(false);
+                Time.timeScale = 1;
+                ResetRound();
+            }
+        }
         platformClock += Time.deltaTime;
         if (platformsClosing)
         {
@@ -155,21 +176,64 @@ public class LevelManager : MonoBehaviour
         p2ScoreText.text = p2Score.ToString();
         if (p1Score >= 3)
         {
-            gameOverUI.SetActive(true);
-            p2WinText.gameObject.SetActive(false);
-            Time.timeScale = 0;
+            p1Rounds++;
+            if (p1Rounds > roundsToWin)
+                GameOver(true);
+            else
+                RoundEnd();
+
         }
         if (p2Score >= 3)
         {
-            gameOverUI.SetActive(true);
-            p1WinText.gameObject.SetActive(false);
-            Time.timeScale = 0;
+            p2Rounds++;
+            if (p2Rounds > roundsToWin)
+                GameOver(false);
+            else
+                RoundEnd();
         }
     }
 
-    private void GameOver()
+    private void GameOver(bool player1won)
     {
+        gameOverUI.SetActive(true);
+        if (player1won)
+        {
+            p2WinText.gameObject.SetActive(false);
+        }
+        else
+        {
+            p1WinText.gameObject.SetActive(false);
+        }
+        Time.timeScale = 0;
+    }
 
+    private void RoundEnd()
+    {
+        p1Score = 0;
+        p2Score = 0;
+        roundEnd = true;
+        p1CanUpgrade = true;
+        p2CanUpgrade = true;
+        roundEndUI.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void ActivateUpgradeP1(int upgrade)
+    {
+        if (p1CanUpgrade)
+        {
+            p1Instance.GetComponent<Palette>().ActivateUpgrade(upgrade);
+            p1CanUpgrade = false;
+        }
+    }
+
+    public void ActivateUpgradeP2(int upgrade)
+    {
+        if (p2CanUpgrade)
+        {
+            p2Instance.GetComponent<Palette>().ActivateUpgrade(upgrade);
+            p2CanUpgrade = false;
+        }
     }
 
     public void Retry()

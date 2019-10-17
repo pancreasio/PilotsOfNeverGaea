@@ -20,12 +20,19 @@ public class Raildrive : Palette
         UpdateUpgrades();
     }
 
-    public void UpdateUpgrades()
+    public override void UpdateUpgrades()
     {
+        base.UpdateUpgrades();
         if (upgrades[1])
         {
             maxCharges = 4;
         }
+    }
+
+    public override void ResetPalette()
+    {
+        base.ResetPalette();
+        animator.SetBool("CHARGED", false);
     }
 
     public override void Update()
