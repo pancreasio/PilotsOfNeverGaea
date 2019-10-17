@@ -7,8 +7,8 @@ public class Raildrive : Palette
     private Animator animator;
     public GameObject pointer;
     public Laser laser;
-    public float shotDelay;
-    private float shotClock;
+    public float shotDelay, reducedShotDelay, deploymentTime, initialSpeedMultiplier, chargeSpeedMultiplier;
+    private float shotClock, initialSpeed;
 
     public override void Start()
     {
@@ -16,10 +16,24 @@ public class Raildrive : Palette
         shotClock = 0;
         animator = transform.GetComponent<Animator>();
         pointer.SetActive(false);
+        initialSpeed = speed;
+        UpdateUpgrades();
+    }
+
+    public void UpdateUpgrades()
+    {
+        if (upgrades[1])
+        {
+            maxCharges = 4;
+        }
     }
 
     public override void Update()
     {
+        if (upgrades[2])
+        {
+            speed = initialSpeed * initialSpeedMultiplier + charges * chargeSpeedMultiplier;
+        }
         base.Update();
 
         if (power)
@@ -29,6 +43,7 @@ public class Raildrive : Palette
             {
                 animator.SetBool("SHOT", true);
                 shotClock = 0;
+                if(charges<chargesRequired)
                 power = false;
                 charges -= chargesRequired;
                 action = false;
@@ -38,14 +53,24 @@ public class Raildrive : Palette
         if (animator.GetBool("SHOT"))
         {
             shotClock += Time.deltaTime;
-            if (shotClock >= 0.217f)
+            if (shotClock >= deploymentTime)
             {
                 pointer.SetActive(true);
-            }
-            if (shotClock >= shotDelay)
-            {
-                Fire();
-            }
+                if (upgrades[0])
+                {
+                    if (shotClock >= reducedShotDelay)
+                    {
+                        Fire();
+                    }
+                }
+                else
+                {
+                    if (shotClock >= shotDelay)
+                    {
+                        Fire();
+                    }
+                }                
+            }            
         }
     }
 

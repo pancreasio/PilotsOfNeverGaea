@@ -12,14 +12,15 @@ public class Palette : MonoBehaviour
     private SpriteRenderer sprite;
     private Rigidbody2D rigi;
     public int chargesRequired , maxCharges;
-    [HideInInspector]
     protected int charges;
     [HideInInspector]
     protected bool up, down, action, power;
     private float moveDelta;
+    public bool[] upgrades;
 
     public virtual void Start()
     {
+        upgrades = new bool[4];
         sprite = transform.GetComponent<SpriteRenderer>();
         rigi = transform.GetComponent<Rigidbody2D>();        
         power = false;
@@ -113,15 +114,12 @@ public class Palette : MonoBehaviour
 
     private void Charge()
     {
-        if (!power)
+        if (charges < maxCharges)
         {
-            if (charges < maxCharges)
-            {
             charges++;
-                if (charges >= chargesRequired)
-                {
-                    power = true;
-                }
+            if (charges >= chargesRequired)
+            {
+                power = true;
             }
         }
     }
@@ -148,5 +146,9 @@ public class Palette : MonoBehaviour
         }
     }
 
+    private void ActivateUpgrade(int upgrade)
+    {
+        upgrades[upgrade] = true;
+    }
     
 }

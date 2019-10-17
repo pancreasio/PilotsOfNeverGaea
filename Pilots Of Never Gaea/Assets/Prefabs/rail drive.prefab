@@ -238,9 +238,14 @@ MonoBehaviour:
   left: 0
   chargesRequired: 2
   maxCharges: 2
+  upgrades: 
   pointer: {fileID: 1733421318979740199}
   laser: {fileID: 2544153375021142846, guid: 0676a02d83099514b9a81976f40eda7b, type: 3}
   shotDelay: 0.6
+  reducedShotDelay: 0.3
+  deploymentTime: 0.217
+  initialSpeedMultiplier: 0.8
+  chargeSpeedMultiplier: 0.5
 --- !u!95 &5875183913415288126
 Animator:
   serializedVersion: 3
