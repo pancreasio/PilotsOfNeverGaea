@@ -95,7 +95,8 @@ public class LevelManager : MonoBehaviour
         {
             p2Instance.GetComponent<Palette>().left = false;
             p2Instance.transform.position = p2Position.transform.position;
-            p2Instance.transform.localScale = new Vector2(-p2Instance.transform.localScale.x, p2Instance.transform.localScale.y);
+            //p2Instance.transform.localScale = new Vector2(-p2Instance.transform.localScale.x, p2Instance.transform.localScale.y);
+            p2Instance.transform.Rotate(Vector3.back, 180.0f);
             p2Light.transform.parent = p2Instance.transform;
         }
     }

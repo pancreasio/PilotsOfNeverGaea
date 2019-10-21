@@ -11,6 +11,7 @@ TagManager:
   - Palette
   - Straight Palette
   - Platform
+  - Corner
   layers:
   - Default
   - TransparentFX

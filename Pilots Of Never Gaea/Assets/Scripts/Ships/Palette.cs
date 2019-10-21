@@ -38,12 +38,12 @@ public class Palette : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.UpArrow))
             {
-                up = true;
+                down = true;
             }
 
             if (Input.GetKey(KeyCode.DownArrow))
             {
-                down = true;
+                up = true;
             }
 
             if (Input.GetKeyDown(KeyCode.LeftArrow))

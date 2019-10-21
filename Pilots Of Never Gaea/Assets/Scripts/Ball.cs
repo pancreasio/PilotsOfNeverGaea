@@ -72,10 +72,22 @@ public class Ball : MonoBehaviour
         charged = false;
         if (UnstickAction != null)
             UnstickAction();
+        if (transform.position.y > 0)
+        {
+            HardBounce(false);
+        }
+        else
+        {
+            HardBounce(true);
+        }
+    }
+
+    private void HardBounce(bool up)
+    {
         rig.velocity = new Vector2(0.0f, 0.0f);
         if (transform.position.x > 0)
         {
-            if (transform.position.y > 0)
+            if (!up)
             {
                 rig.AddForce((Vector2.down + Vector2.left) * initialSpeed, ForceMode2D.Impulse);
             }
@@ -86,7 +98,7 @@ public class Ball : MonoBehaviour
         }
         else
         {
-            if (transform.position.y > 0)
+            if (!up)
             {
                 rig.AddForce((Vector2.down + Vector2.right) * initialSpeed, ForceMode2D.Impulse);
             }
@@ -99,13 +111,14 @@ public class Ball : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.tag == "Laser")
+        string collisionTag = collision.transform.tag;
+        if (collisionTag == "Laser")
         {
             HitStun();
             VerticalBounce();
         }
 
-        if (collision.transform.tag == "Ion Wave")
+        if (collisionTag == "Ion Wave")
         {
             HitStun();
             if (ElectrifyAction != null)
@@ -113,7 +126,7 @@ public class Ball : MonoBehaviour
             charged = true;
         }
 
-        if (collision.transform.tag == "Platform")
+        if (collisionTag == "Platform")
         {
             if (transform.position.x >= 0)
             {
@@ -130,15 +143,36 @@ public class Ball : MonoBehaviour
                 }
             }
         }
+
+        if (collisionTag == "Corner")
+        {
+            if (stuck)
+                Unstick();
+            CornerBounce(collision.gameObject);
+        }
+    }
+
+    private void CornerBounce(GameObject corner)
+    {
+        if (corner.transform.position.y > corner.transform.parent.position.y)
+        {
+            HardBounce(true);
+        }
+        else
+        {
+            HardBounce(false);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.tag == "Wall" && charged)
+        string collisionTag = collision.transform.tag;
+        if (collisionTag == "Wall" && charged)
         {
             Stick();
         }
-        if (collision.transform.tag == "Palette" && stuck)
+
+        if ((collisionTag == "Palette") && stuck)
         {
             Unstick();
         }
