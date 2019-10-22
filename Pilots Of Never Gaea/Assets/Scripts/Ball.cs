@@ -74,15 +74,15 @@ public class Ball : MonoBehaviour
             UnstickAction();
         if (transform.position.y > 0)
         {
-            HardBounce(false);
+            BounceToCenter(false);
         }
         else
         {
-            HardBounce(true);
+            BounceToCenter(true);
         }
     }
 
-    private void HardBounce(bool up)
+    private void BounceToCenter(bool up)
     {
         rig.velocity = new Vector2(0.0f, 0.0f);
         if (transform.position.x > 0)
@@ -156,11 +156,11 @@ public class Ball : MonoBehaviour
     {
         if (corner.transform.position.y > corner.transform.parent.position.y)
         {
-            HardBounce(true);
+            BounceToCenter(true);
         }
         else
         {
-            HardBounce(false);
+            BounceToCenter(false);
         }
     }
 
