@@ -7,13 +7,13 @@ public class Magstream : Palette
     private Animator animator;
     public IonWave ionWave;
 
-    public override void Start()
+    protected override void Start()
     {
         base.Start();
         animator = transform.GetComponent<Animator>();
     }
 
-    public override void Update()
+    protected override void Update()
     {
         base.Update();
         animator.SetInteger("CHARGES", charges);

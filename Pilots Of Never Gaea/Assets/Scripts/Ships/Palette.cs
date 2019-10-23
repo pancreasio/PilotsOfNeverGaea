@@ -17,9 +17,11 @@ public class Palette : MonoBehaviour
     protected bool up, down, action, power;
     private float moveDelta;
     protected bool[] upgrades;
+    public delegate void PaletteAction();
 
-    public virtual void Start()
+    protected virtual void Start()
     {
+        PaletteCorner.HitAction = ChargeParentPalette;
         upgrades = new bool[4];
         sprite = transform.GetComponent<SpriteRenderer>();
         rigi = transform.GetComponent<Rigidbody2D>();        
@@ -30,7 +32,7 @@ public class Palette : MonoBehaviour
         charges = 0;
     }
 
-    public virtual void Update()
+    protected virtual void Update()
     {
         //input
 
@@ -121,6 +123,11 @@ public class Palette : MonoBehaviour
         {
             Charge();
         }
+    }
+
+    private void ChargeParentPalette()
+    {
+        transform.parent.GetComponent<Palette>().Charge();
     }
 
     private void Charge()

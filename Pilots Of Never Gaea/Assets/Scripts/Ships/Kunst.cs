@@ -7,14 +7,14 @@ public class Kunst : Palette
     private Animator animator;
     bool active;
 
-    public override void Start()
+    protected override void Start()
     {
         base.Start();
         active = false;
         animator = transform.GetComponent<Animator>();
     }
 
-    public override void Update()
+    protected override void Update()
     {
         if (!active)
         {

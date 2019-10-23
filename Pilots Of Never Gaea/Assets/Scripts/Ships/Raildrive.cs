@@ -10,7 +10,7 @@ public class Raildrive : Palette
     public float shotDelay, reducedShotDelay, deploymentTime, initialSpeedMultiplier, chargeSpeedMultiplier;
     private float shotClock, initialSpeed;
 
-    public override void Start()
+    protected override void Start()
     {
         base.Start();
         shotClock = 0;
@@ -35,7 +35,7 @@ public class Raildrive : Palette
         animator.SetBool("CHARGED", false);
     }
 
-    public override void Update()
+    protected override void Update()
     {
         if (upgrades[2])
         {
