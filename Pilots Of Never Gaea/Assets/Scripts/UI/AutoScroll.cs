@@ -12,6 +12,9 @@ public class AutoScroll : MonoBehaviour
     public int options, initialOption;
     private int currentOption;
     private RectTransform contenRectTransform;
+    private float targetPosition;
+    private bool scrolling = false, scrollingDown;
+
     private void Start()
     {
         currentOption = initialOption;
@@ -20,53 +23,75 @@ public class AutoScroll : MonoBehaviour
     }
     private void Update()
     {
-        
-        if (left)
+        if (!scrolling)
         {
-            if (Input.GetKeyDown(KeyCode.S))
+            if (left)
             {
-                Scroll(false);
-            }
+                if (Input.GetKey(KeyCode.S))
+                {
+                    if (currentOption > 1)
+                    {
+                        scrolling = true;
+                        scrollingDown = true;
+                        targetPosition = transform.position.y + scrollDistance;
+                    }
+                }
 
-            if (Input.GetKeyDown(KeyCode.W))
+                if (Input.GetKey(KeyCode.W))
+                {
+                    if (currentOption < options)
+                    {
+                        scrolling = true;
+                        scrollingDown = false;
+                        targetPosition = transform.position.y - scrollDistance;
+                    }
+                }
+            }
+            else
             {
-                Scroll(true);
+                if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    if (currentOption > 1)
+                    {
+                        scrolling = true;
+                        scrollingDown = true;
+                        targetPosition = transform.position.y + scrollDistance;
+                    }
+                }
+
+                if (Input.GetKey(KeyCode.UpArrow))
+                {
+                    if (currentOption < options)
+                    {
+                        scrolling = true;
+                        scrollingDown = false;
+                        targetPosition = transform.position.y - scrollDistance;
+                    }
+                }
             }
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (scrollingDown)
             {
-                Scroll(false);
+                transform.position = new Vector2(transform.position.x, transform.position.y + scrollSpeed * Time.deltaTime);
+                if (transform.position.y > targetPosition)
+                {
+                    transform.position = new Vector2(transform.position.x, targetPosition);
+                    scrolling = false;
+                    currentOption--;
+                }
             }
-
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            else
             {
-                Scroll(true);
-            }
-        }
-        
-    }
-
-    private void Scroll(bool up)
-    {
-        Vector2 pos = scrollRect.content.localPosition;
-        if (up)
-        {
-            if (currentOption < options)
-            {
-                pos.y -= scrollDistance;
-                currentOption++;
+                transform.position = new Vector2(transform.position.x, transform.position.y - scrollSpeed * Time.deltaTime);
+                if (transform.position.y < targetPosition)
+                {
+                    transform.position = new Vector2(transform.position.x, targetPosition);
+                    scrolling = false;
+                    currentOption++;
+                }
             }
         }
-        else
-        {
-            if (currentOption > 1)
-            {
-                pos.y += scrollDistance;
-                currentOption--;
-            }
-        }
-        scrollRect.content.localPosition = pos;
     }
 }

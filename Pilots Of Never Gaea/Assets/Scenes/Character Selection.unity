@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74c8bb26466dbc5498e2d7a7ee72e0fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 0
+  scrollSpeed: 800
   scrollDistance: 150
   left: 1
   options: 3
@@ -3355,7 +3355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74c8bb26466dbc5498e2d7a7ee72e0fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 0
+  scrollSpeed: 800
   scrollDistance: 150
   left: 0
   options: 3
