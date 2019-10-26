@@ -23,10 +23,10 @@ public class Raildrive : Palette
     public override void UpdateUpgrades()
     {
         base.UpdateUpgrades();
-        if (upgrades[1])
-        {
-            maxCharges = 4;
-        }
+        //if (upgrades[1])
+        //{
+        //    maxCharges = 4;
+        //}
     }
 
     public override void ResetPalette()
@@ -37,10 +37,10 @@ public class Raildrive : Palette
 
     protected override void Update()
     {
-        if (upgrades[2])
-        {
-            speed = initialSpeed * initialSpeedMultiplier + charges * chargeSpeedMultiplier;
-        }
+        //if (upgrades[2])
+        //{
+        //    speed = initialSpeed * initialSpeedMultiplier + charges * chargeSpeedMultiplier;
+        //}
         base.Update();
 
         if (power)
@@ -50,8 +50,8 @@ public class Raildrive : Palette
             {
                 animator.SetBool("SHOT", true);
                 shotClock = 0;
-                if(charges<chargesRequired)
-                power = false;
+                if (charges < chargesRequired)
+                    power = false;
                 charges -= chargesRequired;
                 action = false;
                 animator.SetBool("CHARGED", false);
@@ -63,25 +63,25 @@ public class Raildrive : Palette
             if (shotClock >= deploymentTime)
             {
                 pointer.SetActive(true);
-                if (upgrades[0])
+                //if (upgrades[0])
+                //{
+                //    if (shotClock >= reducedShotDelay)
+                //    {
+                //        Fire();
+                //    }
+                //}
+                //else
+                //{
+                if (shotClock >= shotDelay)
                 {
-                    if (shotClock >= reducedShotDelay)
-                    {
-                        Fire();
-                    }
+                    Fire();
                 }
-                else
-                {
-                    if (shotClock >= shotDelay)
-                    {
-                        Fire();
-                    }
-                }                
-            }            
+                //}                
+            }
         }
     }
 
-    
+
 
     private void Fire()
     {

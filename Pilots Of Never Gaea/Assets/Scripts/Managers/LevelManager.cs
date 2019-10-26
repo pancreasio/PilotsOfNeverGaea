@@ -219,23 +219,23 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    public void ActivateUpgradeP1(int upgrade)
-    {
-        if (p1CanUpgrade)
-        {
-            p1Instance.GetComponent<Palette>().ActivateUpgrade(upgrade);
-            p1CanUpgrade = false;
-        }
-    }
+    //public void ActivateUpgradeP1(int upgrade)
+    //{
+    //    if (p1CanUpgrade)
+    //    {
+    //        p1Instance.GetComponent<Palette>().ActivateUpgrade(upgrade);
+    //        p1CanUpgrade = false;
+    //    }
+    //}
 
-    public void ActivateUpgradeP2(int upgrade)
-    {
-        if (p2CanUpgrade)
-        {
-            p2Instance.GetComponent<Palette>().ActivateUpgrade(upgrade);
-            p2CanUpgrade = false;
-        }
-    }
+    //public void ActivateUpgradeP2(int upgrade)
+    //{
+    //    if (p2CanUpgrade)
+    //    {
+    //        p2Instance.GetComponent<Palette>().ActivateUpgrade(upgrade);
+    //        p2CanUpgrade = false;
+    //    }
+    //}
 
     public void Retry()
     {

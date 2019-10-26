@@ -2465,7 +2465,7 @@ MonoBehaviour:
   p1WinText: {fileID: 1708055965}
   p2WinText: {fileID: 2053976426}
   gameOverUI: {fileID: 1855561683}
-  roundEndUI: {fileID: 1465302251}
+  roundEndUI: {fileID: 0}
   leftPlatform: {fileID: 266926463}
   rightPlatform: {fileID: 538531449}
   p1Light: {fileID: 771167894}

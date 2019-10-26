@@ -6,7 +6,7 @@ public class PaletteCorner : MonoBehaviour
 {
     private float hitClock = 0.0f, hitDelay = 0.25f;
     private bool hit = false;
-    public static Palette.PaletteAction HitAction;
+    public Palette parentPalette;
     private void Update()
     {
         if (hit)
@@ -23,10 +23,7 @@ public class PaletteCorner : MonoBehaviour
     {
         if (!hit && collision.transform.tag == "Ball")
         {
-            if (HitAction != null)
-            {
-                HitAction();
-            }
+            parentPalette.Charge();
             hit = true;
         }
     }

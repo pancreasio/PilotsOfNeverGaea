@@ -15,14 +15,13 @@ public class Palette : MonoBehaviour
     protected int charges;
     [HideInInspector]
     protected bool up, down, action, power;
-    private float moveDelta;
-    protected bool[] upgrades;
+    private float moveDelta, chargeDelay = 0.1f, chargeClock = 0f;
+    //protected bool[] upgrades;
     public delegate void PaletteAction();
 
     protected virtual void Start()
     {
-        PaletteCorner.HitAction = ChargeParentPalette;
-        upgrades = new bool[4];
+        //upgrades = new bool[4];
         sprite = transform.GetComponent<SpriteRenderer>();
         rigi = transform.GetComponent<Rigidbody2D>();        
         power = false;
@@ -90,6 +89,8 @@ public class Palette : MonoBehaviour
             Move(false);
             down = false;
         }
+
+        chargeClock += Time.deltaTime;
     }
 
     public virtual void UpdateUpgrades()
@@ -127,17 +128,21 @@ public class Palette : MonoBehaviour
 
     private void ChargeParentPalette()
     {
-        transform.parent.GetComponent<Palette>().Charge();
+        //this.transform.parent.GetComponent<Palette>().Charge();
     }
 
-    private void Charge()
+    public void Charge()
     {
-        if (charges < maxCharges)
+        if (chargeClock > chargeDelay)
         {
-            charges++;
-            if (charges >= chargesRequired)
+            chargeClock = 0f;
+            if (charges < maxCharges)
             {
-                power = true;
+                charges++;
+                if (charges >= chargesRequired)
+                {
+                    power = true;
+                }
             }
         }
     }
@@ -164,8 +169,8 @@ public class Palette : MonoBehaviour
         }
     }
 
-    public void ActivateUpgrade(int upgrade)
-    {
-        upgrades[upgrade] = true;
-    }    
+    //public void ActivateUpgrade(int upgrade)
+    //{
+    //    upgrades[upgrade] = true;
+    //}    
 }
