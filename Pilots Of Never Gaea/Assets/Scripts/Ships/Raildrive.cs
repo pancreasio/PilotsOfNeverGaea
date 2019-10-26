@@ -7,7 +7,7 @@ public class Raildrive : Palette
     private Animator animator;
     public GameObject pointer;
     public Laser laser;
-    public float shotDelay, reducedShotDelay, deploymentTime, initialSpeedMultiplier, chargeSpeedMultiplier;
+    public float shotDelay, deploymentTime;
     private float shotClock, initialSpeed;
 
     protected override void Start()
@@ -23,10 +23,7 @@ public class Raildrive : Palette
     public override void UpdateUpgrades()
     {
         base.UpdateUpgrades();
-        //if (upgrades[1])
-        //{
-        //    maxCharges = 4;
-        //}
+
     }
 
     public override void ResetPalette()
@@ -37,10 +34,6 @@ public class Raildrive : Palette
 
     protected override void Update()
     {
-        //if (upgrades[2])
-        //{
-        //    speed = initialSpeed * initialSpeedMultiplier + charges * chargeSpeedMultiplier;
-        //}
         base.Update();
 
         if (power)
@@ -50,9 +43,9 @@ public class Raildrive : Palette
             {
                 animator.SetBool("SHOT", true);
                 shotClock = 0;
+                charges -= chargesRequired;
                 if (charges < chargesRequired)
                     power = false;
-                charges -= chargesRequired;
                 action = false;
                 animator.SetBool("CHARGED", false);
             }
@@ -63,20 +56,10 @@ public class Raildrive : Palette
             if (shotClock >= deploymentTime)
             {
                 pointer.SetActive(true);
-                //if (upgrades[0])
-                //{
-                //    if (shotClock >= reducedShotDelay)
-                //    {
-                //        Fire();
-                //    }
-                //}
-                //else
-                //{
                 if (shotClock >= shotDelay)
                 {
                     Fire();
-                }
-                //}                
+                }            
             }
         }
     }
