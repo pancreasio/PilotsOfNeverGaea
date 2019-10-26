@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
     private int p1Score, p2Score, p1Rounds, p2Rounds;
     public int roundsToWin;
     public TextMeshProUGUI p1ScoreText, p2ScoreText, p1WinText, p2WinText;
-    public GameObject gameOverUI, roundEndUI, leftPlatform, rightPlatform, p1Light, p2Light,
+    public GameObject gameOverUI, leftPlatform, rightPlatform, p1Light, p2Light,
         ballPrefab, magPrefab, railPrefab, kunstPrefab,
         p1Position, p2Position;
     private GameObject ballReference, topSparks, bottomSparks, p1Instance = null, p2Instance = null;
@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
     public delegate void LevelAction();
     public float platformDelay, platformSpeed, platformLimit;
     private float platformClock, platformInitialX, playerInitialX;
-    private bool platformsClosing, platformsArrived, p1CanUpgrade, p2CanUpgrade, roundEnd;
+    private bool platformsClosing, platformsArrived, roundEnd;
 
     private void Start()
     {
@@ -36,8 +36,6 @@ public class LevelManager : MonoBehaviour
         p1Rounds = 0;
         p2Rounds = 0;
         roundEnd = false;
-        p1CanUpgrade = false;
-        p2CanUpgrade = false;
         platformClock = 0;
         platformsClosing = false;
         platformsArrived = false;
@@ -95,7 +93,6 @@ public class LevelManager : MonoBehaviour
         {
             p2Instance.GetComponent<Palette>().left = false;
             p2Instance.transform.position = p2Position.transform.position;
-            //p2Instance.transform.localScale = new Vector2(-p2Instance.transform.localScale.x, p2Instance.transform.localScale.y);
             p2Instance.transform.Rotate(Vector3.back, 180.0f);
             p2Light.transform.parent = p2Instance.transform;
         }
@@ -148,13 +145,12 @@ public class LevelManager : MonoBehaviour
     {
         if (roundEnd)
         {
-            if (!p1CanUpgrade && !p2CanUpgrade)
-            {
+            
                 roundEnd = false;
-                roundEndUI.SetActive(false);
+
                 Time.timeScale = 1;
                 ResetRound();
-            }
+            
         }
         platformClock += Time.deltaTime;
         if (platformsClosing)
@@ -213,29 +209,8 @@ public class LevelManager : MonoBehaviour
         p1Score = 0;
         p2Score = 0;
         roundEnd = true;
-        p1CanUpgrade = true;
-        p2CanUpgrade = true;
-        roundEndUI.SetActive(true);
         Time.timeScale = 0;
     }
-
-    //public void ActivateUpgradeP1(int upgrade)
-    //{
-    //    if (p1CanUpgrade)
-    //    {
-    //        p1Instance.GetComponent<Palette>().ActivateUpgrade(upgrade);
-    //        p1CanUpgrade = false;
-    //    }
-    //}
-
-    //public void ActivateUpgradeP2(int upgrade)
-    //{
-    //    if (p2CanUpgrade)
-    //    {
-    //        p2Instance.GetComponent<Palette>().ActivateUpgrade(upgrade);
-    //        p2CanUpgrade = false;
-    //    }
-    //}
 
     public void Retry()
     {
