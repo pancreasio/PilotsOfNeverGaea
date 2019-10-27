@@ -9,15 +9,20 @@ public class GameManager : MonoBehaviour
     public delegate void ButtonAction();
     public delegate void StartDuelFunction(CharacterSelectionManager.Character p1Character, CharacterSelectionManager.Character p2Character);
     public delegate void SceneChange(int value);
-    private GameObject gameManagerInstance;
+    private static GameObject gameManagerInstance;
     private int currentScene;
 
     private void Awake()
     {
         if (gameManagerInstance == null)
+        {
             gameManagerInstance = this.gameObject;
+            DontDestroyOnLoad(gameManagerInstance);
+        }
         else
+        {
             Destroy(this.gameObject);
+        }
     }
     private void Start()
     {

@@ -8,6 +8,11 @@ public class MenuManager : MonoBehaviour
     public static GameManager.ButtonAction StartAction;
     public static GameManager.ButtonAction ExitAction;
 
+    private void Start()
+    {
+        Time.timeScale = 1;
+    }
+
     public void StartGame()
     {
         if (StartAction !=null)

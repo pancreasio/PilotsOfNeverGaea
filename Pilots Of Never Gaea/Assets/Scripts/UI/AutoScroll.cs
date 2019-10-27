@@ -13,13 +13,15 @@ public class AutoScroll : MonoBehaviour
     private int currentOption;
     private RectTransform contenRectTransform;
     private float targetPosition;
-    private bool scrolling = false, scrollingDown;
+    private bool scrolling, scrollingDown;
 
     private void Start()
     {
+        Time.timeScale = 1;
         currentOption = initialOption;
-        this.scrollRect = GetComponent<ScrollRect>();
-        this.contenRectTransform = this.scrollRect.content;
+        scrolling = false;
+        scrollRect = GetComponent<ScrollRect>();
+        contenRectTransform = scrollRect.content;
     }
     private void Update()
     {
@@ -29,6 +31,7 @@ public class AutoScroll : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.S))
                 {
+                    Debug.Log("scroll input");
                     if (currentOption > 1)
                     {
                         scrolling = true;
@@ -39,6 +42,7 @@ public class AutoScroll : MonoBehaviour
 
                 if (Input.GetKey(KeyCode.W))
                 {
+                    Debug.Log("scroll input");
                     if (currentOption < options)
                     {
                         scrolling = true;
@@ -51,6 +55,7 @@ public class AutoScroll : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.DownArrow))
                 {
+                    Debug.Log("scroll input");
                     if (currentOption > 1)
                     {
                         scrolling = true;
@@ -61,6 +66,7 @@ public class AutoScroll : MonoBehaviour
 
                 if (Input.GetKey(KeyCode.UpArrow))
                 {
+                    Debug.Log("scroll input");
                     if (currentOption < options)
                     {
                         scrolling = true;
@@ -74,6 +80,7 @@ public class AutoScroll : MonoBehaviour
         {
             if (scrollingDown)
             {
+                Debug.Log("scrolling down");
                 transform.position = new Vector2(transform.position.x, transform.position.y + scrollSpeed * Time.deltaTime);
                 if (transform.position.y > targetPosition)
                 {
@@ -84,6 +91,7 @@ public class AutoScroll : MonoBehaviour
             }
             else
             {
+                Debug.Log("scrolling up");
                 transform.position = new Vector2(transform.position.x, transform.position.y - scrollSpeed * Time.deltaTime);
                 if (transform.position.y < targetPosition)
                 {
