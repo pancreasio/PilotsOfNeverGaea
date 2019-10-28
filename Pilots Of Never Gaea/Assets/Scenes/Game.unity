@@ -1498,7 +1498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd2d90a41454d6c459d5f1c047cf223f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundsToWin: 1
+  roundsToWin: 5
   p1ScoreText: {fileID: 817393023}
   p2ScoreText: {fileID: 1110033936}
   p1WinText: {fileID: 1708055965}
@@ -1522,7 +1522,7 @@ MonoBehaviour:
   platformDelay: 8
   platformSpeed: 0.2
   platformLimit: -12
-  cameraShakeDuration: 0.5
+  cameraShakeDuration: 0.2
   cameraShakeIntensity: 0.2
 --- !u!1 &1110033934
 GameObject:

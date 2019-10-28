@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraShake : MonoBehaviour
+public class Shake2D : MonoBehaviour
 {
     public IEnumerator Shake(float duration, float intensity)
     {

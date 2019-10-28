@@ -7,7 +7,7 @@ using System;
 
 public class LevelManager : MonoBehaviour
 {
-    private int p1Score, p2Score, p1Rounds, p2Rounds;
+    private int p1Score, p2Score;
     public int roundsToWin;
     public TextMeshProUGUI p1ScoreText, p2ScoreText, p1WinText, p2WinText;
     public GameObject gameOverUI, leftPlatform, rightPlatform, p1Light, p2Light,
@@ -17,26 +17,23 @@ public class LevelManager : MonoBehaviour
     public static GameManager.ButtonAction RetryAction, BackToSelectAction;
     public static GameManager.SceneChange ExitAction;
     public static CharacterSelectionManager.Character p1Selected, p2Selected;
-    public CameraShake cameraShake;
+    public Shake2D cameraShake;
     public delegate void LevelAction();
     public float platformDelay, platformSpeed, platformLimit, cameraShakeDuration, cameraShakeIntensity;
     private float platformClock, platformInitialX, playerInitialX;
-    private bool platformsClosing, platformsArrived, roundEnd;
+    private bool platformsClosing, platformsArrived;
 
     private void Start()
     {
         Ball.ElectrifyAction = ActivateSparks;
         Ball.UnstickAction = DeactivateSparks;
-        playerInitialX = p2Position.transform.position.x;      
+        playerInitialX = p2Position.transform.position.x;
         topSparks = GameObject.Find("top sparks");
         bottomSparks = GameObject.Find("bottom sparks");
         topSparks.SetActive(false);
         bottomSparks.SetActive(false);
         p1Score = 0;
         p2Score = 0;
-        p1Rounds = 0;
-        p2Rounds = 0;
-        roundEnd = false;
         platformClock = 0;
         platformsClosing = false;
         platformsArrived = false;
@@ -147,15 +144,6 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
-        if (roundEnd)
-        {
-            
-                roundEnd = false;
-
-                Time.timeScale = 1;
-                ResetRound();
-            
-        }
         platformClock += Time.deltaTime;
         if (platformsClosing)
         {
@@ -175,22 +163,13 @@ public class LevelManager : MonoBehaviour
 
         p1ScoreText.text = p1Score.ToString();
         p2ScoreText.text = p2Score.ToString();
-        if (p1Score >= 3)
+        if (p1Score >= roundsToWin)
         {
-            p1Rounds++;
-            if (p1Rounds > roundsToWin)
                 GameOver(true);
-            else
-                RoundEnd();
-
         }
-        if (p2Score >= 3)
+        if (p2Score >= roundsToWin)
         {
-            p2Rounds++;
-            if (p2Rounds > roundsToWin)
                 GameOver(false);
-            else
-                RoundEnd();
         }
     }
 
@@ -205,14 +184,6 @@ public class LevelManager : MonoBehaviour
         {
             p1WinText.gameObject.SetActive(false);
         }
-        Time.timeScale = 0;
-    }
-
-    private void RoundEnd()
-    {
-        p1Score = 0;
-        p2Score = 0;
-        roundEnd = true;
         Time.timeScale = 0;
     }
 
