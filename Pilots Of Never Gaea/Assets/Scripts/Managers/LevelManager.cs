@@ -14,12 +14,13 @@ public class LevelManager : MonoBehaviour
         ballPrefab, magPrefab, railPrefab, kunstPrefab,
         p1Position, p2Position;
     private GameObject ballReference, topSparks, bottomSparks, p1Instance = null, p2Instance = null;
+    private Ball ballScriptReference;
     public static GameManager.ButtonAction RetryAction, BackToSelectAction;
     public static GameManager.SceneChange ExitAction;
     public static CharacterSelectionManager.Character p1Selected, p2Selected;
     public Shake2D cameraShake;
     public delegate void LevelAction();
-    public float platformDelay, platformSpeed, platformLimit, cameraShakeDuration, cameraShakeIntensity;
+    public float platformDelay, platformSpeed, platformResetSpeed, ballResetSpeed, platformLimit, cameraShakeDuration, cameraShakeIntensity;
     private float platformClock, platformInitialX, playerInitialX;
     private bool platformsClosing, platformsArrived;
 
@@ -41,6 +42,7 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 1;
         platformInitialX = rightPlatform.transform.position.x;
         ballReference = Instantiate(ballPrefab, Vector2.zero, Quaternion.identity);
+        ballScriptReference = ballReference.GetComponent<Ball>();
         InitializeCharacters();
     }
 
@@ -104,12 +106,13 @@ public class LevelManager : MonoBehaviour
         if (player1)
         {
             p1Score++;
+            StartCoroutine(ResetRound(true));
         }
         else
         {
             p2Score++;
+            StartCoroutine(ResetRound(false));
         }
-        ResetRound();
     }
 
     private void ActivateSparks()
@@ -124,22 +127,50 @@ public class LevelManager : MonoBehaviour
         bottomSparks.SetActive(false);
     }
 
-    private void ResetRound()
+    private IEnumerator ResetRound(bool player1Scored)
     {
-        Destroy(ballReference.gameObject);
+        ballScriptReference.StopMovement();
         DeactivateSparks();
-        rightPlatform.transform.position = new Vector2(platformInitialX, 0.0f);
-        leftPlatform.transform.position = new Vector2(-platformInitialX, 0.0f);
-        ballReference = Instantiate(ballPrefab, Vector2.zero, Quaternion.identity);
         platformClock = 0;
         platformsClosing = false;
         platformsArrived = false;
-        p1Instance.transform.position = new Vector2(-playerInitialX, 0.0f);
-        p2Instance.transform.position = new Vector2(playerInitialX, 0.0f);
         p1Instance.GetComponent<Palette>().ResetPalette();
         p2Instance.GetComponent<Palette>().ResetPalette();
-        p1Instance.GetComponent<Palette>().UpdateUpgrades();
-        p2Instance.GetComponent<Palette>().UpdateUpgrades();
+
+        bool platformsResetting = true, ballResetting = true;
+
+        while (platformsResetting || ballResetting)
+        {
+            if (platformsResetting && rightPlatform.transform.position.x < platformInitialX)
+            {
+                rightPlatform.transform.Translate(Vector2.right * platformResetSpeed * Time.deltaTime);
+                leftPlatform.transform.Translate(Vector2.left * platformResetSpeed * Time.deltaTime);
+            }
+            else
+            {
+                rightPlatform.transform.position = new Vector2(platformInitialX, 0f);
+                leftPlatform.transform.position = new Vector2(-platformInitialX, 0f);
+                platformsResetting = false;
+            }
+
+            if (ballResetting && Mathf.Abs(ballReference.transform.position.x) > 0.2f )
+            {
+                ballReference.transform.Translate(-ballReference.transform.position * ballResetSpeed * Time.deltaTime);
+            }
+            else
+            {
+                ballResetting = false;
+                ballReference.transform.position = Vector2.zero;
+            }
+
+            yield return null;
+        }
+
+        if (player1Scored)
+            ballScriptReference.InitialKick(Vector2.down + Vector2.right);
+        else
+            ballScriptReference.InitialKick(Vector2.down + Vector2.left);
+
     }
 
     private void Update()
@@ -165,11 +196,11 @@ public class LevelManager : MonoBehaviour
         p2ScoreText.text = p2Score.ToString();
         if (p1Score >= roundsToWin)
         {
-                GameOver(true);
+            GameOver(true);
         }
         if (p2Score >= roundsToWin)
         {
-                GameOver(false);
+            GameOver(false);
         }
     }
 

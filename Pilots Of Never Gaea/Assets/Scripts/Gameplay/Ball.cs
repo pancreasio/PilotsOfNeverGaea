@@ -20,7 +20,7 @@ public class Ball : MonoBehaviour
         stunClock = 0;
         charged = false;
         stuck = false;
-        rig.AddForce((Vector2.down + Vector2.left) * initialSpeed, ForceMode2D.Impulse);
+        InitialKick(Vector2.down + Vector2.left);
     }
 
     private void Update()
@@ -50,6 +50,18 @@ public class Ball : MonoBehaviour
     private void VerticalBounce()
     {
         rig.velocity = new Vector2(rig.velocity.x, -rig.velocity.y);
+    }
+
+    public void StopMovement()
+    {
+        stuck = false;
+        charged = false;
+        rig.velocity = Vector2.zero;
+    }
+
+    public void InitialKick(Vector2 kickDirection)
+    {
+        rig.AddForce(kickDirection * initialSpeed, ForceMode2D.Impulse);
     }
 
     private void HitStun()

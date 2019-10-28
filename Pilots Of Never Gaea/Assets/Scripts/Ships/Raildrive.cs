@@ -17,13 +17,6 @@ public class Raildrive : Palette
         animator = transform.GetComponent<Animator>();
         pointer.SetActive(false);
         initialSpeed = speed;
-        UpdateUpgrades();
-    }
-
-    public override void UpdateUpgrades()
-    {
-        base.UpdateUpgrades();
-
     }
 
     public override void ResetPalette()

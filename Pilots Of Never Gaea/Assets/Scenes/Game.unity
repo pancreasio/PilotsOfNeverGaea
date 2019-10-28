@@ -1521,6 +1521,8 @@ MonoBehaviour:
   cameraShake: {fileID: 519420033}
   platformDelay: 8
   platformSpeed: 0.2
+  platformResetSpeed: 1
+  ballResetSpeed: 10
   platformLimit: -12
   cameraShakeDuration: 0.2
   cameraShakeIntensity: 0.2
