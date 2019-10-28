@@ -17,8 +17,9 @@ public class LevelManager : MonoBehaviour
     public static GameManager.ButtonAction RetryAction, BackToSelectAction;
     public static GameManager.SceneChange ExitAction;
     public static CharacterSelectionManager.Character p1Selected, p2Selected;
+    public CameraShake cameraShake;
     public delegate void LevelAction();
-    public float platformDelay, platformSpeed, platformLimit;
+    public float platformDelay, platformSpeed, platformLimit, cameraShakeDuration, cameraShakeIntensity;
     private float platformClock, platformInitialX, playerInitialX;
     private bool platformsClosing, platformsArrived, roundEnd;
 
@@ -100,6 +101,9 @@ public class LevelManager : MonoBehaviour
 
     private void PlayerScored(bool player1)
     {
+
+        StartCoroutine(cameraShake.Shake(cameraShakeDuration, cameraShakeIntensity));
+
         if (player1)
         {
             p1Score++;
