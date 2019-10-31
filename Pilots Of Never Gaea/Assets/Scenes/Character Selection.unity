@@ -227,7 +227,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68852316}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.25, y: 0, z: 0}
+  m_LocalPosition: {x: 3.19, y: 0, z: 0}
   m_LocalScale: {x: 0.94, y: 0.94, z: 0.94}
   m_Children: []
   m_Father: {fileID: 40681480}
@@ -1012,10 +1012,9 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 932156467}
+  m_Children: []
   m_Father: {fileID: 1493473019}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1950,9 +1949,9 @@ RectTransform:
   m_GameObject: {fileID: 932156466}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 133.53108, y: 133.53108, z: 133.531}
+  m_LocalScale: {x: 133.53113, y: 133.53113, z: 133.53099}
   m_Children: []
-  m_Father: {fileID: 459313058}
+  m_Father: {fileID: 1493473019}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2654,7 +2653,6 @@ GameObject:
   - component: {fileID: 1378485545}
   - component: {fileID: 1378485543}
   - component: {fileID: 1378485542}
-  - component: {fileID: 1378485544}
   m_Layer: 5
   m_Name: P1 Rail Drive
   m_TagString: Untagged
@@ -2775,25 +2773,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventSystem: {fileID: 240633146}
---- !u!95 &1378485544
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1378485540}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fb6128433b84eab489d6b80913d8f9ee, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!222 &1378485545
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2994,6 +2973,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.6283, y: 1.6283, z: 1.6283}
   m_Children:
+  - {fileID: 932156467}
   - {fileID: 459313058}
   m_Father: {fileID: 246592568}
   m_RootOrder: 0
