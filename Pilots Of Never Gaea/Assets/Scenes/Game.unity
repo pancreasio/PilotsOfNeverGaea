@@ -1583,7 +1583,6 @@ MonoBehaviour:
   p2ScoreText: {fileID: 1110033936}
   p1WinText: {fileID: 1708055965}
   p2WinText: {fileID: 2053976426}
-  gameOverUI: {fileID: 1855561683}
   leftPlatform: {fileID: 266926463}
   rightPlatform: {fileID: 538531449}
   p1Light: {fileID: 771167894}
@@ -1598,6 +1597,7 @@ MonoBehaviour:
     type: 3}
   p1Position: {fileID: 1471547319}
   p2Position: {fileID: 116639106}
+  fadeoutSprite: {fileID: 602137368}
   cameraShake: {fileID: 519420033}
   startRoundTime: 1
   platformDelay: 8
@@ -1607,6 +1607,7 @@ MonoBehaviour:
   platformLimit: -12
   cameraShakeDuration: 0.2
   cameraShakeIntensity: 0.2
+  fadeoutTime: 2
 --- !u!1 &1110033934
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,13 +13,14 @@ public class LevelManager : MonoBehaviour
     public GameObject leftPlatform, rightPlatform, p1Light, p2Light,
         ballPrefab, magPrefab, railPrefab, kunstPrefab,
         p1Position, p2Position;
+    public SpriteRenderer fadeoutSprite;
     private GameObject ballReference = null, topSparks, bottomSparks, p1Instance = null, p2Instance = null;
     private Ball ballScriptReference;
     public static GameManager.GameOverFunction GameOverAction;
     public static CharacterSelectionManager.Character p1Selected, p2Selected;
     public Shake2D cameraShake;
     public delegate void LevelAction();
-    public float startRoundTime, platformDelay, platformSpeed, platformResetTime, ballResetSpeed, platformLimit, cameraShakeDuration, cameraShakeIntensity;
+    public float startRoundTime, platformDelay, platformSpeed, platformResetTime, ballResetSpeed, platformLimit, cameraShakeDuration, cameraShakeIntensity, fadeoutTime;
     private float platformClock, platformInitialX;
     private bool platformsClosing, platformsArrived;
 
@@ -113,6 +114,20 @@ public class LevelManager : MonoBehaviour
             p2Score++;
             StartCoroutine(ResetRound(false));
         }
+    }
+
+    private IEnumerator FadeOut(bool player1Won)
+    {
+        Time.timeScale = 0f;
+        float clock = 0f;
+        while (clock<fadeoutTime)
+        {
+            clock += Time.unscaledDeltaTime;
+            fadeoutSprite.color =new Color(255f, 255f, 255f, clock/fadeoutTime);
+            yield return null;
+        }
+        Time.timeScale = 1f;
+        GameOver(player1Won);
     }
 
     private void ActivateSparks()
@@ -209,11 +224,11 @@ public class LevelManager : MonoBehaviour
         p2ScoreText.text = p2Score.ToString();
         if (p1Score >= roundsToWin)
         {
-            GameOver(true);
+            StartCoroutine(FadeOut(true));
         }
         if (p2Score >= roundsToWin)
         {
-            GameOver(false);
+            StartCoroutine(FadeOut(false));
         }
     }
 
@@ -223,6 +238,5 @@ public class LevelManager : MonoBehaviour
         {
             GameOverAction(player1won);
         }
-        Time.timeScale = 0;
     }
 }
