@@ -451,12 +451,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427abadd9c60c7a418fe57555874899f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformTimeToDissapear: 1
+  platformTime: 1
   platformLimit: 12.36
-  p1SelectedButton: {fileID: 0}
-  p2SelectedButton: {fileID: 0}
   p1Elements: {fileID: 1927790440}
   p2Elements: {fileID: 40681479}
+  p1Scroll: {fileID: 97731810}
+  p2Scroll: {fileID: 1678805115}
   shipButtons:
   - {fileID: 1378485540}
   - {fileID: 693584344}
