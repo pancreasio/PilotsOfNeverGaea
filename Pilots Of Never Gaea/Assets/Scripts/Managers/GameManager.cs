@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
         LevelManager.BackToSelectAction = PreviousScene;
         LevelManager.ExitAction = LoadScene;
         CharacterSelectionManager.SelectAction = LoadGame;
+        CharacterSelectionManager.FadeAction = UnloadAdditiveScene;
     }
 
     private void ReloadScene()
@@ -55,6 +56,11 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
+    private void UnloadAdditiveScene(int sceneIndex)
+    {
+        SceneManager.UnloadSceneAsync(sceneIndex);
+    }
+
     private void LoadScene(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
@@ -65,7 +71,7 @@ public class GameManager : MonoBehaviour
     {
         LevelManager.p1Selected = p1Character;
         LevelManager.p2Selected = p2Character;
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(2, LoadSceneMode.Additive);
         currentScene = 2;
     }
 }

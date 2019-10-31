@@ -20,7 +20,6 @@ public class Ball : MonoBehaviour
         stunClock = 0;
         charged = false;
         stuck = false;
-        InitialKick(Vector2.down + Vector2.left);
     }
 
     private void Update()

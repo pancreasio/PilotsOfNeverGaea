@@ -1519,6 +1519,7 @@ MonoBehaviour:
   p1Position: {fileID: 1471547319}
   p2Position: {fileID: 116639106}
   cameraShake: {fileID: 519420033}
+  startRoundTime: 3
   platformDelay: 8
   platformSpeed: 0.2
   platformResetSpeed: 1

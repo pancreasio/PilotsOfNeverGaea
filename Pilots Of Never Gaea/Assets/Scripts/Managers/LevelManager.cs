@@ -13,22 +13,21 @@ public class LevelManager : MonoBehaviour
     public GameObject gameOverUI, leftPlatform, rightPlatform, p1Light, p2Light,
         ballPrefab, magPrefab, railPrefab, kunstPrefab,
         p1Position, p2Position;
-    private GameObject ballReference, topSparks, bottomSparks, p1Instance = null, p2Instance = null;
+    private GameObject ballReference = null, topSparks, bottomSparks, p1Instance = null, p2Instance = null;
     private Ball ballScriptReference;
     public static GameManager.ButtonAction RetryAction, BackToSelectAction;
     public static GameManager.SceneChange ExitAction;
     public static CharacterSelectionManager.Character p1Selected, p2Selected;
     public Shake2D cameraShake;
     public delegate void LevelAction();
-    public float platformDelay, platformSpeed, platformResetSpeed, ballResetSpeed, platformLimit, cameraShakeDuration, cameraShakeIntensity;
-    private float platformClock, platformInitialX, playerInitialX;
+    public float startRoundTime, platformDelay, platformSpeed, platformResetSpeed, ballResetSpeed, platformLimit, cameraShakeDuration, cameraShakeIntensity;
+    private float platformClock, platformInitialX;
     private bool platformsClosing, platformsArrived;
 
     private void Start()
     {
         Ball.ElectrifyAction = ActivateSparks;
         Ball.UnstickAction = DeactivateSparks;
-        playerInitialX = p2Position.transform.position.x;
         topSparks = GameObject.Find("top sparks");
         bottomSparks = GameObject.Find("bottom sparks");
         topSparks.SetActive(false);
@@ -41,12 +40,11 @@ public class LevelManager : MonoBehaviour
         Ball.onScore = PlayerScored;
         Time.timeScale = 1;
         platformInitialX = rightPlatform.transform.position.x;
-        ballReference = Instantiate(ballPrefab, Vector2.zero, Quaternion.identity);
-        ballScriptReference = ballReference.GetComponent<Ball>();
-        InitializeCharacters();
+        InitializeGame();
+        StartCoroutine(StartRound());
     }
 
-    private void InitializeCharacters()
+    private void InitializeGame()
     {
         switch (p1Selected)
         {
@@ -96,6 +94,9 @@ public class LevelManager : MonoBehaviour
             p2Instance.transform.Rotate(Vector3.back, 180.0f);
             p2Light.transform.parent = p2Instance.transform;
         }
+        ballReference = Instantiate(ballPrefab, Vector2.zero, Quaternion.identity);
+        ballReference.transform.parent = transform;
+        ballScriptReference = ballReference.GetComponent<Ball>();
     }
 
     private void PlayerScored(bool player1)
@@ -127,6 +128,17 @@ public class LevelManager : MonoBehaviour
         bottomSparks.SetActive(false);
     }
 
+    private IEnumerator StartRound()
+    {
+        float startClock = 0f;
+        while (startClock < startRoundTime)
+        {
+            startClock += Time.deltaTime;
+            yield return null;
+        }
+        ballScriptReference.InitialKick(Vector2.down + Vector2.left);
+    }
+
     private IEnumerator ResetRound(bool player1Scored)
     {
         ballScriptReference.StopMovement();
@@ -153,7 +165,7 @@ public class LevelManager : MonoBehaviour
                 platformsResetting = false;
             }
 
-            if (ballResetting && Mathf.Abs(ballReference.transform.position.x) > 0.2f )
+            if (ballResetting && Mathf.Abs(ballReference.transform.position.x) > 0.2f)
             {
                 ballReference.transform.Translate(-ballReference.transform.position * ballResetSpeed * Time.deltaTime);
             }

@@ -9,7 +9,13 @@ public class CharacterSelectionManager : MonoBehaviour
         nullCharacter, raildrive, magstream, kunst
     }
     public static GameManager.StartDuelFunction SelectAction;
+    public static GameManager.SceneChange FadeAction;
     private Character p1SelectedCharacter, p2SelectedCharacter;
+    public float platformTimeToDissapear, platformLimit;
+    private float platformClock;
+    public GameObject p1SelectedButton, p2SelectedButton, p1Elements, p2Elements;
+    public List<GameObject> shipButtons;
+    private bool opening = false;
 
     private void Start()
     {
@@ -19,10 +25,39 @@ public class CharacterSelectionManager : MonoBehaviour
 
     private void Update()
     {
-        if (p1SelectedCharacter != Character.nullCharacter && p2SelectedCharacter != Character.nullCharacter)
+        if (opening || (p1SelectedCharacter != Character.nullCharacter && p2SelectedCharacter != Character.nullCharacter))
         {
-            if(SelectAction != null)
-            SelectAction(p1SelectedCharacter, p2SelectedCharacter);
+            if (!opening)
+            {
+                DestroyButtons();
+                opening = true;
+                Destroy(Camera.main.gameObject);
+                if (SelectAction != null)
+                    SelectAction(p1SelectedCharacter, p2SelectedCharacter);
+            }
+            else
+            {
+                platformClock += Time.deltaTime;
+                if (platformClock < platformTimeToDissapear)
+                {
+                    float speed = platformLimit / platformTimeToDissapear * Time.deltaTime;
+                    p1Elements.transform.Translate(-transform.right * speed);
+                    p2Elements.transform.Translate(transform.right * speed);
+                }
+                else
+                {
+                    if (FadeAction != null)
+                        FadeAction(1);
+                }
+            }
+        }
+    }
+
+    private void DestroyButtons()
+    {
+        foreach (GameObject button in shipButtons)
+        {
+            Destroy(button);
         }
     }
 
