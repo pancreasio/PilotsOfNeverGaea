@@ -33,4 +33,9 @@ public class IndependentButton : Button
 
         eventSystem.SetSelectedGameObject(gameObject);
     }
+
+    public void HACK()
+    {
+        eventSystem.SetSelectedGameObject(gameObject);
+    }
 }

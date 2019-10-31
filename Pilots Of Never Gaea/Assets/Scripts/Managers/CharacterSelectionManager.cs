@@ -16,7 +16,8 @@ public class CharacterSelectionManager : MonoBehaviour
     private Vector3 leftPlatformStartingPosition, rightPlatformStartingPosition;
     public GameObject p1Elements, p2Elements;
     public AutoScroll p1Scroll, p2Scroll;
-    public List<GameObject> shipButtons;
+    public FirstSignSelected p1FirstSelected, p2FirstSelected;
+    public List<GameObject> p1Buttons, p2Buttons;
     private bool opening = false, closing = true;
 
     private void Start()
@@ -47,6 +48,8 @@ public class CharacterSelectionManager : MonoBehaviour
                 p1Elements.transform.position = leftPlatformStartingPosition;
                 p2Elements.transform.position = rightPlatformStartingPosition;
                 SetActiveButtons(true);
+                p1FirstSelected.SetSelected();
+                p2FirstSelected.SetSelected();
                 closing = false;
             }
 
@@ -85,7 +88,12 @@ public class CharacterSelectionManager : MonoBehaviour
 
     private void DestroyButtons()
     {
-        foreach (GameObject button in shipButtons)
+        foreach (GameObject button in p1Buttons)
+        {
+            Destroy(button);
+        }
+
+        foreach (GameObject button in p2Buttons)
         {
             Destroy(button);
         }
@@ -93,7 +101,12 @@ public class CharacterSelectionManager : MonoBehaviour
 
     private void SetActiveButtons(bool active)
     {
-        foreach (GameObject button in shipButtons)
+        foreach (GameObject button in p1Buttons)
+        {
+            button.SetActive(active);
+        }
+
+        foreach (GameObject button in p2Buttons)
         {
             button.SetActive(active);
         }
@@ -104,12 +117,26 @@ public class CharacterSelectionManager : MonoBehaviour
     public void P1SelectCharacter(int character)
     {
         Character selectedCharacter = (Character)character;
+        //for (int i = 0; i < p1Buttons.Count; i++)
+        //{
+        //    if (i != character-1)
+        //    {
+        //        Destroy(p1Buttons[i].gameObject);
+        //    }
+        //}
         p1SelectedCharacter = selectedCharacter;
     }
 
     public void P2SelectCharacter(int character)
     {
         Character selectedCharacter = (Character)character;
+        //for (int i = 0; i < p2Buttons.Count; i++)
+        //{
+        //    if (i != character-1)
+        //    {
+        //        Destroy(p2Buttons[i].gameObject);
+        //    }
+        //}
         p2SelectedCharacter = selectedCharacter;
     }
 }
