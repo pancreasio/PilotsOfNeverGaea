@@ -15,8 +15,12 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        if (StartAction !=null)
+        if (StartAction != null)
+        {
+            LevelManager.p1Selected = CharacterSelectionManager.Character.nullCharacter;
+            LevelManager.p2Selected = CharacterSelectionManager.Character.nullCharacter;
             StartAction();        
+        }
     }
 
     public void ExitGame()

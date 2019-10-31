@@ -10,13 +10,12 @@ public class LevelManager : MonoBehaviour
     private int p1Score, p2Score;
     public int roundsToWin;
     public TextMeshProUGUI p1ScoreText, p2ScoreText, p1WinText, p2WinText;
-    public GameObject gameOverUI, leftPlatform, rightPlatform, p1Light, p2Light,
+    public GameObject leftPlatform, rightPlatform, p1Light, p2Light,
         ballPrefab, magPrefab, railPrefab, kunstPrefab,
         p1Position, p2Position;
     private GameObject ballReference = null, topSparks, bottomSparks, p1Instance = null, p2Instance = null;
     private Ball ballScriptReference;
-    public static GameManager.ButtonAction RetryAction, BackToSelectAction;
-    public static GameManager.SceneChange ExitAction;
+    public static GameManager.GameOverFunction GameOverAction;
     public static CharacterSelectionManager.Character p1Selected, p2Selected;
     public Shake2D cameraShake;
     public delegate void LevelAction();
@@ -220,37 +219,10 @@ public class LevelManager : MonoBehaviour
 
     private void GameOver(bool player1won)
     {
-        gameOverUI.SetActive(true);
-        if (player1won)
+        if (GameOverAction != null)
         {
-            p2WinText.gameObject.SetActive(false);
-        }
-        else
-        {
-            p1WinText.gameObject.SetActive(false);
+            GameOverAction(player1won);
         }
         Time.timeScale = 0;
-    }
-
-    public void Retry()
-    {
-        if (RetryAction != null)
-            RetryAction();
-    }
-
-    public void BackToSelection()
-    {
-        if (BackToSelectAction != null)
-        {
-            p1Selected = CharacterSelectionManager.Character.nullCharacter;
-            p2Selected = CharacterSelectionManager.Character.nullCharacter;
-            BackToSelectAction();
-        }
-    }
-
-    public void Menu()
-    {
-        if (ExitAction != null)
-            ExitAction(0);
     }
 }
