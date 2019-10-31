@@ -1522,7 +1522,7 @@ MonoBehaviour:
   startRoundTime: 1
   platformDelay: 8
   platformSpeed: 0.2
-  platformResetSpeed: 1
+  platformResetTime: 0.6
   ballResetSpeed: 10
   platformLimit: -12
   cameraShakeDuration: 0.2

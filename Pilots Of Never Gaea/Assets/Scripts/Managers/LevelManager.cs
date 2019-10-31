@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
     public static CharacterSelectionManager.Character p1Selected, p2Selected;
     public Shake2D cameraShake;
     public delegate void LevelAction();
-    public float startRoundTime, platformDelay, platformSpeed, platformResetSpeed, ballResetSpeed, platformLimit, cameraShakeDuration, cameraShakeIntensity;
+    public float startRoundTime, platformDelay, platformSpeed, platformResetTime, ballResetSpeed, platformLimit, cameraShakeDuration, cameraShakeIntensity;
     private float platformClock, platformInitialX;
     private bool platformsClosing, platformsArrived;
 
@@ -148,15 +148,17 @@ public class LevelManager : MonoBehaviour
         platformsArrived = false;
         p1Instance.GetComponent<Palette>().ResetPalette();
         p2Instance.GetComponent<Palette>().ResetPalette();
-
+        float platformFinalX = rightPlatform.transform.position.x;
         bool platformsResetting = true, ballResetting = true;
+        float speed = (platformInitialX - platformFinalX) / platformResetTime;
 
         while (platformsResetting || ballResetting)
         {
+            platformClock = 0f;
             if (platformsResetting && rightPlatform.transform.position.x < platformInitialX)
             {
-                rightPlatform.transform.Translate(Vector2.right * platformResetSpeed * Time.deltaTime);
-                leftPlatform.transform.Translate(Vector2.left * platformResetSpeed * Time.deltaTime);
+                leftPlatform.transform.Translate(-transform.right * speed * Time.deltaTime);
+                rightPlatform.transform.Translate(transform.right * speed * Time.deltaTime);
             }
             else
             {
