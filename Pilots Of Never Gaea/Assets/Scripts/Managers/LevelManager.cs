@@ -18,6 +18,7 @@ public class LevelManager : MonoBehaviour
     private Ball ballScriptReference;
     public static GameManager.GameOverFunction GameOverAction;
     public static CharacterSelectionManager.Character p1Selected, p2Selected;
+    public Animator p1PlatformAnimator, p2PlatformAnimator;
     public Shake2D cameraShake;
     public delegate void LevelAction();
     public float startRoundTime, platformDelay, platformSpeed, platformResetTime, ballResetSpeed, platformLimit, cameraShakeDuration, cameraShakeIntensity, fadeoutTime;
@@ -40,6 +41,8 @@ public class LevelManager : MonoBehaviour
         Ball.onScore = PlayerScored;
         Time.timeScale = 1;
         platformInitialX = rightPlatform.transform.position.x;
+        p1PlatformAnimator.SetInteger("STATE", 0);
+        p2PlatformAnimator.SetInteger("STATE", 0);
         InitializeGame();
         StartCoroutine(StartRound());
     }
@@ -120,10 +123,10 @@ public class LevelManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         float clock = 0f;
-        while (clock<fadeoutTime)
+        while (clock < fadeoutTime)
         {
             clock += Time.unscaledDeltaTime;
-            fadeoutSprite.color =new Color(255f, 255f, 255f, clock/fadeoutTime);
+            fadeoutSprite.color = new Color(255f, 255f, 255f, clock / fadeoutTime);
             yield return null;
         }
         Time.timeScale = 1f;
@@ -165,7 +168,8 @@ public class LevelManager : MonoBehaviour
         float platformFinalX = rightPlatform.transform.position.x;
         bool platformsResetting = true, ballResetting = true;
         float speed = (platformInitialX - platformFinalX) / platformResetTime;
-
+        p1PlatformAnimator.SetInteger("STATE", 2);
+        p2PlatformAnimator.SetInteger("STATE", 2);
         while (platformsResetting || ballResetting)
         {
             platformClock = 0f;
@@ -199,25 +203,33 @@ public class LevelManager : MonoBehaviour
         else
             ballScriptReference.InitialKick(Vector2.down + Vector2.left);
 
+        p1PlatformAnimator.SetInteger("STATE", 0);
+        p2PlatformAnimator.SetInteger("STATE", 0);
     }
 
     private void Update()
     {
         platformClock += Time.deltaTime;
-        if (platformsClosing)
+        if (platformsClosing && !platformsArrived)
         {
+            p1PlatformAnimator.SetInteger("STATE", 1);
+            p2PlatformAnimator.SetInteger("STATE", 1);
             leftPlatform.transform.Translate(transform.right * platformSpeed * Time.deltaTime);
             rightPlatform.transform.Translate(-transform.right * platformSpeed * Time.deltaTime);
             if (leftPlatform.transform.position.x >= platformLimit)
             {
                 platformsArrived = true;
-                platformsClosing = false;
+                platformsClosing = false;                
             }
         }
         else
         {
             if (!platformsArrived && platformClock >= platformDelay)
+            {
                 platformsClosing = true;
+                p1PlatformAnimator.SetInteger("STATE", 0);
+                p2PlatformAnimator.SetInteger("STATE", 0);
+            }
         }
 
         p1ScoreText.text = p1Score.ToString();
