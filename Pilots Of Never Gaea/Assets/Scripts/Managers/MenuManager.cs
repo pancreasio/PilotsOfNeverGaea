@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class MenuManager : MonoBehaviour
 {
     public static GameManager.ButtonAction StartAction;
     public static GameManager.ButtonAction ExitAction;
+    public TextMeshProUGUI versionText;
 
     private void Start()
     {
         Time.timeScale = 1;
+        versionText.text = "v" + Application.version;
     }
 
     public void StartGame()

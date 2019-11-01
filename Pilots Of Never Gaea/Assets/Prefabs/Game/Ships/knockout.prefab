@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 1989890064088317901}
   - component: {fileID: 1989890064088317902}
   m_Layer: 8
-  m_Name: Knockout
+  m_Name: knockout
   m_TagString: Palette
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

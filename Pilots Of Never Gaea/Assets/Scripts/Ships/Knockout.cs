@@ -47,17 +47,17 @@ public class Knockout : Palette
 
     public void FrontShot()
     {
-        Instantiate(frontShot, frontOrigin.transform.position, Quaternion.identity);
+        Instantiate(frontShot, frontOrigin.transform.position, transform.rotation);
     }
 
     public void UpShot()
     {
-        GameObject downInstance = Instantiate(sideShot, topOrigin.transform.position, sideShot.transform.rotation, topOrigin.transform);
+        GameObject downInstance = Instantiate(sideShot, topOrigin.transform.position, transform.rotation, topOrigin.transform);
     }
 
     public void DownShot()
     {
-        GameObject downInstance = Instantiate(sideShot, new Vector2(bottomOrigin.transform.position.x, bottomOrigin.transform.position.y), sideShot.transform.rotation, bottomOrigin.transform);
+        GameObject downInstance = Instantiate(sideShot, bottomOrigin.transform.position, transform.rotation, bottomOrigin.transform);
         downInstance.transform.Rotate(Vector3.back, 180.0f);
     }
 }

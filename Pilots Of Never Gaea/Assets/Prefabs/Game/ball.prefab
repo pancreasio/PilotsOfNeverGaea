@@ -183,10 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0f24f564338c5f4fac1ba95a15a6a7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSpeed: 9
-  horizontalBounds: 9.2
-  verticalBounds: 5.35
-  bounceMultiplier: 1
+  initialSpeed: 11
   stunTime: 0.05
 --- !u!212 &3587088231962082200
 SpriteRenderer:

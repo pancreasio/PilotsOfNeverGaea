@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1099107826389251519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2175690324371926593}
+  m_Layer: 8
+  m_Name: laser Origin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2175690324371926593
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099107826389251519}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.549, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1851360514041425686}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1733421318979740199
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733421318979740199}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.39, y: 0, z: 0}
+  m_LocalPosition: {x: -0.02, y: 0, z: 0}
   m_LocalScale: {x: 1.1982085, y: 0.19613071, z: 0.581128}
   m_Children: []
   m_Father: {fileID: 1851360514041425686}
@@ -115,6 +145,7 @@ Transform:
   - {fileID: 5172084720802012732}
   - {fileID: 6582869049128767658}
   - {fileID: 1733421318979740197}
+  - {fileID: 2175690324371926593}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -241,12 +272,10 @@ MonoBehaviour:
   chargesRequired: 2
   maxCharges: 2
   pointer: {fileID: 1733421318979740199}
+  laserOrigin: {fileID: 2175690324371926593}
   laser: {fileID: 2544153375021142846, guid: 0676a02d83099514b9a81976f40eda7b, type: 3}
   shotDelay: 0.6
-  reducedShotDelay: 0.3
   deploymentTime: 0.217
-  initialSpeedMultiplier: 0.8
-  chargeSpeedMultiplier: 0.5
 --- !u!95 &5875183913415288126
 Animator:
   serializedVersion: 3
