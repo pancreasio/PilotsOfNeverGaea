@@ -311,7 +311,7 @@ Transform:
   m_LocalScale: {x: 4.6238365, y: 4.6238365, z: 4.6238365}
   m_Children: []
   m_Father: {fileID: 1269846826}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &77886106
 SpriteRenderer:
@@ -1409,7 +1409,7 @@ GameObject:
   - component: {fileID: 673869197}
   - component: {fileID: 673869196}
   m_Layer: 9
-  m_Name: wall_bottom
+  m_Name: wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2084,7 +2084,7 @@ Transform:
   m_LocalScale: {x: 197.64322, y: 12.939, z: 12.939}
   m_Children: []
   m_Father: {fileID: 1269846826}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1128793553
 GameObject:
@@ -2236,8 +2236,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 77886105}
   - {fileID: 1118077793}
+  - {fileID: 77886105}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

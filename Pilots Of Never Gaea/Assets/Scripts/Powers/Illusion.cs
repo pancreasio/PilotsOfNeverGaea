@@ -21,16 +21,40 @@ public class Illusion : MonoBehaviour
     {
         if (collision.transform.tag == "Wall")
         {
-            if (transform.position.y > 0)
-                rig.velocity = (rig.velocity + Vector2.down).normalized * initialSpeed;
-            else
-                rig.velocity = (rig.velocity + Vector2.up).normalized * initialSpeed;
-        }
-        else
-        {
-            if (collision.transform.tag == "Palette" || collision.transform.tag == "Platform")
-                Destroy(this.gameObject);
+            Debug.Log("it works");
+                rig.velocity = new Vector2(rig.velocity.x, -rig.velocity.y).normalized * initialSpeed;
         }
 
+        if (collision.transform.tag == "Platform")
+        {
+            if (transform.position.x > 0)
+            {
+                if (rig.velocity.y > 0)
+                {
+                    rig.velocity = (Vector2.left + Vector2.up).normalized * initialSpeed;
+                }
+                else
+                {
+                    rig.velocity = (Vector2.left + Vector2.down).normalized * initialSpeed;
+                }
+            }
+            else
+            {
+                if (rig.velocity.y > 0)
+                {
+                    rig.velocity = (Vector2.right + Vector2.up).normalized * initialSpeed;
+                }
+                else
+                {
+                    rig.velocity = (Vector2.right + Vector2.down).normalized * initialSpeed;
+                }
+            }
+        }
+
+        {
+            if (collision.transform.tag == "Palette")
+                Destroy(this.gameObject);
+        }
     }
+
 }

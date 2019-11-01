@@ -35,7 +35,7 @@ public class Djinn : Palette
                     else
                         illusionInstance.InitialKick(transform.right);
                 }
-                Instantiate(wishPrefab, origin.position, Quaternion.identity);
+                Instantiate(wishPrefab, origin.position, transform.rotation);
                 charges -= chargesRequired;
                 power = false;
                 action = false;
