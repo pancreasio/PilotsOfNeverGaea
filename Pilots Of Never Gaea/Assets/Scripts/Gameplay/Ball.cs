@@ -41,16 +41,6 @@ public class Ball : MonoBehaviour
         }
     }
 
-    private void HorizontalBounce()
-    {
-        rig.velocity = new Vector2(-rig.velocity.x, rig.velocity.y);
-    }
-
-    private void VerticalBounce()
-    {
-        rig.velocity = new Vector2(rig.velocity.x, -rig.velocity.y);
-    }
-
     public void StopMovement()
     {
         stuck = false;
@@ -60,7 +50,7 @@ public class Ball : MonoBehaviour
 
     public void InitialKick(Vector2 kickDirection)
     {
-        rig.AddForce(kickDirection * initialSpeed, ForceMode2D.Impulse);
+        rig.AddForce(kickDirection.normalized * initialSpeed, ForceMode2D.Impulse);
     }
 
     private void HitStun()
@@ -100,22 +90,22 @@ public class Ball : MonoBehaviour
         {
             if (!up)
             {
-                rig.AddForce((Vector2.down + Vector2.left) * initialSpeed, ForceMode2D.Impulse);
+                rig.AddForce((Vector2.down + Vector2.left).normalized * initialSpeed, ForceMode2D.Impulse);
             }
             else
             {
-                rig.AddForce((Vector2.up + Vector2.left) * initialSpeed, ForceMode2D.Impulse);
+                rig.AddForce((Vector2.up + Vector2.left).normalized * initialSpeed, ForceMode2D.Impulse);
             }
         }
         else
         {
             if (!up)
             {
-                rig.AddForce((Vector2.down + Vector2.right) * initialSpeed, ForceMode2D.Impulse);
+                rig.AddForce((Vector2.down + Vector2.right).normalized * initialSpeed, ForceMode2D.Impulse);
             }
             else
             {
-                rig.AddForce((Vector2.up + Vector2.right) * initialSpeed, ForceMode2D.Impulse);
+                rig.AddForce((Vector2.up + Vector2.right).normalized * initialSpeed, ForceMode2D.Impulse);
             }
         }
     }
@@ -126,7 +116,7 @@ public class Ball : MonoBehaviour
         if (collisionTag == "Laser")
         {
             HitStun();
-            VerticalBounce();
+            rig.velocity = new Vector2(rig.velocity.x, -rig.velocity.y);
         }
 
         if (collisionTag == "Ion Wave")
@@ -159,6 +149,16 @@ public class Ball : MonoBehaviour
         {
             if (stuck)
                 Unstick();
+            CornerBounce(collision.gameObject);
+        }
+
+        if (collisionTag == "FrontShot")
+        {
+            rig.velocity = new Vector2(-rig.velocity.x, 0f).normalized * 2f * initialSpeed;
+        }
+
+        if (collisionTag == "SideShot")
+        {
             CornerBounce(collision.gameObject);
         }
     }

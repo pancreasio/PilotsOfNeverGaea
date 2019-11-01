@@ -6,7 +6,7 @@ public class CharacterSelectionManager : MonoBehaviour
 {
     public enum Character
     {
-        nullCharacter, raildrive, magstream, kunst
+        nullCharacter, raildrive, magstream, kunst, knockout
     }
     public static GameManager.StartDuelFunction SelectAction;
     public static GameManager.SceneChange FadeAction;

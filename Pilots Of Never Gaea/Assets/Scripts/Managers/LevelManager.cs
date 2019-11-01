@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     public int roundsToWin;
     public TextMeshProUGUI p1ScoreText, p2ScoreText, p1WinText, p2WinText;
     public GameObject leftPlatform, rightPlatform, p1Light, p2Light,
-        ballPrefab, magPrefab, railPrefab, kunstPrefab,
+        ballPrefab, magPrefab, railPrefab, kunstPrefab, knockoutPrefab,
         p1Position, p2Position;
     public SpriteRenderer fadeoutSprite;
     private GameObject ballReference = null, topSparks, bottomSparks, p1Instance = null, p2Instance = null;
@@ -62,6 +62,9 @@ public class LevelManager : MonoBehaviour
             case CharacterSelectionManager.Character.kunst:
                 p1Instance = Instantiate(kunstPrefab, p1Position.transform);
                 break;
+            case CharacterSelectionManager.Character.knockout:
+                p1Instance = Instantiate(knockoutPrefab, p1Position.transform);
+                break;
             default:
                 break;
         }
@@ -85,6 +88,9 @@ public class LevelManager : MonoBehaviour
                 break;
             case CharacterSelectionManager.Character.kunst:
                 p2Instance = Instantiate(kunstPrefab, p2Position.transform);
+                break;
+            case CharacterSelectionManager.Character.knockout:
+                p2Instance = Instantiate(knockoutPrefab, p1Position.transform);
                 break;
             default:
                 break;

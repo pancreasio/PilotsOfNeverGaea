@@ -12,6 +12,8 @@ TagManager:
   - Straight Palette
   - Platform
   - Corner
+  - FrontShot
+  - SideShot
   layers:
   - Default
   - TransparentFX

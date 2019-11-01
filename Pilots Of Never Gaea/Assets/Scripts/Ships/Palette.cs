@@ -13,7 +13,6 @@ public class Palette : MonoBehaviour
     private Rigidbody2D rigi;
     public int chargesRequired , maxCharges;
     protected int charges;
-    [HideInInspector]
     protected bool up, down, action, power;
     private float moveDelta, chargeDelay = 0.1f, chargeClock = 0f;
     public delegate void PaletteAction();
@@ -31,6 +30,9 @@ public class Palette : MonoBehaviour
 
     protected virtual void Update()
     {
+        down = false;
+        up = false;
+
         //input
 
         if (!left)
@@ -80,12 +82,15 @@ public class Palette : MonoBehaviour
         if (up)
         {
             Move(true);
-            up = false;
         }
         if (down)
         {
             Move(false);
-            down = false;
+        }
+
+        if (charges >= chargesRequired)
+        {
+            power = true;
         }
 
         chargeClock += Time.deltaTime;
@@ -127,10 +132,6 @@ public class Palette : MonoBehaviour
             if (charges < maxCharges)
             {
                 charges++;
-                if (charges >= chargesRequired)
-                {
-                    power = true;
-                }
             }
         }
     }
