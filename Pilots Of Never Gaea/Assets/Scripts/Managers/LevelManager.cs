@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     public int roundsToWin;
     public TextMeshProUGUI p1ScoreText, p2ScoreText, p1WinText, p2WinText;
     public GameObject leftPlatform, rightPlatform, p1Light, p2Light,
-        ballPrefab, magPrefab, railPrefab, kunstPrefab, knockoutPrefab,
+        ballPrefab, magPrefab, railPrefab, kunstPrefab, knockoutPrefab, djinnPrefab,
         p1Position, p2Position;
     public SpriteRenderer fadeoutSprite;
     private GameObject ballReference = null, topSparks, bottomSparks, p1Instance = null, p2Instance = null;
@@ -65,6 +65,9 @@ public class LevelManager : MonoBehaviour
             case CharacterSelectionManager.Character.knockout:
                 p1Instance = Instantiate(knockoutPrefab, p1Position.transform);
                 break;
+            case CharacterSelectionManager.Character.djinn:
+                p1Instance = Instantiate(djinnPrefab, p1Position.transform);
+                break;
             default:
                 break;
         }
@@ -90,7 +93,10 @@ public class LevelManager : MonoBehaviour
                 p2Instance = Instantiate(kunstPrefab, p2Position.transform);
                 break;
             case CharacterSelectionManager.Character.knockout:
-                p2Instance = Instantiate(knockoutPrefab, p1Position.transform);
+                p2Instance = Instantiate(knockoutPrefab, p2Position.transform);
+                break;
+            case CharacterSelectionManager.Character.djinn:
+                p2Instance = Instantiate(djinnPrefab, p2Position.transform);
                 break;
             default:
                 break;
@@ -225,7 +231,7 @@ public class LevelManager : MonoBehaviour
             if (leftPlatform.transform.position.x >= platformLimit)
             {
                 platformsArrived = true;
-                platformsClosing = false;                
+                platformsClosing = false;
             }
         }
         else

@@ -8,7 +8,7 @@ public class Ball : MonoBehaviour
     public delegate void OnScoreAction(bool player1);
     public static OnScoreAction onScore;
     public static LevelManager.LevelAction ElectrifyAction, UnstickAction;
-    public float initialSpeed, horizontalBounds, verticalBounds, bounceMultiplier, stunTime;
+    public float initialSpeed, stunTime;
     private float stunClock, stuckYPosition, stuckSpeed;
     private bool stunned, charged, stuck;
     private Vector2 stunnedPosition;
@@ -154,11 +154,13 @@ public class Ball : MonoBehaviour
 
         if (collisionTag == "FrontShot")
         {
+            HitStun();
             rig.velocity = new Vector2(-rig.velocity.x, 0f).normalized * 2f * initialSpeed;
         }
 
         if (collisionTag == "SideShot")
         {
+            HitStun();
             CornerBounce(collision.gameObject);
         }
     }

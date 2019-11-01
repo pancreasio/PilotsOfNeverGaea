@@ -1804,6 +1804,8 @@ MonoBehaviour:
     type: 3}
   knockoutPrefab: {fileID: 1989890064088317898, guid: 6884f094b72359a4cad6ffc402ad0acf,
     type: 3}
+  djinnPrefab: {fileID: 3756782191027069904, guid: 06bf311561d45114f960f9a02d955020,
+    type: 3}
   p1Position: {fileID: 1471547319}
   p2Position: {fileID: 116639106}
   fadeoutSprite: {fileID: 602137368}
@@ -2185,6 +2187,9 @@ MonoBehaviour:
   left: 0
   chargesRequired: 2
   maxCharges: 2
+  illusionPrefab: {fileID: 0}
+  origin: {fileID: 0}
+  wishPrefab: {fileID: 0}
 --- !u!95 &1128793557
 Animator:
   serializedVersion: 3

@@ -6,7 +6,7 @@ public class Laser : MonoBehaviour
 {
     public float activeTime;
     private float activeClock;
-    private BoxCollider2D boxCollider;
+    private BoxCollider2D boxCollider = null;
     private void Start()
     {
         boxCollider = transform.GetComponent<BoxCollider2D>();
@@ -26,6 +26,7 @@ public class Laser : MonoBehaviour
     {
         if (collision.transform.tag == "Ball")
         {
+            if(boxCollider!= null)
             boxCollider.enabled = false;
         }
     }
