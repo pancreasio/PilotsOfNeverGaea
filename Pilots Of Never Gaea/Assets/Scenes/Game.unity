@@ -1812,7 +1812,8 @@ MonoBehaviour:
   p1PlatformAnimator: {fileID: 266926465}
   p2PlatformAnimator: {fileID: 538531451}
   cameraShake: {fileID: 519420033}
-  startRoundTime: 1
+  startRoundTime: 2
+  resetRoundTime: 1
   platformDelay: 8
   platformSpeed: 0.2
   platformResetTime: 0.6

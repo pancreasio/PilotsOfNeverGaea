@@ -21,7 +21,7 @@ public class LevelManager : MonoBehaviour
     public Animator p1PlatformAnimator, p2PlatformAnimator;
     public Shake2D cameraShake;
     public delegate void LevelAction();
-    public float startRoundTime, platformDelay, platformSpeed, platformResetTime, ballResetSpeed, platformLimit, cameraShakeDuration, cameraShakeIntensity, fadeoutTime;
+    public float startRoundTime, resetRoundTime, platformDelay, platformSpeed, platformResetTime, ballResetSpeed, platformLimit, cameraShakeDuration, cameraShakeIntensity, fadeoutTime;
     private float platformClock, platformInitialX;
     private bool platformsClosing, platformsArrived;
 
@@ -173,6 +173,7 @@ public class LevelManager : MonoBehaviour
         ballScriptReference.StopMovement();
         DeactivateSparks();
         platformClock = 0;
+        float resetClock = 0f;
         platformsClosing = false;
         platformsArrived = false;
         //p1Instance.GetComponent<Palette>().ResetPalette();
@@ -182,9 +183,10 @@ public class LevelManager : MonoBehaviour
         float speed = (platformInitialX - platformFinalX) / platformResetTime;
         p1PlatformAnimator.SetInteger("STATE", 2);
         p2PlatformAnimator.SetInteger("STATE", 2);
-        while (platformsResetting || ballResetting)
+        while (resetClock < resetRoundTime || platformsResetting || ballResetting)
         {
             platformClock = 0f;
+            resetClock += Time.deltaTime;
             if (platformsResetting && rightPlatform.transform.position.x < platformInitialX)
             {
                 leftPlatform.transform.Translate(-transform.right * speed * Time.deltaTime);
@@ -194,6 +196,8 @@ public class LevelManager : MonoBehaviour
             {
                 rightPlatform.transform.position = new Vector2(platformInitialX, 0f);
                 leftPlatform.transform.position = new Vector2(-platformInitialX, 0f);
+                p1PlatformAnimator.SetInteger("STATE", 0);
+                p2PlatformAnimator.SetInteger("STATE", 0);
                 platformsResetting = false;
             }
 
@@ -210,10 +214,16 @@ public class LevelManager : MonoBehaviour
             yield return null;
         }
 
-        if (player1Scored)
-            ballScriptReference.InitialKick(Vector2.down + Vector2.right);
+        Vector2 initialVector;
+        if (Mathf.FloorToInt(Time.fixedTime) % 2 == 0)
+            initialVector = Vector2.up;
         else
-            ballScriptReference.InitialKick(Vector2.down + Vector2.left);
+            initialVector = Vector2.down;
+
+        if (player1Scored)
+            ballScriptReference.InitialKick(initialVector + Vector2.left);
+        else
+            ballScriptReference.InitialKick(initialVector + Vector2.right);
 
         p1PlatformAnimator.SetInteger("STATE", 0);
         p2PlatformAnimator.SetInteger("STATE", 0);

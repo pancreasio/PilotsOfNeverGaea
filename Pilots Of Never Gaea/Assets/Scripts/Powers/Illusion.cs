@@ -21,7 +21,6 @@ public class Illusion : MonoBehaviour
     {
         if (collision.transform.tag == "Wall")
         {
-            Debug.Log("it works");
                 rig.velocity = new Vector2(rig.velocity.x, -rig.velocity.y).normalized * initialSpeed;
         }
 
