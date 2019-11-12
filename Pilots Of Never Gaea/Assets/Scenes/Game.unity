@@ -1817,7 +1817,7 @@ MonoBehaviour:
   platformSpeed: 0.2
   platformResetTime: 0.6
   ballResetSpeed: 10
-  platformLimit: -12
+  platformLimit: -8
   cameraShakeDuration: 0.2
   cameraShakeIntensity: 0.2
   fadeoutTime: 2

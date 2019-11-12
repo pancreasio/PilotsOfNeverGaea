@@ -10,7 +10,7 @@ public class Ball : MonoBehaviour
     public static LevelManager.LevelAction ElectrifyAction, UnstickAction;
     public float initialSpeed, stunTime;
     private float stunClock, stuckYPosition, stuckSpeed;
-    private bool stunned, charged, stuck;
+    private bool stunned, charged, stuck, shot;
     private Vector2 stunnedPosition;
 
     private void Start()
@@ -20,6 +20,7 @@ public class Ball : MonoBehaviour
         stunClock = 0;
         charged = false;
         stuck = false;
+        shot = false;
     }
 
     private void Update()
@@ -50,6 +51,7 @@ public class Ball : MonoBehaviour
 
     public void InitialKick(Vector2 kickDirection)
     {
+        rig.velocity = Vector2.zero;
         rig.AddForce(kickDirection.normalized * initialSpeed, ForceMode2D.Impulse);
     }
 
@@ -155,7 +157,11 @@ public class Ball : MonoBehaviour
         if (collisionTag == "FrontShot")
         {
             HitStun();
-            rig.velocity = new Vector2(-rig.velocity.x, 0f).normalized * 2f * initialSpeed;
+            shot = true;
+            if (transform.position.x < 0)
+                rig.velocity = new Vector2(1f, 0f).normalized * 2f * initialSpeed;
+            else
+                rig.velocity = new Vector2(-1f, 0f).normalized * 2f * initialSpeed;
         }
 
         if (collisionTag == "SideShot")
@@ -185,9 +191,15 @@ public class Ball : MonoBehaviour
             Stick();
         }
 
-        if ((collisionTag == "Palette") && stuck)
+        if ((collisionTag == "Palette"))
         {
-            Unstick();
+            if (stuck)
+                Unstick();
+            if (shot)
+            {
+                BounceToCenter(transform.position.y > collision.transform.position.y);
+                shot = false;
+            }
         }
     }
 }

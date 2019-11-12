@@ -175,8 +175,8 @@ public class LevelManager : MonoBehaviour
         platformClock = 0;
         platformsClosing = false;
         platformsArrived = false;
-        p1Instance.GetComponent<Palette>().ResetPalette();
-        p2Instance.GetComponent<Palette>().ResetPalette();
+        //p1Instance.GetComponent<Palette>().ResetPalette();
+        //p2Instance.GetComponent<Palette>().ResetPalette();
         float platformFinalX = rightPlatform.transform.position.x;
         bool platformsResetting = true, ballResetting = true;
         float speed = (platformInitialX - platformFinalX) / platformResetTime;
@@ -224,14 +224,16 @@ public class LevelManager : MonoBehaviour
         platformClock += Time.deltaTime;
         if (platformsClosing && !platformsArrived)
         {
-            p1PlatformAnimator.SetInteger("STATE", 1);
-            p2PlatformAnimator.SetInteger("STATE", 1);
+            //p1PlatformAnimator.SetInteger("STATE", 1);
+            //p2PlatformAnimator.SetInteger("STATE", 1);
             leftPlatform.transform.Translate(transform.right * platformSpeed * Time.deltaTime);
             rightPlatform.transform.Translate(-transform.right * platformSpeed * Time.deltaTime);
             if (leftPlatform.transform.position.x >= platformLimit)
             {
                 platformsArrived = true;
                 platformsClosing = false;
+                p1PlatformAnimator.SetInteger("STATE", 0);
+                p2PlatformAnimator.SetInteger("STATE", 0);
             }
         }
         else
@@ -239,8 +241,8 @@ public class LevelManager : MonoBehaviour
             if (!platformsArrived && platformClock >= platformDelay)
             {
                 platformsClosing = true;
-                p1PlatformAnimator.SetInteger("STATE", 0);
-                p2PlatformAnimator.SetInteger("STATE", 0);
+                p1PlatformAnimator.SetInteger("STATE", 1);
+                p2PlatformAnimator.SetInteger("STATE", 1);
             }
         }
 

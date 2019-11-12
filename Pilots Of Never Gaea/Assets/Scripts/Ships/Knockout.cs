@@ -16,18 +16,18 @@ public class Knockout : Palette
     protected override void Update()
     {
         base.Update();
-        if (up)
-        {
-            animator.SetBool("UP", true);
-        }
-        else
-        {
-            animator.SetBool("UP", false);
-            if (down)
-                animator.SetBool("DOWN", true);
-            else
-                animator.SetBool("DOWN", false);
-        }
+        //if (up)
+        //{
+        //    animator.SetBool("UP", true);
+        //}
+        //else
+        //{
+        //    animator.SetBool("UP", false);
+        //    if (down)
+        //        animator.SetBool("DOWN", true);
+        //    else
+        //        animator.SetBool("DOWN", false);
+        //}
         if (power)
         {
             animator.SetBool("POWER", true);
