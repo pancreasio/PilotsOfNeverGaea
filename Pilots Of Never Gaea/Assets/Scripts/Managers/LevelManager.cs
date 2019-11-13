@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour
 {
     private int p1Score, p2Score;
     public int roundsToWin;
-    public TextMeshProUGUI p1ScoreText, p2ScoreText, p1WinText, p2WinText;
+    public TextMeshProUGUI p1ScoreText, p2ScoreText, startRoundText;
     public GameObject leftPlatform, rightPlatform, p1Light, p2Light,
         ballPrefab, magPrefab, railPrefab, kunstPrefab, knockoutPrefab, djinnPrefab,
         p1Position, p2Position;
@@ -122,12 +122,14 @@ public class LevelManager : MonoBehaviour
         if (player1)
         {
             p1Score++;
-            StartCoroutine(ResetRound(true));
+            if (p1Score < roundsToWin)
+                StartCoroutine(ResetRound(true));
         }
         else
         {
             p2Score++;
-            StartCoroutine(ResetRound(false));
+            if (p2Score < roundsToWin)
+                StartCoroutine(ResetRound(false));
         }
     }
 
@@ -159,17 +161,24 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator StartRound()
     {
+        startRoundText.gameObject.SetActive(true);
+        startRoundText.text = "arena prepared";
         float startClock = 0f;
         while (startClock < startRoundTime)
         {
             startClock += Time.deltaTime;
+            if (startClock > 3 * startRoundTime / 4)
+                startRoundText.text = "collide!";
             yield return null;
         }
+        startRoundText.gameObject.SetActive(false);
         ballScriptReference.InitialKick(Vector2.down + Vector2.left);
     }
 
     private IEnumerator ResetRound(bool player1Scored)
     {
+        startRoundText.gameObject.SetActive(true);
+        startRoundText.text = "resetting arena";
         ballScriptReference.StopMovement();
         DeactivateSparks();
         platformClock = 0;
@@ -187,6 +196,8 @@ public class LevelManager : MonoBehaviour
         {
             platformClock = 0f;
             resetClock += Time.deltaTime;
+            if (resetClock > 3 * resetRoundTime / 4)
+                startRoundText.text = "engage!";
             if (platformsResetting && rightPlatform.transform.position.x < platformInitialX)
             {
                 leftPlatform.transform.Translate(-transform.right * speed * Time.deltaTime);
@@ -227,6 +238,7 @@ public class LevelManager : MonoBehaviour
 
         p1PlatformAnimator.SetInteger("STATE", 0);
         p2PlatformAnimator.SetInteger("STATE", 0);
+        startRoundText.gameObject.SetActive(false);
     }
 
     private void Update()
