@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
     public TextMeshProUGUI p1ScoreText, p2ScoreText, startRoundText;
     public GameObject leftPlatform, rightPlatform, p1Light, p2Light,
         ballPrefab, magPrefab, railPrefab, kunstPrefab, knockoutPrefab, djinnPrefab,
-        p1Position, p2Position;
+        p1Position, p2Position, topRightArrow, topLeftArrow, bottomRightArrow, bottomLeftArrow;
     public SpriteRenderer fadeoutSprite;
     private GameObject ballReference = null, topSparks, bottomSparks, p1Instance = null, p2Instance = null;
     private Ball ballScriptReference;
@@ -161,9 +161,43 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator StartRound()
     {
+        Vector2 initialDirection;
+        GameObject actualArrow;
+        if (UnityEngine.Random.value < 0.5f)
+        {
+            initialDirection = Vector2.down;
+            if (UnityEngine.Random.value < 0.5f)
+            {
+                initialDirection += Vector2.left;
+                actualArrow = bottomLeftArrow;
+            }
+            else
+            {
+                initialDirection += Vector2.right;
+                actualArrow = bottomRightArrow;
+            }
+        }
+        else
+        {
+            initialDirection = Vector2.up;
+            if (UnityEngine.Random.value < 0.5f)
+            {
+                initialDirection += Vector2.left;
+                actualArrow = topLeftArrow;
+            }
+            else
+            {
+                initialDirection += Vector2.right;
+                actualArrow = topRightArrow;
+            }
+        }
+
+        initialDirection.Normalize();
+
         startRoundText.gameObject.SetActive(true);
         startRoundText.text = "arena prepared";
         float startClock = 0f;
+        actualArrow.SetActive(true);
         while (startClock < startRoundTime)
         {
             startClock += Time.deltaTime;
@@ -172,11 +206,13 @@ public class LevelManager : MonoBehaviour
             yield return null;
         }
         startRoundText.gameObject.SetActive(false);
-        ballScriptReference.InitialKick(Vector2.down + Vector2.left);
+        actualArrow.SetActive(false);
+        ballScriptReference.InitialKick(initialDirection);
     }
 
     private IEnumerator ResetRound(bool player1Scored)
     {
+        GameObject actualArrow;
         startRoundText.gameObject.SetActive(true);
         startRoundText.text = "resetting arena";
         ballScriptReference.StopMovement();
@@ -185,13 +221,45 @@ public class LevelManager : MonoBehaviour
         float resetClock = 0f;
         platformsClosing = false;
         platformsArrived = false;
-        //p1Instance.GetComponent<Palette>().ResetPalette();
-        //p2Instance.GetComponent<Palette>().ResetPalette();
         float platformFinalX = rightPlatform.transform.position.x;
         bool platformsResetting = true, ballResetting = true;
         float speed = (platformInitialX - platformFinalX) / platformResetTime;
         p1PlatformAnimator.SetInteger("STATE", 2);
         p2PlatformAnimator.SetInteger("STATE", 2);
+
+        Vector2 initialDirection;
+        if (UnityEngine.Random.value < 0.5f)
+        {
+            initialDirection = Vector2.up;
+            if (player1Scored)
+            {
+                initialDirection += Vector2.left;
+                actualArrow = topLeftArrow;
+            }
+            else
+            {
+                initialDirection += Vector2.right;
+                actualArrow = topRightArrow;
+            }
+
+        }
+        else
+        {
+            initialDirection = Vector2.down;
+            if (player1Scored)
+            {
+                initialDirection += Vector2.left;
+                actualArrow = bottomLeftArrow;
+            }
+            else
+            {
+                initialDirection += Vector2.right;
+                actualArrow = bottomRightArrow;
+            }
+        }
+
+        initialDirection.Normalize();
+
         while (resetClock < resetRoundTime || platformsResetting || ballResetting)
         {
             platformClock = 0f;
@@ -220,25 +288,17 @@ public class LevelManager : MonoBehaviour
             {
                 ballResetting = false;
                 ballReference.transform.position = Vector2.zero;
+                actualArrow.SetActive(true);
             }
 
             yield return null;
         }
 
-        Vector2 initialVector;
-        if (Mathf.FloorToInt(Time.fixedTime) % 2 == 0)
-            initialVector = Vector2.up;
-        else
-            initialVector = Vector2.down;
-
-        if (player1Scored)
-            ballScriptReference.InitialKick(initialVector + Vector2.left);
-        else
-            ballScriptReference.InitialKick(initialVector + Vector2.right);
-
         p1PlatformAnimator.SetInteger("STATE", 0);
         p2PlatformAnimator.SetInteger("STATE", 0);
         startRoundText.gameObject.SetActive(false);
+        ballScriptReference.InitialKick(initialDirection);
+        actualArrow.SetActive(false);
     }
 
     private void Update()
