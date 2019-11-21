@@ -121,8 +121,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 60
-        height: 60
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,7 +130,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa1235981e1f87543823f1d8a08abc94
+      spriteID: 04fdce6f7343c4042a5c2aa1e2c48148
       internalID: -8546110526106821604
       vertices: []
       indices: 
@@ -140,10 +140,10 @@ TextureImporter:
       name: raildrive_charged_idle_1
       rect:
         serializedVersion: 2
-        x: 60
+        x: 300
         y: 0
-        width: 60
-        height: 60
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,7 +151,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75c9c41ef7f0bde4085f532c237626a3
+      spriteID: 4d515088b92a44e4298ef46f3ff3e32f
       internalID: -5952469487995286348
       vertices: []
       indices: 

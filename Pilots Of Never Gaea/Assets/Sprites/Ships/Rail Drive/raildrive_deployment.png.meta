@@ -130,8 +130,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 60
-        height: 60
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,7 +139,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f5a57046b9c54942a39053c57858af5
+      spriteID: 255058a733fbf6644b9170852216bfc2
       internalID: 5710638003711991413
       vertices: []
       indices: 
@@ -149,10 +149,10 @@ TextureImporter:
       name: raildrive_deployment_1
       rect:
         serializedVersion: 2
-        x: 60
+        x: 300
         y: 0
-        width: 60
-        height: 60
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,7 +160,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15882f98e0ee4834f8403005e16407b9
+      spriteID: b80b8d15500c32843a541785c11446bd
       internalID: -2934595487201020781
       vertices: []
       indices: 
@@ -170,10 +170,10 @@ TextureImporter:
       name: raildrive_deployment_2
       rect:
         serializedVersion: 2
-        x: 120
+        x: 600
         y: 0
-        width: 60
-        height: 60
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,7 +181,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9609ee8730f8fbb46a6529947d10e2b7
+      spriteID: 70644b1b529593246b6d7d75d39007b0
       internalID: -8475375127596805588
       vertices: []
       indices: 
@@ -191,10 +191,10 @@ TextureImporter:
       name: raildrive_deployment_3
       rect:
         serializedVersion: 2
-        x: 180
+        x: 900
         y: 0
-        width: 60
-        height: 60
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,7 +202,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d63f4b99afc997447ba428ca834a1149
+      spriteID: a5f002863a43cee48b46a880bca4de4a
       internalID: 1804107143798639294
       vertices: []
       indices: 
@@ -212,10 +212,10 @@ TextureImporter:
       name: raildrive_deployment_4
       rect:
         serializedVersion: 2
-        x: 240
+        x: 1200
         y: 0
-        width: 60
-        height: 60
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,7 +223,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ed657ee71e223f42be11ae32613b2cd
+      spriteID: c3bd9782b2e6c1046acc4bfa46bd2fa9
       internalID: 4289408552551982912
       vertices: []
       indices: 

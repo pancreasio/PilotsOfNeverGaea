@@ -10,6 +10,7 @@ public class ShipSelect : MonoBehaviour
     public bool isPlayer1;
     private bool isMoving = false, selectButton;
     private int currentSelected;
+    public List<GameObject> shipList;
 
     public enum Ship
     {
