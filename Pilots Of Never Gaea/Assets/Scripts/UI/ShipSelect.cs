@@ -11,29 +11,35 @@ public class ShipSelect : MonoBehaviour
     private bool isMoving = false, selectButton;
     private int currentSelected;
     public List<GameObject> shipList;
+    public static GameManager.StartDuelFunction SelectAction;
+    public static GameManager.SceneChange FadeAction;
+    public CharacterSelectionManager characterSelectionManager;
 
-    public enum Ship
-    {
-        none,
-        Raildrive,
-        Magstream,
-        Kunst,
-        Knockout,
-        Djinn
-    }
-    public Ship selectedShip;
+    public CharacterSelectionManager.Character selectedShip;
 
-    private void Start()
+    private void Awake()
     {
-        selectedShip = Ship.none;
+        selectedShip = CharacterSelectionManager.Character.none;
         currentSelected = firstShip;
         selectButton = false;
         direction = 0f;
+        if (!isPlayer1)
+        {
+            foreach (GameObject ship in shipList)
+            {
+                ship.GetComponent<Animator>().SetTrigger("RIGHT");
+            }
+        }
+    }
+
+    private void Start()
+    {
+        shipList[currentSelected].GetComponent<Animator>().SetTrigger("HIGHLIGHTED");
     }
 
     private void Update()
     {
-        if (selectedShip == Ship.none)
+        if (selectedShip == CharacterSelectionManager.Character.none)
         {
             GetScrollInput();
             if (!isMoving)
@@ -44,6 +50,7 @@ public class ShipSelect : MonoBehaviour
                 {
                     if (selectButton)
                     {
+                        shipList[currentSelected].GetComponent<Animator>().SetTrigger("SELECTED");
                         SelectShip(currentSelected);
                     }
                 }
@@ -53,13 +60,19 @@ public class ShipSelect : MonoBehaviour
 
     private void SelectShip(int shipIndex)
     {
-        selectedShip = (Ship)(shipIndex +1);
+        selectedShip = (CharacterSelectionManager.Character)(shipIndex +1);
+        if (isPlayer1)
+            characterSelectionManager.p1SelectedCharacter = selectedShip;
+        else
+            characterSelectionManager.p2SelectedCharacter = selectedShip;
+
     }
 
     IEnumerator Scroll(float moveDirection)
     {
         if (!(currentSelected == 0 && direction > 0 || currentSelected == shipAmmount - 1 && direction < 0))
         {
+            shipList[currentSelected].GetComponent<Animator>().SetTrigger("IDLE");
             isMoving = true;
             float scrollClock = 0f;
             while (scrollClock < scrollTime)
@@ -69,6 +82,7 @@ public class ShipSelect : MonoBehaviour
                 yield return null;
             }
             currentSelected -= Mathf.FloorToInt(moveDirection);
+            shipList[currentSelected].GetComponent<Animator>().SetTrigger("HIGHLIGHTED");
             isMoving = false;
         }
     }

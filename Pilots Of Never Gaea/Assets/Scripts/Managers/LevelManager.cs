@@ -51,7 +51,7 @@ public class LevelManager : MonoBehaviour
     {
         switch (p1Selected)
         {
-            case CharacterSelectionManager.Character.nullCharacter:
+            case CharacterSelectionManager.Character.none:
                 break;
             case CharacterSelectionManager.Character.raildrive:
                 p1Instance = Instantiate(railPrefab, p1Position.transform);
@@ -81,7 +81,7 @@ public class LevelManager : MonoBehaviour
 
         switch (p2Selected)
         {
-            case CharacterSelectionManager.Character.nullCharacter:
+            case CharacterSelectionManager.Character.none:
                 break;
             case CharacterSelectionManager.Character.raildrive:
                 p2Instance = Instantiate(railPrefab, p2Position.transform);

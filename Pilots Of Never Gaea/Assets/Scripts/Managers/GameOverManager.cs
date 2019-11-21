@@ -33,8 +33,8 @@ public class GameOverManager : MonoBehaviour
     {
         if (CharacterSelectAction != null)
         {
-            LevelManager.p1Selected = CharacterSelectionManager.Character.nullCharacter;
-            LevelManager.p2Selected = CharacterSelectionManager.Character.nullCharacter;
+            LevelManager.p1Selected = CharacterSelectionManager.Character.none;
+            LevelManager.p2Selected = CharacterSelectionManager.Character.none;
             CharacterSelectAction(1);
         }
     }

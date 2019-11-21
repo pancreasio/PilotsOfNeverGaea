@@ -6,30 +6,27 @@ public class CharacterSelectionManager : MonoBehaviour
 {
     public enum Character
     {
-        nullCharacter, raildrive, magstream, kunst, knockout, djinn
+        none, raildrive, magstream, kunst, knockout, djinn
     }
     public static GameManager.StartDuelFunction SelectAction;
     public static GameManager.SceneChange FadeAction;
-    private Character p1SelectedCharacter, p2SelectedCharacter;
+    public Character p1SelectedCharacter, p2SelectedCharacter;
     public float platformTime, platformLimit;
     private float platformClock;
     private Vector3 leftPlatformStartingPosition, rightPlatformStartingPosition;
     public GameObject p1Elements, p2Elements;
-    public AutoScroll p1Scroll, p2Scroll;
-    public FirstSignSelected p1FirstSelected, p2FirstSelected;
-    public List<GameObject> p1Buttons, p2Buttons;
     private bool opening = false, closing = true;
 
     private void Start()
     {
-        p1SelectedCharacter = Character.nullCharacter;
-        p2SelectedCharacter = Character.nullCharacter;
+        p1SelectedCharacter = Character.none;
+        p2SelectedCharacter = Character.none;
         leftPlatformStartingPosition = p1Elements.transform.position;
         rightPlatformStartingPosition = p2Elements.transform.position;
         p1Elements.transform.Translate(-transform.right * platformLimit);
         p2Elements.transform.Translate(transform.right * platformLimit);
         platformClock = 0f;
-        SetActiveButtons(false);
+        //SetActiveButtons(false);
     }
 
     private void Update()
@@ -47,21 +44,19 @@ public class CharacterSelectionManager : MonoBehaviour
             {
                 p1Elements.transform.position = leftPlatformStartingPosition;
                 p2Elements.transform.position = rightPlatformStartingPosition;
-                SetActiveButtons(true);
-                p1FirstSelected.SetSelected();
-                p2FirstSelected.SetSelected();
+                //SetActiveButtons(true);
                 closing = false;
             }
 
         }
         else
         {
-            if (opening || (p1SelectedCharacter != Character.nullCharacter && p2SelectedCharacter != Character.nullCharacter))
+            if (opening || (p1SelectedCharacter != Character.none && p2SelectedCharacter != Character.none))
             {
                 if (!opening)
                 {
                     platformClock = 0f;
-                    DestroyButtons();
+                    //DestroyButtons();
                     opening = true;
                     Destroy(Camera.main.gameObject);
                     if (SelectAction != null)
@@ -86,57 +81,57 @@ public class CharacterSelectionManager : MonoBehaviour
         }
     }
 
-    private void DestroyButtons()
-    {
-        foreach (GameObject button in p1Buttons)
-        {
-            Destroy(button);
-        }
+    //private void DestroyButtons()
+    //{
+    //    foreach (GameObject button in p1Buttons)
+    //    {
+    //        Destroy(button);
+    //    }
 
-        foreach (GameObject button in p2Buttons)
-        {
-            Destroy(button);
-        }
-    }
+    //    foreach (GameObject button in p2Buttons)
+    //    {
+    //        Destroy(button);
+    //    }
+    //}
 
-    private void SetActiveButtons(bool active)
-    {
-        foreach (GameObject button in p1Buttons)
-        {
-            button.SetActive(active);
-        }
+    //private void SetActiveButtons(bool active)
+    //{
+    //    foreach (GameObject button in p1Buttons)
+    //    {
+    //        button.SetActive(active);
+    //    }
 
-        foreach (GameObject button in p2Buttons)
-        {
-            button.SetActive(active);
-        }
-        p1Scroll.enabled = active;
-        p2Scroll.enabled = active;
-    }
+    //    foreach (GameObject button in p2Buttons)
+    //    {
+    //        button.SetActive(active);
+    //    }
+    //    p1Scroll.enabled = active;
+    //    p2Scroll.enabled = active;
+    //}
 
-    public void P1SelectCharacter(int character)
-    {
-        Character selectedCharacter = (Character)character;
-        //for (int i = 0; i < p1Buttons.Count; i++)
-        //{
-        //    if (i != character-1)
-        //    {
-        //        Destroy(p1Buttons[i].gameObject);
-        //    }
-        //}
-        p1SelectedCharacter = selectedCharacter;
-    }
+    //public void P1SelectCharacter(int character)
+    //{
+    //    Character selectedCharacter = (Character)character;
+    //    //for (int i = 0; i < p1Buttons.Count; i++)
+    //    //{
+    //    //    if (i != character-1)
+    //    //    {
+    //    //        Destroy(p1Buttons[i].gameObject);
+    //    //    }
+    //    //}
+    //    p1SelectedCharacter = selectedCharacter;
+    //}
 
-    public void P2SelectCharacter(int character)
-    {
-        Character selectedCharacter = (Character)character;
-        //for (int i = 0; i < p2Buttons.Count; i++)
-        //{
-        //    if (i != character-1)
-        //    {
-        //        Destroy(p2Buttons[i].gameObject);
-        //    }
-        //}
-        p2SelectedCharacter = selectedCharacter;
-    }
+    //public void P2SelectCharacter(int character)
+    //{
+    //    Character selectedCharacter = (Character)character;
+    //    //for (int i = 0; i < p2Buttons.Count; i++)
+    //    //{
+    //    //    if (i != character-1)
+    //    //    {
+    //    //        Destroy(p2Buttons[i].gameObject);
+    //    //    }
+    //    //}
+    //    p2SelectedCharacter = selectedCharacter;
+    //}
 }

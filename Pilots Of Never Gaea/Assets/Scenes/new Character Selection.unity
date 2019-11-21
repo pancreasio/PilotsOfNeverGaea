@@ -338,7 +338,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 77496729}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.7, y: 0.50594, z: 0}
+  m_LocalPosition: {x: -0.7, y: 0.61, z: 0}
   m_LocalScale: {x: 1.0082036, y: 1.0082036, z: 1.0082036}
   m_Children: []
   m_Father: {fileID: 2069458040}
@@ -382,7 +382,7 @@ SpriteRenderer:
   m_SortingLayerID: -1226510117
   m_SortingLayer: 1
   m_SortingOrder: 7
-  m_Sprite: {fileID: -5952469487995286348, guid: ff3c49b45b21a544cbab4461af459e69,
+  m_Sprite: {fileID: 5710638003711991413, guid: 2203445699d1dff45867ab759514d20c,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1023,7 +1023,12 @@ MonoBehaviour:
   shipAmmount: 5
   firstShip: 2
   isPlayer1: 0
-  shipList: []
+  shipList:
+  - {fileID: 2069458039}
+  - {fileID: 924745989}
+  - {fileID: 921806132}
+  - {fileID: 1106811232}
+  - {fileID: 1441345838}
   selectedShip: 0
 --- !u!1 &523825144
 GameObject:
@@ -2179,7 +2184,12 @@ MonoBehaviour:
   shipAmmount: 5
   firstShip: 2
   isPlayer1: 1
-  shipList: []
+  shipList:
+  - {fileID: 523825144}
+  - {fileID: 1596482575}
+  - {fileID: 860143520}
+  - {fileID: 1182995440}
+  - {fileID: 2051767904}
   selectedShip: 0
 --- !u!4 &1443612475
 Transform:
@@ -2518,7 +2528,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650758647}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.7, y: 0.50594, z: 0}
+  m_LocalPosition: {x: -0.7, y: 0.61, z: 0}
   m_LocalScale: {x: 1.0082036, y: 1.0082036, z: 1.0082036}
   m_Children: []
   m_Father: {fileID: 523825145}
@@ -2562,7 +2572,7 @@ SpriteRenderer:
   m_SortingLayerID: -1226510117
   m_SortingLayer: 1
   m_SortingOrder: 7
-  m_Sprite: {fileID: -5952469487995286348, guid: ff3c49b45b21a544cbab4461af459e69,
+  m_Sprite: {fileID: 5710638003711991413, guid: 2203445699d1dff45867ab759514d20c,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
