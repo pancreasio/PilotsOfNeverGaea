@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShipSelect : MonoBehaviour
 {
-    public float shipOffset, scrollTime;
+    public float shipOffset, scrollTime, cancelTime;
     public int shipAmmount, firstShip;
     private float direction;
     public bool isPlayer1;
@@ -57,24 +57,70 @@ public class ShipSelect : MonoBehaviour
                         shipList[currentSelected].GetComponent<Animator>().SetTrigger("SELECTED");
                         foreach (GameObject ship in shipList)
                         {
-                            if(ship!= shipList[currentSelected])
-                            ship.GetComponent<Animator>().SetTrigger("NOT_SELECTED");
+                            if (ship != shipList[currentSelected])
+                                ship.GetComponent<Animator>().SetTrigger("NOT_SELECTED");
                         }
-                        SelectShip(currentSelected);
+                        StartCoroutine(SelectShip(currentSelected));
                     }
                 }
             }
         }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                foreach (GameObject ship in shipList)
+                {
+                    if (ship != shipList[currentSelected])
+                        ship.GetComponent<Animator>().SetTrigger("IDLE");
+                }
+                selectedShip = CharacterSelectionManager.Character.none;
+                if (isPlayer1)
+                    characterSelectionManager.p1SelectedCharacter = selectedShip;
+                else
+                    characterSelectionManager.p2SelectedCharacter = selectedShip;
+            }
+        }
     }
 
-    private void SelectShip(int shipIndex)
+    private void Selecthip(int shipIndex)
     {
-        selectedShip = (CharacterSelectionManager.Character)(shipIndex +1);
+        selectedShip = (CharacterSelectionManager.Character)(shipIndex + 1);
         if (isPlayer1)
             characterSelectionManager.p1SelectedCharacter = selectedShip;
         else
             characterSelectionManager.p2SelectedCharacter = selectedShip;
 
+    }
+
+    IEnumerator SelectShip(int shipIndex)
+    {
+        float selectClock = 0f;
+        bool canceled = false;
+        while (selectClock < cancelTime && !canceled)
+        {
+            selectClock += Time.deltaTime;
+            if (Input.GetKeyDown(KeyCode.Escape))
+                canceled = true;
+
+            yield return null;
+        }
+        if (!canceled)
+        {
+            selectedShip = (CharacterSelectionManager.Character)(shipIndex + 1);
+            if (isPlayer1)
+                characterSelectionManager.p1SelectedCharacter = selectedShip;
+            else
+                characterSelectionManager.p2SelectedCharacter = selectedShip;
+        }
+        else
+        {
+            foreach (GameObject ship in shipList)
+            {
+                if (ship != shipList[currentSelected])
+                    ship.GetComponent<Animator>().SetTrigger("IDLE");
+            }
+        }
     }
 
     IEnumerator Scroll(float moveDirection)

@@ -416,6 +416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipOffset: 2.5
   scrollTime: 0.15
+  cancelTime: 1
   shipAmmount: 5
   firstShip: 2
   isPlayer1: 0
@@ -641,6 +642,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipOffset: 2.5
   scrollTime: 0.15
+  cancelTime: 1
   shipAmmount: 5
   firstShip: 2
   isPlayer1: 1
