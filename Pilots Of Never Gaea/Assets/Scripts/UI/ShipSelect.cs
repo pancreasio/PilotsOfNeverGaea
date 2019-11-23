@@ -34,6 +34,10 @@ public class ShipSelect : MonoBehaviour
 
     private void Start()
     {
+        //foreach (GameObject ship in shipList)
+        //{
+        //    ship.GetComponent<Animator>().SetTrigger("IDLE");
+        //}
         shipList[currentSelected].GetComponent<Animator>().SetTrigger("HIGHLIGHTED");
     }
 
@@ -51,6 +55,11 @@ public class ShipSelect : MonoBehaviour
                     if (selectButton)
                     {
                         shipList[currentSelected].GetComponent<Animator>().SetTrigger("SELECTED");
+                        foreach (GameObject ship in shipList)
+                        {
+                            if(ship!= shipList[currentSelected])
+                            ship.GetComponent<Animator>().SetTrigger("NOT_SELECTED");
+                        }
                         SelectShip(currentSelected);
                     }
                 }
