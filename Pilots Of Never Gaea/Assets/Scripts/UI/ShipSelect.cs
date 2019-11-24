@@ -34,10 +34,6 @@ public class ShipSelect : MonoBehaviour
 
     private void Start()
     {
-        //foreach (GameObject ship in shipList)
-        //{
-        //    ship.GetComponent<Animator>().SetTrigger("IDLE");
-        //}
         shipList[currentSelected].GetComponent<Animator>().SetTrigger("HIGHLIGHTED");
     }
 

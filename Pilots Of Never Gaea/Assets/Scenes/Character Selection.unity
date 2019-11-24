@@ -523,6 +523,7 @@ MonoBehaviour:
   p2SelectedCharacter: 0
   platformTime: 1
   platformLimit: 12.36
+  cancelTime: 1
   p1Elements: {fileID: 1927790440}
   p2Elements: {fileID: 40681479}
 --- !u!4 &135217965

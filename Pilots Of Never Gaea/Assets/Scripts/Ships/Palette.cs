@@ -47,7 +47,7 @@ public class Palette : MonoBehaviour
                 up = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.RightControl))
             {
                 action = true;
             }
@@ -68,7 +68,7 @@ public class Palette : MonoBehaviour
                 down = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 action = true;
             }

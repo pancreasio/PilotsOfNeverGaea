@@ -10,9 +10,10 @@ public class CharacterSelectionManager : MonoBehaviour
     }
     public static GameManager.StartDuelFunction SelectAction;
     public static GameManager.SceneChange FadeAction;
+    public static GameManager.ButtonAction ExitButtonAction;
     public Character p1SelectedCharacter, p2SelectedCharacter;
-    public float platformTime, platformLimit;
-    private float platformClock;
+    public float platformTime, platformLimit, cancelTime;
+    private float platformClock, exitClock;
     private Vector3 leftPlatformStartingPosition, rightPlatformStartingPosition;
     public GameObject p1Elements, p2Elements;
     private bool opening = false, closing = true;
@@ -26,7 +27,7 @@ public class CharacterSelectionManager : MonoBehaviour
         p1Elements.transform.Translate(-transform.right * platformLimit);
         p2Elements.transform.Translate(transform.right * platformLimit);
         platformClock = 0f;
-        //SetActiveButtons(false);
+        exitClock = 0f;
     }
 
     private void Update()
@@ -44,7 +45,6 @@ public class CharacterSelectionManager : MonoBehaviour
             {
                 p1Elements.transform.position = leftPlatformStartingPosition;
                 p2Elements.transform.position = rightPlatformStartingPosition;
-                //SetActiveButtons(true);
                 closing = false;
             }
 
@@ -56,7 +56,6 @@ public class CharacterSelectionManager : MonoBehaviour
                 if (!opening)
                 {
                     platformClock = 0f;
-                    //DestroyButtons();
                     opening = true;
                     Destroy(Camera.main.gameObject);
                     if (SelectAction != null)
@@ -78,60 +77,19 @@ public class CharacterSelectionManager : MonoBehaviour
                     }
                 }
             }
+            else
+            {
+                if (Input.GetKey(KeyCode.Escape))
+                    exitClock += Time.deltaTime;
+                else
+                    exitClock = 0f;
+
+                if (exitClock > cancelTime)
+                {
+                    if (ExitButtonAction != null)
+                        ExitButtonAction();
+                }
+            }
         }
     }
-
-    //private void DestroyButtons()
-    //{
-    //    foreach (GameObject button in p1Buttons)
-    //    {
-    //        Destroy(button);
-    //    }
-
-    //    foreach (GameObject button in p2Buttons)
-    //    {
-    //        Destroy(button);
-    //    }
-    //}
-
-    //private void SetActiveButtons(bool active)
-    //{
-    //    foreach (GameObject button in p1Buttons)
-    //    {
-    //        button.SetActive(active);
-    //    }
-
-    //    foreach (GameObject button in p2Buttons)
-    //    {
-    //        button.SetActive(active);
-    //    }
-    //    p1Scroll.enabled = active;
-    //    p2Scroll.enabled = active;
-    //}
-
-    //public void P1SelectCharacter(int character)
-    //{
-    //    Character selectedCharacter = (Character)character;
-    //    //for (int i = 0; i < p1Buttons.Count; i++)
-    //    //{
-    //    //    if (i != character-1)
-    //    //    {
-    //    //        Destroy(p1Buttons[i].gameObject);
-    //    //    }
-    //    //}
-    //    p1SelectedCharacter = selectedCharacter;
-    //}
-
-    //public void P2SelectCharacter(int character)
-    //{
-    //    Character selectedCharacter = (Character)character;
-    //    //for (int i = 0; i < p2Buttons.Count; i++)
-    //    //{
-    //    //    if (i != character-1)
-    //    //    {
-    //    //        Destroy(p2Buttons[i].gameObject);
-    //    //    }
-    //    //}
-    //    p2SelectedCharacter = selectedCharacter;
-    //}
 }
