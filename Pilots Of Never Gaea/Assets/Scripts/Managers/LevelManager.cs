@@ -18,12 +18,13 @@ public class LevelManager : MonoBehaviour
     private Ball ballScriptReference;
     public static GameManager.GameOverFunction GameOverAction;
     public static CharacterSelectionManager.Character p1Selected, p2Selected;
-    public Animator p1PlatformAnimator, p2PlatformAnimator;
+    public Animator p1PlatformAnimator, p2PlatformAnimator, p1EXAnimator, p2EXAnimator;
     public Shake2D cameraShake;
     public delegate void LevelAction();
     public float startRoundTime, resetRoundTime, platformDelay, platformSpeed, platformResetTime, ballResetSpeed, platformLimit, cameraShakeDuration, cameraShakeIntensity, fadeoutTime;
     private float platformClock, platformInitialX;
     private bool platformsClosing, platformsArrived;
+    public delegate void ChargeAction(int charges);
 
     private void Start()
     {
@@ -49,24 +50,30 @@ public class LevelManager : MonoBehaviour
 
     private void InitializeGame()
     {
+        int p1MaxCharges = 0, p2MaxCharges = 0;
         switch (p1Selected)
         {
             case CharacterSelectionManager.Character.none:
                 break;
             case CharacterSelectionManager.Character.raildrive:
                 p1Instance = Instantiate(railPrefab, p1Position.transform);
+                p1MaxCharges = 2;
                 break;
             case CharacterSelectionManager.Character.magstream:
                 p1Instance = Instantiate(magPrefab, p1Position.transform);
+                p1MaxCharges = 3;
                 break;
             case CharacterSelectionManager.Character.kunst:
                 p1Instance = Instantiate(kunstPrefab, p1Position.transform);
+                p1MaxCharges = 2;
                 break;
             case CharacterSelectionManager.Character.knockout:
                 p1Instance = Instantiate(knockoutPrefab, p1Position.transform);
+                p1MaxCharges = 2;
                 break;
             case CharacterSelectionManager.Character.djinn:
                 p1Instance = Instantiate(djinnPrefab, p1Position.transform);
+                p1MaxCharges = 1;
                 break;
             default:
                 break;
@@ -77,6 +84,10 @@ public class LevelManager : MonoBehaviour
             p1Instance.GetComponent<Palette>().left = true;
             p1Instance.transform.position = p1Position.transform.position;
             p1Light.transform.parent = p1Instance.transform;
+            p1EXAnimator.SetTrigger("RESET");
+            p1EXAnimator.SetInteger("MAX_CHARGES", p1MaxCharges);
+            p1EXAnimator.SetInteger("CHARGES", 0);
+            p1Instance.GetComponent<Palette>().UpdateCharges = P1UpdateCharges;
         }
 
         switch (p2Selected)
@@ -85,18 +96,23 @@ public class LevelManager : MonoBehaviour
                 break;
             case CharacterSelectionManager.Character.raildrive:
                 p2Instance = Instantiate(railPrefab, p2Position.transform);
+                p2MaxCharges = 2;
                 break;
             case CharacterSelectionManager.Character.magstream:
                 p2Instance = Instantiate(magPrefab, p2Position.transform);
+                p2MaxCharges = 3;
                 break;
             case CharacterSelectionManager.Character.kunst:
                 p2Instance = Instantiate(kunstPrefab, p2Position.transform);
+                p2MaxCharges = 2;
                 break;
             case CharacterSelectionManager.Character.knockout:
                 p2Instance = Instantiate(knockoutPrefab, p2Position.transform);
+                p2MaxCharges = 2;
                 break;
             case CharacterSelectionManager.Character.djinn:
                 p2Instance = Instantiate(djinnPrefab, p2Position.transform);
+                p2MaxCharges = 1;
                 break;
             default:
                 break;
@@ -108,6 +124,10 @@ public class LevelManager : MonoBehaviour
             p2Instance.transform.position = p2Position.transform.position;
             p2Instance.transform.Rotate(Vector3.back, 180.0f);
             p2Light.transform.parent = p2Instance.transform;
+            p2EXAnimator.SetTrigger("RESET");
+            p2EXAnimator.SetInteger("MAX_CHARGES", p2MaxCharges);
+            p2EXAnimator.SetInteger("CHARGES", 0);
+            p2Instance.GetComponent<Palette>().UpdateCharges = P2UpdateCharges;
         }
         ballReference = Instantiate(ballPrefab, Vector2.zero, Quaternion.identity);
         ballReference.transform.parent = transform;
@@ -346,5 +366,14 @@ public class LevelManager : MonoBehaviour
         {
             GameOverAction(player1won);
         }
+    }
+    private void P1UpdateCharges(int charges)
+    {
+        p1EXAnimator.SetInteger("CHARGES", charges);
+    }
+
+    private void P2UpdateCharges(int charges)
+    {
+        p2EXAnimator.SetInteger("CHARGES", charges);
     }
 }

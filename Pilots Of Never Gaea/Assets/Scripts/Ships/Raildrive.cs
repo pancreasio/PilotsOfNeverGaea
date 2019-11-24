@@ -71,5 +71,7 @@ public class Raildrive : Palette
         }
         animator.SetBool("SHOT", false);
         pointer.SetActive(false);
+        if (UpdateCharges != null)
+            UpdateCharges(charges);
     }
 }

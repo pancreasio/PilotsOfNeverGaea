@@ -25,6 +25,8 @@ public class Magstream : Palette
                 power = false;
                 charges -= chargesRequired;
                 action = false;
+                if (UpdateCharges != null)
+                    UpdateCharges(charges);
             }
         }
     }

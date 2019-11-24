@@ -39,6 +39,8 @@ public class Djinn : Palette
                 charges -= chargesRequired;
                 power = false;
                 action = false;
+                if (UpdateCharges != null)
+                    UpdateCharges(charges);
             }
         }
 

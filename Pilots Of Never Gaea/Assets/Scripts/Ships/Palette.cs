@@ -15,7 +15,7 @@ public class Palette : MonoBehaviour
     protected int charges;
     protected bool up, down, action, power;
     private float moveDelta, chargeDelay = 0.1f, chargeClock = 0f;
-    public delegate void PaletteAction();
+    public LevelManager.ChargeAction UpdateCharges;
 
     protected virtual void Start()
     {
@@ -100,6 +100,8 @@ public class Palette : MonoBehaviour
     {
         charges = 0;
         power = false;
+        if (UpdateCharges != null)
+            UpdateCharges(charges);
     }
 
     private void Move(bool upMovement)
@@ -134,6 +136,8 @@ public class Palette : MonoBehaviour
                 charges++;
             }
         }
+        if (UpdateCharges != null)
+            UpdateCharges(charges);
     }
 
     private void CheckBorder(bool upCheck)

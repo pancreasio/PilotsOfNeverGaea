@@ -421,11 +421,11 @@ MonoBehaviour:
   firstShip: 2
   isPlayer1: 0
   shipList:
-  - {fileID: 1750524631}
-  - {fileID: 53129572}
-  - {fileID: 987566619}
-  - {fileID: 1843516486}
-  - {fileID: 2064516185}
+  - {fileID: 1750524633}
+  - {fileID: 53129574}
+  - {fileID: 987566621}
+  - {fileID: 1843516488}
+  - {fileID: 2064516187}
   characterSelectionManager: {fileID: 135217964}
   selectedShip: 0
 --- !u!1 &133534967
@@ -648,11 +648,11 @@ MonoBehaviour:
   firstShip: 2
   isPlayer1: 1
   shipList:
-  - {fileID: 1757549524}
-  - {fileID: 848792215}
-  - {fileID: 1428611023}
-  - {fileID: 141972408}
-  - {fileID: 1521046916}
+  - {fileID: 1757549526}
+  - {fileID: 848792217}
+  - {fileID: 1428611025}
+  - {fileID: 141972410}
+  - {fileID: 1521046918}
   characterSelectionManager: {fileID: 135217964}
   selectedShip: 0
 --- !u!1 &160727996
