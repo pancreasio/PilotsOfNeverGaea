@@ -68,6 +68,7 @@ MonoBehaviour:
     GuidInternal: 
     m_lastTime: -8586276078264158774
     List: []
-  ExpandedItems: []
+  ExpandedItems:
+  - /Pilots Of Never Gaea_WwiseProject
   autoPopulateEnabled: 1
   CurrentPluginConfig: 

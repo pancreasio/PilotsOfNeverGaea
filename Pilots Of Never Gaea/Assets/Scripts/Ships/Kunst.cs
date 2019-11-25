@@ -25,9 +25,9 @@ public class Kunst : Palette
         else
         {
             if (left)
-                action = Input.GetKey(KeyCode.D);
+                action = Input.GetKey(KeyCode.Space);
             else
-                action = Input.GetKey(KeyCode.LeftArrow);
+                action = Input.GetKey(KeyCode.RightControl);
 
             if (action)
             {

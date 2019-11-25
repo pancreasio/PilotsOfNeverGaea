@@ -50,30 +50,24 @@ public class LevelManager : MonoBehaviour
 
     private void InitializeGame()
     {
-        int p1MaxCharges = 0, p2MaxCharges = 0;
         switch (p1Selected)
         {
             case CharacterSelectionManager.Character.none:
                 break;
             case CharacterSelectionManager.Character.raildrive:
                 p1Instance = Instantiate(railPrefab, p1Position.transform);
-                p1MaxCharges = 2;
                 break;
             case CharacterSelectionManager.Character.magstream:
                 p1Instance = Instantiate(magPrefab, p1Position.transform);
-                p1MaxCharges = 3;
                 break;
             case CharacterSelectionManager.Character.kunst:
                 p1Instance = Instantiate(kunstPrefab, p1Position.transform);
-                p1MaxCharges = 2;
                 break;
             case CharacterSelectionManager.Character.knockout:
                 p1Instance = Instantiate(knockoutPrefab, p1Position.transform);
-                p1MaxCharges = 2;
                 break;
             case CharacterSelectionManager.Character.djinn:
                 p1Instance = Instantiate(djinnPrefab, p1Position.transform);
-                p1MaxCharges = 1;
                 break;
             default:
                 break;
@@ -85,7 +79,7 @@ public class LevelManager : MonoBehaviour
             p1Instance.transform.position = p1Position.transform.position;
             p1Light.transform.parent = p1Instance.transform;
             p1EXAnimator.SetTrigger("RESET");
-            p1EXAnimator.SetInteger("MAX_CHARGES", p1MaxCharges);
+            p1EXAnimator.SetInteger("MAX_CHARGES", p1Instance.GetComponent<Palette>().maxCharges);
             p1EXAnimator.SetInteger("CHARGES", 0);
             p1Instance.GetComponent<Palette>().UpdateCharges = P1UpdateCharges;
         }
@@ -96,23 +90,18 @@ public class LevelManager : MonoBehaviour
                 break;
             case CharacterSelectionManager.Character.raildrive:
                 p2Instance = Instantiate(railPrefab, p2Position.transform);
-                p2MaxCharges = 2;
                 break;
             case CharacterSelectionManager.Character.magstream:
                 p2Instance = Instantiate(magPrefab, p2Position.transform);
-                p2MaxCharges = 3;
                 break;
             case CharacterSelectionManager.Character.kunst:
                 p2Instance = Instantiate(kunstPrefab, p2Position.transform);
-                p2MaxCharges = 2;
                 break;
             case CharacterSelectionManager.Character.knockout:
                 p2Instance = Instantiate(knockoutPrefab, p2Position.transform);
-                p2MaxCharges = 2;
                 break;
             case CharacterSelectionManager.Character.djinn:
                 p2Instance = Instantiate(djinnPrefab, p2Position.transform);
-                p2MaxCharges = 1;
                 break;
             default:
                 break;
@@ -125,7 +114,7 @@ public class LevelManager : MonoBehaviour
             p2Instance.transform.Rotate(Vector3.back, 180.0f);
             p2Light.transform.parent = p2Instance.transform;
             p2EXAnimator.SetTrigger("RESET");
-            p2EXAnimator.SetInteger("MAX_CHARGES", p2MaxCharges);
+            p2EXAnimator.SetInteger("MAX_CHARGES", p2Instance.GetComponent<Palette>().maxCharges);
             p2EXAnimator.SetInteger("CHARGES", 0);
             p2Instance.GetComponent<Palette>().UpdateCharges = P2UpdateCharges;
         }
