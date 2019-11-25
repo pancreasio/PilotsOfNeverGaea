@@ -169,6 +169,13 @@ public class Ball : MonoBehaviour
             HitStun();
             CornerBounce(collision.gameObject);
         }
+
+        if (collisionTag == "Reply")
+        {
+            BounceToCenter(transform.position.y > collision.transform.position.y);
+            rig.velocity *= 1.4f;
+            shot = true;
+        }
     }
 
     private void CornerBounce(GameObject corner)
