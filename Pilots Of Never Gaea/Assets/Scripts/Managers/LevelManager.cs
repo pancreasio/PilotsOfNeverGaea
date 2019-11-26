@@ -11,9 +11,10 @@ public class LevelManager : MonoBehaviour
     public int roundsToWin;
     public TextMeshProUGUI p1ScoreText, p2ScoreText, startRoundText;
     public GameObject leftPlatform, rightPlatform, p1Light, p2Light,
-        ballPrefab, magPrefab, railPrefab, kunstPrefab, knockoutPrefab, djinnPrefab,
-        p1Position, p2Position, topRightArrow, topLeftArrow, bottomRightArrow, bottomLeftArrow;
-    public SpriteRenderer fadeoutSprite;
+        ballPrefab, magPrefab, railPrefab, kunstPrefab, knockoutPrefab, djinnPrefab, nullPrefab,
+        p1Position, p2Position, topRightArrow, topLeftArrow, bottomRightArrow, bottomLeftArrow,
+        p1NullBarEmpty, p2NullBarEmpty;
+    public SpriteRenderer fadeoutSprite, p1NullBarFull, p2NullBarFull;
     private GameObject ballReference = null, topSparks, bottomSparks, p1Instance = null, p2Instance = null;
     private Ball ballScriptReference;
     public static GameManager.GameOverFunction GameOverAction;
@@ -21,10 +22,16 @@ public class LevelManager : MonoBehaviour
     public Animator p1PlatformAnimator, p2PlatformAnimator, p1EXAnimator, p2EXAnimator;
     public Shake2D cameraShake;
     public delegate void LevelAction();
-    public float startRoundTime, resetRoundTime, platformDelay, platformSpeed, platformResetTime, ballResetSpeed, platformLimit, cameraShakeDuration, cameraShakeIntensity, fadeoutTime;
+    public float startRoundTime, resetRoundTime,
+        platformDelay, platformSpeed, platformResetTime, platformLimit,
+        ballResetSpeed, 
+        cameraShakeDuration, cameraShakeIntensity, 
+        fadeoutTime;
     private float platformClock, platformInitialX;
     private bool platformsClosing, platformsArrived;
     public delegate void ChargeAction(int charges);
+    public delegate void UpdatePower(float power);
+    public delegate void PaletteAction();
 
     private void Start()
     {
@@ -70,9 +77,18 @@ public class LevelManager : MonoBehaviour
             case CharacterSelectionManager.Character.djinn:
                 p1Instance = Instantiate(djinnPrefab, p1Position.transform);
                 break;
+            case CharacterSelectionManager.Character.NULL:
+                p1Instance = Instantiate(nullPrefab, p1Position.transform);
+                p1EXAnimator.gameObject.SetActive(false);
+                p1NullBarEmpty.SetActive(true);
+                p1NullBarFull.gameObject.SetActive(true);
+                p1Instance.GetComponent<NULL>().UpdateGlitchPower = P1UpdateNULL;
+                p1Instance.GetComponent<NULL>().GlitchAction = P1Glitch;
+                break;
             default:
                 break;
         }
+
 
         if (p1Instance != null)
         {
@@ -103,6 +119,14 @@ public class LevelManager : MonoBehaviour
                 break;
             case CharacterSelectionManager.Character.djinn:
                 p2Instance = Instantiate(djinnPrefab, p2Position.transform);
+                break;
+            case CharacterSelectionManager.Character.NULL:
+                p2Instance = Instantiate(nullPrefab, p2Position.transform);
+                p2EXAnimator.gameObject.SetActive(false);
+                p2NullBarEmpty.SetActive(true);
+                p2NullBarFull.gameObject.SetActive(true);
+                p2Instance.GetComponent<NULL>().UpdateGlitchPower = P2UpdateNULL;
+                p2Instance.GetComponent<NULL>().GlitchAction = P2Glitch;
                 break;
             default:
                 break;
@@ -237,6 +261,8 @@ public class LevelManager : MonoBehaviour
         float speed = (platformInitialX - platformFinalX) / platformResetTime;
         p1PlatformAnimator.SetInteger("STATE", 2);
         p2PlatformAnimator.SetInteger("STATE", 2);
+        p1Instance.GetComponent<Palette>().ResetPalette();
+        p2Instance.GetComponent<Palette>().ResetPalette();
         //AkSoundEngine.PostEvent("sfx_openwalls", gameObject);
 
         Vector2 initialDirection;
@@ -362,9 +388,28 @@ public class LevelManager : MonoBehaviour
     {
         p1EXAnimator.SetInteger("CHARGES", charges);
     }
-
     private void P2UpdateCharges(int charges)
     {
         p2EXAnimator.SetInteger("CHARGES", charges);
+    }
+
+    private void P1UpdateNULL(float power)
+    {
+        p1NullBarFull.color = new Color(255f, 255f, 255f, power);
+    }
+
+    private void P2UpdateNULL(float power)
+    {
+        p2NullBarFull.color = new Color(255f, 255f, 255f, power);
+    }
+
+    private void P1Glitch()
+    {
+        PlayerScored(true);
+    }
+
+    private void P2Glitch()
+    {
+        PlayerScored(false);
     }
 }

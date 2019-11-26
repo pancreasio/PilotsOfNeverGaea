@@ -38,13 +38,12 @@ public class Kunst : Palette
             if (action)
             {
                 active = true;
-                animator.SetBool("ACTIVE", true);
             }
             else
             {
                 active = false;
-                animator.SetBool("ACTIVE", false);
             }
+            animator.SetBool("ACTIVE", active);
         }
     }
 

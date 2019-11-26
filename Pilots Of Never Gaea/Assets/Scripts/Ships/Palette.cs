@@ -47,7 +47,7 @@ public class Palette : MonoBehaviour
                 up = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.RightControl))
+            if (Input.GetKey(KeyCode.RightControl))
             {
                 action = true;
             }
@@ -68,7 +68,7 @@ public class Palette : MonoBehaviour
                 down = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space))
             {
                 action = true;
             }
@@ -92,10 +92,10 @@ public class Palette : MonoBehaviour
 
     public virtual void ResetPalette()
     {
-        charges = 0;
-        power = false;
-        if (UpdateCharges != null)
-            UpdateCharges(charges);
+        //charges = 0;
+        //power = false;
+        //if (UpdateCharges != null)
+        //    UpdateCharges(charges);
     }
 
     private void Move(bool upMovement)
@@ -159,5 +159,5 @@ public class Palette : MonoBehaviour
                 moveDelta = hit.distance - sprite.bounds.extents.y;
             }
         }
-    } 
+    }
 }
