@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
             gameManagerInstance = this.gameObject;
             DontDestroyOnLoad(gameManagerInstance);
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
         else
         {
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        Screen.SetResolution(1920, 1080, true);
         currentScene = SceneManager.GetActiveScene().buildIndex;
         MenuManager.StartAction = NextScene;
         MenuManager.ExitAction = ExitApplication;

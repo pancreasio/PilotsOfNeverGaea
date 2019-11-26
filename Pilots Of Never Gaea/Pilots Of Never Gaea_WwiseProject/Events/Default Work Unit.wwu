@@ -1,6 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{A83E35E1-3EBB-483C-B3EA-011238C41831}" SchemaVersion="94">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{A83E35E1-3EBB-483C-B3EA-011238C41831}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{A83E35E1-3EBB-483C-B3EA-011238C41831}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="music_menu" ID="{2C0DBA2A-010D-43D8-8FD5-7C3E84AE1B91}">
+					<ChildrenList>
+						<Action Name="" ID="{3B54CD9C-E36D-45F3-8652-910337A7E293}" ShortID="595610550"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="sfx_ui_select" ID="{477D8BFE-36B1-4F35-B61A-81E33C58E1DB}">
+					<ChildrenList>
+						<Action Name="" ID="{8708D233-347A-435F-B4D9-7CD193EC6E3E}" ShortID="52419292"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="sfx_ui_ok" ID="{693C33E0-B3AC-4C68-8897-97619B8FF073}"/>
+				<Event Name="music_select_ship" ID="{B29E8F08-CCE8-454E-9AEF-0651C2EE33CE}"/>
+				<Event Name="sfx_ui_selectship_p1" ID="{D41F2084-E09D-4838-B29D-91B71506C3C1}">
+					<ChildrenList>
+						<Action Name="" ID="{4F3F146E-956D-45F1-BBEB-E006FC4E28D5}" ShortID="258239737"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="sfx_ui_selectship_p2" ID="{A29F4871-67FC-4CA3-B2C5-B7F55696DA92}">
+					<ChildrenList>
+						<Action Name="" ID="{DF0249F9-8A5E-4FDC-8840-532AB055DD04}" ShortID="835377561"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="sfx_ui_ok_p1" ID="{A7356A5E-26F6-4D59-BB60-90BA79199482}">
+					<ChildrenList>
+						<Action Name="" ID="{B9E02518-33DC-43B5-8F6F-3186EDAFA88C}" ShortID="134952861"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="sfx_ui_ok_p2" ID="{87D75A5E-46E0-4D4A-8E81-CD99B6D3F77A}">
+					<ChildrenList>
+						<Action Name="" ID="{6B5138CD-2E26-4D0A-BCDE-9BB0BFF92271}" ShortID="376087239"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="music_gameplay" ID="{6FB57A82-F073-42DA-960D-1CB2C67C6D17}"/>
+				<Event Name="sfx_raildrive_power" ID="{39C4EE0E-C495-4453-9429-30AC2362FD72}">
+					<ChildrenList>
+						<Action Name="" ID="{05110E03-DDBD-440F-8A7A-740DD575D61F}" ShortID="18447183"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="sfx_magstream_bower" ID="{FB1366D8-9667-4956-9FF9-343DE89E5209}">
+					<ChildrenList>
+						<Action Name="" ID="{29A9BE5E-C041-47A6-833E-3EB3EBE0F0A6}" ShortID="276635864"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="sfx_magstream_electric" ID="{55130535-77D2-41F1-9963-6E389204A217}">
+					<ChildrenList>
+						<Action Name="" ID="{6C88A3BB-58CE-479A-99BB-82E30B46DB6C}" ShortID="266643152"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="sfx_kunst_power" ID="{C092202E-BF61-4741-B596-7E1F1F3370F2}">
+					<ChildrenList>
+						<Action Name="" ID="{39BBCB08-1300-4187-8A8B-3A2B624D7726}" ShortID="542028664"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="sfx_knockout_power" ID="{2D11F665-65A9-4BFD-897B-043774AA4B53}">
+					<ChildrenList>
+						<Action Name="" ID="{689DA79B-D2C0-412E-AB3D-40A4DD90B314}" ShortID="934607030"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="sfx_djinn_power" ID="{9CAC38E6-8E3C-4E96-92B7-6392F2CF5A00}">
+					<ChildrenList>
+						<Action Name="" ID="{E1AD92CB-3082-4CD2-8E08-AD7FA22E02CD}" ShortID="663028647"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="sfx_palette_bounce" ID="{D79512E6-1572-487B-B534-801FF18BAE3E}">
+					<ChildrenList>
+						<Action Name="" ID="{2CEF6661-C6AF-4C43-9B67-CC3CAD015555}" ShortID="471841900"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="sfx_goal" ID="{5461C159-7286-411A-B58C-02E79A4DDB79}">
+					<ChildrenList>
+						<Action Name="" ID="{62B63855-8639-4DAF-9083-CD93698EC8B1}" ShortID="723331938"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="sfx_matchpoint" ID="{580B8AEE-38EA-476D-BD27-40500067F54F}">
+					<ChildrenList>
+						<Action Name="" ID="{64D690BE-7A56-4C5A-8B45-15459B0131E5}" ShortID="779159107"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="sfx_endgame" ID="{A1DD405F-939C-48B3-9A4E-5E15F227C123}">
+					<ChildrenList>
+						<Action Name="" ID="{675F4C71-3FE1-4068-A83D-F2AEFA605E6B}" ShortID="661338152"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="music_endgame" ID="{A78D39BF-7B73-40BD-8645-D13837DC4817}">
+					<ChildrenList>
+						<Action Name="" ID="{D6C202A7-BA29-4212-8DAD-EB82C565805D}" ShortID="401713494"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="sfx_ui_option_eg" ID="{A3EC51D2-D7E8-455E-A8BD-BBC6881AC105}">
+					<ChildrenList>
+						<Action Name="" ID="{C12DC5F7-2DD4-4180-A868-5AA791E1F070}" ShortID="10496103"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="sfx_ui_ok_eg" ID="{5DBC4FC5-11F8-4ED8-B5FF-715E562A4035}">
+					<ChildrenList>
+						<Action Name="" ID="{DE277545-2E99-4FBD-8EC9-85BE982390F9}" ShortID="1021844543"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="sfx_ocdoors" ID="{515F6662-ADEE-4E7F-A4BF-C473412B7773}">
+					<ChildrenList>
+						<Action Name="" ID="{996A98F1-9200-4E10-9DA9-5DE60F6D21E9}" ShortID="225486456"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="sfx_wall" ID="{510E9ECC-3AD7-43B2-8458-AE55E6775891}">
+					<ChildrenList>
+						<Action Name="" ID="{D617AFAB-26B5-4FBD-8546-E3CF30971C92}" ShortID="171483090"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="sfx_powercharge" ID="{B41C6526-CC6B-40BB-B63F-32E48CC75D64}">
+					<ChildrenList>
+						<Action Name="" ID="{7148C29F-25FA-465B-BE8E-2D61B9055701}" ShortID="568556453"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="sfx_closewalls" ID="{3F0A1F06-4DEF-4AE4-AE5A-7F58460D3B73}">
+					<ChildrenList>
+						<Action Name="" ID="{6A4393C3-7A3C-405E-8863-9E3BBF2586B8}" ShortID="170658156"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="sfx_startball" ID="{654A57ED-A15A-4DEA-8521-EED682241961}">
+					<ChildrenList>
+						<Action Name="" ID="{6B5B8F3C-DF67-4D9B-A4BB-9DE169CF9250}" ShortID="608754657"/>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

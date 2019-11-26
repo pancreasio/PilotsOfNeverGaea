@@ -53,6 +53,7 @@ public class Ball : MonoBehaviour
     {
         rig.velocity = Vector2.zero;
         rig.AddForce(kickDirection.normalized * initialSpeed, ForceMode2D.Impulse);
+        AkSoundEngine.PostEvent("sfx_startball", gameObject);
     }
 
     private void HitStun()
@@ -131,6 +132,7 @@ public class Ball : MonoBehaviour
 
         if (collisionTag == "Platform")
         {
+            AkSoundEngine.PostEvent("sfx_goal", gameObject);
             if (transform.position.x >= 0)
             {
                 if (onScore != null)
@@ -149,6 +151,7 @@ public class Ball : MonoBehaviour
 
         if (collisionTag == "Corner")
         {
+            AkSoundEngine.PostEvent("sfx_palette_bounce", gameObject);
             if (stuck)
                 Unstick();
             CornerBounce(collision.gameObject);
@@ -193,13 +196,16 @@ public class Ball : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         string collisionTag = collision.transform.tag;
-        if (collisionTag == "Wall" && charged)
+        if (collisionTag == "Wall")
         {
+            AkSoundEngine.PostEvent("sfx_wall", gameObject);
+            if(charged)
             Stick();
         }
 
         if ((collisionTag == "Palette"))
         {
+            AkSoundEngine.PostEvent("sfx_palette_bounce", gameObject);
             if (stuck)
                 Unstick();
             if (shot)

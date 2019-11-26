@@ -15,60 +15,395 @@ MonoBehaviour:
   AcousticTextureWwu:
   - PhysicalPath: Virtual Acoustics\Default Work Unit.wwu
     ParentPhysicalPath: 
-    guid: 59e47f684ab00c429b81554c4ca013fc
+    guid: a4dbbf9ae23d014f8fbd7240c0a963a1
     GuidInternal: 
-    m_lastTime: -8586276078263566246
+    m_lastTime: -8586268793090816949
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     ParentPhysicalPath: 
-    guid: 59b15a28e4125d4c9bdfca5cf05960d6
+    guid: a4d017e17d15864bb582dc19f75ccb0a
     GuidInternal: 
-    m_lastTime: -8586276078264338284
+    m_lastTime: -8586268793091094797
     List: []
   BankWwu:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: dd7b83bbc8dbf34186f9ffd2f1afd0d7
     GuidInternal: 
-    m_lastTime: -8586276078263675951
-    List: []
+    m_lastTime: -8586268758390467935
+    List:
+    - name: PONG
+      guid: 2d3326e9db1e844c97a2c0761601e72e
+      id: 1944232207
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: PONG
+        ObjectType: 7
+      Path: Default Work Unit\PONG
   EventWwu:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: e1353ea8bb3e3c48b3ea011238c41831
     GuidInternal: 
-    m_lastTime: -8586276078265002231
-    List: []
+    m_lastTime: -8586268758390507832
+    List:
+    - name: music_endgame
+      guid: bf398da7737bbd408645d13837dc4817
+      id: 4020650282
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: music_endgame
+        ObjectType: 3
+      Path: Default Work Unit\music_endgame
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: music_gameplay
+      guid: 827ab56f73f0da42960d1cb2c67c6d17
+      id: 620878633
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: music_gameplay
+        ObjectType: 3
+      Path: Default Work Unit\music_gameplay
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: music_menu
+      guid: 2aba0d2c0d01d8438fd57c3e84ae1b91
+      id: 1598298728
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: music_menu
+        ObjectType: 3
+      Path: Default Work Unit\music_menu
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: music_select_ship
+      guid: 088f9eb2e8cc4e459aef0651c2ee33ce
+      id: 2488806774
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: music_select_ship
+        ObjectType: 3
+      Path: Default Work Unit\music_select_ship
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: sfx_closewalls
+      guid: 061f0a3fef4de44aae5a7f58460d3b73
+      id: 1889644198
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_closewalls
+        ObjectType: 3
+      Path: Default Work Unit\sfx_closewalls
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: sfx_djinn_power
+      guid: e638ac9c3c8e964e92b76392f2cf5a00
+      id: 4085389126
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_djinn_power
+        ObjectType: 3
+      Path: Default Work Unit\sfx_djinn_power
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: sfx_endgame
+      guid: 5f40dda19c93b3489a4e5e15f227c123
+      id: 351539970
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_endgame
+        ObjectType: 3
+      Path: Default Work Unit\sfx_endgame
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: sfx_goal
+      guid: 59c1615486721a41b58c02e79a4ddb79
+      id: 429414528
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_goal
+        ObjectType: 3
+      Path: Default Work Unit\sfx_goal
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: sfx_knockout_power
+      guid: 65f6112da965fd4b897b043774aa4b53
+      id: 1947212607
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_knockout_power
+        ObjectType: 3
+      Path: Default Work Unit\sfx_knockout_power
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: sfx_kunst_power
+      guid: 2e2092c061bf4147b5967e1f1f3370f2
+      id: 2030213546
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_kunst_power
+        ObjectType: 3
+      Path: Default Work Unit\sfx_kunst_power
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: sfx_magstream_bower
+      guid: d86613fb679656499ff9343de89e5209
+      id: 1042054958
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_magstream_bower
+        ObjectType: 3
+      Path: Default Work Unit\sfx_magstream_bower
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: sfx_magstream_electric
+      guid: 35051355d277f14199636e389204a217
+      id: 1173302760
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_magstream_electric
+        ObjectType: 3
+      Path: Default Work Unit\sfx_magstream_electric
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: sfx_matchpoint
+      guid: ee8a0b58ea386d47bd2740500067f54f
+      id: 779982538
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_matchpoint
+        ObjectType: 3
+      Path: Default Work Unit\sfx_matchpoint
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: sfx_ocdoors
+      guid: 62665f51eead7f4ea4bfc473412b7773
+      id: 1555110630
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_ocdoors
+        ObjectType: 3
+      Path: Default Work Unit\sfx_ocdoors
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: sfx_palette_bounce
+      guid: e61295d772157b48b534801ff18bae3e
+      id: 1187861409
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_palette_bounce
+        ObjectType: 3
+      Path: Default Work Unit\sfx_palette_bounce
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: sfx_powercharge
+      guid: 26651cb46bccbb40b63f32e48cc75d64
+      id: 375716372
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_powercharge
+        ObjectType: 3
+      Path: Default Work Unit\sfx_powercharge
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: sfx_raildrive_power
+      guid: 0eeec43995c45344942930ac2362fd72
+      id: 3742052573
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_raildrive_power
+        ObjectType: 3
+      Path: Default Work Unit\sfx_raildrive_power
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: sfx_startball
+      guid: ed574a655aa1ea4d8521eed682241961
+      id: 3038939580
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_startball
+        ObjectType: 3
+      Path: Default Work Unit\sfx_startball
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: sfx_ui_ok
+      guid: e0333c69acb3684c889797619b8ff073
+      id: 1799644840
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_ui_ok
+        ObjectType: 3
+      Path: Default Work Unit\sfx_ui_ok
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: sfx_ui_ok_eg
+      guid: c54fbc5df811d84eb5ff715e562a4035
+      id: 3220713831
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_ui_ok_eg
+        ObjectType: 3
+      Path: Default Work Unit\sfx_ui_ok_eg
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: sfx_ui_ok_p1
+      guid: 5e6a35a7f626594dbb6090ba79199482
+      id: 3573043774
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_ui_ok_p1
+        ObjectType: 3
+      Path: Default Work Unit\sfx_ui_ok_p1
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: sfx_ui_ok_p2
+      guid: 5e5ad787e0464a4d8e81cd99b6d3f77a
+      id: 3573043773
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_ui_ok_p2
+        ObjectType: 3
+      Path: Default Work Unit\sfx_ui_ok_p2
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: sfx_ui_option_eg
+      guid: d251eca3e8d75e45a8bdbbc6881ac105
+      id: 1021122596
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_ui_option_eg
+        ObjectType: 3
+      Path: Default Work Unit\sfx_ui_option_eg
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: sfx_ui_select
+      guid: fe8b7d47b136354fb61a81e33c58e1db
+      id: 3753159394
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_ui_select
+        ObjectType: 3
+      Path: Default Work Unit\sfx_ui_select
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: sfx_ui_selectship_p1
+      guid: 84201fd49de03848b29d91b71506c3c1
+      id: 2483546906
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_ui_selectship_p1
+        ObjectType: 3
+      Path: Default Work Unit\sfx_ui_selectship_p1
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: sfx_ui_selectship_p2
+      guid: 71489fa2fc67a34cb2c5b7f55696da92
+      id: 2483546905
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_ui_selectship_p2
+        ObjectType: 3
+      Path: Default Work Unit\sfx_ui_selectship_p2
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: sfx_wall
+      guid: cc9e0e51d73ab2438458ae55e6775891
+      id: 1970227385
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_wall
+        ObjectType: 3
+      Path: Default Work Unit\sfx_wall
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     ParentPhysicalPath: 
-    guid: 7596ac2c9a8690419bcd7bfb0dd8c65c
+    guid: bd0ad7f269f5f5448bffdde72f6c34e9
     GuidInternal: 
-    m_lastTime: -8586276078264861111
+    m_lastTime: -8586268793091045183
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     ParentPhysicalPath: 
-    guid: d24d130d88c46141b053b4e79cf5bb9f
+    guid: 4f6e08f34bf8634f9948cc654e55954f
     GuidInternal: 
-    m_lastTime: -8586276078263606130
+    m_lastTime: -8586268793091154645
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPhysicalPath: 
-    guid: 8fed8ef9f1667c488b95d32f22c1429f
+    guid: 94c7239f727e794cbbe2d317fd00f2dd
     GuidInternal: 
-    m_lastTime: -8586276078264118868
+    m_lastTime: -8586268793091064880
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
     ParentPhysicalPath: 
-    guid: e58687307152344b897da7c30433d125
+    guid: 0436793b83a2b74cbbd912688a9dcec3
     GuidInternal: 
-    m_lastTime: -8586276078264158774
+    m_lastTime: -8586268793090967386
     List: []
   ExpandedItems:
   - /Pilots Of Never Gaea_WwiseProject
+  - /Pilots Of Never Gaea_WwiseProject/Events
+  - /Pilots Of Never Gaea_WwiseProject/Events/Default Work Unit
   autoPopulateEnabled: 1
   CurrentPluginConfig: 

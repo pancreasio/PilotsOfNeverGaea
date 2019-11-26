@@ -71,6 +71,7 @@ public class Raildrive : Palette
         }
         animator.SetBool("SHOT", false);
         pointer.SetActive(false);
+        AkSoundEngine.PostEvent("sfx_raildrive_power", gameObject);
         if (UpdateCharges != null)
             UpdateCharges(charges);
     }

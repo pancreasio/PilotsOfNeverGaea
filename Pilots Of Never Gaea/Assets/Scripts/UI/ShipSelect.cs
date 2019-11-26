@@ -79,20 +79,24 @@ public class ShipSelect : MonoBehaviour
         }
     }
 
-    private void Selecthip(int shipIndex)
-    {
-        selectedShip = (CharacterSelectionManager.Character)(shipIndex + 1);
-        if (isPlayer1)
-            characterSelectionManager.p1SelectedCharacter = selectedShip;
-        else
-            characterSelectionManager.p2SelectedCharacter = selectedShip;
+    //private void Selecthip(int shipIndex)
+    //{
+    //    selectedShip = (CharacterSelectionManager.Character)(shipIndex + 1);
+    //    if (isPlayer1)
+    //        characterSelectionManager.p1SelectedCharacter = selectedShip;
+    //    else
+    //        characterSelectionManager.p2SelectedCharacter = selectedShip;
 
-    }
+    //}
 
     IEnumerator SelectShip(int shipIndex)
     {
         float selectClock = 0f;
         bool canceled = false;
+        if(isPlayer1)
+            AkSoundEngine.PostEvent("sfx_ui_ok_p1", gameObject);
+        else
+            AkSoundEngine.PostEvent("sfx_ui_ok_p2", gameObject);
         while (selectClock < cancelTime && !canceled)
         {
             selectClock += Time.deltaTime;
@@ -126,6 +130,10 @@ public class ShipSelect : MonoBehaviour
             shipList[currentSelected].SetTrigger("IDLE");
             isMoving = true;
             float scrollClock = 0f;
+            if(isPlayer1)
+                AkSoundEngine.PostEvent("sfx_ui_selectship_p1", gameObject);
+            else
+                AkSoundEngine.PostEvent("sfx_ui_selectship_p2", gameObject);
             while (scrollClock < scrollTime)
             {
                 scrollClock += Time.deltaTime;

@@ -1350,6 +1350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winText: {fileID: 524207902}
+  eventSystem: {fileID: 469960641}
 --- !u!4 &996415999
 Transform:
   m_ObjectHideFlags: 0
@@ -2145,6 +2146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1989233234}
   - component: {fileID: 1989233235}
+  - component: {fileID: 1989233236}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -2178,3 +2180,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 463478c1dddac8d4ab120bf1890be235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1989233236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989233233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03292025f466ad84d8df51586762888a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: a30b7eed039379b4185ca7d2454e4fba,
+      type: 2}
+  decodeBank: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 
+  bankNameInternal: 
+  valueGuidInternal: 

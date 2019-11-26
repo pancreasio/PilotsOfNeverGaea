@@ -46,6 +46,7 @@ public class LevelManager : MonoBehaviour
         p2PlatformAnimator.SetInteger("STATE", 0);
         InitializeGame();
         StartCoroutine(StartRound());
+        AkSoundEngine.PostEvent("music_gameplay", gameObject);
     }
 
     private void InitializeGame()
@@ -144,6 +145,7 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator FadeOut(bool player1Won)
     {
+        AkSoundEngine.PostEvent("sfx_endgame", gameObject);
         Time.timeScale = 0f;
         float clock = 0f;
         while (clock < fadeoutTime)
@@ -235,6 +237,7 @@ public class LevelManager : MonoBehaviour
         float speed = (platformInitialX - platformFinalX) / platformResetTime;
         p1PlatformAnimator.SetInteger("STATE", 2);
         p2PlatformAnimator.SetInteger("STATE", 2);
+        //AkSoundEngine.PostEvent("sfx_openwalls", gameObject);
 
         Vector2 initialDirection;
         if (UnityEngine.Random.value < 0.5f)
@@ -315,8 +318,6 @@ public class LevelManager : MonoBehaviour
         platformClock += Time.deltaTime;
         if (platformsClosing && !platformsArrived)
         {
-            //p1PlatformAnimator.SetInteger("STATE", 1);
-            //p2PlatformAnimator.SetInteger("STATE", 1);
             leftPlatform.transform.Translate(transform.right * platformSpeed * Time.deltaTime);
             rightPlatform.transform.Translate(-transform.right * platformSpeed * Time.deltaTime);
             if (leftPlatform.transform.position.x >= platformLimit)
@@ -334,6 +335,7 @@ public class LevelManager : MonoBehaviour
                 platformsClosing = true;
                 p1PlatformAnimator.SetInteger("STATE", 1);
                 p2PlatformAnimator.SetInteger("STATE", 1);
+                AkSoundEngine.PostEvent("sfx_closewalls", gameObject);
             }
         }
 

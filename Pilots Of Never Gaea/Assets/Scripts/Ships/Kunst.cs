@@ -48,6 +48,7 @@ public class Kunst : Palette
     {
         if (power)
         {
+            AkSoundEngine.PostEvent("sfx_kunst_power", gameObject);
             Instantiate(reply, replyParent);
             reply.transform.position.Set(0f, 0f, 0f);
             charges -= chargesRequired;

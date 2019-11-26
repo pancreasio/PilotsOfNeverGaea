@@ -35,6 +35,7 @@ public class Djinn : Palette
                     else
                         illusionInstance.InitialKick(transform.right);
                 }
+                AkSoundEngine.PostEvent("sfx_djinn_power", gameObject);
                 Instantiate(wishPrefab, origin.position, transform.rotation);
                 charges -= chargesRequired;
                 power = false;

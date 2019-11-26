@@ -87,12 +87,6 @@ public class Palette : MonoBehaviour
         {
             Move(false);
         }
-
-        if (charges >= chargesRequired)
-        {
-            power = true;
-        }
-
         chargeClock += Time.deltaTime;
     }
 
@@ -134,6 +128,11 @@ public class Palette : MonoBehaviour
             if (charges < maxCharges)
             {
                 charges++;
+                if (charges >= chargesRequired)
+                {
+                    power = true;
+                    AkSoundEngine.PostEvent("sfx_powercharge", gameObject);
+                }
             }
         }
         if (UpdateCharges != null)

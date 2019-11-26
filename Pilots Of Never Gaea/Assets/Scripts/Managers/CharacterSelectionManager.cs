@@ -20,6 +20,8 @@ public class CharacterSelectionManager : MonoBehaviour
 
     private void Start()
     {
+        AkSoundEngine.PostEvent("music_select_ship", gameObject);
+        AkSoundEngine.PostEvent("sfx_ocdoors", gameObject);
         p1SelectedCharacter = Character.none;
         p2SelectedCharacter = Character.none;
         leftPlatformStartingPosition = p1Elements.transform.position;
@@ -57,6 +59,7 @@ public class CharacterSelectionManager : MonoBehaviour
                 {
                     platformClock = 0f;
                     opening = true;
+                    AkSoundEngine.PostEvent("sfx_ocdoors", gameObject);
                     Destroy(Camera.main.gameObject);
                     if (SelectAction != null)
                         SelectAction(p1SelectedCharacter, p2SelectedCharacter);

@@ -37,6 +37,7 @@ public class Knockout : Palette
 
     public void FrontShot()
     {
+        AkSoundEngine.PostEvent("sfx_knockout_power", gameObject);
         Instantiate(frontShot, frontOrigin.transform.position, transform.rotation);
     }
 

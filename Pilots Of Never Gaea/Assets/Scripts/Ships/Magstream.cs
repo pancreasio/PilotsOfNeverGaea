@@ -21,6 +21,7 @@ public class Magstream : Palette
         {
             if (action)
             {
+                AkSoundEngine.PostEvent("sfx_magstream_power", gameObject);
                 Instantiate(ionWave, new Vector2(0.0f, 0.0f), Quaternion.identity);
                 power = false;
                 charges -= chargesRequired;
