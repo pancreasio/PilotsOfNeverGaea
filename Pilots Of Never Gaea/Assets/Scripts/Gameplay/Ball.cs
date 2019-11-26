@@ -8,9 +8,9 @@ public class Ball : MonoBehaviour
     public delegate void OnScoreAction(bool player1);
     public static OnScoreAction onScore;
     public static LevelManager.LevelAction ElectrifyAction, UnstickAction;
-    public float initialSpeed, stunTime;
+    public float initialSpeed, stunTime, minYVelocity, correctionSpeed;
     private float stunClock, stuckYPosition, stuckSpeed;
-    private bool stunned, charged, stuck, shot;
+    private bool stunned, charged, stuck, shot, moving;
     private Vector2 stunnedPosition;
 
     private void Start()
@@ -21,6 +21,7 @@ public class Ball : MonoBehaviour
         charged = false;
         stuck = false;
         shot = false;
+        moving = false;
     }
 
     private void Update()
@@ -40,6 +41,10 @@ public class Ball : MonoBehaviour
             rig.velocity = new Vector2(stuckSpeed, 0.0f);
             transform.position = new Vector2(transform.position.x, stuckYPosition);
         }
+
+        if (moving && Mathf.Abs(rig.velocity.y) < minYVelocity)
+            rig.velocity += Vector2.right * Mathf.Sign(rig.velocity.y) * correctionSpeed;
+
     }
 
     public void StopMovement()
@@ -47,6 +52,7 @@ public class Ball : MonoBehaviour
         stuck = false;
         charged = false;
         rig.velocity = Vector2.zero;
+        moving = false;
     }
 
     public void InitialKick(Vector2 kickDirection)
@@ -54,6 +60,7 @@ public class Ball : MonoBehaviour
         rig.velocity = Vector2.zero;
         rig.AddForce(kickDirection.normalized * initialSpeed, ForceMode2D.Impulse);
         AkSoundEngine.PostEvent("sfx_startball", gameObject);
+        moving = true;
     }
 
     private void HitStun()

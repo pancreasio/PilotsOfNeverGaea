@@ -155,8 +155,8 @@ MonoBehaviour:
     m_Bits: 512
   speed: 13
   left: 1
-  chargesRequired: 2
-  maxCharges: 2
+  chargesRequired: 3
+  maxCharges: 3
   reply: {fileID: 193141215310927245, guid: f10825f56ab1e0c49bc2db28d65274d7, type: 3}
   replyParent: {fileID: 7934730112411708132}
 --- !u!95 &2685915054209108929
