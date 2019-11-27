@@ -3057,6 +3057,8 @@ MonoBehaviour:
     type: 3}
   djinnPrefab: {fileID: 3756782191027069904, guid: 06bf311561d45114f960f9a02d955020,
     type: 3}
+  leytenantPrefab: {fileID: 8210715802311271508, guid: ccd4fb6566693104ca270d57d6a36ea5,
+    type: 3}
   nullPrefab: {fileID: 3215223537495179292, guid: 927b6465c2f40694cbca41ffee69b9aa,
     type: 3}
   p1Position: {fileID: 1471547319}

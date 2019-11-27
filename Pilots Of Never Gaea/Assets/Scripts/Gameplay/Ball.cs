@@ -222,4 +222,10 @@ public class Ball : MonoBehaviour
             }
         }
     }
+
+    public void ArtilleryShot()
+    {
+        rig.velocity *= 1.4f;
+        shot = true;
+    }
 }

@@ -12,6 +12,7 @@ public class CharacterSelectionManager : MonoBehaviour
         kunst,
         knockout,
         djinn,
+        Leytenant,
         NULL,
     }
     public static GameManager.StartDuelFunction SelectAction;

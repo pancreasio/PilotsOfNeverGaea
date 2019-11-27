@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
     public int roundsToWin;
     public TextMeshProUGUI p1ScoreText, p2ScoreText, startRoundText;
     public GameObject leftPlatform, rightPlatform, p1Light, p2Light,
-        ballPrefab, magPrefab, railPrefab, kunstPrefab, knockoutPrefab, djinnPrefab, nullPrefab,
+        ballPrefab, magPrefab, railPrefab, kunstPrefab, knockoutPrefab, djinnPrefab, leytenantPrefab, nullPrefab,
         p1Position, p2Position, topRightArrow, topLeftArrow, bottomRightArrow, bottomLeftArrow,
         p1NullBarEmpty, p2NullBarEmpty,
         pauseCanvas;
@@ -86,6 +86,9 @@ public class LevelManager : MonoBehaviour
             case CharacterSelectionManager.Character.djinn:
                 p1Instance = Instantiate(djinnPrefab, p1Position.transform);
                 break;
+            case CharacterSelectionManager.Character.Leytenant:
+                p1Instance = Instantiate(leytenantPrefab, p1Position.transform);
+                break;
             case CharacterSelectionManager.Character.NULL:
                 p1Instance = Instantiate(nullPrefab, p1Position.transform);
                 p1EXAnimator.gameObject.SetActive(false);
@@ -128,6 +131,9 @@ public class LevelManager : MonoBehaviour
                 break;
             case CharacterSelectionManager.Character.djinn:
                 p2Instance = Instantiate(djinnPrefab, p2Position.transform);
+                break;
+            case CharacterSelectionManager.Character.Leytenant:
+                p2Instance = Instantiate(leytenantPrefab, p2Position.transform);
                 break;
             case CharacterSelectionManager.Character.NULL:
                 p2Instance = Instantiate(nullPrefab, p2Position.transform);
@@ -270,8 +276,10 @@ public class LevelManager : MonoBehaviour
         float speed = (platformInitialX - platformFinalX) / platformResetTime;
         p1PlatformAnimator.SetInteger("STATE", 2);
         p2PlatformAnimator.SetInteger("STATE", 2);
-        p1Instance.GetComponent<Palette>().ResetPalette();
-        p2Instance.GetComponent<Palette>().ResetPalette();
+        if(p1Instance !=null)
+            p1Instance.GetComponent<Palette>().ResetPalette();
+        if (p2Instance != null)
+            p2Instance.GetComponent<Palette>().ResetPalette();
         //AkSoundEngine.PostEvent("sfx_openwalls", gameObject);
 
         Vector2 initialDirection;
