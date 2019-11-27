@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 using System;
@@ -13,9 +14,13 @@ public class LevelManager : MonoBehaviour
     public GameObject leftPlatform, rightPlatform, p1Light, p2Light,
         ballPrefab, magPrefab, railPrefab, kunstPrefab, knockoutPrefab, djinnPrefab, nullPrefab,
         p1Position, p2Position, topRightArrow, topLeftArrow, bottomRightArrow, bottomLeftArrow,
-        p1NullBarEmpty, p2NullBarEmpty;
+        p1NullBarEmpty, p2NullBarEmpty,
+        pauseCanvas;
     public SpriteRenderer fadeoutSprite, p1NullBarFull, p2NullBarFull;
-    private GameObject ballReference = null, topSparks, bottomSparks, p1Instance = null, p2Instance = null;
+    private GameObject ballReference = null,
+        topSparks, bottomSparks,
+        p1Instance = null, p2Instance = null,
+        pauseLastSelected;
     private Ball ballScriptReference;
     public static GameManager.GameOverFunction GameOverAction;
     public static CharacterSelectionManager.Character p1Selected, p2Selected;
@@ -28,10 +33,12 @@ public class LevelManager : MonoBehaviour
         cameraShakeDuration, cameraShakeIntensity, 
         fadeoutTime;
     private float platformClock, platformInitialX;
-    private bool platformsClosing, platformsArrived;
+    private bool platformsClosing, platformsArrived, paused;
+    public static GameManager.SceneChange CharacterSelectButton, ExitButton;
     public delegate void ChargeAction(int charges);
     public delegate void UpdatePower(float power);
     public delegate void PaletteAction();
+    public EventSystem pauseEventSystem;
 
     private void Start()
     {
@@ -46,6 +53,8 @@ public class LevelManager : MonoBehaviour
         platformClock = 0;
         platformsClosing = false;
         platformsArrived = false;
+        paused = false;
+        pauseLastSelected = pauseEventSystem.firstSelectedGameObject;
         Ball.onScore = PlayerScored;
         Time.timeScale = 1;
         platformInitialX = rightPlatform.transform.position.x;
@@ -375,6 +384,27 @@ public class LevelManager : MonoBehaviour
         {
             StartCoroutine(FadeOut(false));
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseCanvas.SetActive(true);
+            paused = true;
+            Time.timeScale = 0f;
+        }
+
+        if (paused)
+        {
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+                AkSoundEngine.PostEvent((string)"sfx_ui_select", gameObject);
+
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.RightControl))
+                AkSoundEngine.PostEvent((string)"sfx_ui_ok", gameObject);
+
+            if (pauseEventSystem.currentSelectedGameObject == null)
+                pauseEventSystem.SetSelectedGameObject(pauseLastSelected);
+            else
+                pauseLastSelected = pauseEventSystem.currentSelectedGameObject;
+        }
     }
 
     private void GameOver(bool player1won)
@@ -411,5 +441,27 @@ public class LevelManager : MonoBehaviour
     private void P2Glitch()
     {
         PlayerScored(false);
+    }
+
+    public void UnPause()
+    {
+        paused = false;
+        Time.timeScale = 1f;
+        pauseLastSelected = pauseEventSystem.firstSelectedGameObject;
+        pauseCanvas.SetActive(false);
+    }
+
+    public void CharacterSelect()
+    {
+        Time.timeScale = 1f;
+        if (CharacterSelectButton!= null)
+        CharacterSelectButton(1);
+    }
+
+    public void MainMenu()
+    {
+        Time.timeScale = 1f;
+        if (ExitButton != null)
+            ExitButton(0);
     }
 }

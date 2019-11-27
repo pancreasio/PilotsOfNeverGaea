@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
         MenuManager.StartAction = NextScene;
         MenuManager.ExitAction = ExitApplication;
         LevelManager.GameOverAction = GameOver;
+        LevelManager.CharacterSelectButton = LoadScene;
+        LevelManager.ExitButton = LoadScene;
         CharacterSelectionManager.SelectAction = LoadGame;
         CharacterSelectionManager.FadeAction = UnloadAdditiveScene;
         CharacterSelectionManager.ExitButtonAction = PreviousScene;
