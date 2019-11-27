@@ -43,8 +43,13 @@ public class Ball : MonoBehaviour
         }
 
         if (moving && Mathf.Abs(rig.velocity.y) < minYVelocity)
-            rig.velocity += Vector2.right * Mathf.Sign(rig.velocity.y) * correctionSpeed;
+            rig.velocity += Vector2.right * Mathf.Sign(rig.velocity.x) * correctionSpeed;
 
+    }
+
+    private void FixedUpdate()
+    {
+        
     }
 
     public void StopMovement()
@@ -169,9 +174,16 @@ public class Ball : MonoBehaviour
             HitStun();
             shot = true;
             if (transform.position.x < 0)
-                rig.velocity = new Vector2(1f, 0f).normalized * 2f * initialSpeed;
+            {
+                StopMovement();
+                rig.AddForce((new Vector2(1f, 0f).normalized * initialSpeed * 1.9f), ForceMode2D.Impulse);
+
+            }
             else
-                rig.velocity = new Vector2(-1f, 0f).normalized * 2f * initialSpeed;
+            {
+                StopMovement();
+                rig.AddForce((new Vector2(-1f, 0f).normalized * initialSpeed * 1.9f), ForceMode2D.Impulse);
+            }
         }
 
         if (collisionTag == "SideShot")
