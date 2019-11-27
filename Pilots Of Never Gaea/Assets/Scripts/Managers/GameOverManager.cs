@@ -37,6 +37,9 @@ public class GameOverManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
             AkSoundEngine.PostEvent((string)"sfx_ui_option_eg", gameObject);
 
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.RightControl))
+            AkSoundEngine.PostEvent((string)"sfx_ui_ok_eg", gameObject);
+
         if (eventSystem.currentSelectedGameObject == null)
             eventSystem.SetSelectedGameObject(lastSelected);
         else
