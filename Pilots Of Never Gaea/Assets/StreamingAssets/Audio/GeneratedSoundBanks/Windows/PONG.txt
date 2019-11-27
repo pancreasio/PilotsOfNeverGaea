@@ -1,0 +1,29 @@
+Event	ID	Name			Wwise Object Path	Notes
+	351539970	sfx_endgame			\Default Work Unit\sfx_endgame	
+	375716372	sfx_powercharge			\Default Work Unit\sfx_powercharge	
+	429414528	sfx_goal			\Default Work Unit\sfx_goal	
+	620878633	music_gameplay			\Default Work Unit\music_gameplay	
+	779982538	sfx_matchpoint			\Default Work Unit\sfx_matchpoint	
+	1021122596	sfx_ui_option_eg			\Default Work Unit\sfx_ui_option_eg	
+	1042054958	sfx_magstream_bower			\Default Work Unit\sfx_magstream_bower	
+	1173302760	sfx_magstream_electric			\Default Work Unit\sfx_magstream_electric	
+	1187861409	sfx_palette_bounce			\Default Work Unit\sfx_palette_bounce	
+	1555110630	sfx_ocdoors			\Default Work Unit\sfx_ocdoors	
+	1598298728	music_menu			\Default Work Unit\music_menu	
+	1799644840	sfx_ui_ok			\Default Work Unit\sfx_ui_ok	
+	1889644198	sfx_closewalls			\Default Work Unit\sfx_closewalls	
+	1947212607	sfx_knockout_power			\Default Work Unit\sfx_knockout_power	
+	1970227385	sfx_wall			\Default Work Unit\sfx_wall	
+	2030213546	sfx_kunst_power			\Default Work Unit\sfx_kunst_power	
+	2483546905	sfx_ui_selectship_p2			\Default Work Unit\sfx_ui_selectship_p2	
+	2483546906	sfx_ui_selectship_p1			\Default Work Unit\sfx_ui_selectship_p1	
+	2488806774	music_select_ship			\Default Work Unit\music_select_ship	
+	3038939580	sfx_startball			\Default Work Unit\sfx_startball	
+	3220713831	sfx_ui_ok_eg			\Default Work Unit\sfx_ui_ok_eg	
+	3573043773	sfx_ui_ok_p2			\Default Work Unit\sfx_ui_ok_p2	
+	3573043774	sfx_ui_ok_p1			\Default Work Unit\sfx_ui_ok_p1	
+	3742052573	sfx_raildrive_power			\Default Work Unit\sfx_raildrive_power	
+	3753159394	sfx_ui_select			\Default Work Unit\sfx_ui_select	
+	4020650282	music_endgame			\Default Work Unit\music_endgame	
+	4085389126	sfx_djinn_power			\Default Work Unit\sfx_djinn_power	
+
