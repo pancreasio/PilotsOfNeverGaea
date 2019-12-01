@@ -12,15 +12,16 @@ public class LevelManager : MonoBehaviour
     public int roundsToWin;
     public TextMeshProUGUI p1ScoreText, p2ScoreText, startRoundText;
     public GameObject leftPlatform, rightPlatform, p1Light, p2Light,
-        ballPrefab, magPrefab, railPrefab, kunstPrefab, knockoutPrefab, djinnPrefab, leytenantPrefab, nullPrefab,
-        p1Position, p2Position, topRightArrow, topLeftArrow, bottomRightArrow, bottomLeftArrow,
+        ballPrefab,
+        p1Position, p2Position,
+        topRightArrow, topLeftArrow, bottomRightArrow, bottomLeftArrow,
         p1NullBarEmpty, p2NullBarEmpty,
         pauseCanvas;
+    public List<GameObject> shipPrefabList;
     public SpriteRenderer fadeoutSprite, p1NullBarFull, p2NullBarFull;
     private GameObject ballReference = null,
         topSparks, bottomSparks,
-        p1Instance = null, p2Instance = null,
-        pauseLastSelected;
+        p1Instance = null, p2Instance = null;
     private Ball ballScriptReference;
     public static GameManager.GameOverFunction GameOverAction;
     public static CharacterSelectionManager.Character p1Selected, p2Selected;
@@ -38,8 +39,6 @@ public class LevelManager : MonoBehaviour
     public delegate void ChargeAction(int charges);
     public delegate void UpdatePower(float power);
     public delegate void PaletteAction();
-    public EventSystem pauseEventSystem;
-
     private void Start()
     {
         Ball.ElectrifyAction = ActivateSparks;
@@ -54,7 +53,6 @@ public class LevelManager : MonoBehaviour
         platformsClosing = false;
         platformsArrived = false;
         paused = false;
-        pauseLastSelected = pauseEventSystem.firstSelectedGameObject;
         Ball.onScore = PlayerScored;
         Time.timeScale = 1;
         platformInitialX = rightPlatform.transform.position.x;
@@ -67,40 +65,17 @@ public class LevelManager : MonoBehaviour
 
     private void InitializeGame()
     {
-        switch (p1Selected)
-        {
-            case CharacterSelectionManager.Character.none:
-                break;
-            case CharacterSelectionManager.Character.raildrive:
-                p1Instance = Instantiate(railPrefab, p1Position.transform);
-                break;
-            case CharacterSelectionManager.Character.magstream:
-                p1Instance = Instantiate(magPrefab, p1Position.transform);
-                break;
-            case CharacterSelectionManager.Character.kunst:
-                p1Instance = Instantiate(kunstPrefab, p1Position.transform);
-                break;
-            case CharacterSelectionManager.Character.knockout:
-                p1Instance = Instantiate(knockoutPrefab, p1Position.transform);
-                break;
-            case CharacterSelectionManager.Character.djinn:
-                p1Instance = Instantiate(djinnPrefab, p1Position.transform);
-                break;
-            case CharacterSelectionManager.Character.Leytenant:
-                p1Instance = Instantiate(leytenantPrefab, p1Position.transform);
-                break;
-            case CharacterSelectionManager.Character.NULL:
-                p1Instance = Instantiate(nullPrefab, p1Position.transform);
-                p1EXAnimator.gameObject.SetActive(false);
-                p1NullBarEmpty.SetActive(true);
-                p1NullBarFull.gameObject.SetActive(true);
-                p1Instance.GetComponent<NULL>().UpdateGlitchPower = P1UpdateNULL;
-                p1Instance.GetComponent<NULL>().GlitchAction = P1Glitch;
-                break;
-            default:
-                break;
-        }
+        if (p1Selected != CharacterSelectionManager.Character.none)
+            p1Instance = Instantiate(shipPrefabList[(int)p1Selected - 1], p1Position.transform);
 
+        if (p1Selected == CharacterSelectionManager.Character.NULL)
+        {
+            p1EXAnimator.gameObject.SetActive(false);
+            p1NullBarEmpty.SetActive(true);
+            p1NullBarFull.gameObject.SetActive(true);
+            p1Instance.GetComponent<NULL>().UpdateGlitchPower = P1UpdateNULL;
+            p1Instance.GetComponent<NULL>().GlitchAction = P1Glitch;
+        }
 
         if (p1Instance != null)
         {
@@ -113,38 +88,16 @@ public class LevelManager : MonoBehaviour
             p1Instance.GetComponent<Palette>().UpdateCharges = P1UpdateCharges;
         }
 
-        switch (p2Selected)
+        if (p2Selected != CharacterSelectionManager.Character.none)
+            p2Instance = Instantiate(shipPrefabList[(int)p2Selected - 1], p2Position.transform);
+
+        if (p2Selected == CharacterSelectionManager.Character.NULL)
         {
-            case CharacterSelectionManager.Character.none:
-                break;
-            case CharacterSelectionManager.Character.raildrive:
-                p2Instance = Instantiate(railPrefab, p2Position.transform);
-                break;
-            case CharacterSelectionManager.Character.magstream:
-                p2Instance = Instantiate(magPrefab, p2Position.transform);
-                break;
-            case CharacterSelectionManager.Character.kunst:
-                p2Instance = Instantiate(kunstPrefab, p2Position.transform);
-                break;
-            case CharacterSelectionManager.Character.knockout:
-                p2Instance = Instantiate(knockoutPrefab, p2Position.transform);
-                break;
-            case CharacterSelectionManager.Character.djinn:
-                p2Instance = Instantiate(djinnPrefab, p2Position.transform);
-                break;
-            case CharacterSelectionManager.Character.Leytenant:
-                p2Instance = Instantiate(leytenantPrefab, p2Position.transform);
-                break;
-            case CharacterSelectionManager.Character.NULL:
-                p2Instance = Instantiate(nullPrefab, p2Position.transform);
-                p2EXAnimator.gameObject.SetActive(false);
-                p2NullBarEmpty.SetActive(true);
-                p2NullBarFull.gameObject.SetActive(true);
-                p2Instance.GetComponent<NULL>().UpdateGlitchPower = P2UpdateNULL;
-                p2Instance.GetComponent<NULL>().GlitchAction = P2Glitch;
-                break;
-            default:
-                break;
+            p2EXAnimator.gameObject.SetActive(false);
+            p2NullBarEmpty.SetActive(true);
+            p2NullBarFull.gameObject.SetActive(true);
+            p2Instance.GetComponent<NULL>().UpdateGlitchPower = P2UpdateNULL;
+            p2Instance.GetComponent<NULL>().GlitchAction = P2Glitch;
         }
 
         if (p2Instance != null)
@@ -296,7 +249,6 @@ public class LevelManager : MonoBehaviour
                 initialDirection += Vector2.right;
                 actualArrow = topRightArrow;
             }
-
         }
         else
         {
@@ -399,20 +351,6 @@ public class LevelManager : MonoBehaviour
             paused = true;
             Time.timeScale = 0f;
         }
-
-        if (paused)
-        {
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
-                AkSoundEngine.PostEvent((string)"sfx_ui_select", gameObject);
-
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.RightControl))
-                AkSoundEngine.PostEvent((string)"sfx_ui_ok", gameObject);
-
-            if (pauseEventSystem.currentSelectedGameObject == null)
-                pauseEventSystem.SetSelectedGameObject(pauseLastSelected);
-            else
-                pauseLastSelected = pauseEventSystem.currentSelectedGameObject;
-        }
     }
 
     private void GameOver(bool player1won)
@@ -455,7 +393,7 @@ public class LevelManager : MonoBehaviour
     {
         paused = false;
         Time.timeScale = 1f;
-        pauseLastSelected = pauseEventSystem.firstSelectedGameObject;
+        GetComponent<UIManager>().ResetSelected();
         pauseCanvas.SetActive(false);
     }
 

@@ -10,7 +10,6 @@ public class MenuManager : MonoBehaviour
     public static GameManager.ButtonAction ExitAction;
     public TextMeshProUGUI versionText;
     public EventSystem eventSystem;
-    private GameObject lastSelected;
     public GameObject mainCanvas, creditsCanvas, controlsCanvas,
         firstMainButton, firstCreditsButton, firstControlsButton;
 
@@ -19,21 +18,6 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 1;
         versionText.text = "v" + Application.version;
         AkSoundEngine.PostEvent((string)"music_menu", gameObject);
-        lastSelected = eventSystem.currentSelectedGameObject;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
-            AkSoundEngine.PostEvent((string)"sfx_ui_select", gameObject);
-
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.RightControl))
-            AkSoundEngine.PostEvent((string)"sfx_ui_ok", gameObject);
-
-        if (eventSystem.currentSelectedGameObject == null)
-            eventSystem.SetSelectedGameObject(lastSelected);
-        else
-            lastSelected = eventSystem.currentSelectedGameObject;
     }
 
     public void StartGame()

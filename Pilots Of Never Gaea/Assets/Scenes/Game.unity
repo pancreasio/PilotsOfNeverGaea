@@ -3004,6 +3004,7 @@ GameObject:
   m_Component:
   - component: {fileID: 906914868}
   - component: {fileID: 906914869}
+  - component: {fileID: 906914870}
   m_Layer: 0
   m_Name: Level Manager
   m_TagString: Untagged
@@ -3047,20 +3048,6 @@ MonoBehaviour:
   p2Light: {fileID: 76496221}
   ballPrefab: {fileID: 3587088231962082201, guid: 4b4ef88ad2f58c34eb46094a585c8c43,
     type: 3}
-  magPrefab: {fileID: 6150576434017584300, guid: 0878ea162640edd48a25ba1aa40d57bc,
-    type: 3}
-  railPrefab: {fileID: 1851360514041425684, guid: 3d8dcdc5f6c8e0c4d8b9ddcb06bc7c79,
-    type: 3}
-  kunstPrefab: {fileID: 2685915054209108956, guid: da12212ab8fcc5843b0860e445858b98,
-    type: 3}
-  knockoutPrefab: {fileID: 1989890064088317898, guid: 6884f094b72359a4cad6ffc402ad0acf,
-    type: 3}
-  djinnPrefab: {fileID: 3756782191027069904, guid: 06bf311561d45114f960f9a02d955020,
-    type: 3}
-  leytenantPrefab: {fileID: 8210715802311271508, guid: ccd4fb6566693104ca270d57d6a36ea5,
-    type: 3}
-  nullPrefab: {fileID: 3215223537495179292, guid: 927b6465c2f40694cbca41ffee69b9aa,
-    type: 3}
   p1Position: {fileID: 1471547319}
   p2Position: {fileID: 116639106}
   topRightArrow: {fileID: 655025102}
@@ -3070,6 +3057,14 @@ MonoBehaviour:
   p1NullBarEmpty: {fileID: 409195681}
   p2NullBarEmpty: {fileID: 607465364}
   pauseCanvas: {fileID: 908153496}
+  shipPrefabList:
+  - {fileID: 1851360514041425684, guid: 3d8dcdc5f6c8e0c4d8b9ddcb06bc7c79, type: 3}
+  - {fileID: 6150576434017584300, guid: 0878ea162640edd48a25ba1aa40d57bc, type: 3}
+  - {fileID: 2685915054209108956, guid: da12212ab8fcc5843b0860e445858b98, type: 3}
+  - {fileID: 1989890064088317898, guid: 6884f094b72359a4cad6ffc402ad0acf, type: 3}
+  - {fileID: 3756782191027069904, guid: 06bf311561d45114f960f9a02d955020, type: 3}
+  - {fileID: 8210715802311271508, guid: ccd4fb6566693104ca270d57d6a36ea5, type: 3}
+  - {fileID: 3215223537495179292, guid: 927b6465c2f40694cbca41ffee69b9aa, type: 3}
   fadeoutSprite: {fileID: 602137368}
   p1NullBarFull: {fileID: 1398933750}
   p2NullBarFull: {fileID: 1675899980}
@@ -3088,7 +3083,20 @@ MonoBehaviour:
   cameraShakeDuration: 0.2
   cameraShakeIntensity: 0.2
   fadeoutTime: 2
-  pauseEventSystem: {fileID: 1086753360}
+--- !u!114 &906914870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906914867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02749ac339c30954b981193414bcce6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventSystem: {fileID: 1086753360}
+  currentScreen: 2
 --- !u!1 &908153496
 GameObject:
   m_ObjectHideFlags: 0
