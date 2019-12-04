@@ -1675,7 +1675,7 @@ GameObject:
   - component: {fileID: 1376159293}
   - component: {fileID: 1376159292}
   m_Layer: 0
-  m_Name: Game over
+  m_Name: Game Over Sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
