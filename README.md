@@ -8,7 +8,7 @@ A new take ona classic game, now with lasers, shotguns, cannons and many more po
 
 Destroy friendships and settle rivalries with a couple rounds of Pilots Of Never Gaea!
 
-This is a game demo developed by students from <a href="https://www.imagecampus.edu.ar/">Image Campus</a>
+This is a demo developed by students from <a href="https://www.imagecampus.edu.ar/">Image Campus</a>
 
 <p align="center">
   <a href="https://www.imagecampus.edu.ar/">
