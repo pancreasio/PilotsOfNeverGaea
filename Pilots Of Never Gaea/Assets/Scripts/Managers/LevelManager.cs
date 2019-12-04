@@ -34,7 +34,7 @@ public class LevelManager : MonoBehaviour
         cameraShakeDuration, cameraShakeIntensity, 
         fadeoutTime;
     private float platformClock, platformInitialX;
-    private bool platformsClosing, platformsArrived, paused;
+    private bool platformsClosing, platformsArrived, gameEnded;
     public static GameManager.SceneChange CharacterSelectButton, ExitButton;
     public delegate void ChargeAction(int charges);
     public delegate void UpdatePower(float power);
@@ -52,7 +52,7 @@ public class LevelManager : MonoBehaviour
         platformClock = 0;
         platformsClosing = false;
         platformsArrived = false;
-        paused = false;
+        gameEnded = false;
         Ball.onScore = PlayerScored;
         Time.timeScale = 1;
         platformInitialX = rightPlatform.transform.position.x;
@@ -336,19 +336,20 @@ public class LevelManager : MonoBehaviour
 
         p1ScoreText.text = p1Score.ToString();
         p2ScoreText.text = p2Score.ToString();
-        if (p1Score >= roundsToWin)
+        if (p1Score >= roundsToWin && !gameEnded)
         {
             StartCoroutine(FadeOut(true));
+            gameEnded = true;
         }
-        if (p2Score >= roundsToWin)
+        if (p2Score >= roundsToWin && !gameEnded)
         {
             StartCoroutine(FadeOut(false));
+            gameEnded = true;
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             pauseCanvas.SetActive(true);
-            paused = true;
             Time.timeScale = 0f;
         }
     }
@@ -391,7 +392,6 @@ public class LevelManager : MonoBehaviour
 
     public void UnPause()
     {
-        paused = false;
         Time.timeScale = 1f;
         GetComponent<UIManager>().ResetSelected();
         pauseCanvas.SetActive(false);
