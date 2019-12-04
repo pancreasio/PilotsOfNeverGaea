@@ -2,11 +2,11 @@
 <img src="logo.png" alt="PONER NOMBRE DEL JUEGO ACA"/>
 </p>
 
-# Nombre del juego
+# Pilots Of Never Gaea
 
-Lorem ipsum dolor sit amet consectetur adipiscing elit, quam nunc per litora montes himenaeos. Porttitor tellus dis cubilia vitae tortor felis litora vestibulum lacinia, cras diam ut dictumst orci consequat gravida rhoncus, hac faucibus volutpat ligula massa sem ornare posuere.
+A new take ona classic game, now with lasers, shotguns, cannons and many more powers!
 
-Aliquam massa ut at semper parturient ridiculus netus suspendisse eros, vivamus lobortis libero lacinia tempor fusce dis rutrum natoque non, tincidunt tempus mus eleifend luctus tellus odio platea. 
+Destroy friendships and settle rivalries with a couple rounds of Pilots Of Never Gaea!
 
 This is a game (demo/protoype/vertical slice) developed by students from <a href="https://www.imagecampus.edu.ar/">Image Campus</a>
 
@@ -19,10 +19,11 @@ This is a game (demo/protoype/vertical slice) developed by students from <a href
 
 ## Credits
 
-- **Nombre Apellido** - *Programming* - <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/linkedin.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/facebook.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/twitter.svg" /><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/github.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/behance.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/artstation.svg" /></a>
-- **Nombre Apellido** - *Art* - <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/linkedin.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/facebook.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/twitter.svg" /><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/github.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/behance.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/artstation.svg" /></a>
-- **Nombre Apellido** - *Audio* - <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/linkedin.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/facebook.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/twitter.svg" /><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/github.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/behance.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/artstation.svg" /></a>
-- **Nombre Apellido** - *Testing* - <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/linkedin.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/facebook.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/twitter.svg" /><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/github.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/behance.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/artstation.svg" /></a>
+- **Julián Serulnikov Kohen** - *Programming* - <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/linkedin.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/facebook.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/twitter.svg" /><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/github.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/behance.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/artstation.svg" /></a>
+- **Joaquín Italiano** - *Art* - <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/linkedin.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/facebook.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/twitter.svg" /><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/github.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/behance.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/artstation.svg" /></a>
+- **Lautaro Concetti** - *Art* - <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/linkedin.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/facebook.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/twitter.svg" /><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/github.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/behance.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/artstation.svg" /></a>
+- **Alan Mandralli** - *Audio* - <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/linkedin.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/facebook.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/twitter.svg" /><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/github.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/behance.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/artstation.svg" /></a>
+- **Cristian Florez** - *Audio* - <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/linkedin.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/facebook.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/twitter.svg" /><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/github.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/behance.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/artstation.svg" /></a>
 
 
 This game was also possible thanks to the support of these professors:
@@ -36,9 +37,9 @@ This game was also possible thanks to the support of these professors:
 
 ## Acknowledgements
 
-Otras personas a las que quieran agradecerles, sino sacar este título
+Bi Baubo, you know it
 
 
 ## Links
 
-Download it from itch.io: https://lqngames.itch.io/under-control
+Download it from itch.io: https://julianserulnikovkohen.itch.io/pilots-of-never-gaea
