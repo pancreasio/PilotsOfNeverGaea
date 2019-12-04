@@ -3082,7 +3082,7 @@ MonoBehaviour:
   ballResetSpeed: 10
   cameraShakeDuration: 0.2
   cameraShakeIntensity: 0.2
-  fadeoutTime: 2
+  fadeoutTime: 3
 --- !u!114 &906914870
 MonoBehaviour:
   m_ObjectHideFlags: 0
