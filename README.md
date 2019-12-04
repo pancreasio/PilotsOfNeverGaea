@@ -8,7 +8,7 @@ A new take ona classic game, now with lasers, shotguns, cannons and many more po
 
 Destroy friendships and settle rivalries with a couple rounds of Pilots Of Never Gaea!
 
-This is a game (demo/protoype/vertical slice) developed by students from <a href="https://www.imagecampus.edu.ar/">Image Campus</a>
+This is a game demo developed by students from <a href="https://www.imagecampus.edu.ar/">Image Campus</a>
 
 <p align="center">
   <a href="https://www.imagecampus.edu.ar/">
@@ -19,11 +19,11 @@ This is a game (demo/protoype/vertical slice) developed by students from <a href
 
 ## Credits
 
-- **Julián Serulnikov Kohen** - *Programming* - <a href="https://www.linkedin.com/in/juli%C3%A1n-serulnikov-kohen-702472192/"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/linkedin.svg" /></a> <a href="https://twitter.com/Serulnikov"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/twitter.svg" /><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/github.svg" /></a>
-- **Joaquín Italiano** - *Art* - <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/linkedin.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/facebook.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/twitter.svg" /><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/github.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/behance.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/artstation.svg" /></a>
-- **Lautaro Concetti** - *Art* - <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/linkedin.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/facebook.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/twitter.svg" /><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/github.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/behance.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/artstation.svg" /></a>
-- **Alan Mandralli** - *Audio* - <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/linkedin.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/facebook.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/twitter.svg" /><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/github.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/behance.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/artstation.svg" /></a>
-- **Cristian Florez** - *Audio* - <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/linkedin.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/facebook.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/twitter.svg" /><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/github.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/behance.svg" /></a> <a href="LINK A RED"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/artstation.svg" /></a>
+- **Julián Serulnikov Kohen** - *Programming* - <a href="https://www.linkedin.com/in/juli%C3%A1n-serulnikov-kohen-702472192/"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/linkedin.svg" /></a> <a href="https://twitter.com/Serulnikov"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/twitter.svg" /></a> <a href="https://github/pancreasio"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/github.svg" /></a>
+- **Lautaro Concetti** - *Art* - <a href="https://www.artstation.com/djconcetti"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/artstation.svg" /></a>
+- **Joaquín Italiano** - *Art* -<a href="https://www.artstation.com/litalian"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/artstation.svg" /></a>
+- **Alan Mandralli** - *Audio* - 
+- **Cristian Florez** - *Audio* - 
 
 
 This game was also possible thanks to the support of these professors:
