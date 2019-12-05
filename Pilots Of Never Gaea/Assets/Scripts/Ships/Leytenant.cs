@@ -6,16 +6,14 @@ public class Leytenant : Palette
 {
     public float speedReduction, recieveTime, holdTime, cannonRotationSpeed;
     private bool shooting, recieving;
-    public GameObject cannon;
+    public GameObject cannon, openClaw, closedClaw;
     public Transform cannonVector;
-    private Animator animator;
 
     protected override void Start()
     {
         base.Start();
         recieving = false;
         shooting = false;
-        animator = GetComponent<Animator>();
     }
 
     protected override void Update()
@@ -35,21 +33,24 @@ public class Leytenant : Palette
         speed = speed / speedReduction;
         float recieveClock = 0f;
         recieving = true;
+        openClaw.SetActive(true);
         while (recieveClock < recieveTime && recieving)
         {
             recieveClock += Time.deltaTime;
             yield return null;
         }
         recieving = false;
+        openClaw.SetActive(false);
         speed *= speedReduction;
     }
 
-    private IEnumerator Arm(GameObject ball)
+    private IEnumerator Arm(Ball ball)
     {
         recieving = false;
         Vector2 armPosition = transform.position;
         float holdClock = 0f, rotation = 0f;
         cannon.SetActive(true);
+        closedClaw.SetActive(true);
         cannon.transform.rotation = Quaternion.identity;
         if (!isPlayer1)
         {
@@ -66,8 +67,9 @@ public class Leytenant : Palette
             cannon.transform.Rotate(Vector3.back, rotation * Time.deltaTime);
             yield return null;
         }
-        ball.GetComponent<Ball>().InitialKick(cannonVector.position - cannon.transform.position);
-        ball.GetComponent<Ball>().ArtilleryShot();
+        closedClaw.SetActive(false);
+        ball.InitialKick(cannonVector.position - cannon.transform.position);
+        ball.ArtilleryShot();
         cannon.SetActive(false);
     }
 
@@ -75,14 +77,10 @@ public class Leytenant : Palette
     {
         if (!recieving && !shooting)
             base.OnCollisionEnter2D(collision);
-
-        else
-        {
-            if (collision.transform.tag == "Ball" && recieving)
-            {
-                StartCoroutine(Arm(collision.gameObject));
-            }
-        }
     }
 
+    public void CatchBall(Ball ball)
+    {
+        StartCoroutine(Arm(ball));
+    }
 }
