@@ -30,11 +30,11 @@ public class LevelManager : MonoBehaviour
     public delegate void LevelAction();
     public float startRoundTime, resetRoundTime,
         platformDelay, platformSpeed, platformResetTime, platformLimit,
-        ballResetSpeed, 
-        cameraShakeDuration, cameraShakeIntensity, 
+        ballResetSpeed,
+        cameraShakeDuration, cameraShakeIntensity,
         fadeoutTime;
     private float platformClock, platformInitialX;
-    private bool platformsClosing, platformsArrived, gameEnded;
+    private bool platformsClosing = false, platformsArrived = false, gameEnded = false, gameStarted = false;
     public static GameManager.SceneChange CharacterSelectButton, ExitButton;
     public delegate void ChargeAction(int charges);
     public delegate void UpdatePower(float power);
@@ -49,18 +49,62 @@ public class LevelManager : MonoBehaviour
         bottomSparks.SetActive(false);
         p1Score = 0;
         p2Score = 0;
+        p1ScoreText.text = p1Score.ToString();
+        p2ScoreText.text = p2Score.ToString();
         platformClock = 0;
-        platformsClosing = false;
-        platformsArrived = false;
-        gameEnded = false;
         Ball.onScore = PlayerScored;
         Time.timeScale = 1;
         platformInitialX = rightPlatform.transform.position.x;
         p1PlatformAnimator.SetInteger("STATE", 0);
         p2PlatformAnimator.SetInteger("STATE", 0);
+
         InitializeGame();
         StartCoroutine(StartRound());
         AkSoundEngine.PostEvent("music_gameplay", gameObject);
+    }
+
+    private void Update()
+    {
+        platformClock += Time.deltaTime;
+        if (platformsClosing && !platformsArrived)
+        {
+            leftPlatform.transform.Translate(transform.right * platformSpeed * Time.deltaTime);
+            rightPlatform.transform.Translate(-transform.right * platformSpeed * Time.deltaTime);
+            if (leftPlatform.transform.position.x >= platformLimit)
+            {
+                platformsArrived = true;
+                platformsClosing = false;
+                p1PlatformAnimator.SetInteger("STATE", 0);
+                p2PlatformAnimator.SetInteger("STATE", 0);
+            }
+        }
+        else
+        {
+            if (!platformsArrived && platformClock >= platformDelay)
+            {
+                platformsClosing = true;
+                p1PlatformAnimator.SetInteger("STATE", 1);
+                p2PlatformAnimator.SetInteger("STATE", 1);
+                AkSoundEngine.PostEvent("sfx_closewalls", gameObject);
+            }
+        }
+
+        if (p1Score >= roundsToWin && !gameEnded)
+        {
+            StartCoroutine(FadeOut(true));
+            gameEnded = true;
+        }
+        if (p2Score >= roundsToWin && !gameEnded)
+        {
+            StartCoroutine(FadeOut(false));
+            gameEnded = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && gameStarted && !gameEnded)
+        {
+            pauseCanvas.SetActive(true);
+            Time.timeScale = 0f;
+        }
     }
 
     private void InitializeGame()
@@ -70,14 +114,36 @@ public class LevelManager : MonoBehaviour
 
         if (p1Selected == CharacterSelectionManager.Character.NULL)
         {
-            p1EXAnimator.gameObject.SetActive(false);
-            p1NullBarEmpty.SetActive(true);
-            p1NullBarFull.gameObject.SetActive(true);
-            p1Instance.GetComponent<NULL>().UpdateGlitchPower = P1UpdateNULL;
-            p1Instance.GetComponent<NULL>().GlitchAction = P1Glitch;
+            InitializeNULL(true);
         }
 
         if (p1Instance != null)
+        {
+            InitializeShip(true);
+        }
+
+        if (p2Selected != CharacterSelectionManager.Character.none)
+            p2Instance = Instantiate(shipPrefabList[(int)p2Selected - 1], p2Position.transform);
+
+        if (p2Selected == CharacterSelectionManager.Character.NULL)
+        {
+            InitializeNULL(false);
+        }
+
+        if (p2Instance != null)
+        {
+            InitializeShip(false);
+        }
+
+        ballReference = Instantiate(ballPrefab, Vector2.zero, Quaternion.identity);
+        ballReference.transform.parent = transform;
+        ballScriptReference = ballReference.GetComponent<Ball>();
+    }
+
+
+    private void InitializeShip(bool player1)
+    {
+        if (player1)
         {
             p1Instance.GetComponent<Palette>().isPlayer1 = true;
             p1Instance.transform.position = p1Position.transform.position;
@@ -87,20 +153,7 @@ public class LevelManager : MonoBehaviour
             p1EXAnimator.SetInteger("CHARGES", 0);
             p1Instance.GetComponent<Palette>().UpdateCharges = P1UpdateCharges;
         }
-
-        if (p2Selected != CharacterSelectionManager.Character.none)
-            p2Instance = Instantiate(shipPrefabList[(int)p2Selected - 1], p2Position.transform);
-
-        if (p2Selected == CharacterSelectionManager.Character.NULL)
-        {
-            p2EXAnimator.gameObject.SetActive(false);
-            p2NullBarEmpty.SetActive(true);
-            p2NullBarFull.gameObject.SetActive(true);
-            p2Instance.GetComponent<NULL>().UpdateGlitchPower = P2UpdateNULL;
-            p2Instance.GetComponent<NULL>().GlitchAction = P2Glitch;
-        }
-
-        if (p2Instance != null)
+        else
         {
             p2Instance.GetComponent<Palette>().isPlayer1 = false;
             p2Instance.transform.position = p2Position.transform.position;
@@ -111,55 +164,25 @@ public class LevelManager : MonoBehaviour
             p2EXAnimator.SetInteger("CHARGES", 0);
             p2Instance.GetComponent<Palette>().UpdateCharges = P2UpdateCharges;
         }
-        ballReference = Instantiate(ballPrefab, Vector2.zero, Quaternion.identity);
-        ballReference.transform.parent = transform;
-        ballScriptReference = ballReference.GetComponent<Ball>();
     }
-
-    private void PlayerScored(bool player1)
+    private void InitializeNULL(bool player1)
     {
-
-        StartCoroutine(cameraShake.Shake(cameraShakeDuration, cameraShakeIntensity));
-
         if (player1)
         {
-            p1Score++;
-            if (p1Score < roundsToWin)
-                StartCoroutine(ResetRound(true));
+            p1EXAnimator.gameObject.SetActive(false);
+            p1NullBarEmpty.SetActive(true);
+            p1NullBarFull.gameObject.SetActive(true);
+            p1Instance.GetComponent<NULL>().UpdateGlitchPower = P1UpdateNULL;
+            p1Instance.GetComponent<NULL>().GlitchAction = P1Glitch;
         }
         else
         {
-            p2Score++;
-            if (p2Score < roundsToWin)
-                StartCoroutine(ResetRound(false));
+            p2EXAnimator.gameObject.SetActive(false);
+            p2NullBarEmpty.SetActive(true);
+            p2NullBarFull.gameObject.SetActive(true);
+            p2Instance.GetComponent<NULL>().UpdateGlitchPower = P2UpdateNULL;
+            p2Instance.GetComponent<NULL>().GlitchAction = P2Glitch;
         }
-    }
-
-    private IEnumerator FadeOut(bool player1Won)
-    {
-        AkSoundEngine.PostEvent("sfx_endgame", gameObject);
-        Time.timeScale = 0f;
-        float clock = 0f;
-        while (clock < fadeoutTime)
-        {
-            clock += Time.unscaledDeltaTime;
-            fadeoutSprite.color = new Color(255f, 255f, 255f, clock / fadeoutTime);
-            yield return null;
-        }
-        Time.timeScale = 1f;
-        GameOver(player1Won);
-    }
-
-    private void ActivateSparks()
-    {
-        topSparks.SetActive(true);
-        bottomSparks.SetActive(true);
-    }
-
-    private void DeactivateSparks()
-    {
-        topSparks.SetActive(false);
-        bottomSparks.SetActive(false);
     }
 
     private IEnumerator StartRound()
@@ -211,6 +234,7 @@ public class LevelManager : MonoBehaviour
         startRoundText.gameObject.SetActive(false);
         actualArrow.SetActive(false);
         ballScriptReference.InitialKick(initialDirection);
+        gameStarted = true;
     }
 
     private IEnumerator ResetRound(bool player1Scored)
@@ -229,11 +253,10 @@ public class LevelManager : MonoBehaviour
         float speed = (platformInitialX - platformFinalX) / platformResetTime;
         p1PlatformAnimator.SetInteger("STATE", 2);
         p2PlatformAnimator.SetInteger("STATE", 2);
-        if(p1Instance !=null)
+        if (p1Instance != null)
             p1Instance.GetComponent<Palette>().ResetPalette();
         if (p2Instance != null)
             p2Instance.GetComponent<Palette>().ResetPalette();
-        //AkSoundEngine.PostEvent("sfx_openwalls", gameObject);
 
         Vector2 initialDirection;
         if (UnityEngine.Random.value < 0.5f)
@@ -308,59 +331,60 @@ public class LevelManager : MonoBehaviour
         actualArrow.SetActive(false);
     }
 
-    private void Update()
+    private void PlayerScored(bool player1)
     {
-        platformClock += Time.deltaTime;
-        if (platformsClosing && !platformsArrived)
+
+        StartCoroutine(cameraShake.Shake(cameraShakeDuration, cameraShakeIntensity));
+        if (player1)
         {
-            leftPlatform.transform.Translate(transform.right * platformSpeed * Time.deltaTime);
-            rightPlatform.transform.Translate(-transform.right * platformSpeed * Time.deltaTime);
-            if (leftPlatform.transform.position.x >= platformLimit)
-            {
-                platformsArrived = true;
-                platformsClosing = false;
-                p1PlatformAnimator.SetInteger("STATE", 0);
-                p2PlatformAnimator.SetInteger("STATE", 0);
-            }
+            p1Score++;
+            if (p1Score < roundsToWin)
+                StartCoroutine(ResetRound(true));
         }
         else
         {
-            if (!platformsArrived && platformClock >= platformDelay)
-            {
-                platformsClosing = true;
-                p1PlatformAnimator.SetInteger("STATE", 1);
-                p2PlatformAnimator.SetInteger("STATE", 1);
-                AkSoundEngine.PostEvent("sfx_closewalls", gameObject);
-            }
+            p2Score++;
+            if (p2Score < roundsToWin)
+                StartCoroutine(ResetRound(false));
         }
-
         p1ScoreText.text = p1Score.ToString();
         p2ScoreText.text = p2Score.ToString();
-        if (p1Score >= roundsToWin && !gameEnded)
-        {
-            StartCoroutine(FadeOut(true));
-            gameEnded = true;
-        }
-        if (p2Score >= roundsToWin && !gameEnded)
-        {
-            StartCoroutine(FadeOut(false));
-            gameEnded = true;
-        }
+    }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+    private IEnumerator FadeOut(bool player1Won)
+    {
+        AkSoundEngine.PostEvent("sfx_endgame", gameObject);
+        Time.timeScale = 0f;
+        float clock = 0f;
+        while (clock < fadeoutTime)
         {
-            pauseCanvas.SetActive(true);
-            Time.timeScale = 0f;
+            clock += Time.unscaledDeltaTime;
+            fadeoutSprite.color = new Color(255f, 255f, 255f, clock / fadeoutTime);
+            yield return null;
         }
+        Time.timeScale = 1f;
+        GameOver(player1Won);
+    }
+
+
+    private void ActivateSparks()
+    {
+        topSparks.SetActive(true);
+        bottomSparks.SetActive(true);
+    }
+
+    private void DeactivateSparks()
+    {
+        topSparks.SetActive(false);
+        bottomSparks.SetActive(false);
     }
 
     private void GameOver(bool player1won)
     {
         if (GameOverAction != null)
-        {
             GameOverAction(player1won);
-        }
     }
+
     private void P1UpdateCharges(int charges)
     {
         p1EXAnimator.SetInteger("CHARGES", charges);
@@ -400,8 +424,8 @@ public class LevelManager : MonoBehaviour
     public void CharacterSelect()
     {
         Time.timeScale = 1f;
-        if (CharacterSelectButton!= null)
-        CharacterSelectButton(1);
+        if (CharacterSelectButton != null)
+            CharacterSelectButton(1);
     }
 
     public void MainMenu()

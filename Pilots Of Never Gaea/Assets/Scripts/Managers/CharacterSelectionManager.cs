@@ -23,7 +23,7 @@ public class CharacterSelectionManager : MonoBehaviour
     private float platformClock, exitClock;
     private Vector3 leftPlatformStartingPosition, rightPlatformStartingPosition;
     public GameObject p1Elements, p2Elements;
-    private bool opening = false, closing = true;
+    private bool openingPlatforms = false, closingPlatforms = true;
 
     private void Start()
     {
@@ -41,7 +41,7 @@ public class CharacterSelectionManager : MonoBehaviour
 
     private void Update()
     {
-        if (closing)
+        if (closingPlatforms)
         {
             if (platformClock < platformTime)
             {
@@ -54,18 +54,18 @@ public class CharacterSelectionManager : MonoBehaviour
             {
                 p1Elements.transform.position = leftPlatformStartingPosition;
                 p2Elements.transform.position = rightPlatformStartingPosition;
-                closing = false;
+                closingPlatforms = false;
             }
 
         }
         else
         {
-            if (opening || (p1SelectedCharacter != Character.none && p2SelectedCharacter != Character.none))
+            if (openingPlatforms || (p1SelectedCharacter != Character.none && p2SelectedCharacter != Character.none))
             {
-                if (!opening)
+                if (!openingPlatforms)
                 {
                     platformClock = 0f;
-                    opening = true;
+                    openingPlatforms = true;
                     AkSoundEngine.PostEvent("sfx_ocdoors", gameObject);
                     Destroy(Camera.main.gameObject);
                     if (SelectAction != null)
