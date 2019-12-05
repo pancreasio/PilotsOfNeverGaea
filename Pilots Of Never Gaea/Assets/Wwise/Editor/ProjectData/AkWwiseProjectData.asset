@@ -31,7 +31,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: dd7b83bbc8dbf34186f9ffd2f1afd0d7
     GuidInternal: 
-    m_lastTime: -8586268758390467935
+    m_lastTime: -8586262539500481869
     List:
     - name: PONG
       guid: 2d3326e9db1e844c97a2c0761601e72e
@@ -47,7 +47,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: e1353ea8bb3e3c48b3ea011238c41831
     GuidInternal: 
-    m_lastTime: -8586268758390507832
+    m_lastTime: -8586260897626511767
     List:
     - name: music_endgame
       guid: bf398da7737bbd408645d13837dc4817
@@ -97,6 +97,18 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - name: Play_music_menu
+      guid: b13a7ac969ebc14ba3e08b2ff507bc41
+      id: 1699343283
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_music_menu
+        ObjectType: 3
+      Path: Default Work Unit\Play_music_menu
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: sfx_closewalls
       guid: 061f0a3fef4de44aae5a7f58460d3b73
       id: 1889644198
@@ -107,8 +119,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\sfx_closewalls
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: Infinity
+      minDuration: 1500000
     - name: sfx_djinn_power
       guid: e638ac9c3c8e964e92b76392f2cf5a00
       id: 4085389126
@@ -119,8 +131,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\sfx_djinn_power
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 1568254
+      minDuration: 1568254
     - name: sfx_endgame
       guid: 5f40dda19c93b3489a4e5e15f227c123
       id: 351539970
@@ -131,8 +143,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\sfx_endgame
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 13000000
+      minDuration: 13000000
     - name: sfx_goal
       guid: 59c1615486721a41b58c02e79a4ddb79
       id: 429414528
@@ -143,8 +155,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\sfx_goal
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 1500000
+      minDuration: 1500000
     - name: sfx_knockout_power
       guid: 65f6112da965fd4b897b043774aa4b53
       id: 1947212607
@@ -167,20 +179,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\sfx_kunst_power
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
-    - name: sfx_magstream_bower
-      guid: d86613fb679656499ff9343de89e5209
-      id: 1042054958
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: sfx_magstream_bower
-        ObjectType: 3
-      Path: Default Work Unit\sfx_magstream_bower
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 1838163
+      minDuration: 1838163
     - name: sfx_magstream_electric
       guid: 35051355d277f14199636e389204a217
       id: 1173302760
@@ -191,8 +191,20 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\sfx_magstream_electric
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 4508254
+      minDuration: 4508254
+    - name: sfx_magstream_power
+      guid: d86613fb679656499ff9343de89e5209
+      id: 2533262564
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_magstream_power
+        ObjectType: 3
+      Path: Default Work Unit\sfx_magstream_power
+      maxAttenuation: 0
+      maxDuration: 6491746
+      minDuration: 6491746
     - name: sfx_matchpoint
       guid: ee8a0b58ea386d47bd2740500067f54f
       id: 779982538
@@ -203,17 +215,17 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\sfx_matchpoint
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
-    - name: sfx_ocdoors
+      maxDuration: 4000000
+      minDuration: 4000000
+    - name: sfx_openwalls
       guid: 62665f51eead7f4ea4bfc473412b7773
-      id: 1555110630
+      id: 297862388
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: sfx_ocdoors
+      - ElementName: sfx_openwalls
         ObjectType: 3
-      Path: Default Work Unit\sfx_ocdoors
+      Path: Default Work Unit\sfx_openwalls
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -227,8 +239,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\sfx_palette_bounce
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 2000000
+      minDuration: 2000000
     - name: sfx_powercharge
       guid: 26651cb46bccbb40b63f32e48cc75d64
       id: 375716372
@@ -239,8 +251,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\sfx_powercharge
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 2500000
+      minDuration: 2500000
     - name: sfx_raildrive_power
       guid: 0eeec43995c45344942930ac2362fd72
       id: 3742052573
@@ -251,8 +263,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\sfx_raildrive_power
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 4000000
+      minDuration: 4000000
     - name: sfx_startball
       guid: ed574a655aa1ea4d8521eed682241961
       id: 3038939580
@@ -263,8 +275,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\sfx_startball
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 2000000
+      minDuration: 2000000
     - name: sfx_ui_ok
       guid: e0333c69acb3684c889797619b8ff073
       id: 1799644840
@@ -275,8 +287,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\sfx_ui_ok
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 2000000
+      minDuration: 2000000
     - name: sfx_ui_ok_eg
       guid: c54fbc5df811d84eb5ff715e562a4035
       id: 3220713831
@@ -287,8 +299,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\sfx_ui_ok_eg
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 2000000
+      minDuration: 2000000
     - name: sfx_ui_ok_p1
       guid: 5e6a35a7f626594dbb6090ba79199482
       id: 3573043774
@@ -299,8 +311,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\sfx_ui_ok_p1
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 2000000
+      minDuration: 2000000
     - name: sfx_ui_ok_p2
       guid: 5e5ad787e0464a4d8e81cd99b6d3f77a
       id: 3573043773
@@ -311,8 +323,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\sfx_ui_ok_p2
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 2000000
+      minDuration: 2000000
     - name: sfx_ui_option_eg
       guid: d251eca3e8d75e45a8bdbbc6881ac105
       id: 1021122596
@@ -323,8 +335,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\sfx_ui_option_eg
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 2000000
+      minDuration: 2000000
     - name: sfx_ui_select
       guid: fe8b7d47b136354fb61a81e33c58e1db
       id: 3753159394
@@ -335,8 +347,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\sfx_ui_select
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 2000000
+      minDuration: 2000000
     - name: sfx_ui_selectship_p1
       guid: 84201fd49de03848b29d91b71506c3c1
       id: 2483546906
@@ -347,8 +359,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\sfx_ui_selectship_p1
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 2000000
+      minDuration: 2000000
     - name: sfx_ui_selectship_p2
       guid: 71489fa2fc67a34cb2c5b7f55696da92
       id: 2483546905
@@ -359,8 +371,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\sfx_ui_selectship_p2
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 2000000
+      minDuration: 2000000
     - name: sfx_wall
       guid: cc9e0e51d73ab2438458ae55e6775891
       id: 1970227385
@@ -371,28 +383,59 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\sfx_wall
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 2000000
+      minDuration: 2000000
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     ParentPhysicalPath: 
-    guid: bd0ad7f269f5f5448bffdde72f6c34e9
+    guid: 7596ac2c9a8690419bcd7bfb0dd8c65c
     GuidInternal: 
-    m_lastTime: -8586268793091045183
+    m_lastTime: -8586262539500426664
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     ParentPhysicalPath: 
-    guid: 4f6e08f34bf8634f9948cc654e55954f
+    guid: d24d130d88c46141b053b4e79cf5bb9f
     GuidInternal: 
-    m_lastTime: -8586268793091154645
-    List: []
+    m_lastTime: -8586260897626541684
+    List:
+    - name: sfx_closewalls
+      guid: 79379c303f1b424ab3ae843d5fdf4fa4
+      id: 1889644198
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx_closewalls
+        ObjectType: 9
+      Path: Default Work Unit\sfx_closewalls
+      values:
+      - name: apertura
+        guid: ed87769b4a53574eb6eacfb1533f2219
+        id: 14896845
+        PathAndIcons:
+        - ElementName: apertura
+          ObjectType: 8
+      - name: cierre
+        guid: 6ba1b0b0d6f45c47b2b2115db5cfe0e9
+        id: 381686191
+        PathAndIcons:
+        - ElementName: cierre
+          ObjectType: 8
+      - name: None
+        guid: 5f82d941172132448aaeb2961dc5c981
+        id: 748895195
+        PathAndIcons:
+        - ElementName: None
+          ObjectType: 8
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPhysicalPath: 
-    guid: 94c7239f727e794cbbe2d317fd00f2dd
+    guid: 8fed8ef9f1667c488b95d32f22c1429f
     GuidInternal: 
-    m_lastTime: -8586268793091064880
+    m_lastTime: -8586262573272237517
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -405,5 +448,10 @@ MonoBehaviour:
   - /Pilots Of Never Gaea_WwiseProject
   - /Pilots Of Never Gaea_WwiseProject/Events
   - /Pilots Of Never Gaea_WwiseProject/Events/Default Work Unit
+  - /Pilots Of Never Gaea_WwiseProject/SoundBanks
+  - /Pilots Of Never Gaea_WwiseProject/SoundBanks/Default Work Unit
+  - /Pilots Of Never Gaea_WwiseProject/States
+  - /Pilots Of Never Gaea_WwiseProject/States/Default Work Unit
+  - /Pilots Of Never Gaea_WwiseProject/States/Default Work Unit/sfx_closewalls
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
