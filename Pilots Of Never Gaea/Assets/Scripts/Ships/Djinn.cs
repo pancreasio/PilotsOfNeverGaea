@@ -24,16 +24,13 @@ public class Djinn : Palette
             if (power)
             {
                 Illusion illusionInstance = Instantiate(illusionPrefab.gameObject, origin.position, Quaternion.identity).GetComponent<Illusion>();
-                if (up)
+                if (moveSpeed == 0)
                 {
-                    illusionInstance.InitialKick(transform.up + transform.right);
+                    illusionInstance.InitialKick(transform.right);
                 }
                 else
                 {
-                    if (down)
-                        illusionInstance.InitialKick(-transform.up + transform.right);
-                    else
-                        illusionInstance.InitialKick(transform.right);
+                    illusionInstance.InitialKick(transform.up * moveSpeed+ transform.right);
                 }
                 AkSoundEngine.PostEvent("sfx_djinn_power", gameObject);
                 Instantiate(wishPrefab, origin.position, transform.rotation);

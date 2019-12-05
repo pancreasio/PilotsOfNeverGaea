@@ -8,108 +8,61 @@ public class Palette : MonoBehaviour
     public LayerMask raycastMask;
 
     public float speed;
-    public bool  left;
-    private SpriteRenderer sprite;
-    private Rigidbody2D rigi;
-    public int chargesRequired , maxCharges;
-    protected int charges;
-    protected bool up, down, action, power;
     private float moveDelta, chargeDelay = 0.1f, chargeClock = 0f;
+    protected float moveSpeed;
+    protected Vector2 moveDirection;
+    public bool isPlayer1;
+    private SpriteRenderer sprite;
+    public int chargesRequired, maxCharges;
+    protected int charges;
+    protected bool action, power;
     public LevelManager.ChargeAction UpdateCharges;
 
     protected virtual void Start()
     {
         sprite = transform.GetComponent<SpriteRenderer>();
-        rigi = transform.GetComponent<Rigidbody2D>();        
         power = false;
-        up = false;
-        down = false;
         action = false;
         charges = 0;
     }
 
     protected virtual void Update()
     {
-        down = false;
-        up = false;
-
-        //input
-
-        if (!left)
-        {
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                down = true;
-            }
-
-            if (Input.GetKey(KeyCode.DownArrow))
-            {
-                up = true;
-            }
-
-            if (Input.GetKey(KeyCode.RightControl))
-            {
-                action = true;
-            }
-            else
-            {
-                action = false;
-            }
-        }
-        else
-        {
-            if (Input.GetKey(KeyCode.W))
-            {
-                up = true;
-            }
-
-            if (Input.GetKey(KeyCode.S))
-            {
-                down = true;
-            }
-
-            if (Input.GetKey(KeyCode.Space))
-            {
-                action = true;
-            }
-            else
-            {
-                action = false;
-            }
-        }
-
-        //movement
-        if (up)
-        {
-            Move(true);
-        }
-        if (down)
-        {
-            Move(false);
-        }
+        GetInput();
+        Move();
         chargeClock += Time.deltaTime;
     }
 
     public virtual void ResetPalette()
     {
-        //charges = 0;
-        //power = false;
-        //if (UpdateCharges != null)
-        //    UpdateCharges(charges);
+
     }
 
-    private void Move(bool upMovement)
+    private void GetInput()
     {
-        moveDelta = speed * Time.deltaTime;
-        CheckBorder(upMovement);
-        if (upMovement)
+        if (isPlayer1)
         {
-            transform.Translate(0.0f, moveDelta, 0.0f);
+            moveSpeed = Input.GetAxisRaw("P1Vertical");
+            if (Input.GetAxisRaw("P1Submit") > 0)
+                action = true;
+            else
+                action = false;
         }
         else
         {
-            transform.Translate(0.0f, -moveDelta, 0.0f);
+            moveSpeed = -Input.GetAxisRaw("P2Vertical");
+            if (Input.GetAxisRaw("P2Submit") > 0)
+                action = true;
+            else
+                action = false;
         }
+    }
+
+    private void Move()
+    {
+        moveDelta = speed * Time.deltaTime;
+        CheckBorder();
+        transform.Translate(0.0f, moveDelta * moveSpeed, 0.0f);
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
@@ -139,25 +92,13 @@ public class Palette : MonoBehaviour
             UpdateCharges(charges);
     }
 
-    private void CheckBorder(bool upCheck)
+    private void CheckBorder()
     {
         float moveDistance = moveDelta + sprite.bounds.extents.y;
-
-        if (upCheck)
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up * moveSpeed, moveDistance, raycastMask);
+        if (hit)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, moveDistance, raycastMask);
-            if (hit)
-            {
-                moveDelta = hit.distance - sprite.bounds.extents.y;
-            }
-        }
-        else
-        {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, moveDistance, raycastMask);
-            if (hit)
-            {
-                moveDelta = hit.distance - sprite.bounds.extents.y;
-            }
+            moveDelta = hit.distance - sprite.bounds.extents.y;
         }
     }
 }

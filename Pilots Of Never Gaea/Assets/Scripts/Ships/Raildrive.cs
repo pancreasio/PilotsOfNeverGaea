@@ -61,7 +61,7 @@ public class Raildrive : Palette
 
     private void Fire()
     {
-        if (left)
+        if (isPlayer1)
         {
             Laser laserInstance = Instantiate(laser, laserOrigin.position, transform.rotation);
         }

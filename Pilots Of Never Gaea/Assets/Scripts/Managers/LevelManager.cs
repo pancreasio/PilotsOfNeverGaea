@@ -79,7 +79,7 @@ public class LevelManager : MonoBehaviour
 
         if (p1Instance != null)
         {
-            p1Instance.GetComponent<Palette>().left = true;
+            p1Instance.GetComponent<Palette>().isPlayer1 = true;
             p1Instance.transform.position = p1Position.transform.position;
             p1Light.transform.parent = p1Instance.transform;
             p1EXAnimator.SetTrigger("RESET");
@@ -102,7 +102,7 @@ public class LevelManager : MonoBehaviour
 
         if (p2Instance != null)
         {
-            p2Instance.GetComponent<Palette>().left = false;
+            p2Instance.GetComponent<Palette>().isPlayer1 = false;
             p2Instance.transform.position = p2Position.transform.position;
             p2Instance.transform.Rotate(Vector3.back, 180.0f);
             p2Light.transform.parent = p2Instance.transform;

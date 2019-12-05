@@ -34,10 +34,10 @@ public class Leytenant : Palette
         UpdateCharges(charges);
         speed = speed / speedReduction;
         float recieveClock = 0f;
-        while (recieveClock < recieveTime)
+        recieving = true;
+        while (recieveClock < recieveTime && recieving)
         {
             recieveClock += Time.deltaTime;
-            recieving = true;
             yield return null;
         }
         recieving = false;
@@ -46,11 +46,12 @@ public class Leytenant : Palette
 
     private IEnumerator Arm(GameObject ball)
     {
+        recieving = false;
         Vector2 armPosition = transform.position;
         float holdClock = 0f, rotation = 0f;
         cannon.SetActive(true);
         cannon.transform.rotation = Quaternion.identity;
-        if (!left)
+        if (!isPlayer1)
         {
             cannon.transform.Rotate(Vector3.back, 180f);
         }
@@ -60,11 +61,7 @@ public class Leytenant : Palette
             transform.position = new Vector2(transform.position.x, armPosition.y);
             ball.transform.position = transform.position;
             rotation = 0f;
-            if (up)
-                rotation = -cannonRotationSpeed;
-
-            if (down)
-                rotation = cannonRotationSpeed;
+            rotation = cannonRotationSpeed * -moveSpeed;
 
             cannon.transform.Rotate(Vector3.back, rotation * Time.deltaTime);
             yield return null;

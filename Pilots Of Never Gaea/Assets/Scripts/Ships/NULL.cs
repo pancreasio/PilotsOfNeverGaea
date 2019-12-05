@@ -23,7 +23,7 @@ public class NULL : Palette
         if(!action)
         base.Update();
 
-        if (left)
+        if (isPlayer1)
             action = Input.GetKey(KeyCode.Space);
         else
             action = Input.GetKey(KeyCode.RightControl);
