@@ -1,3 +1,11 @@
+State Group	ID	Name			Wwise Object Path	Notes
+	1889644198	sfx_closewalls			\Default Work Unit\sfx_closewalls	
+
+State	ID	Name	State Group			Notes
+	0	None	sfx_closewalls			
+	14896845	apertura	sfx_closewalls			
+	381686191	cierre	sfx_closewalls			
+
 Audio Bus	ID	Name			Wwise Object Path	Notes
 	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
 

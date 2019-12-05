@@ -25,30 +25,117 @@
 				<Event Id="620878633" Name="music_gameplay" ObjectPath="\Events\Default Work Unit\music_gameplay" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="1598298728" Name="music_menu" ObjectPath="\Events\Default Work Unit\music_menu" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="2488806774" Name="music_select_ship" ObjectPath="\Events\Default Work Unit\music_select_ship" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="1889644198" Name="sfx_closewalls" ObjectPath="\Events\Default Work Unit\sfx_closewalls" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="4085389126" Name="sfx_djinn_power" ObjectPath="\Events\Default Work Unit\sfx_djinn_power" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="351539970" Name="sfx_endgame" ObjectPath="\Events\Default Work Unit\sfx_endgame" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="429414528" Name="sfx_goal" ObjectPath="\Events\Default Work Unit\sfx_goal" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="1699343283" Name="Play_music_menu" ObjectPath="\Events\Default Work Unit\Play_music_menu" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="1889644198" Name="sfx_closewalls" ObjectPath="\Events\Default Work Unit\sfx_closewalls" DurationType="Mixed" DurationMin="1.500000" DurationMax="Infinite"/>
+				<Event Id="4085389126" Name="sfx_djinn_power" ObjectPath="\Events\Default Work Unit\sfx_djinn_power" DurationType="OneShot" DurationMin="1.568254" DurationMax="1.568254"/>
+				<Event Id="351539970" Name="sfx_endgame" ObjectPath="\Events\Default Work Unit\sfx_endgame" DurationType="OneShot" DurationMin="13.000000" DurationMax="13.000000"/>
+				<Event Id="429414528" Name="sfx_goal" ObjectPath="\Events\Default Work Unit\sfx_goal" DurationType="OneShot" DurationMin="1.500000" DurationMax="1.500000"/>
 				<Event Id="1947212607" Name="sfx_knockout_power" ObjectPath="\Events\Default Work Unit\sfx_knockout_power" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="2030213546" Name="sfx_kunst_power" ObjectPath="\Events\Default Work Unit\sfx_kunst_power" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="1042054958" Name="sfx_magstream_bower" ObjectPath="\Events\Default Work Unit\sfx_magstream_bower" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="1173302760" Name="sfx_magstream_electric" ObjectPath="\Events\Default Work Unit\sfx_magstream_electric" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="779982538" Name="sfx_matchpoint" ObjectPath="\Events\Default Work Unit\sfx_matchpoint" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="1555110630" Name="sfx_ocdoors" ObjectPath="\Events\Default Work Unit\sfx_ocdoors" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="1187861409" Name="sfx_palette_bounce" ObjectPath="\Events\Default Work Unit\sfx_palette_bounce" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="375716372" Name="sfx_powercharge" ObjectPath="\Events\Default Work Unit\sfx_powercharge" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="3742052573" Name="sfx_raildrive_power" ObjectPath="\Events\Default Work Unit\sfx_raildrive_power" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="3038939580" Name="sfx_startball" ObjectPath="\Events\Default Work Unit\sfx_startball" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="1799644840" Name="sfx_ui_ok" ObjectPath="\Events\Default Work Unit\sfx_ui_ok" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="3220713831" Name="sfx_ui_ok_eg" ObjectPath="\Events\Default Work Unit\sfx_ui_ok_eg" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="3573043774" Name="sfx_ui_ok_p1" ObjectPath="\Events\Default Work Unit\sfx_ui_ok_p1" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="3573043773" Name="sfx_ui_ok_p2" ObjectPath="\Events\Default Work Unit\sfx_ui_ok_p2" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="1021122596" Name="sfx_ui_option_eg" ObjectPath="\Events\Default Work Unit\sfx_ui_option_eg" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="3753159394" Name="sfx_ui_select" ObjectPath="\Events\Default Work Unit\sfx_ui_select" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="2483546906" Name="sfx_ui_selectship_p1" ObjectPath="\Events\Default Work Unit\sfx_ui_selectship_p1" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="2483546905" Name="sfx_ui_selectship_p2" ObjectPath="\Events\Default Work Unit\sfx_ui_selectship_p2" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="1970227385" Name="sfx_wall" ObjectPath="\Events\Default Work Unit\sfx_wall" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="2030213546" Name="sfx_kunst_power" ObjectPath="\Events\Default Work Unit\sfx_kunst_power" DurationType="OneShot" DurationMin="1.838163" DurationMax="1.838163"/>
+				<Event Id="1173302760" Name="sfx_magstream_electric" ObjectPath="\Events\Default Work Unit\sfx_magstream_electric" DurationType="OneShot" DurationMin="4.508254" DurationMax="4.508254"/>
+				<Event Id="2533262564" Name="sfx_magstream_power" ObjectPath="\Events\Default Work Unit\sfx_magstream_power" DurationType="OneShot" DurationMin="6.491746" DurationMax="6.491746"/>
+				<Event Id="779982538" Name="sfx_matchpoint" ObjectPath="\Events\Default Work Unit\sfx_matchpoint" DurationType="OneShot" DurationMin="4.000000" DurationMax="4.000000"/>
+				<Event Id="297862388" Name="sfx_openwalls" ObjectPath="\Events\Default Work Unit\sfx_openwalls" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="1187861409" Name="sfx_palette_bounce" ObjectPath="\Events\Default Work Unit\sfx_palette_bounce" DurationType="OneShot" DurationMin="2.000000" DurationMax="2.000000"/>
+				<Event Id="375716372" Name="sfx_powercharge" ObjectPath="\Events\Default Work Unit\sfx_powercharge" DurationType="OneShot" DurationMin="2.500000" DurationMax="2.500000"/>
+				<Event Id="3742052573" Name="sfx_raildrive_power" ObjectPath="\Events\Default Work Unit\sfx_raildrive_power" DurationType="OneShot" DurationMin="4.000000" DurationMax="4.000000"/>
+				<Event Id="3038939580" Name="sfx_startball" ObjectPath="\Events\Default Work Unit\sfx_startball" DurationType="OneShot" DurationMin="2.000000" DurationMax="2.000000"/>
+				<Event Id="1799644840" Name="sfx_ui_ok" ObjectPath="\Events\Default Work Unit\sfx_ui_ok" DurationType="OneShot" DurationMin="2.000000" DurationMax="2.000000"/>
+				<Event Id="3220713831" Name="sfx_ui_ok_eg" ObjectPath="\Events\Default Work Unit\sfx_ui_ok_eg" DurationType="OneShot" DurationMin="2.000000" DurationMax="2.000000"/>
+				<Event Id="3573043774" Name="sfx_ui_ok_p1" ObjectPath="\Events\Default Work Unit\sfx_ui_ok_p1" DurationType="OneShot" DurationMin="2.000000" DurationMax="2.000000"/>
+				<Event Id="3573043773" Name="sfx_ui_ok_p2" ObjectPath="\Events\Default Work Unit\sfx_ui_ok_p2" DurationType="OneShot" DurationMin="2.000000" DurationMax="2.000000"/>
+				<Event Id="1021122596" Name="sfx_ui_option_eg" ObjectPath="\Events\Default Work Unit\sfx_ui_option_eg" DurationType="OneShot" DurationMin="2.000000" DurationMax="2.000000"/>
+				<Event Id="3753159394" Name="sfx_ui_select" ObjectPath="\Events\Default Work Unit\sfx_ui_select" DurationType="OneShot" DurationMin="2.000000" DurationMax="2.000000"/>
+				<Event Id="2483546906" Name="sfx_ui_selectship_p1" ObjectPath="\Events\Default Work Unit\sfx_ui_selectship_p1" DurationType="OneShot" DurationMin="2.000000" DurationMax="2.000000"/>
+				<Event Id="2483546905" Name="sfx_ui_selectship_p2" ObjectPath="\Events\Default Work Unit\sfx_ui_selectship_p2" DurationType="OneShot" DurationMin="2.000000" DurationMax="2.000000"/>
+				<Event Id="1970227385" Name="sfx_wall" ObjectPath="\Events\Default Work Unit\sfx_wall" DurationType="OneShot" DurationMin="2.000000" DurationMax="2.000000"/>
 			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="29002245" Language="SFX">
+					<ShortName>sfx_ui_selectship_p1.wav</ShortName>
+					<Path>SFX\sfx_ui_selectship_p1_10C4C929.wem</Path>
+				</File>
+				<File Id="31746221" Language="SFX">
+					<ShortName>sfx_matchpoint.wav</ShortName>
+					<Path>SFX\sfx_matchpoint_10C4C929.wem</Path>
+				</File>
+				<File Id="238597304" Language="SFX">
+					<ShortName>sfx_startball.wav</ShortName>
+					<Path>SFX\sfx_startball_10C4C929.wem</Path>
+				</File>
+				<File Id="326131406" Language="SFX">
+					<ShortName>sfx_magstream_power.wav</ShortName>
+					<Path>SFX\sfx_magstream_power_10C4C929.wem</Path>
+				</File>
+				<File Id="340373607" Language="SFX">
+					<ShortName>sfx_powerchrage.wav</ShortName>
+					<Path>SFX\sfx_powerchrage_10C4C929.wem</Path>
+				</File>
+				<File Id="352607062" Language="SFX">
+					<ShortName>sfx_ui_select.wav</ShortName>
+					<Path>SFX\sfx_ui_select_10C4C929.wem</Path>
+				</File>
+				<File Id="363043763" Language="SFX">
+					<ShortName>sfx_ui_ok_eg.wav</ShortName>
+					<Path>SFX\sfx_ui_ok_eg_10C4C929.wem</Path>
+				</File>
+				<File Id="417450207" Language="SFX">
+					<ShortName>sfx_ui_selectship_p2.wav</ShortName>
+					<Path>SFX\sfx_ui_selectship_p2_10C4C929.wem</Path>
+				</File>
+				<File Id="432218727" Language="SFX">
+					<ShortName>sfx_ui_ok.wav</ShortName>
+					<Path>SFX\sfx_ui_ok_10C4C929.wem</Path>
+				</File>
+				<File Id="452895650" Language="SFX">
+					<ShortName>sfx_magstream_electric.wav</ShortName>
+					<Path>SFX\sfx_magstream_electric_10C4C929.wem</Path>
+				</File>
+				<File Id="537975472" Language="SFX">
+					<ShortName>sfx_raildrive_power.wav</ShortName>
+					<Path>SFX\sfx_raildrive_power_10C4C929.wem</Path>
+				</File>
+				<File Id="589454340" Language="SFX">
+					<ShortName>sfx_wall.wav</ShortName>
+					<Path>SFX\sfx_wall_10C4C929.wem</Path>
+				</File>
+				<File Id="613918720" Language="SFX">
+					<ShortName>sfx_closewalls.wav</ShortName>
+					<Path>SFX\sfx_closewalls_9F92AB87.wem</Path>
+				</File>
+				<File Id="616188493" Language="SFX">
+					<ShortName>sfx_ui_ok_p1.wav</ShortName>
+					<Path>SFX\sfx_ui_ok_p1_10C4C929.wem</Path>
+				</File>
+				<File Id="788107345" Language="SFX">
+					<ShortName>sfx_ui_ok_p2.wav</ShortName>
+					<Path>SFX\sfx_ui_ok_p2_10C4C929.wem</Path>
+				</File>
+				<File Id="843888855" Language="SFX">
+					<ShortName>sfx_djinn_power.wav</ShortName>
+					<Path>SFX\sfx_djinn_power_10C4C929.wem</Path>
+				</File>
+				<File Id="972502643" Language="SFX">
+					<ShortName>sfx_ui_opton_eg.wav</ShortName>
+					<Path>SFX\sfx_ui_opton_eg_10C4C929.wem</Path>
+				</File>
+				<File Id="981110311" Language="SFX">
+					<ShortName>sfx_goal.wav</ShortName>
+					<Path>SFX\sfx_goal_10C4C929.wem</Path>
+				</File>
+				<File Id="1025321177" Language="SFX">
+					<ShortName>sfx_palette_bounce.wav</ShortName>
+					<Path>SFX\sfx_palette_bounce_10C4C929.wem</Path>
+				</File>
+				<File Id="1036240128" Language="SFX">
+					<ShortName>sfx_endgame.wav</ShortName>
+					<Path>SFX\sfx_endgame_10C4C929.wem</Path>
+				</File>
+				<File Id="1038387503" Language="SFX">
+					<ShortName>sfx_kunst_power.wav</ShortName>
+					<Path>SFX\sfx_kunst_power_10C4C929.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
 		</SoundBank>
 	</SoundBanks>
 </SoundBanksInfo>

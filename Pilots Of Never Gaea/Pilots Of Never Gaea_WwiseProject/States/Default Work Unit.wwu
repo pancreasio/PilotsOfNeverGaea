@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{0D134DD2-C488-4161-B053-B4E79CF5BB9F}" SchemaVersion="94">
 	<States>
-		<WorkUnit Name="Default Work Unit" ID="{0D134DD2-C488-4161-B053-B4E79CF5BB9F}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{0D134DD2-C488-4161-B053-B4E79CF5BB9F}" PersistMode="Standalone">
+			<ChildrenList>
+				<StateGroup Name="sfx_closewalls" ID="{309C3779-1B3F-4A42-B3AE-843D5FDF4FA4}">
+					<ChildrenList>
+						<State Name="None" ID="{41D9825F-2117-4432-8AAE-B2961DC5C981}"/>
+						<State Name="cierre" ID="{B0B0A16B-F4D6-475C-B2B2-115DB5CFE0E9}"/>
+						<State Name="apertura" ID="{9B7687ED-534A-4E57-B6EA-CFB1533F2219}"/>
+					</ChildrenList>
+					<TransitionList>
+						<Transition>
+							<StartState Name="None" ID="{41D9825F-2117-4432-8AAE-B2961DC5C981}"/>
+							<EndState Name="cierre" ID="{B0B0A16B-F4D6-475C-B2B2-115DB5CFE0E9}"/>
+							<Time>1</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+					</TransitionList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
 	</States>
 </WwiseDocument>

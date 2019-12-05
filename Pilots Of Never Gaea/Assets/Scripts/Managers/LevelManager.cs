@@ -65,6 +65,7 @@ public class LevelManager : MonoBehaviour
         platformClock += Time.deltaTime;
         if (platformClock > platformDelay && !platformsClosing)
         {
+            AkSoundEngine.PostEvent("sfx_closewalls", gameObject);
             leftPlatform.ClosePlatform();
             rightPlatform.ClosePlatform();
             platformsClosing = true;
@@ -266,6 +267,7 @@ public class LevelManager : MonoBehaviour
         initialDirection.Normalize();
         leftPlatform.ResetPlatform();
         rightPlatform.ResetPlatform();
+        AkSoundEngine.PostEvent("sfx_openwalls", gameObject);
 
         while (resetClock < resetRoundTime || ballResetting)
         {
@@ -379,7 +381,7 @@ public class LevelManager : MonoBehaviour
     public void UnPause()
     {
         Time.timeScale = 1f;
-        GetComponent<UIManager>().ResetSelected();
+        pauseCanvas.GetComponent<UIManager>().ResetSelected();
         pauseCanvas.SetActive(false);
     }
 

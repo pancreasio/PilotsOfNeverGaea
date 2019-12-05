@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5107002eff33d804aa9978fe3fcb4dcb, type: 3}
+  m_Name: 9CAC38E6-8E3C-4E96-92B7-6392F2CF5A00
+  m_EditorClassIdentifier: 
+  objectName: sfx_djinn_power
+  id: 4085389126
+  guid: 9CAC38E6-8E3C-4E96-92B7-6392F2CF5A00

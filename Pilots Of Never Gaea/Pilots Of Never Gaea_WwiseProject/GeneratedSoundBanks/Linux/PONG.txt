@@ -1,15 +1,15 @@
 Event	ID	Name			Wwise Object Path	Notes
+	297862388	sfx_openwalls			\Default Work Unit\sfx_openwalls	
 	351539970	sfx_endgame			\Default Work Unit\sfx_endgame	
 	375716372	sfx_powercharge			\Default Work Unit\sfx_powercharge	
 	429414528	sfx_goal			\Default Work Unit\sfx_goal	
 	620878633	music_gameplay			\Default Work Unit\music_gameplay	
 	779982538	sfx_matchpoint			\Default Work Unit\sfx_matchpoint	
 	1021122596	sfx_ui_option_eg			\Default Work Unit\sfx_ui_option_eg	
-	1042054958	sfx_magstream_bower			\Default Work Unit\sfx_magstream_bower	
 	1173302760	sfx_magstream_electric			\Default Work Unit\sfx_magstream_electric	
 	1187861409	sfx_palette_bounce			\Default Work Unit\sfx_palette_bounce	
-	1555110630	sfx_ocdoors			\Default Work Unit\sfx_ocdoors	
 	1598298728	music_menu			\Default Work Unit\music_menu	
+	1699343283	Play_music_menu			\Default Work Unit\Play_music_menu	
 	1799644840	sfx_ui_ok			\Default Work Unit\sfx_ui_ok	
 	1889644198	sfx_closewalls			\Default Work Unit\sfx_closewalls	
 	1947212607	sfx_knockout_power			\Default Work Unit\sfx_knockout_power	
@@ -18,6 +18,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	2483546905	sfx_ui_selectship_p2			\Default Work Unit\sfx_ui_selectship_p2	
 	2483546906	sfx_ui_selectship_p1			\Default Work Unit\sfx_ui_selectship_p1	
 	2488806774	music_select_ship			\Default Work Unit\music_select_ship	
+	2533262564	sfx_magstream_power			\Default Work Unit\sfx_magstream_power	
 	3038939580	sfx_startball			\Default Work Unit\sfx_startball	
 	3220713831	sfx_ui_ok_eg			\Default Work Unit\sfx_ui_ok_eg	
 	3573043773	sfx_ui_ok_p2			\Default Work Unit\sfx_ui_ok_p2	
@@ -26,4 +27,35 @@ Event	ID	Name			Wwise Object Path	Notes
 	3753159394	sfx_ui_select			\Default Work Unit\sfx_ui_select	
 	4020650282	music_endgame			\Default Work Unit\music_endgame	
 	4085389126	sfx_djinn_power			\Default Work Unit\sfx_djinn_power	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	1889644198	sfx_closewalls			\Default Work Unit\sfx_closewalls	
+
+State	ID	Name	State Group			Notes
+	0	None	sfx_closewalls			
+	14896845	apertura	sfx_closewalls			
+	381686191	cierre	sfx_closewalls			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	29002245	sfx_ui_selectship_p1	D:\Cristian\Estudio\Game Audio\Pilots Of Never Gaea\Pilots Of Never Gaea_WwiseProject\.cache\Linux\SFX\sfx_ui_selectship_p1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI Select Ships\sfx_ui_selectship_p1		352864
+	31746221	sfx_matchpoint	D:\Cristian\Estudio\Game Audio\Pilots Of Never Gaea\Pilots Of Never Gaea_WwiseProject\.cache\Linux\SFX\sfx_matchpoint_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Gameplay\sfx_matchpoint		705664
+	238597304	sfx_startball	D:\Cristian\Estudio\Game Audio\Pilots Of Never Gaea\Pilots Of Never Gaea_WwiseProject\.cache\Linux\SFX\sfx_startball_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Gameplay\sfx_startball		352864
+	326131406	sfx_magstream_power	D:\Cristian\Estudio\Game Audio\Pilots Of Never Gaea\Pilots Of Never Gaea_WwiseProject\.cache\Linux\SFX\sfx_magstream_power_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ships\sfx_magstream_power		1145208
+	340373607	sfx_powerchrage	D:\Cristian\Estudio\Game Audio\Pilots Of Never Gaea\Pilots Of Never Gaea_WwiseProject\.cache\Linux\SFX\sfx_powerchrage_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Gameplay\sfx_powerchrage		441064
+	352607062	sfx_ui_select	D:\Cristian\Estudio\Game Audio\Pilots Of Never Gaea\Pilots Of Never Gaea_WwiseProject\.cache\Linux\SFX\sfx_ui_select_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI Menu\sfx_ui_select		352864
+	363043763	sfx_ui_ok_eg	D:\Cristian\Estudio\Game Audio\Pilots Of Never Gaea\Pilots Of Never Gaea_WwiseProject\.cache\Linux\SFX\sfx_ui_ok_eg_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI Menu\sfx_ui_ok_eg		352864
+	417450207	sfx_ui_selectship_p2	D:\Cristian\Estudio\Game Audio\Pilots Of Never Gaea\Pilots Of Never Gaea_WwiseProject\.cache\Linux\SFX\sfx_ui_selectship_p2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI Select Ships\sfx_ui_selectship_p2		352864
+	432218727	sfx_ui_ok	D:\Cristian\Estudio\Game Audio\Pilots Of Never Gaea\Pilots Of Never Gaea_WwiseProject\.cache\Linux\SFX\sfx_ui_ok_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI Menu\sfx_ui_ok		352864
+	452895650	sfx_magstream_electric	D:\Cristian\Estudio\Game Audio\Pilots Of Never Gaea\Pilots Of Never Gaea_WwiseProject\.cache\Linux\SFX\sfx_magstream_electric_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ships\sfx_magstream_electric		795320
+	537975472	sfx_raildrive_power	D:\Cristian\Estudio\Game Audio\Pilots Of Never Gaea\Pilots Of Never Gaea_WwiseProject\.cache\Linux\SFX\sfx_raildrive_power_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ships\sfx_raildrive_power		705664
+	589454340	sfx_wall	D:\Cristian\Estudio\Game Audio\Pilots Of Never Gaea\Pilots Of Never Gaea_WwiseProject\.cache\Linux\SFX\sfx_wall_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Gameplay\sfx_wall		352864
+	613918720	sfx_closewalls	D:\Cristian\Estudio\Game Audio\Pilots Of Never Gaea\Pilots Of Never Gaea_WwiseProject\.cache\Linux\SFX\sfx_closewalls_9F92AB87.wem		\Actor-Mixer Hierarchy\Default Work Unit\Gameplay\Close Walls\sfx_closewalls		705664
+	616188493	sfx_ui_ok_p1	D:\Cristian\Estudio\Game Audio\Pilots Of Never Gaea\Pilots Of Never Gaea_WwiseProject\.cache\Linux\SFX\sfx_ui_ok_p1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI Select Ships\sfx_ui_ok_p1		352864
+	788107345	sfx_ui_ok_p2	D:\Cristian\Estudio\Game Audio\Pilots Of Never Gaea\Pilots Of Never Gaea_WwiseProject\.cache\Linux\SFX\sfx_ui_ok_p2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI Select Ships\sfx_ui_ok_p2		352864
+	843888855	sfx_djinn_power	D:\Cristian\Estudio\Game Audio\Pilots Of Never Gaea\Pilots Of Never Gaea_WwiseProject\.cache\Linux\SFX\sfx_djinn_power_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ships\sfx_djinn_power		276704
+	972502643	sfx_ui_opton_eg	D:\Cristian\Estudio\Game Audio\Pilots Of Never Gaea\Pilots Of Never Gaea_WwiseProject\.cache\Linux\SFX\sfx_ui_opton_eg_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI Menu\sfx_ui_opton_eg		352864
+	981110311	sfx_goal	D:\Cristian\Estudio\Game Audio\Pilots Of Never Gaea\Pilots Of Never Gaea_WwiseProject\.cache\Linux\SFX\sfx_goal_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Gameplay\Close Walls\sfx_goal		264664
+	1025321177	sfx_palette_bounce	D:\Cristian\Estudio\Game Audio\Pilots Of Never Gaea\Pilots Of Never Gaea_WwiseProject\.cache\Linux\SFX\sfx_palette_bounce_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Gameplay\sfx_palette_bounce		352864
+	1036240128	sfx_endgame	D:\Cristian\Estudio\Game Audio\Pilots Of Never Gaea\Pilots Of Never Gaea_WwiseProject\.cache\Linux\SFX\sfx_endgame_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Gameplay\sfx_endgame		2293264
+	1038387503	sfx_kunst_power	D:\Cristian\Estudio\Game Audio\Pilots Of Never Gaea\Pilots Of Never Gaea_WwiseProject\.cache\Linux\SFX\sfx_kunst_power_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ships\sfx_kunst_power		324316
 

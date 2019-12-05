@@ -1812,7 +1812,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1226510117
   m_SortingLayer: 1
-  m_SortingOrder: 4
+  m_SortingOrder: 10
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
@@ -3055,7 +3055,6 @@ GameObject:
   m_Component:
   - component: {fileID: 906914868}
   - component: {fileID: 906914869}
-  - component: {fileID: 906914870}
   m_Layer: 0
   m_Name: Level Manager
   m_TagString: Untagged
@@ -3129,20 +3128,6 @@ MonoBehaviour:
   cameraShakeDuration: 0.2
   cameraShakeIntensity: 0.2
   fadeoutTime: 3
---- !u!114 &906914870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 906914867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02749ac339c30954b981193414bcce6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 1086753360}
-  currentScreen: 2
 --- !u!1 &908153496
 GameObject:
   m_ObjectHideFlags: 0
@@ -3155,6 +3140,7 @@ GameObject:
   - component: {fileID: 908153499}
   - component: {fileID: 908153498}
   - component: {fileID: 908153497}
+  - component: {fileID: 908153501}
   m_Layer: 5
   m_Name: Pause Canvas
   m_TagString: Untagged
@@ -3246,6 +3232,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &908153501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908153496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02749ac339c30954b981193414bcce6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventSystem: {fileID: 1086753360}
+  currentScreen: 2
 --- !u!1 &1086753358
 GameObject:
   m_ObjectHideFlags: 0
