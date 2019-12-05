@@ -860,6 +860,7 @@ GameObject:
   m_Component:
   - component: {fileID: 266926464}
   - component: {fileID: 266926465}
+  - component: {fileID: 266926466}
   m_Layer: 0
   m_Name: Left Platform
   m_TagString: Untagged
@@ -905,6 +906,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &266926466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266926463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a0024f2313dd0c4fb9537c0f7105bf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closeLimit: 9.74
+  closingSpeed: 0.3
+  resetTime: 0.45
 --- !u!1 &281110171
 GameObject:
   m_ObjectHideFlags: 0
@@ -1569,6 +1585,7 @@ GameObject:
   m_Component:
   - component: {fileID: 538531450}
   - component: {fileID: 538531451}
+  - component: {fileID: 538531452}
   m_Layer: 0
   m_Name: Right Platform
   m_TagString: Untagged
@@ -1614,6 +1631,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &538531452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538531449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a0024f2313dd0c4fb9537c0f7105bf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closeLimit: 9.74
+  closingSpeed: -0.3
+  resetTime: 0.45
 --- !u!1 &539394597
 GameObject:
   m_ObjectHideFlags: 0
@@ -3061,8 +3093,6 @@ MonoBehaviour:
   p1ScoreText: {fileID: 817393023}
   p2ScoreText: {fileID: 1110033936}
   startRoundText: {fileID: 2118098906}
-  leftPlatform: {fileID: 266926463}
-  rightPlatform: {fileID: 538531449}
   p1Light: {fileID: 771167894}
   p2Light: {fileID: 76496221}
   ballPrefab: {fileID: 3587088231962082201, guid: 4b4ef88ad2f58c34eb46094a585c8c43,
@@ -3076,6 +3106,8 @@ MonoBehaviour:
   p1NullBarEmpty: {fileID: 409195681}
   p2NullBarEmpty: {fileID: 607465364}
   pauseCanvas: {fileID: 908153496}
+  leftPlatform: {fileID: 266926466}
+  rightPlatform: {fileID: 538531452}
   shipPrefabList:
   - {fileID: 1851360514041425684, guid: 3d8dcdc5f6c8e0c4d8b9ddcb06bc7c79, type: 3}
   - {fileID: 6150576434017584300, guid: 0878ea162640edd48a25ba1aa40d57bc, type: 3}
@@ -3087,17 +3119,12 @@ MonoBehaviour:
   fadeoutSprite: {fileID: 602137368}
   p1NullBarFull: {fileID: 1398933750}
   p2NullBarFull: {fileID: 1675899980}
-  p1PlatformAnimator: {fileID: 266926465}
-  p2PlatformAnimator: {fileID: 538531451}
   p1EXAnimator: {fileID: 346323308}
   p2EXAnimator: {fileID: 184278570}
   cameraShake: {fileID: 519420033}
   startRoundTime: 2
   resetRoundTime: 1
-  platformDelay: 8
-  platformSpeed: 0.2
-  platformResetTime: 0.6
-  platformLimit: -8
+  platformDelay: 7
   ballResetSpeed: 10
   cameraShakeDuration: 0.2
   cameraShakeIntensity: 0.2

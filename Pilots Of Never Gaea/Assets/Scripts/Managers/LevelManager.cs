@@ -11,12 +11,13 @@ public class LevelManager : MonoBehaviour
     private int p1Score, p2Score;
     public int roundsToWin;
     public TextMeshProUGUI p1ScoreText, p2ScoreText, startRoundText;
-    public GameObject leftPlatform, rightPlatform, p1Light, p2Light,
+    public GameObject p1Light, p2Light,
         ballPrefab,
         p1Position, p2Position,
         topRightArrow, topLeftArrow, bottomRightArrow, bottomLeftArrow,
         p1NullBarEmpty, p2NullBarEmpty,
         pauseCanvas;
+    public Platform leftPlatform, rightPlatform;
     public List<GameObject> shipPrefabList;
     public SpriteRenderer fadeoutSprite, p1NullBarFull, p2NullBarFull;
     private GameObject ballReference = null,
@@ -25,16 +26,16 @@ public class LevelManager : MonoBehaviour
     private Ball ballScriptReference;
     public static GameManager.GameOverFunction GameOverAction;
     public static CharacterSelectionManager.Character p1Selected, p2Selected;
-    public Animator p1PlatformAnimator, p2PlatformAnimator, p1EXAnimator, p2EXAnimator;
+    public Animator p1EXAnimator, p2EXAnimator;
     public Shake2D cameraShake;
     public delegate void LevelAction();
     public float startRoundTime, resetRoundTime,
-        platformDelay, platformSpeed, platformResetTime, platformLimit,
+        platformDelay,
         ballResetSpeed,
         cameraShakeDuration, cameraShakeIntensity,
         fadeoutTime;
     private float platformClock, platformInitialX;
-    private bool platformsClosing = false, platformsArrived = false, gameEnded = false, gameStarted = false;
+    private bool gameEnded = false, gameStarted = false, platformsClosing = false;
     public static GameManager.SceneChange CharacterSelectButton, ExitButton;
     public delegate void ChargeAction(int charges);
     public delegate void UpdatePower(float power);
@@ -51,13 +52,9 @@ public class LevelManager : MonoBehaviour
         p2Score = 0;
         p1ScoreText.text = p1Score.ToString();
         p2ScoreText.text = p2Score.ToString();
-        platformClock = 0;
+        platformClock = 0f;
         Ball.onScore = PlayerScored;
         Time.timeScale = 1;
-        platformInitialX = rightPlatform.transform.position.x;
-        p1PlatformAnimator.SetInteger("STATE", 0);
-        p2PlatformAnimator.SetInteger("STATE", 0);
-
         InitializeGame();
         StartCoroutine(StartRound());
         AkSoundEngine.PostEvent("music_gameplay", gameObject);
@@ -66,27 +63,11 @@ public class LevelManager : MonoBehaviour
     private void Update()
     {
         platformClock += Time.deltaTime;
-        if (platformsClosing && !platformsArrived)
+        if (platformClock > platformDelay && !platformsClosing)
         {
-            leftPlatform.transform.Translate(transform.right * platformSpeed * Time.deltaTime);
-            rightPlatform.transform.Translate(-transform.right * platformSpeed * Time.deltaTime);
-            if (leftPlatform.transform.position.x >= platformLimit)
-            {
-                platformsArrived = true;
-                platformsClosing = false;
-                p1PlatformAnimator.SetInteger("STATE", 0);
-                p2PlatformAnimator.SetInteger("STATE", 0);
-            }
-        }
-        else
-        {
-            if (!platformsArrived && platformClock >= platformDelay)
-            {
-                platformsClosing = true;
-                p1PlatformAnimator.SetInteger("STATE", 1);
-                p2PlatformAnimator.SetInteger("STATE", 1);
-                AkSoundEngine.PostEvent("sfx_closewalls", gameObject);
-            }
+            leftPlatform.ClosePlatform();
+            rightPlatform.ClosePlatform();
+            platformsClosing = true;
         }
 
         if (p1Score >= roundsToWin && !gameEnded)
@@ -246,13 +227,7 @@ public class LevelManager : MonoBehaviour
         DeactivateSparks();
         platformClock = 0;
         float resetClock = 0f;
-        platformsClosing = false;
-        platformsArrived = false;
-        float platformFinalX = rightPlatform.transform.position.x;
-        bool platformsResetting = true, ballResetting = true;
-        float speed = (platformInitialX - platformFinalX) / platformResetTime;
-        p1PlatformAnimator.SetInteger("STATE", 2);
-        p2PlatformAnimator.SetInteger("STATE", 2);
+        bool ballResetting = true;
         if (p1Instance != null)
             p1Instance.GetComponent<Palette>().ResetPalette();
         if (p2Instance != null)
@@ -289,26 +264,15 @@ public class LevelManager : MonoBehaviour
         }
 
         initialDirection.Normalize();
+        leftPlatform.ResetPlatform();
+        rightPlatform.ResetPlatform();
 
-        while (resetClock < resetRoundTime || platformsResetting || ballResetting)
+        while (resetClock < resetRoundTime || ballResetting)
         {
             platformClock = 0f;
             resetClock += Time.deltaTime;
             if (resetClock > 3 * resetRoundTime / 4)
                 startRoundText.text = "engage!";
-            if (platformsResetting && rightPlatform.transform.position.x < platformInitialX)
-            {
-                leftPlatform.transform.Translate(-transform.right * speed * Time.deltaTime);
-                rightPlatform.transform.Translate(transform.right * speed * Time.deltaTime);
-            }
-            else
-            {
-                rightPlatform.transform.position = new Vector2(platformInitialX, 0f);
-                leftPlatform.transform.position = new Vector2(-platformInitialX, 0f);
-                p1PlatformAnimator.SetInteger("STATE", 0);
-                p2PlatformAnimator.SetInteger("STATE", 0);
-                platformsResetting = false;
-            }
 
             if (ballResetting && Mathf.Abs(ballReference.transform.position.x) > 0.2f)
             {
@@ -323,12 +287,10 @@ public class LevelManager : MonoBehaviour
 
             yield return null;
         }
-
-        p1PlatformAnimator.SetInteger("STATE", 0);
-        p2PlatformAnimator.SetInteger("STATE", 0);
         startRoundText.gameObject.SetActive(false);
         ballScriptReference.InitialKick(initialDirection);
         actualArrow.SetActive(false);
+        platformsClosing = false;
     }
 
     private void PlayerScored(bool player1)
