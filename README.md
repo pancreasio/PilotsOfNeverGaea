@@ -24,6 +24,9 @@ This is a demo developed by students from <a href="https://www.imagecampus.edu.a
 - **Joaquín Italiano** - *Art* -<a href="https://www.artstation.com/litalian"><img height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/artstation.svg" /></a>
 - **Alan Mandralli** - *Audio* - 
 - **Cristian Florez** - *Audio* - 
+- **Emiliano Calbucurá** - *Testing* - 
+- **Iván Fernandez** - *Testing* - 
+- **Leonardo Fernandez** - *Testing* - 
 
 
 This game was also possible thanks to the support of these professors:
