@@ -263,7 +263,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   speed: 9
-  left: 1
+  isPlayer1: 0
   chargesRequired: 3
   maxCharges: 3
   ionWave: {fileID: 5084560864771458693, guid: 4c7c126c2c4261a47bccb7ea38c87a24, type: 3}

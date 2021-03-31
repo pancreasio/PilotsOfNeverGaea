@@ -154,7 +154,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   speed: 13
-  left: 1
+  isPlayer1: 0
   chargesRequired: 3
   maxCharges: 3
   reply: {fileID: 193141215310927245, guid: f10825f56ab1e0c49bc2db28d65274d7, type: 3}

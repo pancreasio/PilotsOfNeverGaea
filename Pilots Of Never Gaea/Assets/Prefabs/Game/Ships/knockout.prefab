@@ -336,7 +336,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   speed: 9
-  left: 1
+  isPlayer1: 0
   chargesRequired: 2
   maxCharges: 2
   frontShot: {fileID: 4866976209290114977, guid: 901d876f2fe5e7a4d813ddd6a6ddc38d,

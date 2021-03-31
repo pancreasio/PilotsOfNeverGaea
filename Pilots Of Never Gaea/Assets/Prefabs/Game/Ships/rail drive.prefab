@@ -235,7 +235,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   speed: 9
-  left: 0
+  isPlayer1: 0
   chargesRequired: 2
   maxCharges: 2
   pointer: {fileID: 1733421318979740199}

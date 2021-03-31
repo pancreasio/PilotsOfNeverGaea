@@ -195,7 +195,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   speed: 9
-  left: 1
+  isPlayer1: 0
   chargesRequired: 1
   maxCharges: 1
   illusionPrefab: {fileID: 4323728245330979335, guid: 0a5afcc53400e894c9991c192238f331,
