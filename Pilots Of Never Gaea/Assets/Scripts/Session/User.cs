@@ -7,22 +7,23 @@ public class User : MonoBehaviour
 {
     public CharacterSelectionManager.Character selectedCharacter;
     public int playerNumber;
+    public InputDevice currentDevice;
     public Palette currentPalette;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard", devices: Keyboard.current);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+
     }
 
-    public void SetAsPlayer(int newPlayerNumber)
+    public void MovePalette (InputAction.CallbackContext inputVector)
     {
-        if(0 < newPlayerNumber && playerNumber < 3)
-            playerNumber = newPlayerNumber;
+        Debug.Log(inputVector.ReadValue<Vector2>());
     }
 }

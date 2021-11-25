@@ -23,21 +23,21 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            if(currentScreen == MenuScreen.gameOver)
-                AkSoundEngine.PostEvent((string)"sfx_ui_option_eg", gameObject);
-            else
-                AkSoundEngine.PostEvent((string)"sfx_ui_select", gameObject);
-        }
+        // if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+        // {
+        //     if(currentScreen == MenuScreen.gameOver)
+        //         AkSoundEngine.PostEvent((string)"sfx_ui_option_eg", gameObject);
+        //     else
+        //         AkSoundEngine.PostEvent((string)"sfx_ui_select", gameObject);
+        // }
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.RightControl))
-        {
-            if (currentScreen == MenuScreen.gameOver)
-                AkSoundEngine.PostEvent((string)"sfx_ui_ok_eg", gameObject);
-            else
-                AkSoundEngine.PostEvent((string)"sfx_ui_ok", gameObject);
-        }
+        // if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.RightControl))
+        // {
+        //     if (currentScreen == MenuScreen.gameOver)
+        //         AkSoundEngine.PostEvent((string)"sfx_ui_ok_eg", gameObject);
+        //     else
+        //         AkSoundEngine.PostEvent((string)"sfx_ui_ok", gameObject);
+        // }
 
         if (eventSystem.currentSelectedGameObject == null)
             eventSystem.SetSelectedGameObject(lastSelected);

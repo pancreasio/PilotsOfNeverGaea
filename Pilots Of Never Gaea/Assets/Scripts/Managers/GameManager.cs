@@ -19,8 +19,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     protected GameObject playerPrefab;
 
-    public GameObject player1;
-    public GameObject player2;
+    public User player1;
+    public User player2;
 
     private void Awake()
     {
@@ -40,9 +40,8 @@ public class GameManager : MonoBehaviour
     {
         Screen.SetResolution(1920, 1080, true);
         currentScene = SceneManager.GetActiveScene().buildIndex;
-
-        InstantiatePlayer(1);
-        InstantiatePlayer(2);
+        player1 = transform.Find("Player 1").GetComponent<User>();
+        player2 = transform.Find("Player 2").GetComponent<User>();
 
         MenuManager.StartAction = NextScene;
         MenuManager.ExitAction = ExitApplication;
@@ -55,27 +54,6 @@ public class GameManager : MonoBehaviour
         GameOverManager.RematchAction = PreviousScene;
         GameOverManager.CharacterSelectAction = LoadScene;
         GameOverManager.ExitAction = LoadScene;
-    }
-
-    private void InstantiatePlayer(int playerNumber)
-    {
-        if (0 < playerNumber && playerNumber < 3)
-        {
-            GameObject newPlayer = Instantiate(playerPrefab);
-            newPlayer.transform.parent = this.transform;
-            newPlayer.name = "Player " + playerNumber.ToString();
-            newPlayer.GetComponent<User>().playerNumber = playerNumber;
-            //InputUser.PerformPairingWithDevice(device: Keyboard.current, newPlayer.GetComponent<PlayerInput>().user);
-            switch (playerNumber)
-            {
-                case 1:
-                    player1 = newPlayer;
-                    break;
-                case 2:
-                    player2 = newPlayer;
-                    break;
-            }
-        }
     }
 
     private void ReloadScene()
@@ -122,5 +100,15 @@ public class GameManager : MonoBehaviour
         LevelManager.p2Selected = p2Character;
         SceneManager.LoadScene(2, LoadSceneMode.Additive);
         currentScene = 2;
+    }
+
+    public User GetPlayer1()
+    {
+        return player1;
+    }
+
+    public User GetPlayer2()
+    {
+        return player2;
     }
 }
