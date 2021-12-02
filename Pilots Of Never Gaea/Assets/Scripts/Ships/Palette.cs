@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Palette : MonoBehaviour
 {
@@ -28,7 +29,6 @@ public class Palette : MonoBehaviour
 
     protected virtual void Update()
     {
-        GetInput();
         Move();
         chargeClock += Time.deltaTime;
     }
@@ -38,25 +38,52 @@ public class Palette : MonoBehaviour
 
     }
 
-    private void GetInput()
+
+    public void TryMoving(InputAction.CallbackContext context)
     {
-        if (isPlayer1)
-        {
-            moveSpeed = Input.GetAxisRaw("P1Vertical");
-            if (Input.GetAxisRaw("P1Submit") > 0)
-                action = true;
-            else
-                action = false;
-        }
+        if(isPlayer1)
+        moveSpeed = context.ReadValue<Vector2>().y;
         else
-        {
-            moveSpeed = -Input.GetAxisRaw("P2Vertical");
-            if (Input.GetAxisRaw("P2Submit") > 0)
-                action = true;
-            else
-                action = false;
-        }
+        moveSpeed = -context.ReadValue<Vector2>().y;
     }
+
+    public void TryAction(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+            action = true;
+            else
+            if(context.canceled)
+            action = false;
+    }
+
+    public void TryCancel(InputAction.CallbackContext context)
+    {
+
+    }
+
+    public void OnDeviceLost()
+    {
+
+    }
+    // private void GetInput()
+    // {
+    //     if (isPlayer1)
+    //     {
+    //         moveSpeed = Input.GetAxisRaw("P1Vertical");
+    //         if (Input.GetAxisRaw("P1Submit") > 0)
+    //             action = true;
+    //         else
+    //             action = false;
+    //     }
+    //     else
+    //     {
+    //         moveSpeed = -Input.GetAxisRaw("P2Vertical");
+    //         if (Input.GetAxisRaw("P2Submit") > 0)
+    //             action = true;
+    //         else
+    //             action = false;
+    //     }
+    // }
 
     private void Move()
     {

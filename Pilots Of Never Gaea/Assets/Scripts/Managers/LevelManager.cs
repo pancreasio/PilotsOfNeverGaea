@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
@@ -26,6 +27,9 @@ public class LevelManager : MonoBehaviour
     private Ball ballScriptReference;
     public static GameManager.GameOverFunction GameOverAction;
     public static CharacterSelectionManager.Character p1Selected, p2Selected;
+
+    public static GameManager.BindInputFunction BindPlayersFunction;
+
     public Animator p1EXAnimator, p2EXAnimator;
     public Shake2D cameraShake;
     public delegate void LevelAction();
@@ -82,7 +86,7 @@ public class LevelManager : MonoBehaviour
             gameEnded = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) && gameStarted && !gameEnded)
+        if (Keyboard.current.escapeKey.wasPressedThisFrame && gameStarted && !gameEnded)
         {
             pauseCanvas.SetActive(true);
             Time.timeScale = 0f;
@@ -92,7 +96,9 @@ public class LevelManager : MonoBehaviour
     private void InitializeGame()
     {
         if (p1Selected != CharacterSelectionManager.Character.none)
+        {
             p1Instance = Instantiate(shipPrefabList[(int)p1Selected - 1], p1Position.transform);
+        }
 
         if (p1Selected == CharacterSelectionManager.Character.NULL)
         {
@@ -116,6 +122,8 @@ public class LevelManager : MonoBehaviour
         {
             InitializeShip(false);
         }
+
+        BindPlayersFunction(p1Instance.GetComponent<PlayerInput>(), p2Instance.GetComponent<PlayerInput>());
 
         ballReference = Instantiate(ballPrefab, Vector2.zero, Quaternion.identity);
         ballReference.transform.parent = transform;

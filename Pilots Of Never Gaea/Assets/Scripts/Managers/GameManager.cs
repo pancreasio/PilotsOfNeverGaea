@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
         LevelManager.GameOverAction = GameOver;
         LevelManager.CharacterSelectButton = LoadScene;
         LevelManager.ExitButton = LoadScene;
+        LevelManager.BindPlayersFunction = BindPlayerInput;
         CharacterSelectionManager.SelectAction = LoadGame;
         CharacterSelectionManager.FadeAction = UnloadAdditiveScene;
         CharacterSelectionManager.ExitButtonAction = PreviousScene;
