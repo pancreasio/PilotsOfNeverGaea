@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ShipSelect : MonoBehaviour
 {
     public float shipOffset, scrollTime, cancelTime;
     public int shipAmmount, firstShip;
-    private float direction;
+
     public bool isPlayer1;
-    private bool isMoving = false, selectButton;
+    private bool isMoving = false, isSelecting = false;
+    private bool shouldCancel = false;
     private int currentSelected;
     public List<Animator> shipList;
     public static GameManager.StartDuelFunction SelectAction;
@@ -17,12 +19,13 @@ public class ShipSelect : MonoBehaviour
 
     public CharacterSelectionManager.Character selectedShip;
 
+    public GameManager.ButtonAction OnDeviceLostAction;
+
     private void Awake()
     {
         selectedShip = CharacterSelectionManager.Character.none;
         currentSelected = firstShip;
-        selectButton = false;
-        direction = 0f;
+
         if (!isPlayer1)
         {
             foreach (Animator ship in shipList)
@@ -39,44 +42,7 @@ public class ShipSelect : MonoBehaviour
 
     private void Update()
     {
-        if (selectedShip == CharacterSelectionManager.Character.none)
-        {
-            GetScrollInput();
-            if (!isMoving)
-            {
-                if (direction != 0)
-                    StartCoroutine(Scroll(direction));
-                else
-                {
-                    if (selectButton)
-                    {
-                        shipList[currentSelected].SetTrigger("SELECTED");
-                        foreach (Animator ship in shipList)
-                        {
-                            if (ship != shipList[currentSelected])
-                                ship.SetTrigger("NOT_SELECTED");
-                        }
-                        StartCoroutine(SelectShip(currentSelected));
-                    }
-                }
-            }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                foreach (Animator ship in shipList)
-                {
-                    if (ship != shipList[currentSelected])
-                        ship.SetTrigger("IDLE");
-                }
-                selectedShip = CharacterSelectionManager.Character.none;
-                if (isPlayer1)
-                    characterSelectionManager.p1SelectedCharacter = selectedShip;
-                else
-                    characterSelectionManager.p2SelectedCharacter = selectedShip;
-            }
-        }
+
     }
 
     //private void Selecthip(int shipIndex)
@@ -89,23 +55,80 @@ public class ShipSelect : MonoBehaviour
 
     //}
 
+    public void TryMoving(InputAction.CallbackContext context)
+    {
+        if (selectedShip == CharacterSelectionManager.Character.none)
+        {
+            if (!isMoving)
+            {
+                if (context.ReadValue<Vector2>().y != 0)
+                    StartCoroutine(Scroll(context.ReadValue<Vector2>().y));
+            }
+        }
+    }
+
+    public void TryAction(InputAction.CallbackContext context)
+    {
+        if (selectedShip == CharacterSelectionManager.Character.none)
+        {
+            if (!isMoving)
+            {
+                if (context.performed)
+                {
+                    shipList[currentSelected].SetTrigger("SELECTED");
+                    foreach (Animator ship in shipList)
+                    {
+                        if (ship != shipList[currentSelected])
+                            ship.SetTrigger("NOT_SELECTED");
+                    }
+
+                    shouldCancel = false;
+                    StartCoroutine(SelectShip(currentSelected));
+                }
+            }
+        }
+    }
+
+    public void TryCancel(InputAction.CallbackContext context)
+    {
+
+            if (isSelecting || selectedShip != CharacterSelectionManager.Character.none)
+            {
+                shouldCancel = true;
+                foreach (Animator ship in shipList)
+                {
+                    if (ship != shipList[currentSelected])
+                        ship.SetTrigger("IDLE");
+                }
+                selectedShip = CharacterSelectionManager.Character.none;
+                if (isPlayer1)
+                    characterSelectionManager.p1SelectedCharacter = selectedShip;
+                else
+                    characterSelectionManager.p2SelectedCharacter = selectedShip;
+            }
+
+    }
+
+    private void OnDeviceLost()
+    {
+        if(OnDeviceLostAction!=null)
+            OnDeviceLostAction.Invoke();
+    }
+
     IEnumerator SelectShip(int shipIndex)
     {
         float selectClock = 0f;
-        bool canceled = false;
-        if(isPlayer1)
+        isSelecting = true;
+        if (isPlayer1)
             AkSoundEngine.PostEvent("sfx_ui_ok_p1", gameObject);
         else
             AkSoundEngine.PostEvent("sfx_ui_ok_p2", gameObject);
-        while (selectClock < cancelTime && !canceled)
+        while (selectClock < cancelTime && !shouldCancel)
         {
             selectClock += Time.deltaTime;
-            if (Input.GetKeyDown(KeyCode.Escape))
-                canceled = true;
-
             yield return null;
         }
-        if (!canceled)
+        if (!shouldCancel)
         {
             selectedShip = (CharacterSelectionManager.Character)(shipIndex + 1);
             if (isPlayer1)
@@ -121,16 +144,17 @@ public class ShipSelect : MonoBehaviour
                     ship.SetTrigger("IDLE");
             }
         }
+        isSelecting = false;
     }
 
     IEnumerator Scroll(float moveDirection)
     {
-        if (!(currentSelected == 0 && direction > 0 || currentSelected == shipAmmount - 1 && direction < 0))
+        if (!(currentSelected == 0 && moveDirection > 0 || currentSelected == shipAmmount - 1 && moveDirection < 0))
         {
             shipList[currentSelected].SetTrigger("IDLE");
             isMoving = true;
             float scrollClock = 0f;
-            if(isPlayer1)
+            if (isPlayer1)
                 AkSoundEngine.PostEvent("sfx_ui_selectship_p1", gameObject);
             else
                 AkSoundEngine.PostEvent("sfx_ui_selectship_p2", gameObject);
@@ -143,20 +167,6 @@ public class ShipSelect : MonoBehaviour
             currentSelected -= Mathf.FloorToInt(moveDirection);
             shipList[currentSelected].SetTrigger("HIGHLIGHTED");
             isMoving = false;
-        }
-    }
-
-    private void GetScrollInput()
-    {
-        if (isPlayer1)
-        {
-            direction = Input.GetAxisRaw("P1Vertical");
-            selectButton = Input.GetKeyDown(KeyCode.Space);
-        }
-        else
-        {
-            direction = Input.GetAxisRaw("P2Vertical");
-            selectButton = Input.GetKeyDown(KeyCode.RightControl);
         }
     }
 }

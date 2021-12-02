@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Users;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public delegate void ButtonAction();
     public delegate void StartDuelFunction(CharacterSelectionManager.Character p1Character, CharacterSelectionManager.Character p2Character);
+    public delegate void BindInputFunction(PlayerInput p1Input, PlayerInput p2Input);
     public delegate void SceneChange(int value);
     public delegate void GameOverFunction(bool value);
     private static GameObject gameManagerInstance;
@@ -51,9 +51,11 @@ public class GameManager : MonoBehaviour
         CharacterSelectionManager.SelectAction = LoadGame;
         CharacterSelectionManager.FadeAction = UnloadAdditiveScene;
         CharacterSelectionManager.ExitButtonAction = PreviousScene;
+        CharacterSelectionManager.BindControlsAction = BindPlayerInput;
         GameOverManager.RematchAction = PreviousScene;
         GameOverManager.CharacterSelectAction = LoadScene;
         GameOverManager.ExitAction = LoadScene;
+        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().controlsSetAction += ChangeControlSettings;
     }
 
     private void ReloadScene()
@@ -102,6 +104,11 @@ public class GameManager : MonoBehaviour
         currentScene = 2;
     }
 
+    private void LoadMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public User GetPlayer1()
     {
         return player1;
@@ -110,5 +117,17 @@ public class GameManager : MonoBehaviour
     public User GetPlayer2()
     {
         return player2;
+    }
+
+    private void ChangeControlSettings(ControllerDeviceUI newP1Controller, ControllerDeviceUI newP2Controller)
+    {
+        player1.currentControls.PairControllerData(newP1Controller.assignedDevice, newP1Controller.assignedScheme);
+        player2.currentControls.PairControllerData(newP2Controller.assignedDevice, newP2Controller.assignedScheme);
+    }
+
+    private void BindPlayerInput(PlayerInput p1Input, PlayerInput p2Input)
+    {
+        p1Input.SwitchCurrentControlScheme(player1.currentControls.controlScheme, player1.currentControls.inputDevice);
+        p2Input.SwitchCurrentControlScheme(player2.currentControls.controlScheme, player2.currentControls.inputDevice);
     }
 }

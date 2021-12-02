@@ -18,6 +18,7 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 1;
         versionText.text = "v" + Application.version;
         AkSoundEngine.PostEvent((string)"music_menu", gameObject);
+        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().controlsSetAction += OnControlsSelected;
     }
 
     public void StartGame()
@@ -26,6 +27,7 @@ public class MenuManager : MonoBehaviour
         {
             LevelManager.p1Selected = CharacterSelectionManager.Character.none;
             LevelManager.p2Selected = CharacterSelectionManager.Character.none;
+            ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().controlsSetAction -= OnControlsSelected;  
             StartAction();
         }
     }
@@ -47,9 +49,17 @@ public class MenuManager : MonoBehaviour
 
     public void Controls()
     {
-        controlsCanvas.SetActive(true);
-        mainCanvas.SetActive(false);
-        eventSystem.SetSelectedGameObject(firstControlsButton);
+        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().OnActivate();
+        eventSystem.enabled = false;
+        // controlsCanvas.SetActive(true);
+        // mainCanvas.SetActive(false);
+        // eventSystem.SetSelectedGameObject(firstControlsButton);
+    }
+
+    public void OnControlsSelected(ControllerDeviceUI player1, ControllerDeviceUI player2)
+    {
+        eventSystem.enabled = true;
+        eventSystem.SetSelectedGameObject(firstMainButton);
     }
 
     public void ExitGame()

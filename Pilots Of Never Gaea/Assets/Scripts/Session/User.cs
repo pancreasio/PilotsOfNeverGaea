@@ -10,6 +10,13 @@ public class User : MonoBehaviour
     public InputDevice currentDevice;
     public Palette currentPalette;
 
+    public string defaultScheme;
+    public ControllerData currentControls;
+
+    private void Awake() 
+    {
+        currentControls = new ControllerData(Keyboard.current, defaultScheme);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +31,11 @@ public class User : MonoBehaviour
 
     public void MovePalette (InputAction.CallbackContext inputVector)
     {
-        Debug.Log(inputVector.ReadValue<Vector2>());
+        
+    }
+
+    public void OnDeviceLost()
+    {
+        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().OnActivate();
     }
 }

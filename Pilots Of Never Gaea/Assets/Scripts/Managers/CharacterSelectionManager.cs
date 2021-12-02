@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CharacterSelectionManager : MonoBehaviour
 {
@@ -18,11 +19,13 @@ public class CharacterSelectionManager : MonoBehaviour
     public static GameManager.StartDuelFunction SelectAction;
     public static GameManager.SceneChange FadeAction;
     public static GameManager.ButtonAction ExitButtonAction;
+    public static GameManager.BindInputFunction BindControlsAction;
     public Character p1SelectedCharacter, p2SelectedCharacter;
     public float platformTime, platformLimit, cancelTime;
     private float platformClock, exitClock;
     private Vector3 leftPlatformStartingPosition, rightPlatformStartingPosition;
     public GameObject p1Elements, p2Elements, background;
+    public GameObject p1Selector, p2Selector;
     private bool openingPlatforms = false, closingPlatforms = true;
 
     private void Start()
@@ -37,6 +40,11 @@ public class CharacterSelectionManager : MonoBehaviour
         p2Elements.transform.Translate(transform.right * platformLimit);
         platformClock = 0f;
         exitClock = 0f;
+
+        BindControlsAction(p1Selector.GetComponent<PlayerInput>(), p2Selector.GetComponent<PlayerInput>());
+        p1Selector.GetComponent<ShipSelect>().OnDeviceLostAction = OnSelectorDeviceLost;
+        p2Selector.GetComponent<ShipSelect>().OnDeviceLostAction = OnSelectorDeviceLost;
+        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().controlsSetAction += OnControlsSet;
     }
 
     private void Update()
@@ -84,13 +92,16 @@ public class CharacterSelectionManager : MonoBehaviour
                     else
                     {
                         if (FadeAction != null)
+                        {
+                            ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().controlsSetAction -= OnControlsSet;
                             FadeAction(1);
+                        }
                     }
                 }
             }
             else
             {
-                if (Input.GetKey(KeyCode.Escape))
+                if (Keyboard.current.escapeKey.wasPressedThisFrame)
                     exitClock += Time.deltaTime;
                 else
                     exitClock = 0f;
@@ -102,5 +113,23 @@ public class CharacterSelectionManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnControlsSet(ControllerDeviceUI player1, ControllerDeviceUI player2)
+    {
+        p1Selector.GetComponent<PlayerInput>().SwitchCurrentControlScheme(player1.assignedScheme, player1.assignedDevice);
+        p2Selector.GetComponent<PlayerInput>().SwitchCurrentControlScheme(player2.assignedScheme, player2.assignedDevice);
+
+        p1Selector.GetComponent<PlayerInput>().ActivateInput();
+        p2Selector.GetComponent<PlayerInput>().ActivateInput();
+    }
+
+
+    private void OnSelectorDeviceLost()
+    {
+        p1Selector.GetComponent<PlayerInput>().DeactivateInput();
+        p2Selector.GetComponent<PlayerInput>().DeactivateInput();
+
+        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().OnActivate();
     }
 }

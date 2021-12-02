@@ -7,6 +7,7 @@ public class ControllerDeviceUI : MonoBehaviour
 {
     public InputDevice assignedDevice = null;
     public string assignedScheme;
+    public int assignedDeviceID = 0;
     private bool canMove = true;
     public void MoveToPlayer(InputAction.CallbackContext context)
     {
@@ -27,13 +28,20 @@ public class ControllerDeviceUI : MonoBehaviour
         canMove = false;
     }
 
+    public void OnDeviceDisconnected()
+    {
+        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().DeviceLost(this);
+        GetComponent<PlayerInput>().user.UnpairDevicesAndRemoveUser();
+        Destroy(this.gameObject);
+    }
+
     public void TryConfirming()
     {
-        
+        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().ConfirmSelection(this);
     }
 
     public void TryCancelling()
     {
-
+        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().CancelSelection(this);
     }
 }
