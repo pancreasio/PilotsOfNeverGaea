@@ -23,11 +23,6 @@ public class NULL : Palette
         if(!action)
         base.Update();
 
-        if (isPlayer1)
-            action = Input.GetKey(KeyCode.Space);
-        else
-            action = Input.GetKey(KeyCode.RightControl);
-
         animator.SetBool("ACTION", action);
 
         if (action)

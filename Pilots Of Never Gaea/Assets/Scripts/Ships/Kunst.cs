@@ -30,10 +30,10 @@ public class Kunst : Palette
         }
         else
         {
-            if (isPlayer1)
-                action = Input.GetKey(KeyCode.Space);
-            else
-                action = Input.GetKey(KeyCode.RightControl);
+            // if (isPlayer1)
+            //     action = Input.GetKey(KeyCode.Space);
+            // else
+            //     action = Input.GetKey(KeyCode.RightControl);
 
             if (action)
             {
