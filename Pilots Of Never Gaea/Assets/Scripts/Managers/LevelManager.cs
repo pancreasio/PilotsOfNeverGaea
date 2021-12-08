@@ -128,6 +128,8 @@ public class LevelManager : MonoBehaviour
         ballReference = Instantiate(ballPrefab, Vector2.zero, Quaternion.identity);
         ballReference.transform.parent = transform;
         ballScriptReference = ballReference.GetComponent<Ball>();
+
+        Odyssey.VoyageAction += ballScriptReference.Voyage;
     }
 
 
@@ -353,6 +355,8 @@ public class LevelManager : MonoBehaviour
 
     private void GameOver(bool player1won)
     {
+        Odyssey.VoyageAction -= ballScriptReference.Voyage;
+
         if (GameOverAction != null)
             GameOverAction(player1won);
     }

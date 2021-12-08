@@ -46,6 +46,7 @@ TrailRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -185,8 +186,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialSpeed: 11
   stunTime: 0.05
-  minYVelocity: 0.15
+  minXVelocity: 0
   correctionSpeed: 0.1
+  voyageSpeed: 3
 --- !u!212 &3587088231962082200
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -201,6 +203,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

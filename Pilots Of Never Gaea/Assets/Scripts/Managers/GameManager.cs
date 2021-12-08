@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public delegate void BindInputFunction(PlayerInput p1Input, PlayerInput p2Input);
     public delegate void SceneChange(int value);
     public delegate void GameOverFunction(bool value);
+    public delegate void GameObjectFunction(GameObject gameObject);
     private static GameObject gameManagerInstance;
     private int currentScene;
 

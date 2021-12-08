@@ -240,4 +240,20 @@ public class Ball : MonoBehaviour
         rig.velocity *= 1.4f;
         shot = true;
     }
+
+    public void Voyage(GameObject ship, float voyageSpeed)
+    {
+        if (moving)
+        {
+            if (ship.transform.position.y > transform.position.y)
+            {
+                rig.AddForce(transform.up * voyageSpeed, ForceMode2D.Force);
+            }
+
+            else
+            {
+                rig.AddForce(-transform.up * voyageSpeed, ForceMode2D.Force);
+            }
+        }
+    }
 }

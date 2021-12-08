@@ -15,6 +15,8 @@ public class CharacterSelectionManager : MonoBehaviour
         djinn,
         Leytenant,
         NULL,
+        Nagate,
+        Odyssey,
     }
     public static GameManager.StartDuelFunction SelectAction;
     public static GameManager.SceneChange FadeAction;
