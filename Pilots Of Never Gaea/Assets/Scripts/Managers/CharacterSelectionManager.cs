@@ -17,6 +17,7 @@ public class CharacterSelectionManager : MonoBehaviour
         NULL,
         Nagate,
         Odyssey,
+        Hawking,
     }
     public static GameManager.StartDuelFunction SelectAction;
     public static GameManager.SceneChange FadeAction;

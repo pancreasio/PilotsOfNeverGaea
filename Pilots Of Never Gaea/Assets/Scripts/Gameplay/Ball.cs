@@ -256,4 +256,10 @@ public class Ball : MonoBehaviour
             }
         }
     }
+
+    public void GravityWell(float wellSpeed)
+    {
+        if(moving)
+            rig.AddForce((Vector3.zero - this.transform.position) * wellSpeed, ForceMode2D.Force);
+    }
 }

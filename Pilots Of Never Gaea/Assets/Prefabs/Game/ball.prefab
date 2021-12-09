@@ -68,9 +68,9 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1226510117
+  m_SortingLayer: 1
+  m_SortingOrder: 4
   m_Time: 0.2
   m_Parameters:
     serializedVersion: 3
@@ -188,7 +188,6 @@ MonoBehaviour:
   stunTime: 0.05
   minXVelocity: 0
   correctionSpeed: 0.1
-  voyageSpeed: 3
 --- !u!212 &3587088231962082200
 SpriteRenderer:
   m_ObjectHideFlags: 0

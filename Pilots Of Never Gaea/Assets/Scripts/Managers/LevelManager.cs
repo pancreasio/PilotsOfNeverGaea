@@ -31,6 +31,8 @@ public class LevelManager : MonoBehaviour
     public static GameManager.BindInputFunction BindPlayersFunction;
 
     public Animator p1EXAnimator, p2EXAnimator;
+
+    public Animator gravityWellAnimator;
     public Shake2D cameraShake;
     public delegate void LevelAction();
     public float startRoundTime, resetRoundTime,
@@ -130,7 +132,14 @@ public class LevelManager : MonoBehaviour
         ballScriptReference = ballReference.GetComponent<Ball>();
 
         Odyssey.VoyageAction += ballScriptReference.Voyage;
+        Hawking.WellAction += ballScriptReference.GravityWell;
+        Hawking.WellActiveAction += UpdateGravityWell;
+        if(p1Selected == CharacterSelectionManager.Character.Hawking || p2Selected == CharacterSelectionManager.Character.Hawking)
+            gravityWellAnimator.gameObject.SetActive(true);
+       
     }
+
+   
 
 
     private void InitializeShip(bool player1)
@@ -356,9 +365,16 @@ public class LevelManager : MonoBehaviour
     private void GameOver(bool player1won)
     {
         Odyssey.VoyageAction -= ballScriptReference.Voyage;
+        Hawking.WellAction -= ballScriptReference.GravityWell;
+        Hawking.WellActiveAction -= UpdateGravityWell;
 
         if (GameOverAction != null)
             GameOverAction(player1won);
+    }
+
+    private void UpdateGravityWell(bool isActive)
+    {
+        gravityWellAnimator.SetBool("ACTIVE", isActive);
     }
 
     private void P1UpdateCharges(int charges)
