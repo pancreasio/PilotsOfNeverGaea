@@ -51,7 +51,7 @@ public class GenericProjectile : MonoBehaviour
                 Destroy(this.gameObject);
         }
 
-        if (collision.transform.tag == "Palette")
+        if (collision.transform.tag == "Palette" || collision.transform.tag == "Corner")
         {
             if (PaletteAction !=null)
                 PaletteAction.Invoke(this.gameObject);

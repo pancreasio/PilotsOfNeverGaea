@@ -15,6 +15,7 @@ TagManager:
   - FrontShot
   - SideShot
   - Reply
+  - Knife
   layers:
   - Default
   - TransparentFX
@@ -27,9 +28,9 @@ TagManager:
   - GameObjects
   - Walls
   - Post Processing
-  - 
-  - 
-  - 
+  - Projectiles
+  - ProjectilesNoBall
+  - Ball
   - 
   - 
   - 

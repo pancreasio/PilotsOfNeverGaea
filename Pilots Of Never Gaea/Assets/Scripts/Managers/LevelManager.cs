@@ -92,6 +92,7 @@ public class LevelManager : MonoBehaviour
         {
             pauseCanvas.SetActive(true);
             Time.timeScale = 0f;
+            Dio.isPaused = true;
         }
     }
 
@@ -136,7 +137,8 @@ public class LevelManager : MonoBehaviour
         Hawking.WellActiveAction += UpdateGravityWell;
         if(p1Selected == CharacterSelectionManager.Character.Hawking || p2Selected == CharacterSelectionManager.Character.Hawking)
             gravityWellAnimator.gameObject.SetActive(true);
-       
+
+        Dio.timeStopAction = UpdateTheWorld;       
     }
 
    
@@ -377,6 +379,14 @@ public class LevelManager : MonoBehaviour
         gravityWellAnimator.SetBool("ACTIVE", isActive);
     }
 
+    private void UpdateTheWorld(bool isActive)
+    {
+        if(isActive)
+            Time.timeScale = 0f;
+        else
+            Time.timeScale = 1f;
+    }
+
     private void P1UpdateCharges(int charges)
     {
         p1EXAnimator.SetInteger("CHARGES", charges);
@@ -411,6 +421,7 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 1f;
         pauseCanvas.GetComponent<UIManager>().ResetSelected();
         pauseCanvas.SetActive(false);
+        Dio.isPaused = false;
     }
 
     public void CharacterSelect()

@@ -9,8 +9,8 @@ public class Palette : MonoBehaviour
     public LayerMask raycastMask;
 
     public float speed;
-    private float moveDelta, chargeDelay = 0.1f, chargeClock = 0f;
-    protected float moveSpeed;
+    private float moveDelta, chargeDelay = 0.1f;
+    protected float moveSpeed, chargeClock = 0f;
     protected Vector2 moveDirection;
     public bool isPlayer1;
     private SpriteRenderer sprite;
@@ -29,7 +29,7 @@ public class Palette : MonoBehaviour
 
     protected virtual void Update()
     {
-        Move();
+        Move(Time.deltaTime);
         chargeClock += Time.deltaTime;
     }
 
@@ -41,18 +41,18 @@ public class Palette : MonoBehaviour
 
     public void TryMoving(InputAction.CallbackContext context)
     {
-        if(isPlayer1)
-        moveSpeed = context.ReadValue<Vector2>().y;
+        if (isPlayer1)
+            moveSpeed = context.ReadValue<Vector2>().y;
         else
-        moveSpeed = -context.ReadValue<Vector2>().y;
+            moveSpeed = -context.ReadValue<Vector2>().y;
     }
 
     public void TryAction(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if (context.performed)
             action = true;
-            else
-            if(context.canceled)
+        else
+            if (context.canceled)
             action = false;
     }
 
@@ -85,9 +85,9 @@ public class Palette : MonoBehaviour
     //     }
     // }
 
-    private void Move()
+    protected void Move(float timeVariable)
     {
-        moveDelta = speed * Time.deltaTime;
+        moveDelta = speed * timeVariable;
         CheckBorder();
         transform.Translate(0.0f, moveDelta * moveSpeed, 0.0f);
     }
@@ -98,6 +98,21 @@ public class Palette : MonoBehaviour
         {
             Charge();
         }
+    }
+
+    public void KnifeHit()
+    {
+        charges = 0;
+        power = false;
+
+        if (UpdateCharges != null)
+            UpdateCharges(charges);
+    }
+
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.tag == "Knife")
+            KnifeHit();
     }
 
     public void Charge()

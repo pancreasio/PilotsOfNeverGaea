@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3587088230858318607}
   - component: {fileID: 3587088230858318606}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: trail_ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 3587088231962082200}
   - component: {fileID: 3587088231962082197}
   - component: {fileID: 3587088231962082198}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: ball
   m_TagString: Ball
   m_Icon: {fileID: 0}

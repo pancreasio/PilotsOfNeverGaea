@@ -3076,6 +3076,7 @@ MonoBehaviour:
   - {fileID: 3756782191027069904, guid: 72b5b21750ab3804fa822d6dd2be69ae, type: 3}
   - {fileID: 3756782191027069904, guid: df3eee650d9147249a57ad1dcd58ee0f, type: 3}
   - {fileID: 3756782191027069904, guid: eb18ba34730d1d2439689fb1d7261683, type: 3}
+  - {fileID: 3756782191027069904, guid: dc26610c280869d46816f59786c49b27, type: 3}
   fadeoutSprite: {fileID: 602137368}
   p1NullBarFull: {fileID: 1398933750}
   p2NullBarFull: {fileID: 1675899980}

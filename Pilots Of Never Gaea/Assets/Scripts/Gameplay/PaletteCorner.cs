@@ -26,5 +26,10 @@ public class PaletteCorner : MonoBehaviour
             parentPalette.Charge();
             hit = true;
         }
+
+        if(collision.transform.tag == "Knife")
+        {
+            parentPalette.KnifeHit();
+        }
     }
 }
