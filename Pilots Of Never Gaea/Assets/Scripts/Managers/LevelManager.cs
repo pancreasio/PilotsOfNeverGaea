@@ -25,6 +25,7 @@ public class LevelManager : MonoBehaviour
         topSparks, bottomSparks,
         p1Instance = null, p2Instance = null;
     private Ball ballScriptReference;
+    private GameManager.ButtonAction ResetRoundAction;
     public static GameManager.GameOverFunction GameOverAction;
     public static CharacterSelectionManager.Character p1Selected, p2Selected;
 
@@ -138,7 +139,12 @@ public class LevelManager : MonoBehaviour
         if(p1Selected == CharacterSelectionManager.Character.Hawking || p2Selected == CharacterSelectionManager.Character.Hawking)
             gravityWellAnimator.gameObject.SetActive(true);
 
-        Dio.timeStopAction = UpdateTheWorld;       
+        Dio.timeStopAction = UpdateTheWorld;
+        if(p1Selected == CharacterSelectionManager.Character.Francesco)
+            ResetRoundAction += p1Instance.GetComponent<Francesco>().OnResetRound;
+        
+        if(p2Selected == CharacterSelectionManager.Character.Francesco)
+            ResetRoundAction += p2Instance.GetComponent<Francesco>().OnResetRound;
     }
 
    
@@ -242,6 +248,7 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator ResetRound(bool player1Scored)
     {
+        ResetRoundAction.Invoke();
         GameObject actualArrow;
         startRoundText.gameObject.SetActive(true);
         startRoundText.text = "resetting arena";
@@ -369,7 +376,7 @@ public class LevelManager : MonoBehaviour
         Odyssey.VoyageAction -= ballScriptReference.Voyage;
         Hawking.WellAction -= ballScriptReference.GravityWell;
         Hawking.WellActiveAction -= UpdateGravityWell;
-
+        ResetRoundAction = null;
         if (GameOverAction != null)
             GameOverAction(player1won);
     }

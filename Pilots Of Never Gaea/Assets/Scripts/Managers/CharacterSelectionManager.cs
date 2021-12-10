@@ -19,6 +19,7 @@ public class CharacterSelectionManager : MonoBehaviour
         Odyssey,
         Hawking,
         Dio,
+        Francesco,
     }
     public static GameManager.StartDuelFunction SelectAction;
     public static GameManager.SceneChange FadeAction;
