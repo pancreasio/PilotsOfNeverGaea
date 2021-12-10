@@ -145,6 +145,9 @@ public class LevelManager : MonoBehaviour
         
         if(p2Selected == CharacterSelectionManager.Character.Francesco)
             ResetRoundAction += p2Instance.GetComponent<Francesco>().OnResetRound;
+
+        if(p1Selected == CharacterSelectionManager.Character.Nagate || p2Selected == CharacterSelectionManager.Character.Nagate)
+            ResetRoundAction += SmokeBomb.OnRoundReset;
     }
 
    
@@ -248,7 +251,9 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator ResetRound(bool player1Scored)
     {
-        ResetRoundAction.Invoke();
+        if(ResetRoundAction != null)
+            ResetRoundAction.Invoke();
+
         GameObject actualArrow;
         startRoundText.gameObject.SetActive(true);
         startRoundText.text = "resetting arena";

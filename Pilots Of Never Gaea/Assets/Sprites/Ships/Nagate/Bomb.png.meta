@@ -1,25 +1,19 @@
 fileFormatVersion: 2
-guid: d7cead6f95044244cbbdaf1674254e1f
+guid: cce18e3a92d5af044b26baad66d60817
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6454190876963673898
-    second: nagate power_0
+      213: -1483665779731714255
+    second: Bomb_0
   - first:
-      213: 8400015363581400402
-    second: nagate power_1
+      213: -1902917897002446259
+    second: Bomb_1
   - first:
-      213: -6930350875863125898
-    second: nagate power_2
+      213: -5839540051515997725
+    second: Bomb_2
   - first:
-      213: 5091739769991417139
-    second: nagate power_3
-  - first:
-      213: 3322591673671588511
-    second: nagate power_4
-  - first:
-      213: 894294260647273952
-    second: nagate power_5
+      213: -5337159410277229379
+    second: Bomb_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -105,127 +99,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: nagate power_0
+      name: Bomb_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 180
-        height: 180
-      alignment: 9
-      pivot: {x: 0.38, y: 0.5}
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a279cf52864e19950800000000000000
-      internalID: 6454190876963673898
+      spriteID: 13f20b985d5f86be0800000000000000
+      internalID: -1483665779731714255
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nagate power_1
+      name: Bomb_1
       rect:
         serializedVersion: 2
-        x: 180
+        x: 63
         y: 0
-        width: 180
-        height: 180
-      alignment: 9
-      pivot: {x: 0.38, y: 0.5}
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 255d71ec779d29470800000000000000
-      internalID: 8400015363581400402
+      spriteID: d429f68314a7795e0800000000000000
+      internalID: -1902917897002446259
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nagate power_2
+      name: Bomb_2
       rect:
         serializedVersion: 2
-        x: 360
+        x: 126
         y: 0
-        width: 180
-        height: 180
-      alignment: 9
-      pivot: {x: 0.38, y: 0.5}
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6707c53d89272df90800000000000000
-      internalID: -6930350875863125898
+      spriteID: 3e109b92349c5fea0800000000000000
+      internalID: -5839540051515997725
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nagate power_3
+      name: Bomb_3
       rect:
         serializedVersion: 2
-        x: 540
+        x: 189
         y: 0
-        width: 180
-        height: 180
-      alignment: 9
-      pivot: {x: 0.38, y: 0.5}
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33d4117f75e79a640800000000000000
-      internalID: 5091739769991417139
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: nagate power_4
-      rect:
-        serializedVersion: 2
-        x: 720
-        y: 0
-        width: 180
-        height: 180
-      alignment: 9
-      pivot: {x: 0.38, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f9a9ddaf5873c1e20800000000000000
-      internalID: 3322591673671588511
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: nagate power_5
-      rect:
-        serializedVersion: 2
-        x: 900
-        y: 0
-        width: 180
-        height: 180
-      alignment: 9
-      pivot: {x: 0.38, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0e52d8254eb296c00800000000000000
-      internalID: 894294260647273952
+      spriteID: dbcdac83bc99ee5b0800000000000000
+      internalID: -5337159410277229379
       vertices: []
       indices: 
       edges: []

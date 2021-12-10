@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2683058654999203889}
   - component: {fileID: 6403512009575410737}
   - component: {fileID: 3711985350441180272}
-  - component: {fileID: 1185421642236515739}
+  - component: {fileID: 5828779855437121310}
   m_Layer: 0
   m_Name: SmokeBomb
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6403512009575410736}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d5f8474d32db14eb7221ece25cce03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeTime: 1
-  playerActiveTime: 7
-  playerScale: 2
+  activeTime: 4
+  playerActiveTime: 6
+  playerScale: 1.7
 --- !u!212 &6403512009575410737
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_SortingLayerID: -1226510117
   m_SortingLayer: 1
   m_SortingOrder: 7
-  m_Sprite: {fileID: -1005237617620769326, guid: 9d277d01fe7487345af7c34b9af3aeb4,
+  m_Sprite: {fileID: -8044494511525273312, guid: 0ed6ec9a2b0b3c94e8c8f78522a27fc7,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -119,18 +119,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!111 &1185421642236515739
-Animation:
+--- !u!114 &5828779855437121310
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6403512009575410736}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 2458a034c92f6c0439acbd2651aed827, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da48f618bb4848f4ea386799bf9ce02a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 4
