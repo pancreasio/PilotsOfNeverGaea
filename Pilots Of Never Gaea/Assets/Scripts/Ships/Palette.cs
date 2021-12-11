@@ -9,11 +9,12 @@ public class Palette : MonoBehaviour
     public LayerMask raycastMask;
 
     public float speed;
-    private float moveDelta, chargeDelay = 0.1f;
+    protected float moveDelta;
+    private float chargeDelay = 0.1f;
     protected float moveSpeed, chargeClock = 0f;
     protected Vector2 moveDirection;
     public bool isPlayer1;
-    private SpriteRenderer sprite;
+    protected SpriteRenderer sprite;
     public int chargesRequired, maxCharges;
     protected int charges;
     protected bool action, power;
@@ -134,7 +135,7 @@ public class Palette : MonoBehaviour
             UpdateCharges(charges);
     }
 
-    private void CheckBorder()
+    protected void CheckBorder()
     {
         float moveDistance = moveDelta + sprite.bounds.extents.y;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up * moveSpeed, moveDistance, raycastMask);

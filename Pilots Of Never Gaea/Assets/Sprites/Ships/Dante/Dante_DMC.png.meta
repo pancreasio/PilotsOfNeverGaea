@@ -1,0 +1,560 @@
+fileFormatVersion: 2
+guid: 72cc294e651496040a0ca1fdea99db6e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 993085888259261339
+    second: Dante_DMC_0
+  - first:
+      213: 7772801618205319871
+    second: Dante_DMC_1
+  - first:
+      213: -4709901009917620704
+    second: Dante_DMC_2
+  - first:
+      213: -6470361756359167854
+    second: Dante_DMC_3
+  - first:
+      213: 1876838337363718123
+    second: Dante_DMC_4
+  - first:
+      213: 879140855752093937
+    second: Dante_DMC_5
+  - first:
+      213: 202327401605669591
+    second: Dante_DMC_6
+  - first:
+      213: 8579418548730480984
+    second: Dante_DMC_7
+  - first:
+      213: 8508200073941449468
+    second: Dante_DMC_8
+  - first:
+      213: -6722582392578096616
+    second: Dante_DMC_9
+  - first:
+      213: 3241454166094685461
+    second: Dante_DMC_10
+  - first:
+      213: -971905349257999767
+    second: Dante_DMC_11
+  - first:
+      213: -1931408422403496750
+    second: Dante_DMC_12
+  - first:
+      213: 9219966033474719001
+    second: Dante_DMC_13
+  - first:
+      213: 349517395416690327
+    second: Dante_DMC_14
+  - first:
+      213: -2513034777405578702
+    second: Dante_DMC_15
+  - first:
+      213: -69665957049949211
+    second: Dante_DMC_16
+  - first:
+      213: 5115258480384889483
+    second: Dante_DMC_17
+  - first:
+      213: 1146108141500469040
+    second: Dante_DMC_18
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Dante_DMC_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 561
+        width: 180
+        height: 159
+      alignment: 9
+      pivot: {x: 0.29, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9385219a5628cd00800000000000000
+      internalID: 993085888259261339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dante_DMC_1
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 561
+        width: 180
+        height: 159
+      alignment: 9
+      pivot: {x: 0.29, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb2a5b2c3e98edb60800000000000000
+      internalID: 7772801618205319871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dante_DMC_2
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 561
+        width: 180
+        height: 159
+      alignment: 9
+      pivot: {x: 0.29, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02e4b905cf113aeb0800000000000000
+      internalID: -4709901009917620704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dante_DMC_3
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 561
+        width: 180
+        height: 159
+      alignment: 9
+      pivot: {x: 0.29, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29070f79348a436a0800000000000000
+      internalID: -6470361756359167854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dante_DMC_4
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 561
+        width: 180
+        height: 159
+      alignment: 9
+      pivot: {x: 0.29, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bef266f168edb0a10800000000000000
+      internalID: 1876838337363718123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dante_DMC_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 376
+        width: 180
+        height: 159
+      alignment: 9
+      pivot: {x: 0.29, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f0f2ae43f5533c00800000000000000
+      internalID: 879140855752093937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dante_DMC_6
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 361
+        width: 180
+        height: 159
+      alignment: 9
+      pivot: {x: 0.29, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d2a80523bfcec200800000000000000
+      internalID: 202327401605669591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dante_DMC_7
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 361
+        width: 180
+        height: 159
+      alignment: 9
+      pivot: {x: 0.29, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8594a70e6b7301770800000000000000
+      internalID: 8579418548730480984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dante_DMC_8
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 381
+        width: 180
+        height: 159
+      alignment: 9
+      pivot: {x: 0.29, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfa7b3d83e2331670800000000000000
+      internalID: 8508200073941449468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dante_DMC_9
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 381
+        width: 180
+        height: 159
+      alignment: 9
+      pivot: {x: 0.29, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81246158ee694b2a0800000000000000
+      internalID: -6722582392578096616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dante_DMC_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 182
+        width: 180
+        height: 163
+      alignment: 9
+      pivot: {x: 0.29, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 515a8cdd365fbfc20800000000000000
+      internalID: 3241454166094685461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dante_DMC_11
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 182
+        width: 180
+        height: 163
+      alignment: 9
+      pivot: {x: 0.29, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96acc26fb391382f0800000000000000
+      internalID: -971905349257999767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dante_DMC_12
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 192
+        width: 180
+        height: 168
+      alignment: 9
+      pivot: {x: 0.29, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d4217ad5424235e0800000000000000
+      internalID: -1931408422403496750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dante_DMC_13
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 201
+        width: 180
+        height: 120
+      alignment: 9
+      pivot: {x: 0.29, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91d8d6a0246e3ff70800000000000000
+      internalID: 9219966033474719001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dante_DMC_14
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 201
+        width: 180
+        height: 120
+      alignment: 9
+      pivot: {x: 0.29, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79ea1a4283cb9d400800000000000000
+      internalID: 349517395416690327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dante_DMC_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 21
+        width: 180
+        height: 122
+      alignment: 9
+      pivot: {x: 0.29, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 232a9804f28ef1dd0800000000000000
+      internalID: -2513034777405578702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dante_DMC_16
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 21
+        width: 180
+        height: 122
+      alignment: 9
+      pivot: {x: 0.29, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e3a9116e2f780ff0800000000000000
+      internalID: -69665957049949211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dante_DMC_17
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 21
+        width: 180
+        height: 122
+      alignment: 9
+      pivot: {x: 0.29, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8255a17c7c0df640800000000000000
+      internalID: 5115258480384889483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dante_DMC_18
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 21
+        width: 180
+        height: 122
+      alignment: 9
+      pivot: {x: 0.29, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03f8158484bc7ef00800000000000000
+      internalID: 1146108141500469040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

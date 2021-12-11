@@ -20,6 +20,7 @@ public class CharacterSelectionManager : MonoBehaviour
         Hawking,
         Dio,
         Francesco,
+        Dante,
     }
     public static GameManager.StartDuelFunction SelectAction;
     public static GameManager.SceneChange FadeAction;

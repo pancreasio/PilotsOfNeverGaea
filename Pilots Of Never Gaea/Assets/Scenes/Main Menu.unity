@@ -252,8 +252,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Design and Programming\nJuli\xE1n Serulnikov Kohen\n\nArt\nJoaqu\xEDn
-    Italiano\nLautaro Concetti\n\nMusic\nAlan Mandralli\n\nSound\nCristian Florez\n\nTesting\nEmiliano
-    Calbucur\xE1\nIv\xE1n Fernandez\nLeonardo Fernandez"
+    Italiano\nGianluca Mascaro\nLautaro Concetti\n\nMusic\nAlan Mandralli\n\nSound\nCristian
+    Florez\n\nTesting\nEmiliano Calbucur\xE1\nIv\xE1n Fernandez\nLeonardo Fernandez"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1b3888614bfd3d447b45ec5fe4ef05d7, type: 2}
   m_sharedMaterial: {fileID: 6169031522162171760, guid: 1b3888614bfd3d447b45ec5fe4ef05d7,

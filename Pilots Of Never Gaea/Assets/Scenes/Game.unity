@@ -3078,6 +3078,7 @@ MonoBehaviour:
   - {fileID: 3756782191027069904, guid: eb18ba34730d1d2439689fb1d7261683, type: 3}
   - {fileID: 3756782191027069904, guid: dc26610c280869d46816f59786c49b27, type: 3}
   - {fileID: 3756782191027069904, guid: c41338a31344a9941867f54bbc30b56f, type: 3}
+  - {fileID: 3756782191027069904, guid: 1311150312d279740bc631952804447d, type: 3}
   fadeoutSprite: {fileID: 602137368}
   p1NullBarFull: {fileID: 1398933750}
   p2NullBarFull: {fileID: 1675899980}
@@ -4121,7 +4122,7 @@ GameObject:
   - component: {fileID: 1301630640}
   - component: {fileID: 1301630639}
   - component: {fileID: 1301630641}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Left Platform Collider
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -4590,7 +4591,7 @@ GameObject:
   - component: {fileID: 1553803563}
   - component: {fileID: 1553803562}
   - component: {fileID: 1553803564}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Right Platform Collider
   m_TagString: Platform
   m_Icon: {fileID: 0}
