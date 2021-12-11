@@ -53,13 +53,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   speed: 23
+  chargeDelay: 0.5
   isPlayer1: 0
   chargesRequired: 3
   maxCharges: 3
   maxJumps: 1
-  attackTime: 0.27
+  attackTime: 0.2
   helmBreakerSpeed: 20
+  attackSpeed: 13
+  helmBreakerImpactSpeed: 11
+  stingerSpeed: 18
+  chargeTimeDelay: 0
   groundCheckDistance: 0.7
+  hitbox: {fileID: 3609531413383831502}
 --- !u!212 &3756782191027069909
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -273,7 +279,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7574826640478077832}
   - component: {fileID: 8585330049874985727}
-  m_Layer: 14
+  - component: {fileID: 3609531413383831502}
+  m_Layer: 8
   m_Name: Attack Hitbox
   m_TagString: DanteAttack
   m_Icon: {fileID: 0}
@@ -320,3 +327,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.96, y: 1.91}
   m_EdgeRadius: 0
+--- !u!114 &3609531413383831502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5940757404839129738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1411bc5e89f00c4aba0642126e6a7a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

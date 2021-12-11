@@ -262,4 +262,17 @@ public class Ball : MonoBehaviour
         if(moving)
             rig.AddForce((Vector3.zero - this.transform.position) * wellSpeed, ForceMode2D.Force);
     }
+
+    public void BeginDanteAttack()
+    {
+        StopMovement();
+    }
+
+    public void FinishDanteAttack(Vector2 direction, float speed, bool stinger)
+    {
+        StopMovement();
+        rig.AddForce(direction*speed, ForceMode2D.Impulse);
+        if(stinger)
+            shot=true;
+    }
 }

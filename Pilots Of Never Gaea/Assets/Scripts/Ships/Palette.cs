@@ -10,7 +10,7 @@ public class Palette : MonoBehaviour
 
     public float speed;
     protected float moveDelta;
-    private float chargeDelay = 0.1f;
+    public float chargeDelay = 0.1f;
     protected float moveSpeed, chargeClock = 0f;
     protected Vector2 moveDirection;
     public bool isPlayer1;
