@@ -11,13 +11,14 @@ public class Palette : MonoBehaviour
     public float speed;
     protected float moveDelta;
     public float chargeDelay = 0.1f;
+    public float slowTime = 1f;
     protected float moveSpeed, chargeClock = 0f;
     protected Vector2 moveDirection;
     public bool isPlayer1;
     protected SpriteRenderer sprite;
     public int chargesRequired, maxCharges;
     protected int charges;
-    protected bool action, power;
+    protected bool action, power, isSlowedDown;
     public LevelManager.ChargeAction UpdateCharges;
 
     protected virtual void Start()
@@ -25,6 +26,7 @@ public class Palette : MonoBehaviour
         sprite = transform.GetComponent<SpriteRenderer>();
         power = false;
         action = false;
+        isSlowedDown = false;
         charges = 0;
     }
 
@@ -66,29 +68,24 @@ public class Palette : MonoBehaviour
     {
 
     }
-    // private void GetInput()
-    // {
-    //     if (isPlayer1)
-    //     {
-    //         moveSpeed = Input.GetAxisRaw("P1Vertical");
-    //         if (Input.GetAxisRaw("P1Submit") > 0)
-    //             action = true;
-    //         else
-    //             action = false;
-    //     }
-    //     else
-    //     {
-    //         moveSpeed = -Input.GetAxisRaw("P2Vertical");
-    //         if (Input.GetAxisRaw("P2Submit") > 0)
-    //             action = true;
-    //         else
-    //             action = false;
-    //     }
-    // }
+
+    private IEnumerator Slowdown()
+    {
+        float slowClock = 0;
+        isSlowedDown = true;
+        while(slowClock<= slowTime)
+        {
+            slowClock += Time.deltaTime;
+            yield return null;
+        }
+        isSlowedDown = false;
+    }
 
     protected void Move(float timeVariable)
     {
         moveDelta = speed * timeVariable;
+        if(isSlowedDown)
+            moveDelta = speed/2 * timeVariable;
         CheckBorder();
         transform.Translate(0.0f, moveDelta * moveSpeed, 0.0f);
     }
@@ -110,10 +107,14 @@ public class Palette : MonoBehaviour
             UpdateCharges(charges);
     }
 
+
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "Knife")
             KnifeHit();
+
+        if (collision.transform.tag == "Hado")
+            StartCoroutine(Slowdown());
     }
 
     public void Charge()

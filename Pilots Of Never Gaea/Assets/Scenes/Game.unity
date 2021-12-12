@@ -3080,6 +3080,7 @@ MonoBehaviour:
   - {fileID: 3756782191027069904, guid: c41338a31344a9941867f54bbc30b56f, type: 3}
   - {fileID: 3756782191027069904, guid: 1311150312d279740bc631952804447d, type: 3}
   - {fileID: 3756782191027069904, guid: 35786220a491c7c4fa8e05561388420c, type: 3}
+  - {fileID: 3756782191027069904, guid: 391171054dcaf114eb838a3e3a5e32a9, type: 3}
   fadeoutSprite: {fileID: 602137368}
   p1NullBarFull: {fileID: 1398933750}
   p2NullBarFull: {fileID: 1675899980}

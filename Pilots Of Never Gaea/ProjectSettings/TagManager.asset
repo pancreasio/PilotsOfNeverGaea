@@ -19,6 +19,7 @@ TagManager:
   - Dante
   - DanteAttack
   - MissileExplosion
+  - Hado
   layers:
   - Default
   - TransparentFX

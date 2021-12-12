@@ -31,6 +31,11 @@ public class GenericProjectile : MonoBehaviour
         rig.AddForce(impulseDirection.normalized * initialSpeed, ForceMode2D.Impulse);
     }
 
+    public void SetImpulse(Vector2 impulseDirection, float impulseSpeed)
+    {
+        rig.AddForce(impulseDirection.normalized * impulseSpeed, ForceMode2D.Impulse);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "Wall")

@@ -22,6 +22,7 @@ public class CharacterSelectionManager : MonoBehaviour
         Francesco,
         Dante,
         Nikita,
+        Shoto,
     }
     public static GameManager.StartDuelFunction SelectAction;
     public static GameManager.SceneChange FadeAction;

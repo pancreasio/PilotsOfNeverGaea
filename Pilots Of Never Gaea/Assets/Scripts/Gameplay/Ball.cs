@@ -192,6 +192,11 @@ public class Ball : MonoBehaviour
             rig.AddForce((transform.position - collision.transform.position).normalized * explosionForce, ForceMode2D.Impulse);
         }
 
+        if(collisionTag == "Hado")
+        {
+            rig.velocity = new Vector2(-rig.velocity.x, rig.velocity.y);
+        }
+
         if (collisionTag == "SideShot")
         {
             HitStun();
