@@ -157,6 +157,7 @@ public class LevelManager : MonoBehaviour
         Odyssey.VoyageAction += ballScriptReference.Voyage;
         Hawking.WellAction += ballScriptReference.GravityWell;
         Hawking.WellActiveAction += UpdateGravityWell;
+
         if(p1Selected == CharacterSelectionManager.Character.Hawking || p2Selected == CharacterSelectionManager.Character.Hawking)
             gravityWellAnimator.gameObject.SetActive(true);
 
@@ -406,6 +407,7 @@ public class LevelManager : MonoBehaviour
         Hawking.WellAction -= ballScriptReference.GravityWell;
         Hawking.WellActiveAction -= UpdateGravityWell;
         ResetRoundAction = null;
+
         if (GameOverAction != null)
             GameOverAction(player1won);
     }
@@ -468,6 +470,10 @@ public class LevelManager : MonoBehaviour
         ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().OnActivateAction -= OnDeviceLost;
         ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().controlsSetAction -= OnControlsSet;
 
+        Odyssey.VoyageAction -= ballScriptReference.Voyage;
+        Hawking.WellAction -= ballScriptReference.GravityWell;
+        Hawking.WellActiveAction -= UpdateGravityWell;
+
         Time.timeScale = 1f;
         if (CharacterSelectButton != null)
             CharacterSelectButton(1);
@@ -477,6 +483,10 @@ public class LevelManager : MonoBehaviour
     {
         ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().OnActivateAction -= OnDeviceLost;
         ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().controlsSetAction -= OnControlsSet;
+
+        Odyssey.VoyageAction -= ballScriptReference.Voyage;
+        Hawking.WellAction -= ballScriptReference.GravityWell;
+        Hawking.WellActiveAction -= UpdateGravityWell;
 
         Time.timeScale = 1f;
         if (ExitButton != null)

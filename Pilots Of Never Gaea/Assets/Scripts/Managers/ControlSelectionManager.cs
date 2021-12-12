@@ -14,6 +14,14 @@ public class ControlSelectionManager : MonoBehaviour
     bool isPlayer1Ready;
     bool isPlayer2Ready;
 
+    public GameObject p1ControlsText;
+    public GameObject p2ControlsText;
+    public GameObject p1KeyboardLeftIcons;
+    public GameObject p1KeyboardRightIcons;
+    public GameObject p1GamepadIcons;
+    public GameObject p2KeyboardLeftIcons;
+    public GameObject p2KeyboardRightIcons;
+    public GameObject p2GamepadIcons;
     private int p1DeviceID = 0;
     private int p2DeviceID = 0;
 
@@ -85,13 +93,13 @@ public class ControlSelectionManager : MonoBehaviour
         if (p1AssignedController == controller.gameObject && !isMovingLeft && !isPlayer1Ready)
         {
             p1AssignedController = null;
-            ReturnControllerToList(controller.gameObject);
+            ReturnControllerToList(controller.gameObject, true);
         }
         else
         if (p2AssignedController == controller.gameObject && isMovingLeft && !isPlayer2Ready)
         {
             p2AssignedController = null;
-            ReturnControllerToList(controller.gameObject);
+            ReturnControllerToList(controller.gameObject, false);
         }
     }
 
@@ -243,6 +251,15 @@ public class ControlSelectionManager : MonoBehaviour
             gamepadInput.transform.GetComponent<ControllerDeviceUI>().assignedDeviceID = Gamepad.all[g].device.deviceId;
             playerInputList.Add(gamepadInput.gameObject);
         }
+
+        p1ControlsText.SetActive(false);
+        p1KeyboardLeftIcons.SetActive(false);
+        p1KeyboardRightIcons.SetActive(false);
+        p1GamepadIcons.SetActive(false);
+        p2ControlsText.SetActive(false);
+        p2KeyboardLeftIcons.SetActive(false);
+        p2KeyboardRightIcons.SetActive(false);
+        p2GamepadIcons.SetActive(false);
     }
 
 
@@ -252,17 +269,65 @@ public class ControlSelectionManager : MonoBehaviour
         {
             UIController.transform.SetPositionAndRotation(p1UIPosition.position, Quaternion.identity);
             p1AssignedController = UIController;
+            p1ControlsText.SetActive(true);
+            switch(UIController.GetComponent<ControllerDeviceUI>().assignedScheme)
+            {
+                case "Gamepad":
+                p1GamepadIcons.SetActive(true);
+                break;
+
+                case "Keyboard":
+                p1KeyboardLeftIcons.SetActive(true);
+                break;
+
+                case "Keyboard Player 2":
+                p1KeyboardRightIcons.SetActive(true);
+                break;
+                default:
+                break;
+            }
         }
         else
         {
             UIController.transform.SetPositionAndRotation(p2UIPosition.position, Quaternion.identity);
             p2AssignedController = UIController;
+            p2ControlsText.SetActive(true);
+            switch(UIController.GetComponent<ControllerDeviceUI>().assignedScheme)
+            {
+                case "Gamepad":
+                p2GamepadIcons.SetActive(true);
+                break;
+
+                case "Keyboard":
+                p2KeyboardLeftIcons.SetActive(true);
+                break;
+
+                case "Keyboard Player 2":
+                p2KeyboardRightIcons.SetActive(true);
+                break;
+                default:
+                break;
+            }
         }
     }
 
-    private void ReturnControllerToList(GameObject UIController)
+    private void ReturnControllerToList(GameObject UIController, bool isPlayer1)
     {
         playerInputList.Add(UIController);
+        if(isPlayer1)
+        {
+            p1ControlsText.SetActive(false);
+            p1KeyboardLeftIcons.SetActive(false);
+            p1KeyboardRightIcons.SetActive(false);
+            p1GamepadIcons.SetActive(false);
+        }
+        else
+        {
+            p2ControlsText.SetActive(false);
+            p2KeyboardLeftIcons.SetActive(false);
+            p2KeyboardRightIcons.SetActive(false);
+            p2GamepadIcons.SetActive(false);
+        }
         OrderDeviceList();
     }
 
@@ -276,10 +341,6 @@ public class ControlSelectionManager : MonoBehaviour
         }
     }
 
-    private void TryDealingWithUnityControllerBug()
-    {
-
-    }
     public void OnDeviceChange(InputDevice inputDevice, InputDeviceChange inputDeviceChange)
     {
         if (isActive && inputDeviceChange == InputDeviceChange.Added)
@@ -305,10 +366,5 @@ public class ControlSelectionManager : MonoBehaviour
         {
             OnActivate();
         }
-    }
-
-    private void InstantiateGamepad()
-    {
-
     }
 }

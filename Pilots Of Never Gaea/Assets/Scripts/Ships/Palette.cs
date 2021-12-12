@@ -128,7 +128,8 @@ public class Palette : MonoBehaviour
                 if (charges >= chargesRequired)
                 {
                     power = true;
-                    AkSoundEngine.PostEvent("sfx_powercharge", gameObject);
+                    if(charges == maxCharges)
+                        AkSoundEngine.PostEvent("sfx_powercharge", gameObject);
                 }
             }
         }
