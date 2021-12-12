@@ -18,6 +18,7 @@ TagManager:
   - Knife
   - Dante
   - DanteAttack
+  - MissileExplosion
   layers:
   - Default
   - TransparentFX

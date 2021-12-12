@@ -187,6 +187,7 @@ MonoBehaviour:
   initialSpeed: 11
   stunTime: 0.05
   minXVelocity: 0
+  explosionForce: 13
   correctionSpeed: 0.1
 --- !u!212 &3587088231962082200
 SpriteRenderer:

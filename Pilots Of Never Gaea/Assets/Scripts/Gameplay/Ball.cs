@@ -8,7 +8,7 @@ public class Ball : MonoBehaviour
     public delegate void OnScoreAction(bool player1);
     public static OnScoreAction onScore;
     public static LevelManager.LevelAction ElectrifyAction, UnstickAction;
-    public float initialSpeed, stunTime, minXVelocity, correctionSpeed;
+    public float initialSpeed, stunTime, minXVelocity, explosionForce, correctionSpeed;
     private float stunClock, stuckYPosition, stuckSpeed;
     private bool stunned, charged, stuck, shot, moving;
     private Vector2 stunnedPosition;
@@ -184,6 +184,12 @@ public class Ball : MonoBehaviour
                 StopMovement();
                 rig.AddForce((new Vector2(-1f, 0f).normalized * initialSpeed * 1.9f), ForceMode2D.Impulse);
             }
+        }
+
+        if(collisionTag == "MissileExplosion")
+        {
+            StopMovement();
+            rig.AddForce((transform.position - collision.transform.position).normalized * explosionForce, ForceMode2D.Impulse);
         }
 
         if (collisionTag == "SideShot")
