@@ -50,9 +50,8 @@ public class CharacterSelectionManager : MonoBehaviour
         exitClock = 0f;
 
         BindControlsAction(p1Selector.GetComponent<PlayerInput>(), p2Selector.GetComponent<PlayerInput>());
-        p1Selector.GetComponent<ShipSelect>().OnDeviceLostAction = OnSelectorDeviceLost;
-        p2Selector.GetComponent<ShipSelect>().OnDeviceLostAction = OnSelectorDeviceLost;
         ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().controlsSetAction += OnControlsSet;
+        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().OnActivateAction += OnSelectorDeviceLost;
     }
 
     private void Update()
@@ -102,6 +101,7 @@ public class CharacterSelectionManager : MonoBehaviour
                         if (FadeAction != null)
                         {
                             ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().controlsSetAction -= OnControlsSet;
+                            ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().OnActivateAction -= OnSelectorDeviceLost;
                             FadeAction(1);
                         }
                     }
@@ -133,11 +133,10 @@ public class CharacterSelectionManager : MonoBehaviour
     }
 
 
+
     private void OnSelectorDeviceLost()
     {
         p1Selector.GetComponent<PlayerInput>().DeactivateInput();
         p2Selector.GetComponent<PlayerInput>().DeactivateInput();
-
-        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().OnActivate();
     }
 }

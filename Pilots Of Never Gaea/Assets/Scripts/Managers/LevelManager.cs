@@ -18,6 +18,8 @@ public class LevelManager : MonoBehaviour
         topRightArrow, topLeftArrow, bottomRightArrow, bottomLeftArrow,
         p1NullBarEmpty, p2NullBarEmpty,
         pauseCanvas;
+
+    public EventSystem pauseEventSystem;
     public Platform leftPlatform, rightPlatform;
     public List<GameObject> shipPrefabList;
     public SpriteRenderer fadeoutSprite, p1NullBarFull, p2NullBarFull;
@@ -30,7 +32,6 @@ public class LevelManager : MonoBehaviour
     public static CharacterSelectionManager.Character p1Selected, p2Selected;
 
     public static GameManager.BindInputFunction BindPlayersFunction;
-
     public Animator p1EXAnimator, p2EXAnimator;
 
     public Animator gravityWellAnimator;
@@ -65,6 +66,9 @@ public class LevelManager : MonoBehaviour
         InitializeGame();
         StartCoroutine(StartRound());
         AkSoundEngine.PostEvent("music_gameplay", gameObject);
+
+        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().OnActivateAction += OnDeviceLost;
+        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().controlsSetAction += OnControlsSet;
     }
 
     private void Update()
@@ -91,12 +95,19 @@ public class LevelManager : MonoBehaviour
 
         if (Keyboard.current.escapeKey.wasPressedThisFrame && gameStarted && !gameEnded)
         {
-            pauseCanvas.SetActive(true);
-            Time.timeScale = 0f;
-            Dio.isPaused = true;
+            PauseGame();
         }
     }
 
+    private void PauseGame()
+    {
+            pauseCanvas.SetActive(true);
+            Time.timeScale = 0f;
+            Dio.isPaused = true;
+
+            p1Instance.GetComponent<PlayerInput>().DeactivateInput();
+            p2Instance.GetComponent<PlayerInput>().DeactivateInput();
+    }
     private void InitializeGame()
     {
         if (p1Selected != CharacterSelectionManager.Character.none)
@@ -360,6 +371,8 @@ public class LevelManager : MonoBehaviour
             yield return null;
         }
         Time.timeScale = 1f;
+        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().OnActivateAction -= OnDeviceLost;
+        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().controlsSetAction -= OnControlsSet;
         GameOver(player1Won);
     }
 
@@ -434,6 +447,8 @@ public class LevelManager : MonoBehaviour
         pauseCanvas.GetComponent<UIManager>().ResetSelected();
         pauseCanvas.SetActive(false);
         Dio.isPaused = false;
+        p1Instance.GetComponent<PlayerInput>().ActivateInput();
+        p2Instance.GetComponent<PlayerInput>().ActivateInput();
     }
 
     public void CharacterSelect()
@@ -445,8 +460,31 @@ public class LevelManager : MonoBehaviour
 
     public void MainMenu()
     {
+        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().OnActivateAction -= OnDeviceLost;
+        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().controlsSetAction -= OnControlsSet;
         Time.timeScale = 1f;
         if (ExitButton != null)
             ExitButton(0);
+    }
+
+    private void OnDeviceLost()
+    {
+        PauseGame();
+        pauseEventSystem.enabled = false;
+    }
+
+    private void OnControlsSet(ControllerDeviceUI player1Device, ControllerDeviceUI player2Device)
+    {
+        p1Instance.GetComponent<PlayerInput>().SwitchCurrentControlScheme(player1Device.assignedScheme, player1Device.assignedDevice);
+        p2Instance.GetComponent<PlayerInput>().SwitchCurrentControlScheme(player2Device.assignedScheme, player2Device.assignedDevice);
+
+        pauseEventSystem.enabled = true;
+        pauseEventSystem.SetSelectedGameObject(pauseEventSystem.firstSelectedGameObject);
+    }
+
+    public void ControlsButton()
+    {
+        pauseEventSystem.enabled = false;
+        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().OnActivate();
     }
 }

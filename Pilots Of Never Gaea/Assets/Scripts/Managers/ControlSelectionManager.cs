@@ -9,8 +9,8 @@ public class ControlSelectionManager : MonoBehaviour
 
     public static GameObject controlSelectionManagerInstance;
     public delegate void ControlsSetDelegate(ControllerDeviceUI p1Device, ControllerDeviceUI p2Device);
-
     public ControlsSetDelegate controlsSetAction;
+    public GameManager.ButtonAction OnActivateAction;
     bool isPlayer1Ready;
     bool isPlayer2Ready;
 
@@ -97,7 +97,6 @@ public class ControlSelectionManager : MonoBehaviour
 
     public void ConfirmSelection(ControllerDeviceUI controller)
     {
-        Debug.Log("confirm");
         if (controller.gameObject == p1AssignedController)
         {
             isPlayer1Ready = true;
@@ -115,7 +114,6 @@ public class ControlSelectionManager : MonoBehaviour
 
     public void CancelSelection(ControllerDeviceUI controller)
     {
-        Debug.Log("cancel");
         if (controller.gameObject == p1AssignedController && isPlayer1Ready)
         {
             isPlayer1Ready = false;
@@ -204,6 +202,9 @@ public class ControlSelectionManager : MonoBehaviour
 
     public void OnActivate()
     {
+        if(OnActivateAction!=null)
+            OnActivateAction.Invoke();
+
         isActive = true;
         controlSettingsCanvas.SetActive(true);
         playerInputList.Clear();
@@ -299,6 +300,11 @@ public class ControlSelectionManager : MonoBehaviour
                     i = Gamepad.all.Count;
                 }
             }
+        }
+
+        if(!isActive && inputDeviceChange == InputDeviceChange.Removed && (inputDevice.deviceId == p1DeviceID || inputDevice.deviceId == p2DeviceID))
+        {
+            OnActivate();
         }
     }
 
