@@ -20,6 +20,8 @@ public class LevelManager : MonoBehaviour
         pauseCanvas;
 
     public EventSystem pauseEventSystem;
+    private PauseInput pauseInput;
+    private bool isPaused;
     public Platform leftPlatform, rightPlatform;
     public List<GameObject> shipPrefabList;
     public SpriteRenderer fadeoutSprite, p1NullBarFull, p2NullBarFull;
@@ -67,6 +69,10 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(StartRound());
         AkSoundEngine.PostEvent("music_gameplay", gameObject);
 
+        pauseInput = new PauseInput();
+        pauseInput.Pausemap.Enable();
+        isPaused = false;
+
         ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().OnActivateAction += OnDeviceLost;
         ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().controlsSetAction += OnControlsSet;
     }
@@ -93,14 +99,18 @@ public class LevelManager : MonoBehaviour
             gameEnded = true;
         }
 
-        if (Keyboard.current.escapeKey.wasPressedThisFrame && gameStarted && !gameEnded)
+        if (pauseInput.Pausemap.Start.WasPerformedThisFrame() && gameStarted && !gameEnded)
         {
-            PauseGame();
+            if(!isPaused)
+                PauseGame();
+            else
+                UnPause();
         }
     }
 
     private void PauseGame()
     {
+            isPaused = true;
             pauseCanvas.SetActive(true);
             Time.timeScale = 0f;
             Dio.isPaused = true;
@@ -371,8 +381,6 @@ public class LevelManager : MonoBehaviour
             yield return null;
         }
         Time.timeScale = 1f;
-        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().OnActivateAction -= OnDeviceLost;
-        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().controlsSetAction -= OnControlsSet;
         GameOver(player1Won);
     }
 
@@ -391,6 +399,9 @@ public class LevelManager : MonoBehaviour
 
     private void GameOver(bool player1won)
     {
+        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().OnActivateAction -= OnDeviceLost;
+        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().controlsSetAction -= OnControlsSet;
+
         Odyssey.VoyageAction -= ballScriptReference.Voyage;
         Hawking.WellAction -= ballScriptReference.GravityWell;
         Hawking.WellActiveAction -= UpdateGravityWell;
@@ -443,6 +454,7 @@ public class LevelManager : MonoBehaviour
 
     public void UnPause()
     {
+        isPaused = false;
         Time.timeScale = 1f;
         pauseCanvas.GetComponent<UIManager>().ResetSelected();
         pauseCanvas.SetActive(false);
@@ -453,6 +465,9 @@ public class LevelManager : MonoBehaviour
 
     public void CharacterSelect()
     {
+        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().OnActivateAction -= OnDeviceLost;
+        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().controlsSetAction -= OnControlsSet;
+
         Time.timeScale = 1f;
         if (CharacterSelectButton != null)
             CharacterSelectButton(1);
@@ -462,6 +477,7 @@ public class LevelManager : MonoBehaviour
     {
         ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().OnActivateAction -= OnDeviceLost;
         ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().controlsSetAction -= OnControlsSet;
+
         Time.timeScale = 1f;
         if (ExitButton != null)
             ExitButton(0);

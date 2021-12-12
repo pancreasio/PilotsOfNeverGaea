@@ -288,7 +288,6 @@ public class ControlSelectionManager : MonoBehaviour
             {
                 if (inputDevice == Gamepad.all[i].device)
                 {
-                    Debug.Log("here");
                     PlayerInput gamepadInput = PlayerInput.Instantiate(controllerUIEntity, playerInputList.Count + 1, "Gamepad", -1, inputDevice);
                     gamepadInput.transform.SetParent(controlSettingsCanvas.transform);
                     gamepadInput.transform.GetComponent<SpriteRenderer>().sprite = gamepadSprite;

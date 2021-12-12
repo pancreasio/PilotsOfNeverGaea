@@ -35,6 +35,7 @@ public class CharacterSelectionManager : MonoBehaviour
     public GameObject p1Elements, p2Elements, background;
     public GameObject p1Selector, p2Selector;
     private bool openingPlatforms = false, closingPlatforms = true;
+    private PauseInput pauseInput;
 
     private void Start()
     {
@@ -48,6 +49,9 @@ public class CharacterSelectionManager : MonoBehaviour
         p2Elements.transform.Translate(transform.right * platformLimit);
         platformClock = 0f;
         exitClock = 0f;
+
+        pauseInput = new PauseInput();
+        pauseInput.Pausemap.Enable();
 
         BindControlsAction(p1Selector.GetComponent<PlayerInput>(), p2Selector.GetComponent<PlayerInput>());
         ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().controlsSetAction += OnControlsSet;
@@ -98,10 +102,10 @@ public class CharacterSelectionManager : MonoBehaviour
                     }
                     else
                     {
+                        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().controlsSetAction -= OnControlsSet;
+                        ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().OnActivateAction -= OnSelectorDeviceLost;
                         if (FadeAction != null)
                         {
-                            ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().controlsSetAction -= OnControlsSet;
-                            ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().OnActivateAction -= OnSelectorDeviceLost;
                             FadeAction(1);
                         }
                     }
@@ -109,13 +113,15 @@ public class CharacterSelectionManager : MonoBehaviour
             }
             else
             {
-                if (Keyboard.current.escapeKey.wasPressedThisFrame)
+                if (pauseInput.Pausemap.Start.IsPressed())
                     exitClock += Time.deltaTime;
                 else
                     exitClock = 0f;
 
                 if (exitClock > cancelTime)
                 {
+                    ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().controlsSetAction -= OnControlsSet;
+                    ControlSelectionManager.controlSelectionManagerInstance.GetComponent<ControlSelectionManager>().OnActivateAction -= OnSelectorDeviceLost;
                     if (ExitButtonAction != null)
                         ExitButtonAction();
                 }

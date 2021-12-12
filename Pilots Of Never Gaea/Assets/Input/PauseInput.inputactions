@@ -1,0 +1,73 @@
+{
+    "name": "PauseInput",
+    "maps": [
+        {
+            "name": "Pausemap",
+            "id": "8a3cac9a-878b-4dd7-ade0-8ba7f7323c36",
+            "actions": [
+                {
+                    "name": "Start",
+                    "type": "Button",
+                    "id": "02820038-96cb-4245-8c52-37751ab3a8d6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "56e0e742-c981-4d55-9843-b38637e9d12f",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "UI Scheme",
+                    "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ceb3a3fa-ffa5-4e6b-bebe-743be4ce4377",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "UI Scheme",
+                    "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "82fe08a0-1dda-4de2-918b-007e3483f947",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "UI Scheme",
+                    "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "UI Scheme",
+            "bindingGroup": "UI Scheme",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": true,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
