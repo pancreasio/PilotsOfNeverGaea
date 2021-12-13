@@ -131,6 +131,7 @@ MonoBehaviour:
     m_Bits: 512
   speed: 7
   chargeDelay: 0.1
+  slowTime: 1
   isPlayer1: 0
   chargesRequired: 0
   maxCharges: 0
@@ -254,7 +255,7 @@ GameObject:
   - component: {fileID: 3215223537810462173}
   - component: {fileID: 3215223537810462175}
   - component: {fileID: 3215223537810462174}
-  m_Layer: 8
+  m_Layer: 16
   m_Name: bottom corner
   m_TagString: Corner
   m_Icon: {fileID: 0}
@@ -325,7 +326,7 @@ GameObject:
   - component: {fileID: 3215223537959710841}
   - component: {fileID: 3215223537959710843}
   - component: {fileID: 3215223537959710842}
-  m_Layer: 8
+  m_Layer: 16
   m_Name: top corner
   m_TagString: Corner
   m_Icon: {fileID: 0}

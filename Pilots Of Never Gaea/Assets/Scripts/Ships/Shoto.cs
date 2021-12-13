@@ -10,6 +10,8 @@ public class Shoto : Palette
     protected override void Start()
     {
         base.Start();
+        GetComponent<Animator>().SetBool("IDLE",false);
+        GetComponent<Animator>().SetBool("HIGHLIGHTED",true);
     }
 
     protected override void Update()

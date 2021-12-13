@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1989890062757117162}
   - component: {fileID: 1989890062757117160}
   - component: {fileID: 1989890062757117161}
-  m_Layer: 8
+  m_Layer: 16
   m_Name: bottom corner
   m_TagString: Corner
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 1989890063526969868}
   - component: {fileID: 1989890063526969858}
   - component: {fileID: 1989890063526969859}
-  m_Layer: 8
+  m_Layer: 16
   m_Name: top corner
   m_TagString: Corner
   m_Icon: {fileID: 0}
@@ -338,6 +338,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   speed: 9
+  chargeDelay: 0.1
+  slowTime: 1
   isPlayer1: 0
   chargesRequired: 2
   maxCharges: 2
